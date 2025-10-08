@@ -1,0 +1,24 @@
+{
+  "name": "@deepracticex/monorepo-config",
+  "version": "0.0.1",
+  "description": "Shared monorepo tooling dependencies for Deepractice projects",
+  "type": "module",
+  "files": [
+    "README.md"
+  ],
+  "keywords": [
+    "monorepo",
+    "turbo",
+    "changesets",
+    "config",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT",
+  "peerDependencies": {
+    "@changesets/cli": "^2.29.0",
+    "turbo": "^2.5.0",
+    "lefthook": "^1.13.0",
+    "rimraf": "^6.0.0"
+  }
+}

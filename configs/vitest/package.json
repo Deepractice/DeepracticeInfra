@@ -1,0 +1,26 @@
+{
+  "name": "@deepracticex/vitest-config",
+  "version": "0.0.1",
+  "description": "Shared Vitest configuration for Deepractice projects",
+  "type": "module",
+  "main": "./base.ts",
+  "exports": {
+    ".": "./base.ts"
+  },
+  "files": [
+    "base.ts",
+    "README.md"
+  ],
+  "keywords": [
+    "vitest",
+    "config",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT",
+  "peerDependencies": {
+    "vitest": "^2.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "@vitest/ui": "^2.0.0"
+  }
+}

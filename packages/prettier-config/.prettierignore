@@ -1,6 +1,0 @@
-dist
-node_modules
-coverage
-.wrangler
-pnpm-lock.yaml
-*.log

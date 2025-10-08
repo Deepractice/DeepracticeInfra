@@ -1,17 +1,6 @@
-import { defineConfig } from "tsup";
-import path from "path";
+import { createConfig } from "@deepracticex/tsup-config";
 
-export default defineConfig({
+export default createConfig({
   entry: ["src/index.ts"],
-  format: ["cjs", "esm"],
-  dts: true,
-  splitting: false,
-  sourcemap: true,
-  clean: true,
   external: ["express", "hono"],
-  esbuildOptions(options) {
-    options.alias = {
-      "~": path.resolve(__dirname, "./src"),
-    };
-  },
 });

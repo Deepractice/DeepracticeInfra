@@ -1,0 +1,26 @@
+{
+  "name": "@deepracticex/tsup-config",
+  "version": "0.0.1",
+  "description": "Shared tsup build configuration for Deepractice projects",
+  "type": "module",
+  "main": "./base.ts",
+  "exports": {
+    ".": "./base.ts"
+  },
+  "files": [
+    "base.ts",
+    "README.md"
+  ],
+  "keywords": [
+    "tsup",
+    "build",
+    "config",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT",
+  "peerDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}

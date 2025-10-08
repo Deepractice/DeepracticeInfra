@@ -38,9 +38,5 @@
     "deepractice"
   ],
   "author": "Deepractice",
-  "license": "MIT",
-  "devDependencies": {
-    "esbuild-plugin-alias": "^0.2.1",
-    "tsconfig-paths": "^4.2.0"
-  }
+  "license": "MIT"
 }

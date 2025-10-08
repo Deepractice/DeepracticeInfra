@@ -2,7 +2,7 @@
  * Cucumber configuration for @deepracticex/template
  */
 
-const baseConfig = require("../../cucumber.base.cjs");
+const baseConfig = require("@deepracticex/cucumber-config");
 
 module.exports = {
   default: {

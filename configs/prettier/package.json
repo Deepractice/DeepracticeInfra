@@ -3,13 +3,12 @@
   "version": "0.0.1",
   "description": "Shared Prettier configuration for Deepractice projects",
   "type": "module",
-  "main": "./index.json",
+  "main": "./index.js",
   "exports": {
-    ".": "./index.json"
+    ".": "./index.js"
   },
   "files": [
-    "index.json",
-    ".prettierignore",
+    "index.js",
     "README.md"
   ],
   "keywords": [

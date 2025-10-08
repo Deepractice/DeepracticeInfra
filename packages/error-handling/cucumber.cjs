@@ -2,7 +2,7 @@
  * Cucumber configuration for @deepracticex/error-handling
  */
 
-const baseConfig = require("../../cucumber.base.cjs");
+const baseConfig = require("@deepracticex/cucumber-config");
 
 module.exports = {
   default: {

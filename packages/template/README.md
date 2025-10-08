@@ -373,6 +373,27 @@ export default defineConfig({
 }
 ```
 
+**Dependency Management:**
+
+- **All tooling dependencies are managed in the root `package.json`**
+- Sub-packages do NOT declare devDependencies
+- Dependencies are automatically available via pnpm workspace hoisting
+- This ensures absolute version consistency across all packages
+
+**Available tools (auto-hoisted from root):**
+
+- TypeScript, tsup, tsx, rimraf
+- Cucumber, Vitest, Chai
+- Prettier, Lefthook
+- All `@deepracticex/*` config packages
+
+**When creating a new package:**
+
+1. Copy the template
+2. Update name, description, keywords
+3. Run `pnpm install` from root
+4. Start coding - all tools are ready!
+
 ---
 
 ## Publishing Standards

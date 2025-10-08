@@ -3,7 +3,6 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": ".", // Override base.json to include tests/
-    "types": [],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"], // Internal use within src/

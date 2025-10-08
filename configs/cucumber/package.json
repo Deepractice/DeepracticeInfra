@@ -1,0 +1,29 @@
+{
+  "name": "@deepracticex/cucumber-config",
+  "version": "0.0.1",
+  "description": "Shared Cucumber configuration for Deepractice projects",
+  "type": "commonjs",
+  "main": "./base.cjs",
+  "exports": {
+    ".": "./base.cjs"
+  },
+  "files": [
+    "base.cjs",
+    "README.md"
+  ],
+  "keywords": [
+    "cucumber",
+    "bdd",
+    "config",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT",
+  "peerDependencies": {
+    "@cucumber/cucumber": "^11.0.0",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "@types/chai": "^5.0.0",
+    "chai": "^5.0.0",
+    "tsx": "^4.0.0"
+  }
+}
