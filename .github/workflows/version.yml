@@ -2,17 +2,6 @@ name: Version
 
 on:
   workflow_dispatch:
-    inputs:
-      release_type:
-        description: "Release type"
-        required: false
-        default: "auto"
-        type: choice
-        options:
-          - auto
-          - major
-          - minor
-          - patch
 
 jobs:
   version:
