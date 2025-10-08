@@ -43,9 +43,8 @@ coverage/
 # Lefthook
 lefthook-local.yml
 
-# Changesets - ignore generated changesets but keep README
-.changeset/*.md
-!.changeset/README.md
+# Changesets - keep README
+# Note: changeset files should be committed until consumed by version workflow
 
 # Test reports
 **/tests/reports/
