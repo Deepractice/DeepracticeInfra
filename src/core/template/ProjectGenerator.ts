@@ -1,10 +1,6 @@
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import fs from "fs-extra";
 import { VERSIONS } from "./versions.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export interface ProjectOptions {
   name: string;
@@ -13,10 +9,8 @@ export interface ProjectOptions {
 }
 
 export class ProjectGenerator {
-  private templateDir: string;
-
   constructor() {
-    this.templateDir = path.join(__dirname, "templates/project");
+    // Templates are now inlined in generateConfigFiles and copyStaticTemplates
   }
 
   async generate(targetDir: string, options: ProjectOptions): Promise<void> {
