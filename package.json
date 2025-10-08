@@ -7,10 +7,17 @@
   "scripts": {
     "build": "turbo build",
     "test": "turbo test",
+    "test:e2e": "turbo test",
+    "test:dev": "turbo test:dev",
+    "test:ci": "turbo test:ci",
     "lint": "turbo lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "clean": "turbo clean && rm -rf node_modules",
+    "typecheck": "turbo typecheck",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish",
     "prepare": "lefthook install"
   },
   "keywords": [
@@ -27,6 +34,7 @@
   },
   "packageManager": "pnpm@10.15.1",
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "@cucumber/cucumber": "^11.1.0",
     "@cucumber/pretty-formatter": "^1.0.1",
     "@types/chai": "^5.0.1",

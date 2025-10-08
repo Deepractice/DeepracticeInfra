@@ -42,3 +42,10 @@ coverage/
 
 # Lefthook
 lefthook-local.yml
+
+# Changesets - ignore generated changesets but keep README
+.changeset/*.md
+!.changeset/README.md
+
+# Test reports
+**/tests/reports/
