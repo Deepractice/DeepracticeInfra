@@ -1,0 +1,16 @@
+packages:
+  # Product core - Project business logic
+  - "src/*"
+  # Infrastructure layer - Technical capabilities
+  - "packages/*"
+  # Presentation layer - User interfaces
+  - "apps/*"
+  # Services layer - Microservices
+  - "services/*"
+  # Development tools
+  - "tools/*"
+  # Exclusions
+  - "!**/test/**"
+  - "!**/tests/**"
+  - "!**/dist/**"
+  - "!**/node_modules/**"

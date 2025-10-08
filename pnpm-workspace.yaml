@@ -1,6 +1,7 @@
 packages:
   # Product core - NodeSpec business logic
-  - "src/*"
+  - "src/core"
+  - "src/domain"
   # Infrastructure layer - Technical capabilities
   - "packages/*"
   # Infrastructure layer - Configuration standards

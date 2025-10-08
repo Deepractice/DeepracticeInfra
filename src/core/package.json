@@ -1,0 +1,26 @@
+{
+  "name": "@deepracticex/nodespec-core",
+  "version": "0.0.1",
+  "description": "NodeSpec core - Technical implementations (template engine, guide service, task executor)",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./template": "./template/index.ts",
+    "./guide": "./guide/index.ts",
+    "./executor": "./executor/index.ts"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
+  },
+  "keywords": [
+    "nodespec",
+    "core",
+    "template",
+    "generator",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT"
+}
