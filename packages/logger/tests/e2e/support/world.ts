@@ -13,6 +13,11 @@ export interface LoggerWorld extends World {
 
   // Generic context
   context: Record<string, any>;
+
+  // Context methods
+  set(key: string, value: any): void;
+  get(key: string): any;
+  clear(): void;
 }
 
 class CustomWorld extends World implements LoggerWorld {

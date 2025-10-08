@@ -216,85 +216,37 @@ export function createLogger(config: LoggerConfig = {}): pino.Logger {
 const logger = createLogger();
 
 // Export convenience methods with flexible API
-// Supports both:
-// - logger.info(msg) - simple message
-// - logger.info(msg, obj) - message + context object (natural order)
-// - logger.info(obj, msg) - Pino native order (backward compatible)
-export const error = (
-  msgOrObj: string | object,
-  objOrMsg?: object | string,
-) => {
-  if (typeof msgOrObj === "string") {
-    if (objOrMsg && typeof objOrMsg === "object") {
-      logger.error(objOrMsg, msgOrObj);
-    } else {
-      logger.error(msgOrObj);
-    }
-  } else {
-    logger.error(msgOrObj, (objOrMsg as string) || "");
-  }
+// Supports multiple call patterns for maximum flexibility:
+// - logger.info(msg)
+// - logger.info(msg, context)
+// - logger.info(msg, arg1, arg2, ...)
+// - logger.info(context, msg) - Pino native order
+export const error = (...args: any[]) => {
+  (logger.error as any)(...args);
 };
 
-export const warn = (msgOrObj: string | object, objOrMsg?: object | string) => {
-  if (typeof msgOrObj === "string") {
-    if (objOrMsg && typeof objOrMsg === "object") {
-      logger.warn(objOrMsg, msgOrObj);
-    } else {
-      logger.warn(msgOrObj);
-    }
-  } else {
-    logger.warn(msgOrObj, (objOrMsg as string) || "");
-  }
+export const warn = (...args: any[]) => {
+  (logger.warn as any)(...args);
 };
 
-export const info = (msgOrObj: string | object, objOrMsg?: object | string) => {
-  if (typeof msgOrObj === "string") {
-    if (objOrMsg && typeof objOrMsg === "object") {
-      logger.info(objOrMsg, msgOrObj);
-    } else {
-      logger.info(msgOrObj);
-    }
-  } else {
-    logger.info(msgOrObj, (objOrMsg as string) || "");
-  }
+export const info = (...args: any[]) => {
+  (logger.info as any)(...args);
 };
 
-export const debug = (
-  msgOrObj: string | object,
-  objOrMsg?: object | string,
-) => {
-  if (typeof msgOrObj === "string") {
-    if (objOrMsg && typeof objOrMsg === "object") {
-      logger.debug(objOrMsg, msgOrObj);
-    } else {
-      logger.debug(msgOrObj);
-    }
-  } else {
-    logger.debug(msgOrObj, (objOrMsg as string) || "");
-  }
+export const debug = (...args: any[]) => {
+  (logger.debug as any)(...args);
 };
 
-export const verbose = (
-  msgOrObj: string | object,
-  objOrMsg?: object | string,
-) => {
-  if (typeof msgOrObj === "string") {
-    if (objOrMsg && typeof objOrMsg === "object") {
-      logger.trace(objOrMsg, msgOrObj);
-    } else {
-      logger.trace(msgOrObj);
-    }
-  } else {
-    logger.trace(msgOrObj, (objOrMsg as string) || "");
-  }
+export const verbose = (...args: any[]) => {
+  (logger.trace as any)(...args);
 };
 
-export const log = (level: string, msg: string, ...args: any[]) => {
+export const log = (level: string, ...args: any[]) => {
   const method = (logger as any)[level];
   if (typeof method === "function") {
-    method(msg, ...args);
+    method(...args);
   } else {
-    logger.info(msg, ...args);
+    (logger.info as any)(...args);
   }
 };
 

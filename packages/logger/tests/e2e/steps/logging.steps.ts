@@ -85,7 +85,11 @@ When(
   ) {
     const context: Record<string, any> = {};
     dataTable.hashes().forEach((row) => {
-      context[row.key] = row.value;
+      const key = row.key;
+      const value = row.value;
+      if (key && value) {
+        context[key] = value;
+      }
     });
 
     const logger = this.logger!;
