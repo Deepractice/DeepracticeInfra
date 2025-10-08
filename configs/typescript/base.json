@@ -43,7 +43,7 @@
     "tsBuildInfoFile": ".tsbuildinfo",
 
     /* Types */
-    "types": ["@cloudflare/workers-types/2023-07-01", "vitest/globals"]
+    "types": ["vitest/globals"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]

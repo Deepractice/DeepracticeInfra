@@ -21,8 +21,10 @@ export interface LoggerWorld extends World {
 }
 
 class CustomWorld extends World implements LoggerWorld {
-  context: Record<string, any>;
+  logger?: Logger;
   logRecords: any[];
+  lastLog?: any;
+  context: Record<string, any>;
 
   constructor(options: IWorldOptions) {
     super(options);

@@ -1,9 +1,8 @@
 {
-  "extends": "../typescript-config/base.json",
+  "extends": "@deepracticex/typescript-config/base.json",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": ".", // Override base.json to include tests/
-    "types": [],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"], // Internal use within src/
