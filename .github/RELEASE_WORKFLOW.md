@@ -13,22 +13,28 @@ Our release process follows a structured approach that separates concerns:
 ## Workflow Architecture
 
 ```text
-Issue → Development → PR → Merge to main
-                                ↓
-                      [Changesets Accumulated]
-                                ↓
-                      Manual: Version Workflow
-                                ↓
-                         Release PR Created
-                                ↓
-                      Review & Merge Release PR
-                                ↓
-                      Auto: Release Workflow
-                      ├─ Create Git Tag
-                      └─ Create GitHub Release
-                                ↓
-                      Auto: Publish Workflow
-                      └─ Publish to npm
+Issue → Development → PR
+                      ↓
+                  CI Workflow (lint/typecheck/test/build)
+                      ↓
+                  Merge to main
+                      ↓
+            [Changesets Accumulated]
+                      ↓
+            Manual: Version Workflow
+                      ↓
+               Release PR Created
+                      ↓
+            CI Workflow (验证)
+                      ↓
+         Review & Merge Release PR
+                      ↓
+            Auto: Release Workflow
+            ├─ Create Git Tag
+            └─ Create GitHub Release
+                      ↓
+            Auto: Publish Workflow
+            └─ Publish to npm
 ```
 
 ## Prerequisites
@@ -57,7 +63,12 @@ Ensure the following permissions are configured:
 3. **Repository Branch Protection** (`Settings → Branches`):
    - Branch name pattern: `main`
    - Require pull request reviews before merging
-   - Require status checks to pass before merging
+   - Require status checks to pass before merging:
+     - `Lint`
+     - `Type Check`
+     - `Test`
+     - `Build`
+   - Require branches to be up to date before merging
    - Require linear history
 
 ### Environment Variables (Used in Workflows)
@@ -78,6 +89,29 @@ The default `GITHUB_TOKEN` cannot trigger other workflows (GitHub security featu
 - Release Workflow creates GitHub Release → Can trigger Publish Workflow
 
 ## Workflows
+
+### 0. CI Workflow (`.github/workflows/ci.yml`)
+
+**Trigger**: Automatic on PR and push to `main`
+
+**Purpose**: Ensure code quality and correctness before merging
+
+**Jobs**:
+
+1. **Lint**: Run ESLint and Prettier format check
+2. **Type Check**: Run TypeScript type checking
+3. **Test**: Run Cucumber BDD tests and upload reports
+4. **Build**: Build all packages and verify artifacts
+
+**Usage**:
+
+- Automatically runs on every PR
+- Automatically runs on push to `main`
+- All checks must pass before PR can be merged (if branch protection is enabled)
+
+**Required for**: All PRs (including Release PRs)
+
+---
 
 ### 1. Version Workflow (`.github/workflows/version.yml`)
 
