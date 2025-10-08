@@ -1,7 +1,7 @@
 {
-  "name": "@deepracticex/infra",
+  "name": "@deepracticex/nodespec",
   "version": "0.0.0",
-  "description": "Deepractice Infrastructure - Shared configs, tools, and templates",
+  "description": "DeepracticeNodeSpec - AI-friendly Node.js development ecosystem with standardized configs, tools, and packages",
   "private": true,
   "type": "module",
   "scripts": {
@@ -21,10 +21,13 @@
     "prepare": "lefthook install"
   },
   "keywords": [
-    "deepractice",
-    "infrastructure",
+    "nodespec",
+    "ai-development",
+    "node-standards",
+    "typescript",
+    "monorepo",
     "config",
-    "monorepo"
+    "deepractice"
   ],
   "author": "Deepractice",
   "license": "MIT",
