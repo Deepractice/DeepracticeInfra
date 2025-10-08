@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/typescript-config",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Shared TypeScript configuration for Deepractice projects",
   "type": "module",
   "main": "./base.json",

@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/error-handling",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Unified error handling system for Deepractice projects",
   "type": "module",
   "main": "./dist/index.js",
