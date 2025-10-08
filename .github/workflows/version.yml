@@ -1,0 +1,88 @@
+name: Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release type'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - major
+          - minor
+          - patch
+
+jobs:
+  version:
+    name: Create Release PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Get Release Branch Name
+        id: branch
+        run: |
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          echo "name=release/${TIMESTAMP}" >> $GITHUB_OUTPUT
+
+      - name: Create Release Branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b ${{ steps.branch.outputs.name }}
+
+      - name: Version Packages
+        run: pnpm changeset version
+
+      - name: Commit Version Changes
+        run: |
+          git add .
+          git commit -m "chore: version packages" || echo "No changes to commit"
+
+      - name: Push Release Branch
+        run: git push origin ${{ steps.branch.outputs.name }}
+
+      - name: Create Release PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          gh pr create \
+            --title "chore: release packages" \
+            --body "This PR was automatically created by the Version workflow.
+
+          ## Changes
+
+          This release includes the following package updates:
+
+          - Check the CHANGELOG.md files in each package for details
+          - Review the version bumps in package.json files
+
+          ## Checklist
+
+          - [ ] Review all version bumps
+          - [ ] Review all CHANGELOG.md updates
+          - [ ] Verify build passes
+          - [ ] Verify tests pass
+
+          Once approved and merged, packages will be automatically published to npm." \
+            --base main \
+            --head ${{ steps.branch.outputs.name }}

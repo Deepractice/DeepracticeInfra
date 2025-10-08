@@ -1,0 +1,101 @@
+name: Release
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Create Release
+    # Only run if PR was merged and from a release branch
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.extract_version.outputs.version }}
+      tag: ${{ steps.extract_version.outputs.tag }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Extract Version Info
+        id: extract_version
+        run: |
+          # Get all changed package.json files and extract versions
+          PACKAGES=$(find packages -name "package.json" -type f)
+          VERSIONS=""
+
+          for pkg in $PACKAGES; do
+            PKG_NAME=$(jq -r '.name' "$pkg")
+            PKG_VERSION=$(jq -r '.version' "$pkg")
+            VERSIONS="${VERSIONS}${PKG_NAME}@${PKG_VERSION}\n"
+          done
+
+          # Get timestamp for release tag
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          TAG="release-${TIMESTAMP}"
+
+          echo "version<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$VERSIONS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a ${{ steps.extract_version.outputs.tag }} -m "Release: ${{ steps.extract_version.outputs.tag }}"
+          git push origin ${{ steps.extract_version.outputs.tag }}
+
+      - name: Generate Release Notes
+        id: release_notes
+        run: |
+          NOTES="# Release ${{ steps.extract_version.outputs.tag }}
+
+          ## Packages
+
+          ${{ steps.extract_version.outputs.version }}
+
+          ## Changes
+
+          "
+
+          # Extract CHANGELOG content from each package
+          for pkg in packages/*/CHANGELOG.md; do
+            if [ -f "$pkg" ]; then
+              PKG_NAME=$(dirname "$pkg" | xargs basename)
+              NOTES="${NOTES}\n### @deepracticex/${PKG_NAME}\n\n"
+              # Get the latest version section from CHANGELOG
+              NOTES="${NOTES}$(awk '/^## /{if(++count==2)exit;if(count==1)next}count==1' "$pkg")\n"
+            fi
+          done
+
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          gh release create ${{ steps.extract_version.outputs.tag }} \
+            --title "Release ${{ steps.extract_version.outputs.tag }}" \
+            --notes "${{ steps.release_notes.outputs.notes }}" \
+            --latest
