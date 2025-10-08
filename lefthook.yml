@@ -1,6 +1,11 @@
 # Lefthook configuration for DeepracticeInfra
 # https://lefthook.dev/configuration/
 
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}
+
 pre-commit:
   parallel: true
   commands:

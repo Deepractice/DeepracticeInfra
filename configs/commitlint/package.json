@@ -1,0 +1,26 @@
+{
+  "name": "@deepracticex/commitlint-config",
+  "version": "0.0.1",
+  "description": "Shared commitlint configuration for Deepractice projects",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "keywords": [
+    "commitlint",
+    "config",
+    "conventional-commits",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT",
+  "peerDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0"
+  }
+}
