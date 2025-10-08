@@ -18,7 +18,7 @@ Feature: Project Management
       | .gitignore            |
       | README.md             |
       | lefthook.yml          |
-    And "package.json" should contain "@deepracticex/nodespec"
+    And "package.json" should contain "DeepracticeUser"
     And "pnpm-workspace.yaml" should contain "packages/*"
     And "pnpm-workspace.yaml" should contain "src/*"
     And "pnpm-workspace.yaml" should contain "apps/*"
@@ -30,6 +30,30 @@ Feature: Project Management
       | src       |
       | apps      |
       | services  |
+
+  Scenario: Initialize project and verify it works end-to-end
+    Given I am in an empty directory
+    When I run "nodespec project init --skip-git"
+    Then the command should succeed
+
+    # Verify dependencies can be installed
+    When I run "pnpm install"
+    Then the command should succeed
+    And "node_modules" directory should exist
+    And "pnpm-lock.yaml" should exist
+
+    # Verify TypeScript configuration is valid
+    When I run "pnpm typecheck"
+    Then the command should succeed
+
+    # Verify formatting works
+    When I run "pnpm format"
+    Then the command should succeed
+
+    # Verify the project structure is valid for building
+    When I create a test package in "packages/test-lib"
+    And I run "pnpm build" in "packages/test-lib"
+    Then the command should succeed
 
   Scenario: Initialize project with custom name
     Given I am in an empty directory
@@ -99,3 +123,71 @@ Feature: Project Management
     When I run "nodespec project init --skip-git"
     Then the command should succeed
     And git repository should not be initialized
+
+  Scenario: Create project and develop a working package
+    Given I am in a test directory
+    When I run "nodespec project create my-monorepo --skip-git --skip-install"
+    Then the command should succeed
+    And directory "my-monorepo" should exist
+
+    # Install dependencies
+    When I navigate to "my-monorepo"
+    And I run "pnpm install"
+    Then the command should succeed
+
+    # Create a library package
+    When I create directory "packages/math-lib"
+    And I create "packages/math-lib/package.json" with:
+      """
+      {
+        "name": "@my-monorepo/math-lib",
+        "version": "0.0.1",
+        "type": "module",
+        "main": "./dist/index.js",
+        "types": "./dist/index.d.ts",
+        "scripts": {
+          "build": "tsup",
+          "typecheck": "tsc --noEmit"
+        },
+        "devDependencies": {
+          "@deepracticex/tsup-config": "workspace:*",
+          "@deepracticex/typescript-config": "workspace:*"
+        }
+      }
+      """
+    And I create "packages/math-lib/tsconfig.json" with:
+      """
+      {
+        "extends": "@deepracticex/typescript-config/base.json",
+        "compilerOptions": {
+          "outDir": "./dist",
+          "rootDir": "./src"
+        },
+        "include": ["src/**/*"]
+      }
+      """
+    And I create "packages/math-lib/tsup.config.ts" with:
+      """
+      import { createConfig } from '@deepracticex/tsup-config';
+      export default createConfig({ entry: ['src/index.ts'] });
+      """
+    And I create "packages/math-lib/src/index.ts" with:
+      """
+      export function add(a: number, b: number): number {
+        return a + b;
+      }
+      """
+
+    # Install dependencies for new package
+    When I run "pnpm install"
+    Then the command should succeed
+
+    # Build the package
+    When I run "pnpm build --filter @my-monorepo/math-lib"
+    Then the command should succeed
+    And file "packages/math-lib/dist/index.js" should exist
+    And file "packages/math-lib/dist/index.d.ts" should exist
+
+    # Verify the built package exports correct types
+    When I run "pnpm typecheck --filter @my-monorepo/math-lib"
+    Then the command should succeed

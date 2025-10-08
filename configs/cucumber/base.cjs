@@ -3,7 +3,7 @@
  * Each package extends this with package-specific settings
  */
 
-module.exports = {
+const baseConfig = {
   // Common format options
   formatOptions: {
     snippetInterface: "async-await",
@@ -45,3 +45,56 @@ module.exports = {
     },
   },
 };
+
+/**
+ * Helper function to create cucumber configuration with proper profile structure
+ * @param {Object} options - Configuration options
+ * @param {string[]} options.paths - Feature file paths (e.g., ["features/**\/*.feature"])
+ * @param {string[]} options.import - Step definition and support file paths (e.g., ["tests/e2e/**\/*.ts"])
+ * @param {Object} options.overrides - Additional config to override base settings
+ * @returns {Object} Complete cucumber configuration with profiles
+ *
+ * @example
+ * const { createConfig } = require("@deepracticex/cucumber-config");
+ *
+ * module.exports = createConfig({
+ *   paths: ["features/**\/*.feature"],
+ *   import: ["tests/e2e/**\/*.steps.ts", "tests/e2e/support/**\/*.ts"],
+ * });
+ */
+function createConfig(options = {}) {
+  const { paths = [], import: importPaths = [], overrides = {} } = options;
+
+  // Create default profile
+  const defaultProfile = {
+    ...baseConfig,
+    ...overrides,
+    paths,
+    import: importPaths,
+  };
+
+  // Create dev profile
+  const devProfile = {
+    ...baseConfig.profiles.dev,
+    ...overrides,
+    paths,
+    import: importPaths,
+  };
+
+  // Create ci profile
+  const ciProfile = {
+    ...baseConfig.profiles.ci,
+    ...overrides,
+    paths,
+    import: importPaths,
+  };
+
+  return {
+    default: defaultProfile,
+    dev: devProfile,
+    ci: ciProfile,
+  };
+}
+
+module.exports = baseConfig;
+module.exports.createConfig = createConfig;

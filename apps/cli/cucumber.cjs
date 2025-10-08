@@ -1,5 +1,5 @@
 /**
- * Cucumber configuration for @deepracticex/logger
+ * Cucumber configuration for @deepracticex/nodespec-cli
  */
 
 const { createConfig } = require("@deepracticex/cucumber-config");
