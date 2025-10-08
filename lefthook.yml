@@ -6,7 +6,7 @@ pre-commit:
   commands:
     format:
       glob: "*.{ts,js,json,md,yml,yaml}"
-      run: pnpm format:check {staged_files}
+      run: pnpm prettier --write {staged_files}
       stage_fixed: true
 
     lint:
