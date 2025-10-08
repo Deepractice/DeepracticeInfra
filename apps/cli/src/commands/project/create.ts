@@ -51,7 +51,7 @@ export async function createAction(
 function extractDirectoryName(name: string): string {
   if (name.startsWith("@")) {
     const parts = name.split("/");
-    return parts.length > 1 ? parts[1] : parts[0].slice(1);
+    return parts.length > 1 ? parts[1]! : parts[0]!.slice(1);
   }
   return name;
 }
