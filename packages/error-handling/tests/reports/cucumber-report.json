@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 157249
+              "duration": 173374
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2691916
+              "duration": 3227500
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1584790
+              "duration": 1585500
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 627166
+              "duration": 617375
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 755124
+              "duration": 890791
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 733333
+              "duration": 789999
             }
           },
           {
@@ -87,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 89499
+              "duration": 112374
             }
           }
         ],
@@ -106,7 +106,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 153208
+              "duration": 80000
             }
           },
           {
@@ -119,7 +119,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2682749
+              "duration": 49167
             }
           },
           {
@@ -132,7 +132,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1625124
+              "duration": 182666
             }
           },
           {
@@ -145,7 +145,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 626082
+              "duration": 49249
             }
           },
           {
@@ -158,7 +158,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 768832
+              "duration": 274333
             }
           },
           {
@@ -171,7 +171,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 744624
+              "duration": 108999
             }
           },
           {
@@ -179,7 +179,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 89041
+              "duration": 56125
             }
           }
         ],
@@ -198,7 +198,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 96416
+              "duration": 157667
             }
           },
           {
@@ -211,7 +211,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 40624
+              "duration": 2814124
             }
           },
           {
@@ -224,7 +224,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 176207
+              "duration": 1684999
             }
           },
           {
@@ -237,7 +237,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 43542
+              "duration": 698000
             }
           },
           {
@@ -250,7 +250,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 281916
+              "duration": 824665
             }
           },
           {
@@ -263,7 +263,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 105457
+              "duration": 887625
             }
           },
           {
@@ -271,7 +271,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 57166
+              "duration": 96292
             }
           }
         ],
@@ -290,7 +290,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 66582
+              "duration": 58041
             }
           },
           {
@@ -303,7 +303,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 39625
+              "duration": 27750
             }
           },
           {
@@ -316,7 +316,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 166124
+              "duration": 76125
             }
           },
           {
@@ -329,7 +329,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 44083
+              "duration": 30541
             }
           },
           {
@@ -342,7 +342,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 268416
+              "duration": 29957
             }
           },
           {
@@ -355,7 +355,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108125
+              "duration": 102833
             }
           },
           {
@@ -363,7 +363,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 55917
+              "duration": 45665
             }
           }
         ],
@@ -382,7 +382,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 58166
+              "duration": 123832
             }
           },
           {
@@ -395,7 +395,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 28208
+              "duration": 23374
             }
           },
           {
@@ -408,7 +408,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 70125
+              "duration": 67541
             }
           },
           {
@@ -421,7 +421,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32166
+              "duration": 30124
             }
           },
           {
@@ -434,7 +434,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 29583
+              "duration": 31250
             }
           },
           {
@@ -447,7 +447,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 101999
+              "duration": 29166
             }
           },
           {
@@ -455,7 +455,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 45457
+              "duration": 206916
             }
           }
         ],
@@ -474,7 +474,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 48625
+              "duration": 69874
             }
           },
           {
@@ -487,7 +487,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23833
+              "duration": 37916
             }
           },
           {
@@ -500,7 +500,99 @@
             },
             "result": {
               "status": "passed",
-              "duration": 64542
+              "duration": 59708
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:101"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26958
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 422",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:108"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28374
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"UNPROCESSABLE_ENTITY\"",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32832
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 40250
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 25,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"rateLimit\" error",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 68041
             }
           },
           {
@@ -520,105 +612,13 @@
             "arguments": [],
             "keyword": "And ",
             "line": 14,
-            "name": "the error status code should be 422",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:108"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 28041
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 15,
-            "name": "the error code should be \"UNPROCESSABLE_ENTITY\"",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:115"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 96458
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 43250
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
-        "keyword": "Scenario Outline",
-        "line": 25,
-        "name": "Create common HTTP errors",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 106915
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the error factory imported",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:11"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 19499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 12,
-            "name": "I create a \"rateLimit\" error",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 72083
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 13,
-            "name": "the error should be an instance of AppError",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:101"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27167
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
             "name": "the error status code should be 429",
             "match": {
               "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 30082
+              "duration": 26834
             }
           },
           {
@@ -631,7 +631,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 28834
+              "duration": 38292
             }
           },
           {
@@ -639,7 +639,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 204416
+              "duration": 35042
             }
           }
         ],
@@ -658,7 +658,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 113707
+              "duration": 40792
             }
           },
           {
@@ -671,7 +671,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19292
+              "duration": 20332
             }
           },
           {
@@ -684,7 +684,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 71625
+              "duration": 69583
             }
           },
           {
@@ -697,7 +697,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 26917
+              "duration": 26584
             }
           },
           {
@@ -710,7 +710,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 29917
+              "duration": 25208
             }
           },
           {
@@ -723,7 +723,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 28750
+              "duration": 25333
             }
           },
           {
@@ -731,7 +731,99 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 276166
+              "duration": 31166
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 27,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 32750
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"unavailable\" error",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 56583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:101"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 503",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:108"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"SERVICE_UNAVAILABLE\"",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23917
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 26000
             }
           }
         ],
@@ -750,7 +842,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 71917
+              "duration": 40250
             }
           },
           {
@@ -763,7 +855,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 41416
+              "duration": 20334
             }
           },
           {
@@ -844,99 +936,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 38874
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
-        "keyword": "Scenario Outline",
-        "line": 27,
-        "name": "Create common HTTP errors",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 77499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the error factory imported",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:11"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 37250
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 12,
-            "name": "I create a \"unavailable\" error",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 84292
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 13,
-            "name": "the error should be an instance of AppError",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:101"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 32125
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
-            "name": "the error status code should be 503",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:108"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 30875
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 15,
-            "name": "the error code should be \"SERVICE_UNAVAILABLE\"",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:115"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 34207
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 41333
+              "duration": 28208
             }
           }
         ],
@@ -955,7 +955,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 68834
+              "duration": 58041
             }
           },
           {
@@ -968,7 +968,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 24875
+              "duration": 23666
             }
           },
           {
@@ -1010,7 +1010,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 33249
+              "duration": 28958
             }
           }
         ],
@@ -1029,7 +1029,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 48374
+              "duration": 62999
             }
           },
           {
@@ -1042,7 +1042,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20749
+              "duration": 37833
             }
           },
           {
@@ -1145,127 +1145,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 28166
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "error-factory;business-errors-should-preserve-context;create-external-service-error",
-        "keyword": "Scenario",
-        "line": 71,
-        "name": "Create external service error",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 53083
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the error factory imported",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:11"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27540
-            }
-          },
-          {
-            "arguments": [
-              {
-                "rows": [
-                  {
-                    "cells": [
-                      "service",
-                      "PaymentAPI"
-                    ]
-                  },
-                  {
-                    "cells": [
-                      "message",
-                      "Payment processing failed"
-                    ]
-                  }
-                ]
-              }
-            ],
-            "keyword": "When ",
-            "line": 72,
-            "name": "I create an external service error with:",
-            "result": {
-              "status": "undefined",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 75,
-            "name": "the error should have status code 502",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:136"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 76,
-            "name": "the error code should be \"EXTERNAL_SERVICE_ERROR\"",
-            "match": {
-              "location": "tests/e2e/steps/error.steps.ts:115"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [
-              {
-                "rows": [
-                  {
-                    "cells": [
-                      "key",
-                      "value"
-                    ]
-                  },
-                  {
-                    "cells": [
-                      "service",
-                      "PaymentAPI"
-                    ]
-                  }
-                ]
-              }
-            ],
-            "keyword": "And ",
-            "line": 77,
-            "name": "the error meta should contain:",
-            "result": {
-              "status": "undefined",
-              "duration": 0
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 44958
+              "duration": 56874
             }
           }
         ],
@@ -1284,7 +1164,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 43375
+              "duration": 39542
             }
           },
           {
@@ -1297,7 +1177,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 22540
+              "duration": 21041
             }
           },
           {
@@ -1385,7 +1265,127 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 30082
+              "duration": 26250
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;business-errors-should-preserve-context;create-external-service-error",
+        "keyword": "Scenario",
+        "line": 71,
+        "name": "Create external service error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 152083
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40124
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "service",
+                      "PaymentAPI"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "message",
+                      "Payment processing failed"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 72,
+            "name": "I create an external service error with:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 75,
+            "name": "the error should have status code 502",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:136"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 76,
+            "name": "the error code should be \"EXTERNAL_SERVICE_ERROR\"",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:115"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "key",
+                      "value"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "service",
+                      "PaymentAPI"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 77,
+            "name": "the error meta should contain:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 60125
             }
           }
         ],
@@ -1404,7 +1404,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 55250
+              "duration": 142125
             }
           },
           {
@@ -1417,7 +1417,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 29665
+              "duration": 32375
             }
           },
           {
@@ -1521,7 +1521,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 148958
+              "duration": 232374
             }
           }
         ],
@@ -1551,7 +1551,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 55958
+              "duration": 31875
             }
           },
           {
@@ -1564,7 +1564,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 753958
+              "duration": 364750
             }
           },
           {
@@ -1577,7 +1577,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 782709
+              "duration": 713875
             }
           },
           {
@@ -1590,7 +1590,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 333374
+              "duration": 806375
             }
           },
           {
@@ -1603,7 +1603,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 815207
+              "duration": 958499
             }
           },
           {
@@ -1611,7 +1611,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 48624
+              "duration": 51417
             }
           }
         ],
@@ -1630,7 +1630,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 61500
+              "duration": 87542
             }
           },
           {
@@ -1643,7 +1643,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 379542
+              "duration": 773542
             }
           },
           {
@@ -1656,7 +1656,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 344499
+              "duration": 482167
             }
           },
           {
@@ -1669,7 +1669,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 325958
+              "duration": 382249
             }
           },
           {
@@ -1682,7 +1682,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 465708
+              "duration": 522832
             }
           },
           {
@@ -1690,7 +1690,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 37083
+              "duration": 63292
             }
           }
         ],
@@ -1709,7 +1709,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 54499
+              "duration": 38582
             }
           },
           {
@@ -1722,7 +1722,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20208
+              "duration": 24666
             }
           },
           {
@@ -1735,7 +1735,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 610041
+              "duration": 659707
             }
           },
           {
@@ -1748,7 +1748,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 213249
+              "duration": 225541
             }
           },
           {
@@ -1761,7 +1761,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 226708
+              "duration": 241582
             }
           },
           {
@@ -1769,7 +1769,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36333
+              "duration": 32125
             }
           }
         ],
@@ -1788,7 +1788,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 43499
+              "duration": 56582
             }
           },
           {
@@ -1801,7 +1801,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23707
+              "duration": 27708
             }
           },
           {
@@ -1814,7 +1814,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 355457
+              "duration": 371959
             }
           },
           {
@@ -1827,7 +1827,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 276792
+              "duration": 350750
             }
           },
           {
@@ -1840,7 +1840,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 254583
+              "duration": 280792
             }
           },
           {
@@ -1848,7 +1848,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 103875
+              "duration": 234417
             }
           }
         ],
@@ -1867,7 +1867,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 41249
+              "duration": 207625
             }
           },
           {
@@ -1880,7 +1880,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 24333
+              "duration": 66374
             }
           },
           {
@@ -1893,7 +1893,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 805749
+              "duration": 270291
             }
           },
           {
@@ -1906,7 +1906,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 200667
+              "duration": 872457
             }
           },
           {
@@ -1919,7 +1919,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 525666
+              "duration": 1315042
             }
           },
           {
@@ -1927,7 +1927,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 41625
+              "duration": 61832
             }
           }
         ],
@@ -1946,7 +1946,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 54374
+              "duration": 57291
             }
           },
           {
@@ -1959,7 +1959,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27458
+              "duration": 26457
             }
           },
           {
@@ -1972,7 +1972,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 411166
+              "duration": 377542
             }
           },
           {
@@ -1985,7 +1985,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 214583
+              "duration": 264458
             }
           },
           {
@@ -1998,7 +1998,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 220624
+              "duration": 256833
             }
           },
           {
@@ -2006,86 +2006,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 99250
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "result-pattern;mapping-results;map-successful-result",
-        "keyword": "Scenario",
-        "line": 52,
-        "name": "Map successful result",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 38625
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the Result utilities imported",
-            "match": {
-              "location": "tests/e2e/steps/result.steps.ts:21"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 20667
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 53,
-            "name": "I have an ok result with value \"5\"",
-            "match": {
-              "location": "tests/e2e/steps/result.steps.ts:29"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 120915
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 54,
-            "name": "I map the result to double the value",
-            "match": {
-              "location": "tests/e2e/steps/result.steps.ts:97"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 311624
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 55,
-            "name": "the result should be ok with value \"10\"",
-            "match": {
-              "location": "tests/e2e/steps/result.steps.ts:180"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 604000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 37499
+              "duration": 42166
             }
           }
         ],
@@ -2104,7 +2025,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 131832
+              "duration": 136459
             }
           },
           {
@@ -2117,7 +2038,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 74333
+              "duration": 76999
             }
           },
           {
@@ -2130,7 +2051,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 977500
+              "duration": 59792
             }
           },
           {
@@ -2143,7 +2064,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 691374
+              "duration": 783000
             }
           },
           {
@@ -2156,7 +2077,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 998959
+              "duration": 556583
             }
           },
           {
@@ -2164,7 +2085,86 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 60833
+              "duration": 52541
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;mapping-results;map-successful-result",
+        "keyword": "Scenario",
+        "line": 52,
+        "name": "Map successful result",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 171917
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 81041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 53,
+            "name": "I have an ok result with value \"5\"",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 89375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 54,
+            "name": "I map the result to double the value",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:97"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 289458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "the result should be ok with value \"10\"",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:180"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 464667
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 39084
             }
           }
         ],
@@ -2183,7 +2183,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 47374
+              "duration": 54584
             }
           },
           {
@@ -2196,7 +2196,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 26333
+              "duration": 28999
             }
           },
           {
@@ -2209,7 +2209,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 334584
+              "duration": 46249
             }
           },
           {
@@ -2222,7 +2222,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32499
+              "duration": 302250
             }
           },
           {
@@ -2235,7 +2235,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 291541
+              "duration": 242833
             }
           },
           {
@@ -2248,7 +2248,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 224040
+              "duration": 219790
             }
           },
           {
@@ -2256,7 +2256,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 38707
+              "duration": 40208
             }
           }
         ],
@@ -2275,7 +2275,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 98042
+              "duration": 34542
             }
           },
           {
@@ -2288,7 +2288,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27541
+              "duration": 18042
             }
           },
           {
@@ -2301,7 +2301,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106207
+              "duration": 21457
             }
           },
           {
@@ -2314,7 +2314,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 340750
+              "duration": 234791
             }
           },
           {
@@ -2327,7 +2327,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 494916
+              "duration": 505208
             }
           },
           {
@@ -2335,7 +2335,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 40208
+              "duration": 27999
             }
           }
         ],
@@ -2354,7 +2354,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 42584
+              "duration": 51958
             }
           },
           {
@@ -2367,7 +2367,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23374
+              "duration": 26000
             }
           },
           {
@@ -2380,7 +2380,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27540
+              "duration": 484042
             }
           },
           {
@@ -2393,7 +2393,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 350374
+              "duration": 257292
             }
           },
           {
@@ -2406,7 +2406,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 195917
+              "duration": 157375
             }
           },
           {
@@ -2419,7 +2419,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 246500
+              "duration": 185000
             }
           },
           {
@@ -2427,7 +2427,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 31416
+              "duration": 42540
             }
           }
         ],
@@ -2446,7 +2446,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 42374
+              "duration": 37041
             }
           },
           {
@@ -2459,7 +2459,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 40000
+              "duration": 22583
             }
           },
           {
@@ -2540,7 +2540,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 31416
+              "duration": 23416
             }
           }
         ],
@@ -2559,7 +2559,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 102790
+              "duration": 34124
             }
           },
           {
@@ -2572,7 +2572,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 25249
+              "duration": 18082
             }
           },
           {
@@ -2656,7 +2656,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 26707
+              "duration": 21582
             }
           }
         ],

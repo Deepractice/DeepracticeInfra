@@ -14,8 +14,8 @@ const baseConfig = {
   // Common format reporters
   format: [
     "progress-bar",
-    "html:tests/reports/cucumber-report.html",
-    "json:tests/reports/cucumber-report.json",
+    "html:reports/cucumber-report.html",
+    "json:reports/cucumber-report.json",
     "@cucumber/pretty-formatter",
   ],
 
@@ -39,7 +39,7 @@ const baseConfig = {
 
     // CI profile
     ci: {
-      format: ["progress", "json:tests/reports/cucumber-report.json"],
+      format: ["progress", "json:reports/cucumber-report.json"],
       parallel: 4,
       retry: 1,
     },
