@@ -1,0 +1,33 @@
+{
+  "name": "@deepracticex/logger",
+  "version": "0.0.1",
+  "description": "Unified logging system for Deepractice projects using Pino",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rimraf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "cucumber-js",
+    "test:dev": "cucumber-js --profile dev",
+    "test:ci": "cucumber-js --profile ci"
+  },
+  "dependencies": {
+    "pino": "^9.9.0",
+    "pino-pretty": "^13.1.1"
+  },
+  "files": ["dist", "package.json", "README.md"],
+  "keywords": ["logger", "pino", "logging", "deepractice"],
+  "author": "Deepractice",
+  "license": "MIT"
+}

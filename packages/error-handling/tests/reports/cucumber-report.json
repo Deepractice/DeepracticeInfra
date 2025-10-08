@@ -1,0 +1,2674 @@
+[
+  {
+    "description": "  As a developer\n  I want to create errors easily using the error factory\n  So that I can handle errors consistently across the application",
+    "elements": [
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 19,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 188666
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2971292
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"notFound\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1943917
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1258209
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 404",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 809083
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"NOT_FOUND\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 800083
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 110790
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 20,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 173332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3096667
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"unauthorized\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1811875
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 734583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 401",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 775540
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"UNAUTHORIZED\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1012791
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 145915
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 21,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 183917
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46291
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"forbidden\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 172834
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 61666
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 403",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 285333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"FORBIDDEN\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 115583
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 77083
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 22,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 77083
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"validation\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 75207
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 400",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31167
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"VALIDATION_ERROR\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 94000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49040
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 23,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 66041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28624
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"conflict\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 77583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 409",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"CONFLICT\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34167
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 214917
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 24,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 95583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"unprocessable\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 72707
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 422",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 41000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"UNPROCESSABLE_ENTITY\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35916
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 125166
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 25,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 53208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20667
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"rateLimit\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69250
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27250
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 429",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29084
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"RATE_LIMIT_EXCEEDED\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49625
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 26,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 36457
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 17333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"internal\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 61832
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26374
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 500",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"INTERNAL_ERROR\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29624
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 31292
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 27,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 64916
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"unavailable\" error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91875
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 503",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"SERVICE_UNAVAILABLE\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 34750
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;not-found-errors-should-include-resource-information;create-not-found-error-with-resource-and-identifier",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Create not found error with resource and identifier",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 218667
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 54417
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "resource",
+                      "User"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "identifier",
+                      "123"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 32,
+            "name": "I create a not found error with:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "the error message should be \"User with identifier '123' not found\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:81"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "key",
+                      "value"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "resource",
+                      "User"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "identifier",
+                      "123"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 36,
+            "name": "the error meta should contain:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 65207
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;not-found-errors-should-include-resource-information;create-not-found-error-without-identifier",
+        "keyword": "Scenario",
+        "line": 41,
+        "name": "Create not found error without identifier",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 62124
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26583
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "resource",
+                      "Post"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I create a not found error with:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 44,
+            "name": "the error message should be \"Post not found\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:81"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 32083
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;validation-errors-should-include-field-specific-messages;create-validation-error-with-field-errors",
+        "keyword": "Scenario",
+        "line": 48,
+        "name": "Create validation error with field errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 148167
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45292
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "field",
+                      "message"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "email",
+                      "must be valid email"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "age",
+                      "must be at least 18"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 49,
+            "name": "I have validation errors:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 53,
+            "name": "I create a validation error with message \"Invalid user data\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 54,
+            "name": "the error should have status code 400",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:87"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 55,
+            "name": "the error meta should contain field errors",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:90"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 56,
+            "name": "the field \"email\" error should be \"must be valid email\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:94"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 57,
+            "name": "the field \"age\" error should be \"must be at least 18\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:94"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 58416
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;business-errors-should-preserve-context;create-database-error-with-operation-context",
+        "keyword": "Scenario",
+        "line": 61,
+        "name": "Create database error with operation context",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 50874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22375
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "message",
+                      "Failed to insert user"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "operation",
+                      "INSERT"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 62,
+            "name": "I create a database error with:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the error should have status code 500",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:87"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "the error code should be \"DATABASE_ERROR\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "key",
+                      "value"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "operation",
+                      "INSERT"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 67,
+            "name": "the error meta should contain:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 33124
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;business-errors-should-preserve-context;create-external-service-error",
+        "keyword": "Scenario",
+        "line": 71,
+        "name": "Create external service error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 62249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32250
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "service",
+                      "PaymentAPI"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "message",
+                      "Payment processing failed"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 72,
+            "name": "I create an external service error with:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 75,
+            "name": "the error should have status code 502",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:87"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 76,
+            "name": "the error code should be \"EXTERNAL_SERVICE_ERROR\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "key",
+                      "value"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "service",
+                      "PaymentAPI"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 77,
+            "name": "the error meta should contain:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 227750
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;errors-should-be-json-serializable;serialize-error-to-json",
+        "keyword": "Scenario",
+        "line": 83,
+        "name": "Serialize error to JSON",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 85042
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 185250
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "resource",
+                      "User"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "identifier",
+                      "123"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 84,
+            "name": "I create a not found error with:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 87,
+            "name": "I serialize the error to JSON",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:68"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 88,
+            "name": "the JSON should have property \"name\" with value \"NotFoundError\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 89,
+            "name": "the JSON should have property \"code\" with value \"NOT_FOUND\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 90,
+            "name": "the JSON should have property \"statusCode\" with value \"404\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 91,
+            "name": "the JSON should have property \"message\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:103"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 92,
+            "name": "the JSON should have property \"meta\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:103"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49250
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "error-factory",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Error Factory",
+    "tags": [],
+    "uri": "features/error-factory.feature"
+  },
+  {
+    "description": "  As a developer\n  I want to use the Result pattern for functional error handling\n  So that I can handle errors explicitly without try-catch",
+    "elements": [
+      {
+        "description": "",
+        "id": "result-pattern;creating-results;create-successful-result",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Create successful result",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 49166
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 397832
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create an ok result with value \"42\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 782709
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the result should have ok equal to true",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:68"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 330708
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the result value should be \"42\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 700334
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 44375
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;creating-results;create-error-result",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Create error result",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 61457
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 394125
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "I create an err result with a NotFoundError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 409292
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "the result should have ok equal to false",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:81"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 341665
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "the result error should be a NotFoundError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 408208
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 57792
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;type-guards;check-if-result-is-ok",
+        "keyword": "Scenario",
+        "line": 23,
+        "name": "Check if result is Ok",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 37665
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "I have an ok result with value \"success\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 620249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 25,
+            "name": "I check if the result is ok",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 297458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "the check should return true",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 342666
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 62874
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;unwrapping-results;unwrap-successful-result",
+        "keyword": "Scenario",
+        "line": 35,
+        "name": "Unwrap successful result",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 51917
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27708
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I have an ok result with value \"hello\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 110791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 37,
+            "name": "I unwrap the result",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 327583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "I should get the value \"hello\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:97"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 569583
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35875
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;type-guards;check-if-result-is-err",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "Check if result is Err",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 67500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 43625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 29,
+            "name": "I have an err result with an error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 371125
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 30,
+            "name": "I check if the result is err",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 254208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 31,
+            "name": "the check should return true",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 263292
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 45000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;unwrapping-results;unwrap-failed-result-throws-error",
+        "keyword": "Scenario",
+        "line": 40,
+        "name": "Unwrap failed result throws error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 121750
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 94375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 41,
+            "name": "I have an err result with a NotFoundError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1040375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "I try to unwrap the result",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 770416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "it should throw the error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:100"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 253708
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 57583
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;unwrapping-results;unwrap-with-default-value",
+        "keyword": "Scenario",
+        "line": 45,
+        "name": "Unwrap with default value",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 56291
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 46,
+            "name": "I have an err result with an error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 47,
+            "name": "I unwrap the result with default value \"fallback\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 905459
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 48,
+            "name": "I should get the value \"fallback\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:97"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 528999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 46290
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;mapping-results;map-failed-result",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "Map failed result",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 118791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 190583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 58,
+            "name": "I have an err result with an error",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 440832
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 59,
+            "name": "I map the result to double the value",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 211500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 60,
+            "name": "the result should still be err",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:110"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 192084
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "the error should be preserved",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:114"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 144250
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47708
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;mapping-results;map-successful-result",
+        "keyword": "Scenario",
+        "line": 52,
+        "name": "Map successful result",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 148290
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 87499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 53,
+            "name": "I have an ok result with value \"5\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1725916
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 54,
+            "name": "I map the result to double the value",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 343708
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "the result should be ok with value \"10\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:103"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1462790
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 76874
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;chaining-results;flatmap-successful-results",
+        "keyword": "Scenario",
+        "line": 65,
+        "name": "FlatMap successful results",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 62374
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 66,
+            "name": "I have an ok result with value \"user-123\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 67,
+            "name": "I flatMap the result to fetch user details",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 319042
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 68,
+            "name": "the result should be ok with user data",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 506916
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 35333
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;chaining-results;flatmap-with-intermediate-error",
+        "keyword": "Scenario",
+        "line": 70,
+        "name": "FlatMap with intermediate error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 59375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27207
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 71,
+            "name": "I have an ok result with value \"invalid-id\"",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 113959
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 72,
+            "name": "I flatMap the result to fetch user details",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 273500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 73,
+            "name": "the result should be err",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:128"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 173625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 74,
+            "name": "the error should be a NotFoundError",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:132"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 166166
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 39708
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;real-world-usage-example;validate-and-process-user-input",
+        "keyword": "Scenario",
+        "line": 78,
+        "name": "Validate and process user input",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 31375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15625
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "field",
+                      "value"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "email",
+                      "user@example.com"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "age",
+                      "25"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 79,
+            "name": "I have user input data:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 83,
+            "name": "I validate the input using Result pattern",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 84,
+            "name": "I process the validated data",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 85,
+            "name": "the final result should be ok",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 86,
+            "name": "the result should contain processed user data",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 23832
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;real-world-usage-example;handle-validation-failure",
+        "keyword": "Scenario",
+        "line": 88,
+        "name": "Handle validation failure",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47915
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22500
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "field",
+                      "value"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "email",
+                      "invalid"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "age",
+                      "15"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 89,
+            "name": "I have user input data:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 93,
+            "name": "I validate the input using Result pattern",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 94,
+            "name": "the result should be err",
+            "match": {
+              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:128"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 95,
+            "name": "the error should be a ValidationError",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 96,
+            "name": "the error should contain field errors",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 33416
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "result-pattern",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Result Pattern",
+    "tags": [],
+    "uri": "features/result-pattern.feature"
+  }
+]

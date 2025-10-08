@@ -1,0 +1,17 @@
+{
+  "name": "@deepracticex/prettier-config",
+  "version": "0.0.1",
+  "description": "Shared Prettier configuration for Deepractice projects",
+  "type": "module",
+  "main": "./index.json",
+  "exports": {
+    ".": "./index.json"
+  },
+  "files": ["index.json", ".prettierignore", "README.md"],
+  "keywords": ["prettier", "config", "deepractice"],
+  "author": "Deepractice",
+  "license": "MIT",
+  "peerDependencies": {
+    "prettier": "^3.0.0"
+  }
+}

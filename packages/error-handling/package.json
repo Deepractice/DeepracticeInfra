@@ -1,0 +1,48 @@
+{
+  "name": "@deepracticex/error-handling",
+  "version": "0.0.1",
+  "description": "Unified error handling system for Deepractice projects",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rimraf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "cucumber-js",
+    "test:dev": "cucumber-js --profile dev",
+    "test:ci": "cucumber-js --profile ci"
+  },
+  "peerDependencies": {
+    "express": "^4.0.0 || ^5.0.0",
+    "hono": "^4.0.0 || ^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    },
+    "hono": {
+      "optional": true
+    }
+  },
+  "files": ["dist", "package.json", "README.md"],
+  "keywords": [
+    "error-handling",
+    "errors",
+    "typescript",
+    "express",
+    "hono",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT"
+}

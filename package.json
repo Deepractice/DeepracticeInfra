@@ -1,0 +1,44 @@
+{
+  "name": "@deepracticex/infra",
+  "version": "0.0.0",
+  "description": "Deepractice Infrastructure - Shared configs, tools, and templates",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "turbo clean && rm -rf node_modules",
+    "prepare": "lefthook install"
+  },
+  "keywords": [
+    "deepractice",
+    "infrastructure",
+    "config",
+    "monorepo"
+  ],
+  "author": "Deepractice",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@10.15.1",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.1.0",
+    "@cucumber/pretty-formatter": "^1.0.1",
+    "@types/chai": "^5.0.1",
+    "@types/express": "^5.0.0",
+    "chai": "^5.1.2",
+    "hono": "^4.7.10",
+    "lefthook": "^1.13.6",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.0",
+    "turbo": "^2.5.8",
+    "typescript": "^5.9.3"
+  }
+}

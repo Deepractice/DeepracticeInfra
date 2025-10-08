@@ -1,0 +1,10 @@
+packages:
+  # Configuration packages
+  - 'packages/*'
+  # Development tools
+  - 'tools/*'
+  # Exclusions
+  - '!**/test/**'
+  - '!**/tests/**'
+  - '!**/dist/**'
+  - '!**/node_modules/**'
