@@ -63,6 +63,22 @@ import { createError, ErrorCode } from "@deepracticex/error-handling";
 const error = createError(ErrorCode.NOT_FOUND, "User not found");
 ```
 
+## 🏗️ Architecture
+
+This monorepo uses clear **layered architecture** for separation of concerns:
+
+```text
+DeepracticeNodeSpec/
+├── src/          # Product core - NodeSpec business logic
+├── packages/     # Infrastructure - Technical capabilities (ecosystem)
+├── configs/      # Standards - Development configurations (ecosystem)
+└── apps/         # Presentation - User interfaces (CLI, Desktop, Web)
+```
+
+**Key principle**: Repository boundary = Product boundary. `src/` contains NodeSpec-specific logic, while `packages/` and `configs/` are designed for ecosystem reuse.
+
+**See [src/README.md](./src/README.md)** and [Issue #3](https://github.com/Deepractice/DeepracticeNodeSpec/issues/3) for detailed architecture philosophy.
+
 ## 🎯 Design Principles
 
 1. **Convention over Configuration**: Sensible defaults that work out of the box
@@ -70,6 +86,7 @@ const error = createError(ErrorCode.NOT_FOUND, "User not found");
 3. **AI-Readable**: Clear patterns and documentation
 4. **Production Ready**: Battle-tested in real projects
 5. **Monorepo Friendly**: Designed for turborepo/pnpm workspaces
+6. **Product as Ecosystem**: Core product logic drives reusable ecosystem components
 
 ## 🛠️ Development
 

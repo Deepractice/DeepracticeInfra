@@ -1,8 +1,12 @@
 packages:
-  # Configuration packages
-  - "configs/*"
-  # Business packages
+  # Product core - NodeSpec business logic
+  - "src/*"
+  # Infrastructure layer - Technical capabilities
   - "packages/*"
+  # Infrastructure layer - Configuration standards
+  - "configs/*"
+  # Presentation layer - User interfaces
+  - "apps/*"
   # Development tools
   - "tools/*"
   # Exclusions
