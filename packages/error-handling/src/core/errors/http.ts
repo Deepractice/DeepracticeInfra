@@ -3,7 +3,7 @@
  * Provides convenient error types for common HTTP scenarios
  */
 
-import { AppError } from "./base.js";
+import { AppError } from "~/core/errors/base";
 
 /**
  * 400 Bad Request - Client sent invalid data

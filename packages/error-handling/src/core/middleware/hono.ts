@@ -1,15 +1,10 @@
 /**
- * Express error handling middleware
+ * Hono error handling middleware
  * Automatically handles AppError instances and logs errors
  */
 
-import type {
-  Request,
-  Response,
-  NextFunction,
-  ErrorRequestHandler,
-} from "express";
-import { AppError } from "../errors/base.js";
+import type { Context, ErrorHandler } from "hono";
+import { AppError } from "~/core/errors/base";
 
 /**
  * Error handler options
@@ -33,36 +28,32 @@ export interface ErrorHandlerOptions {
 }
 
 /**
- * Create Express error handler middleware
+ * Create Hono error handler middleware
  * @param options - Error handler options
  */
 export function createErrorHandler(
   options: ErrorHandlerOptions = {},
-): ErrorRequestHandler {
+): ErrorHandler {
   const { logger, includeStack = false, formatter } = options;
 
-  return (err: Error, req: Request, res: Response, _next: NextFunction) => {
+  return (err: Error, c: Context) => {
     // Handle AppError instances
     if (AppError.isAppError(err)) {
       logger?.(err.message, {
         code: err.code,
         statusCode: err.statusCode,
         meta: err.meta,
-        path: req.path,
-        method: req.method,
       });
 
       const body = formatter ? formatter(err) : err.toJSON();
 
-      return res.status(err.statusCode).json(body);
+      return c.json(body, err.statusCode as any);
     }
 
     // Handle unknown errors
     logger?.(err.message || "Unknown error occurred", {
       error: err,
       stack: err.stack,
-      path: req.path,
-      method: req.method,
     });
 
     const statusCode = 500;
@@ -72,6 +63,6 @@ export function createErrorHandler(
       ...(includeStack && { stack: err.stack }),
     };
 
-    return res.status(statusCode).json(body);
+    return c.json(body, statusCode as any);
   };
 }

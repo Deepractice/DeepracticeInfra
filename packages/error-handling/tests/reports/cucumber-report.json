@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 188666
+              "duration": 157249
             }
           },
           {
@@ -23,11 +23,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 2971292
+              "duration": 2691916
             }
           },
           {
@@ -36,11 +36,11 @@
             "line": 12,
             "name": "I create a \"notFound\" error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+              "location": "tests/e2e/steps/error.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 1943917
+              "duration": 1584790
             }
           },
           {
@@ -49,11 +49,11 @@
             "line": 13,
             "name": "the error should be an instance of AppError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+              "location": "tests/e2e/steps/error.steps.ts:101"
             },
             "result": {
               "status": "passed",
-              "duration": 1258209
+              "duration": 627166
             }
           },
           {
@@ -62,11 +62,11 @@
             "line": 14,
             "name": "the error status code should be 404",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+              "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 809083
+              "duration": 755124
             }
           },
           {
@@ -75,11 +75,11 @@
             "line": 15,
             "name": "the error code should be \"NOT_FOUND\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "passed",
-              "duration": 800083
+              "duration": 733333
             }
           },
           {
@@ -87,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 110790
+              "duration": 89499
             }
           }
         ],
@@ -106,7 +106,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 173332
+              "duration": 153208
             }
           },
           {
@@ -115,11 +115,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 3096667
+              "duration": 2682749
             }
           },
           {
@@ -128,11 +128,11 @@
             "line": 12,
             "name": "I create a \"unauthorized\" error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+              "location": "tests/e2e/steps/error.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 1811875
+              "duration": 1625124
             }
           },
           {
@@ -141,11 +141,11 @@
             "line": 13,
             "name": "the error should be an instance of AppError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+              "location": "tests/e2e/steps/error.steps.ts:101"
             },
             "result": {
               "status": "passed",
-              "duration": 734583
+              "duration": 626082
             }
           },
           {
@@ -154,11 +154,11 @@
             "line": 14,
             "name": "the error status code should be 401",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+              "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 775540
+              "duration": 768832
             }
           },
           {
@@ -167,11 +167,11 @@
             "line": 15,
             "name": "the error code should be \"UNAUTHORIZED\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "passed",
-              "duration": 1012791
+              "duration": 744624
             }
           },
           {
@@ -179,7 +179,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 145915
+              "duration": 89041
             }
           }
         ],
@@ -198,7 +198,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 183917
+              "duration": 96416
             }
           },
           {
@@ -207,11 +207,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 46291
+              "duration": 40624
             }
           },
           {
@@ -220,11 +220,11 @@
             "line": 12,
             "name": "I create a \"forbidden\" error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+              "location": "tests/e2e/steps/error.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 172834
+              "duration": 176207
             }
           },
           {
@@ -233,11 +233,11 @@
             "line": 13,
             "name": "the error should be an instance of AppError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+              "location": "tests/e2e/steps/error.steps.ts:101"
             },
             "result": {
               "status": "passed",
-              "duration": 61666
+              "duration": 43542
             }
           },
           {
@@ -246,11 +246,11 @@
             "line": 14,
             "name": "the error status code should be 403",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+              "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 285333
+              "duration": 281916
             }
           },
           {
@@ -259,11 +259,11 @@
             "line": 15,
             "name": "the error code should be \"FORBIDDEN\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "passed",
-              "duration": 115583
+              "duration": 105457
             }
           },
           {
@@ -271,7 +271,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 77083
+              "duration": 57166
             }
           }
         ],
@@ -290,7 +290,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 77083
+              "duration": 66582
             }
           },
           {
@@ -299,11 +299,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 28375
+              "duration": 39625
             }
           },
           {
@@ -312,11 +312,11 @@
             "line": 12,
             "name": "I create a \"validation\" error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+              "location": "tests/e2e/steps/error.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 75207
+              "duration": 166124
             }
           },
           {
@@ -325,11 +325,11 @@
             "line": 13,
             "name": "the error should be an instance of AppError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+              "location": "tests/e2e/steps/error.steps.ts:101"
             },
             "result": {
               "status": "passed",
-              "duration": 31791
+              "duration": 44083
             }
           },
           {
@@ -338,11 +338,11 @@
             "line": 14,
             "name": "the error status code should be 400",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+              "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 31167
+              "duration": 268416
             }
           },
           {
@@ -351,11 +351,11 @@
             "line": 15,
             "name": "the error code should be \"VALIDATION_ERROR\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "passed",
-              "duration": 94000
+              "duration": 108125
             }
           },
           {
@@ -363,7 +363,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 49040
+              "duration": 55917
             }
           }
         ],
@@ -382,7 +382,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 66041
+              "duration": 58166
             }
           },
           {
@@ -391,11 +391,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 28624
+              "duration": 28208
             }
           },
           {
@@ -404,11 +404,11 @@
             "line": 12,
             "name": "I create a \"conflict\" error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+              "location": "tests/e2e/steps/error.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 77583
+              "duration": 70125
             }
           },
           {
@@ -417,11 +417,11 @@
             "line": 13,
             "name": "the error should be an instance of AppError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+              "location": "tests/e2e/steps/error.steps.ts:101"
             },
             "result": {
               "status": "passed",
-              "duration": 35458
+              "duration": 32166
             }
           },
           {
@@ -430,11 +430,11 @@
             "line": 14,
             "name": "the error status code should be 409",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+              "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 35208
+              "duration": 29583
             }
           },
           {
@@ -443,11 +443,11 @@
             "line": 15,
             "name": "the error code should be \"CONFLICT\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "passed",
-              "duration": 34167
+              "duration": 101999
             }
           },
           {
@@ -455,7 +455,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 214917
+              "duration": 45457
             }
           }
         ],
@@ -474,7 +474,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 95583
+              "duration": 48625
             }
           },
           {
@@ -483,11 +483,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 25249
+              "duration": 23833
             }
           },
           {
@@ -496,11 +496,11 @@
             "line": 12,
             "name": "I create a \"unprocessable\" error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+              "location": "tests/e2e/steps/error.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 72707
+              "duration": 64542
             }
           },
           {
@@ -509,11 +509,11 @@
             "line": 13,
             "name": "the error should be an instance of AppError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+              "location": "tests/e2e/steps/error.steps.ts:101"
             },
             "result": {
               "status": "passed",
-              "duration": 30332
+              "duration": 27209
             }
           },
           {
@@ -522,11 +522,11 @@
             "line": 14,
             "name": "the error status code should be 422",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+              "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 41000
+              "duration": 28041
             }
           },
           {
@@ -535,11 +535,11 @@
             "line": 15,
             "name": "the error code should be \"UNPROCESSABLE_ENTITY\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "passed",
-              "duration": 35916
+              "duration": 96458
             }
           },
           {
@@ -547,7 +547,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 125166
+              "duration": 43250
             }
           }
         ],
@@ -566,7 +566,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 53208
+              "duration": 106915
             }
           },
           {
@@ -575,11 +575,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 20667
+              "duration": 19499
             }
           },
           {
@@ -588,11 +588,11 @@
             "line": 12,
             "name": "I create a \"rateLimit\" error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+              "location": "tests/e2e/steps/error.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 69250
+              "duration": 72083
             }
           },
           {
@@ -601,11 +601,11 @@
             "line": 13,
             "name": "the error should be an instance of AppError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+              "location": "tests/e2e/steps/error.steps.ts:101"
             },
             "result": {
               "status": "passed",
-              "duration": 27250
+              "duration": 27167
             }
           },
           {
@@ -614,11 +614,11 @@
             "line": 14,
             "name": "the error status code should be 429",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+              "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 29084
+              "duration": 30082
             }
           },
           {
@@ -627,11 +627,11 @@
             "line": 15,
             "name": "the error code should be \"RATE_LIMIT_EXCEEDED\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "passed",
-              "duration": 29999
+              "duration": 28834
             }
           },
           {
@@ -639,7 +639,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 49625
+              "duration": 204416
             }
           }
         ],
@@ -658,7 +658,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 36457
+              "duration": 113707
             }
           },
           {
@@ -667,11 +667,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 17333
+              "duration": 19292
             }
           },
           {
@@ -680,11 +680,11 @@
             "line": 12,
             "name": "I create a \"internal\" error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
+              "location": "tests/e2e/steps/error.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 61832
+              "duration": 71625
             }
           },
           {
@@ -693,11 +693,11 @@
             "line": 13,
             "name": "the error should be an instance of AppError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
+              "location": "tests/e2e/steps/error.steps.ts:101"
             },
             "result": {
               "status": "passed",
-              "duration": 26374
+              "duration": 26917
             }
           },
           {
@@ -706,11 +706,11 @@
             "line": 14,
             "name": "the error status code should be 500",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
+              "location": "tests/e2e/steps/error.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 24625
+              "duration": 29917
             }
           },
           {
@@ -719,11 +719,11 @@
             "line": 15,
             "name": "the error code should be \"INTERNAL_ERROR\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "passed",
-              "duration": 29624
+              "duration": 28750
             }
           },
           {
@@ -731,99 +731,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 31292
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
-        "keyword": "Scenario Outline",
-        "line": 27,
-        "name": "Create common HTTP errors",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 64916
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the error factory imported",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 31874
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 12,
-            "name": "I create a \"unavailable\" error",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 91875
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 13,
-            "name": "the error should be an instance of AppError",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:72"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 37332
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
-            "name": "the error status code should be 503",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:75"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27166
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 15,
-            "name": "the error code should be \"SERVICE_UNAVAILABLE\"",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27499
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 34750
+              "duration": 276166
             }
           }
         ],
@@ -842,7 +750,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 218667
+              "duration": 71917
             }
           },
           {
@@ -851,11 +759,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 54417
+              "duration": 41416
             }
           },
           {
@@ -891,7 +799,7 @@
             "line": 35,
             "name": "the error message should be \"User with identifier '123' not found\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:81"
+              "location": "tests/e2e/steps/error.steps.ts:122"
             },
             "result": {
               "status": "skipped",
@@ -936,7 +844,99 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 65207
+              "duration": 38874
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;http-errors-should-have-correct-status-codes-and-error-codes;create-common-http-errors",
+        "keyword": "Scenario Outline",
+        "line": 27,
+        "name": "Create common HTTP errors",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 77499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37250
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "I create a \"unavailable\" error",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 84292
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the error should be an instance of AppError",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:101"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32125
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the error status code should be 503",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:108"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30875
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the error code should be \"SERVICE_UNAVAILABLE\"",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:115"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34207
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41333
             }
           }
         ],
@@ -955,7 +955,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 62124
+              "duration": 68834
             }
           },
           {
@@ -964,11 +964,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 26583
+              "duration": 24875
             }
           },
           {
@@ -998,7 +998,7 @@
             "line": 44,
             "name": "the error message should be \"Post not found\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:81"
+              "location": "tests/e2e/steps/error.steps.ts:122"
             },
             "result": {
               "status": "skipped",
@@ -1010,7 +1010,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 32083
+              "duration": 33249
             }
           }
         ],
@@ -1029,7 +1029,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 148167
+              "duration": 48374
             }
           },
           {
@@ -1038,11 +1038,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 45292
+              "duration": 20749
             }
           },
           {
@@ -1094,7 +1094,7 @@
             "line": 54,
             "name": "the error should have status code 400",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:87"
+              "location": "tests/e2e/steps/error.steps.ts:136"
             },
             "result": {
               "status": "skipped",
@@ -1107,7 +1107,7 @@
             "line": 55,
             "name": "the error meta should contain field errors",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:90"
+              "location": "tests/e2e/steps/error.steps.ts:143"
             },
             "result": {
               "status": "skipped",
@@ -1120,7 +1120,7 @@
             "line": 56,
             "name": "the field \"email\" error should be \"must be valid email\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:94"
+              "location": "tests/e2e/steps/error.steps.ts:151"
             },
             "result": {
               "status": "skipped",
@@ -1133,7 +1133,7 @@
             "line": 57,
             "name": "the field \"age\" error should be \"must be at least 18\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:94"
+              "location": "tests/e2e/steps/error.steps.ts:151"
             },
             "result": {
               "status": "skipped",
@@ -1145,127 +1145,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 58416
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "error-factory;business-errors-should-preserve-context;create-database-error-with-operation-context",
-        "keyword": "Scenario",
-        "line": 61,
-        "name": "Create database error with operation context",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 50874
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the error factory imported",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 22375
-            }
-          },
-          {
-            "arguments": [
-              {
-                "rows": [
-                  {
-                    "cells": [
-                      "message",
-                      "Failed to insert user"
-                    ]
-                  },
-                  {
-                    "cells": [
-                      "operation",
-                      "INSERT"
-                    ]
-                  }
-                ]
-              }
-            ],
-            "keyword": "When ",
-            "line": 62,
-            "name": "I create a database error with:",
-            "result": {
-              "status": "undefined",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 65,
-            "name": "the error should have status code 500",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:87"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 66,
-            "name": "the error code should be \"DATABASE_ERROR\"",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [
-              {
-                "rows": [
-                  {
-                    "cells": [
-                      "key",
-                      "value"
-                    ]
-                  },
-                  {
-                    "cells": [
-                      "operation",
-                      "INSERT"
-                    ]
-                  }
-                ]
-              }
-            ],
-            "keyword": "And ",
-            "line": 67,
-            "name": "the error meta should contain:",
-            "result": {
-              "status": "undefined",
-              "duration": 0
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 33124
+              "duration": 28166
             }
           }
         ],
@@ -1284,7 +1164,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 62249
+              "duration": 53083
             }
           },
           {
@@ -1293,11 +1173,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 32250
+              "duration": 27540
             }
           },
           {
@@ -1333,7 +1213,7 @@
             "line": 75,
             "name": "the error should have status code 502",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:87"
+              "location": "tests/e2e/steps/error.steps.ts:136"
             },
             "result": {
               "status": "skipped",
@@ -1346,7 +1226,7 @@
             "line": 76,
             "name": "the error code should be \"EXTERNAL_SERVICE_ERROR\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:78"
+              "location": "tests/e2e/steps/error.steps.ts:115"
             },
             "result": {
               "status": "skipped",
@@ -1385,7 +1265,127 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 227750
+              "duration": 44958
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "error-factory;business-errors-should-preserve-context;create-database-error-with-operation-context",
+        "keyword": "Scenario",
+        "line": 61,
+        "name": "Create database error with operation context",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 43375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the error factory imported",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22540
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "message",
+                      "Failed to insert user"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "operation",
+                      "INSERT"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 62,
+            "name": "I create a database error with:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 65,
+            "name": "the error should have status code 500",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:136"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 66,
+            "name": "the error code should be \"DATABASE_ERROR\"",
+            "match": {
+              "location": "tests/e2e/steps/error.steps.ts:115"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "key",
+                      "value"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "operation",
+                      "INSERT"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "And ",
+            "line": 67,
+            "name": "the error meta should contain:",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30082
             }
           }
         ],
@@ -1404,7 +1404,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 85042
+              "duration": 55250
             }
           },
           {
@@ -1413,11 +1413,11 @@
             "line": 7,
             "name": "I have the error factory imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:8"
+              "location": "tests/e2e/steps/error.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 185250
+              "duration": 29665
             }
           },
           {
@@ -1453,7 +1453,7 @@
             "line": 87,
             "name": "I serialize the error to JSON",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:68"
+              "location": "tests/e2e/steps/error.steps.ts:96"
             },
             "result": {
               "status": "skipped",
@@ -1496,7 +1496,7 @@
             "line": 91,
             "name": "the JSON should have property \"message\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:103"
+              "location": "tests/e2e/steps/error.steps.ts:172"
             },
             "result": {
               "status": "skipped",
@@ -1509,7 +1509,7 @@
             "line": 92,
             "name": "the JSON should have property \"meta\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/error.steps.ts:103"
+              "location": "tests/e2e/steps/error.steps.ts:172"
             },
             "result": {
               "status": "skipped",
@@ -1521,7 +1521,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 49250
+              "duration": 148958
             }
           }
         ],
@@ -1551,7 +1551,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 49166
+              "duration": 55958
             }
           },
           {
@@ -1560,11 +1560,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 397832
+              "duration": 753958
             }
           },
           {
@@ -1573,7 +1573,7 @@
             "line": 12,
             "name": "I create an ok result with value \"42\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:23"
+              "location": "tests/e2e/steps/result.steps.ts:51"
             },
             "result": {
               "status": "passed",
@@ -1586,11 +1586,11 @@
             "line": 13,
             "name": "the result should have ok equal to true",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:68"
+              "location": "tests/e2e/steps/result.steps.ts:125"
             },
             "result": {
               "status": "passed",
-              "duration": 330708
+              "duration": 333374
             }
           },
           {
@@ -1599,11 +1599,11 @@
             "line": 14,
             "name": "the result value should be \"42\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:72"
+              "location": "tests/e2e/steps/result.steps.ts:133"
             },
             "result": {
               "status": "passed",
-              "duration": 700334
+              "duration": 815207
             }
           },
           {
@@ -1611,7 +1611,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 44375
+              "duration": 48624
             }
           }
         ],
@@ -1630,7 +1630,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 61457
+              "duration": 61500
             }
           },
           {
@@ -1639,11 +1639,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 394125
+              "duration": 379542
             }
           },
           {
@@ -1652,11 +1652,11 @@
             "line": 17,
             "name": "I create an err result with a NotFoundError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:26"
+              "location": "tests/e2e/steps/result.steps.ts:58"
             },
             "result": {
               "status": "passed",
-              "duration": 409292
+              "duration": 344499
             }
           },
           {
@@ -1665,11 +1665,11 @@
             "line": 18,
             "name": "the result should have ok equal to false",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:81"
+              "location": "tests/e2e/steps/result.steps.ts:145"
             },
             "result": {
               "status": "passed",
-              "duration": 341665
+              "duration": 325958
             }
           },
           {
@@ -1678,11 +1678,11 @@
             "line": 19,
             "name": "the result error should be a NotFoundError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:85"
+              "location": "tests/e2e/steps/result.steps.ts:153"
             },
             "result": {
               "status": "passed",
-              "duration": 408208
+              "duration": 465708
             }
           },
           {
@@ -1690,7 +1690,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 57792
+              "duration": 37083
             }
           }
         ],
@@ -1709,7 +1709,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 37665
+              "duration": 54499
             }
           },
           {
@@ -1718,11 +1718,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 37332
+              "duration": 20208
             }
           },
           {
@@ -1731,11 +1731,11 @@
             "line": 24,
             "name": "I have an ok result with value \"success\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+              "location": "tests/e2e/steps/result.steps.ts:29"
             },
             "result": {
               "status": "passed",
-              "duration": 620249
+              "duration": 610041
             }
           },
           {
@@ -1744,11 +1744,11 @@
             "line": 25,
             "name": "I check if the result is ok",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:29"
+              "location": "tests/e2e/steps/result.steps.ts:65"
             },
             "result": {
               "status": "passed",
-              "duration": 297458
+              "duration": 213249
             }
           },
           {
@@ -1757,11 +1757,11 @@
             "line": 26,
             "name": "the check should return true",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:94"
+              "location": "tests/e2e/steps/result.steps.ts:165"
             },
             "result": {
               "status": "passed",
-              "duration": 342666
+              "duration": 226708
             }
           },
           {
@@ -1769,86 +1769,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 62874
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "result-pattern;unwrapping-results;unwrap-successful-result",
-        "keyword": "Scenario",
-        "line": 35,
-        "name": "Unwrap successful result",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 51917
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the Result utilities imported",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27708
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 36,
-            "name": "I have an ok result with value \"hello\"",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 110791
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 37,
-            "name": "I unwrap the result",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 327583
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 38,
-            "name": "I should get the value \"hello\"",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:97"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 569583
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 35875
+              "duration": 36333
             }
           }
         ],
@@ -1867,7 +1788,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 67500
+              "duration": 43499
             }
           },
           {
@@ -1876,11 +1797,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 43625
+              "duration": 23707
             }
           },
           {
@@ -1889,11 +1810,11 @@
             "line": 29,
             "name": "I have an err result with an error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:16"
+              "location": "tests/e2e/steps/result.steps.ts:36"
             },
             "result": {
               "status": "passed",
-              "duration": 371125
+              "duration": 355457
             }
           },
           {
@@ -1902,11 +1823,11 @@
             "line": 30,
             "name": "I check if the result is err",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:33"
+              "location": "tests/e2e/steps/result.steps.ts:70"
             },
             "result": {
               "status": "passed",
-              "duration": 254208
+              "duration": 276792
             }
           },
           {
@@ -1915,11 +1836,11 @@
             "line": 31,
             "name": "the check should return true",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:94"
+              "location": "tests/e2e/steps/result.steps.ts:165"
             },
             "result": {
               "status": "passed",
-              "duration": 263292
+              "duration": 254583
             }
           },
           {
@@ -1927,7 +1848,86 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 45000
+              "duration": 103875
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;unwrapping-results;unwrap-successful-result",
+        "keyword": "Scenario",
+        "line": 35,
+        "name": "Unwrap successful result",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 36,
+            "name": "I have an ok result with value \"hello\"",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 805749
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 37,
+            "name": "I unwrap the result",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 200667
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 38,
+            "name": "I should get the value \"hello\"",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:169"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 525666
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 41625
             }
           }
         ],
@@ -1946,7 +1946,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 121750
+              "duration": 54374
             }
           },
           {
@@ -1955,11 +1955,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 94375
+              "duration": 27458
             }
           },
           {
@@ -1968,11 +1968,11 @@
             "line": 41,
             "name": "I have an err result with a NotFoundError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:19"
+              "location": "tests/e2e/steps/result.steps.ts:43"
             },
             "result": {
               "status": "passed",
-              "duration": 1040375
+              "duration": 411166
             }
           },
           {
@@ -1981,11 +1981,11 @@
             "line": 42,
             "name": "I try to unwrap the result",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:41"
+              "location": "tests/e2e/steps/result.steps.ts:80"
             },
             "result": {
               "status": "passed",
-              "duration": 770416
+              "duration": 214583
             }
           },
           {
@@ -1994,11 +1994,11 @@
             "line": 43,
             "name": "it should throw the error",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:100"
+              "location": "tests/e2e/steps/result.steps.ts:176"
             },
             "result": {
               "status": "passed",
-              "duration": 253708
+              "duration": 220624
             }
           },
           {
@@ -2006,178 +2006,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 57583
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "result-pattern;unwrapping-results;unwrap-with-default-value",
-        "keyword": "Scenario",
-        "line": 45,
-        "name": "Unwrap with default value",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 56291
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the Result utilities imported",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27333
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 46,
-            "name": "I have an err result with an error",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 38999
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 47,
-            "name": "I unwrap the result with default value \"fallback\"",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:50"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 905459
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 48,
-            "name": "I should get the value \"fallback\"",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:97"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 528999
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 46290
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "result-pattern;mapping-results;map-failed-result",
-        "keyword": "Scenario",
-        "line": 57,
-        "name": "Map failed result",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 118791
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have the Result utilities imported",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 190583
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 58,
-            "name": "I have an err result with an error",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 440832
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 59,
-            "name": "I map the result to double the value",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:54"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 211500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 60,
-            "name": "the result should still be err",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:110"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 192084
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 61,
-            "name": "the error should be preserved",
-            "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:114"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 144250
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 47708
+              "duration": 99250
             }
           }
         ],
@@ -2196,7 +2025,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 148290
+              "duration": 38625
             }
           },
           {
@@ -2205,11 +2034,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 87499
+              "duration": 20667
             }
           },
           {
@@ -2218,11 +2047,11 @@
             "line": 53,
             "name": "I have an ok result with value \"5\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+              "location": "tests/e2e/steps/result.steps.ts:29"
             },
             "result": {
               "status": "passed",
-              "duration": 1725916
+              "duration": 120915
             }
           },
           {
@@ -2231,11 +2060,11 @@
             "line": 54,
             "name": "I map the result to double the value",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:54"
+              "location": "tests/e2e/steps/result.steps.ts:97"
             },
             "result": {
               "status": "passed",
-              "duration": 343708
+              "duration": 311624
             }
           },
           {
@@ -2244,11 +2073,11 @@
             "line": 55,
             "name": "the result should be ok with value \"10\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:103"
+              "location": "tests/e2e/steps/result.steps.ts:180"
             },
             "result": {
               "status": "passed",
-              "duration": 1462790
+              "duration": 604000
             }
           },
           {
@@ -2256,7 +2085,178 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 76874
+              "duration": 37499
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;unwrapping-results;unwrap-with-default-value",
+        "keyword": "Scenario",
+        "line": 45,
+        "name": "Unwrap with default value",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 131832
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 46,
+            "name": "I have an err result with an error",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 977500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 47,
+            "name": "I unwrap the result with default value \"fallback\"",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:89"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 691374
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 48,
+            "name": "I should get the value \"fallback\"",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:169"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 998959
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 60833
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "result-pattern;mapping-results;map-failed-result",
+        "keyword": "Scenario",
+        "line": 57,
+        "name": "Map failed result",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 47374
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have the Result utilities imported",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 26333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 58,
+            "name": "I have an err result with an error",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 334584
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 59,
+            "name": "I map the result to double the value",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:97"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 60,
+            "name": "the result should still be err",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:191"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 291541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 61,
+            "name": "the error should be preserved",
+            "match": {
+              "location": "tests/e2e/steps/result.steps.ts:196"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 224040
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 38707
             }
           }
         ],
@@ -2275,7 +2275,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 62374
+              "duration": 98042
             }
           },
           {
@@ -2284,11 +2284,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 31416
+              "duration": 27541
             }
           },
           {
@@ -2297,11 +2297,11 @@
             "line": 66,
             "name": "I have an ok result with value \"user-123\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+              "location": "tests/e2e/steps/result.steps.ts:29"
             },
             "result": {
               "status": "passed",
-              "duration": 31458
+              "duration": 106207
             }
           },
           {
@@ -2310,11 +2310,11 @@
             "line": 67,
             "name": "I flatMap the result to fetch user details",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:58"
+              "location": "tests/e2e/steps/result.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 319042
+              "duration": 340750
             }
           },
           {
@@ -2323,11 +2323,11 @@
             "line": 68,
             "name": "the result should be ok with user data",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:120"
+              "location": "tests/e2e/steps/result.steps.ts:203"
             },
             "result": {
               "status": "passed",
-              "duration": 506916
+              "duration": 494916
             }
           },
           {
@@ -2335,7 +2335,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 35333
+              "duration": 40208
             }
           }
         ],
@@ -2354,7 +2354,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 59375
+              "duration": 42584
             }
           },
           {
@@ -2363,11 +2363,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 27207
+              "duration": 23374
             }
           },
           {
@@ -2376,11 +2376,11 @@
             "line": 71,
             "name": "I have an ok result with value \"invalid-id\"",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:13"
+              "location": "tests/e2e/steps/result.steps.ts:29"
             },
             "result": {
               "status": "passed",
-              "duration": 113959
+              "duration": 27540
             }
           },
           {
@@ -2389,11 +2389,11 @@
             "line": 72,
             "name": "I flatMap the result to fetch user details",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:58"
+              "location": "tests/e2e/steps/result.steps.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 273500
+              "duration": 350374
             }
           },
           {
@@ -2402,11 +2402,11 @@
             "line": 73,
             "name": "the result should be err",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:128"
+              "location": "tests/e2e/steps/result.steps.ts:215"
             },
             "result": {
               "status": "passed",
-              "duration": 173625
+              "duration": 195917
             }
           },
           {
@@ -2415,11 +2415,11 @@
             "line": 74,
             "name": "the error should be a NotFoundError",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:132"
+              "location": "tests/e2e/steps/result.steps.ts:220"
             },
             "result": {
               "status": "passed",
-              "duration": 166166
+              "duration": 246500
             }
           },
           {
@@ -2427,7 +2427,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 39708
+              "duration": 31416
             }
           }
         ],
@@ -2446,7 +2446,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 31375
+              "duration": 42374
             }
           },
           {
@@ -2455,11 +2455,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 15625
+              "duration": 40000
             }
           },
           {
@@ -2540,7 +2540,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 23832
+              "duration": 31416
             }
           }
         ],
@@ -2559,7 +2559,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 47915
+              "duration": 102790
             }
           },
           {
@@ -2568,11 +2568,11 @@
             "line": 7,
             "name": "I have the Result utilities imported",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:9"
+              "location": "tests/e2e/steps/result.steps.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 22500
+              "duration": 25249
             }
           },
           {
@@ -2624,7 +2624,7 @@
             "line": 94,
             "name": "the result should be err",
             "match": {
-              "location": "file:/Users/sean/Deepractice/projects/DeepracticeInfra/packages/error-handling/tests/e2e/steps/result.steps.ts:128"
+              "location": "tests/e2e/steps/result.steps.ts:215"
             },
             "result": {
               "status": "skipped",
@@ -2656,7 +2656,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 33416
+              "duration": 26707
             }
           }
         ],

@@ -3,7 +3,7 @@
  * Domain-specific errors for business rule violations
  */
 
-import { AppError } from "./base.js";
+import { AppError } from "~/core/errors/base";
 
 /**
  * Database operation error

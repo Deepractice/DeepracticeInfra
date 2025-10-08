@@ -2,9 +2,14 @@
   "extends": "../typescript-config/base.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
-    "types": []
+    "rootDir": ".", // Override base.json to include tests/
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"], // Internal use within src/
+      "@/*": ["./src/*"] // External access from tests/
+    }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

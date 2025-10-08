@@ -1,5 +1,8 @@
-export { AppError } from "./base.js";
+/**
+ * Error classes API - exported for user consumption
+ */
 export {
+  AppError,
   ValidationError,
   UnauthorizedError,
   ForbiddenError,
@@ -9,10 +12,8 @@ export {
   RateLimitError,
   InternalError,
   ServiceUnavailableError,
-} from "./http.js";
-export {
   DatabaseError,
   ExternalServiceError,
   ConfigurationError,
   BusinessRuleError,
-} from "./business.js";
+} from "~/core/errors/index";

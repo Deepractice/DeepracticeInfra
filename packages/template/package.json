@@ -1,7 +1,7 @@
 {
-  "name": "@deepracticex/logger",
-  "version": "0.0.1",
-  "description": "Unified logging system for Deepractice projects using Pino",
+  "name": "@deepracticex/template",
+  "version": "1.0.0",
+  "description": "Template package demonstrating Deepractice package development standards",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -22,25 +22,17 @@
     "test:dev": "NODE_OPTIONS='--import tsx' cucumber-js --profile dev",
     "test:ci": "NODE_OPTIONS='--import tsx' cucumber-js --profile ci"
   },
-  "dependencies": {
-    "pino": "^9.9.0",
-    "pino-pretty": "^13.1.1"
-  },
   "files": [
     "dist",
     "package.json",
     "README.md"
   ],
   "keywords": [
-    "logger",
-    "pino",
-    "logging",
-    "deepractice"
+    "template",
+    "typescript",
+    "deepractice",
+    "package-template"
   ],
   "author": "Deepractice",
-  "license": "MIT",
-  "devDependencies": {
-    "esbuild-plugin-alias": "^0.2.1",
-    "tsconfig-paths": "^4.2.0"
-  }
+  "license": "MIT"
 }

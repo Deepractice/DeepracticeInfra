@@ -17,7 +17,7 @@ import {
   ExternalServiceError,
   ConfigurationError,
   BusinessRuleError,
-} from "../errors/index.js";
+} from "~/core/errors/index";
 
 /**
  * Factory functions for creating errors

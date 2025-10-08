@@ -1,4 +1,5 @@
 import { defineConfig } from "tsup";
+import path from "path";
 
 export default defineConfig({
   entry: ["src/index.ts"],
@@ -8,4 +9,9 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   external: ["express", "hono"],
+  esbuildOptions(options) {
+    options.alias = {
+      "~": path.resolve(__dirname, "./src"),
+    };
+  },
 });

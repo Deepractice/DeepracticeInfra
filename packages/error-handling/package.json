@@ -18,9 +18,9 @@
     "dev": "tsup --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
-    "test": "cucumber-js",
-    "test:dev": "cucumber-js --profile dev",
-    "test:ci": "cucumber-js --profile ci"
+    "test": "NODE_OPTIONS='--import tsx' cucumber-js",
+    "test:dev": "NODE_OPTIONS='--import tsx' cucumber-js --profile dev",
+    "test:ci": "NODE_OPTIONS='--import tsx' cucumber-js --profile ci"
   },
   "peerDependencies": {
     "express": "^4.0.0 || ^5.0.0",

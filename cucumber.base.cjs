@@ -9,9 +9,7 @@ module.exports = {
     snippetInterface: "async-await",
   },
 
-  // TypeScript support for ES modules
-  requireModule: ["ts-node/register/transpile-only"],
-  loader: ["ts-node/esm"],
+  // TypeScript support - tsx is loaded via NODE_OPTIONS='--import tsx' in package.json scripts
 
   // Common format reporters
   format: [
