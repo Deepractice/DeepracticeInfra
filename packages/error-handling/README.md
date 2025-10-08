@@ -24,102 +24,105 @@ pnpm add @deepracticex/error-handling
 ### Basic Usage
 
 ```typescript
-import { errors } from '@deepracticex/error-handling'
+import { errors } from "@deepracticex/error-handling";
 
 // Throw errors using the factory
 if (!user) {
-  throw errors.notFound('User', userId)
+  throw errors.notFound("User", userId);
 }
 
 if (age < 18) {
-  throw errors.validation('Age must be at least 18', { age: 'too young' })
+  throw errors.validation("Age must be at least 18", { age: "too young" });
 }
 
 // Or use error classes directly
-import { NotFoundError, ValidationError } from '@deepracticex/error-handling'
+import { NotFoundError, ValidationError } from "@deepracticex/error-handling";
 
-throw new NotFoundError('User', userId)
-throw new ValidationError('Invalid email', { email: 'must be valid email' })
+throw new NotFoundError("User", userId);
+throw new ValidationError("Invalid email", { email: "must be valid email" });
 ```
 
 ### With Express
 
 ```typescript
-import express from 'express'
-import { createExpressErrorHandler, errors } from '@deepracticex/error-handling'
-import { error as logError } from '@deepracticex/logger'
+import express from "express";
+import {
+  createExpressErrorHandler,
+  errors,
+} from "@deepracticex/error-handling";
+import { error as logError } from "@deepracticex/logger";
 
-const app = express()
+const app = express();
 
 // Your routes
-app.get('/users/:id', async (req, res) => {
-  const user = await db.user.findUnique({ where: { id: req.params.id } })
+app.get("/users/:id", async (req, res) => {
+  const user = await db.user.findUnique({ where: { id: req.params.id } });
   if (!user) {
-    throw errors.notFound('User', req.params.id)
+    throw errors.notFound("User", req.params.id);
   }
-  res.json(user)
-})
+  res.json(user);
+});
 
 // Error handler (must be last)
 app.use(
   createExpressErrorHandler({
     logger: logError,
-    includeStack: process.env.NODE_ENV === 'development',
-  })
-)
+    includeStack: process.env.NODE_ENV === "development",
+  }),
+);
 ```
 
 ### With Hono
 
 ```typescript
-import { Hono } from 'hono'
-import { createHonoErrorHandler, errors } from '@deepracticex/error-handling'
-import { error as logError } from '@deepracticex/logger'
+import { Hono } from "hono";
+import { createHonoErrorHandler, errors } from "@deepracticex/error-handling";
+import { error as logError } from "@deepracticex/logger";
 
-const app = new Hono()
+const app = new Hono();
 
 // Your routes
-app.get('/users/:id', async (c) => {
-  const user = await db.user.findUnique({ where: { id: c.req.param('id') } })
+app.get("/users/:id", async (c) => {
+  const user = await db.user.findUnique({ where: { id: c.req.param("id") } });
   if (!user) {
-    throw errors.notFound('User', c.req.param('id'))
+    throw errors.notFound("User", c.req.param("id"));
   }
-  return c.json(user)
-})
+  return c.json(user);
+});
 
 // Error handler
 app.onError(
   createHonoErrorHandler({
     logger: logError,
-    includeStack: process.env.NODE_ENV === 'development',
-  })
-)
+    includeStack: process.env.NODE_ENV === "development",
+  }),
+);
 ```
 
 ### Result Pattern (Functional Approach)
 
 ```typescript
-import { ok, err, type Result } from '@deepracticex/error-handling'
-import type { AppError } from '@deepracticex/error-handling'
+import { ok, err, type Result } from "@deepracticex/error-handling";
+import type { AppError } from "@deepracticex/error-handling";
 
 async function getUser(id: string): Promise<Result<User, AppError>> {
   try {
-    const user = await db.user.findUnique({ where: { id } })
+    const user = await db.user.findUnique({ where: { id } });
     if (!user) {
-      return err(errors.notFound('User', id))
+      return err(errors.notFound("User", id));
     }
-    return ok(user)
+    return ok(user);
   } catch (e) {
-    return err(errors.internal('Database query failed', e))
+    return err(errors.internal("Database query failed", e));
   }
 }
 
 // Usage
-const result = await getUser('123')
+const result = await getUser("123");
 if (result.ok) {
-  console.log('User:', result.value.name)
+  console.log("User:", result.value.name);
 } else {
-  console.error('Error:', result.error.message)
+  console.error("Error:", result.error.message);
 }
 ```
 
@@ -127,26 +130,26 @@ if (result.ok) {
 
 ### HTTP Errors
 
-| Error                       | Status Code | Usage                                       |
-| --------------------------- | ----------- | ------------------------------------------- |
-| `ValidationError`           | 400         | Invalid input data                          |
-| `UnauthorizedError`         | 401         | Authentication required                     |
-| `ForbiddenError`            | 403         | Insufficient permissions                    |
-| `NotFoundError`             | 404         | Resource not found                          |
-| `ConflictError`             | 409         | Resource conflict                           |
-| `UnprocessableEntityError`  | 422         | Valid syntax but semantically incorrect     |
-| `RateLimitError`            | 429         | Too many requests                           |
-| `InternalError`             | 500         | Server error                                |
-| `ServiceUnavailableError`   | 503         | Service temporarily unavailable             |
+| Error                      | Status Code | Usage                                   |
+| -------------------------- | ----------- | --------------------------------------- |
+| `ValidationError`          | 400         | Invalid input data                      |
+| `UnauthorizedError`        | 401         | Authentication required                 |
+| `ForbiddenError`           | 403         | Insufficient permissions                |
+| `NotFoundError`            | 404         | Resource not found                      |
+| `ConflictError`            | 409         | Resource conflict                       |
+| `UnprocessableEntityError` | 422         | Valid syntax but semantically incorrect |
+| `RateLimitError`           | 429         | Too many requests                       |
+| `InternalError`            | 500         | Server error                            |
+| `ServiceUnavailableError`  | 503         | Service temporarily unavailable         |
 
 ### Business Errors
 
-| Error                    | Status Code | Usage                             |
-| ------------------------ | ----------- | --------------------------------- |
-| `DatabaseError`          | 500         | Database operation failures       |
-| `ExternalServiceError`   | 502         | External API/service failures     |
-| `ConfigurationError`     | 500         | Missing or invalid configuration  |
-| `BusinessRuleError`      | 422         | Business logic violations         |
+| Error                  | Status Code | Usage                            |
+| ---------------------- | ----------- | -------------------------------- |
+| `DatabaseError`        | 500         | Database operation failures      |
+| `ExternalServiceError` | 502         | External API/service failures    |
+| `ConfigurationError`   | 500         | Missing or invalid configuration |
+| `BusinessRuleError`    | 422         | Business logic violations        |
 
 ## Error Factory API
 
@@ -196,12 +199,12 @@ app.use(
             message: error.message,
             details: error.meta,
           },
-        }
+        };
       }
-      return { success: false, error: { message: 'Internal server error' } }
+      return { success: false, error: { message: "Internal server error" } };
     },
-  })
-)
+  }),
+);
 ```
 
 ### Error Response Format
@@ -224,54 +227,65 @@ Default JSON response:
 ### Result Type Utilities
 
 ```typescript
-import { map, flatMap, unwrap, unwrapOr, isOk, isErr } from '@deepracticex/error-handling'
+import {
+  map,
+  flatMap,
+  unwrap,
+  unwrapOr,
+  isOk,
+  isErr,
+} from "@deepracticex/error-handling";
 
 // Map over successful result
-const doubled = map(result, (value) => value * 2)
+const doubled = map(result, (value) => value * 2);
 
 // Chain operations
-const chained = flatMap(result, (user) => getUserPosts(user.id))
+const chained = flatMap(result, (user) => getUserPosts(user.id));
 
 // Unwrap or throw
-const user = unwrap(result) // throws if error
+const user = unwrap(result); // throws if error
 
 // Unwrap with default
-const user = unwrapOr(result, defaultUser)
+const user = unwrapOr(result, defaultUser);
 
 // Type guards
 if (isOk(result)) {
-  console.log(result.value)
+  console.log(result.value);
 } else {
-  console.error(result.error)
+  console.error(result.error);
 }
 ```
 
 ## Best Practices
 
 1. **Use the error factory** for consistency:
+
    ```typescript
-   throw errors.notFound('User', id) // ✅ Good
-   throw new NotFoundError('User', id) // ✅ Also fine
+   throw errors.notFound("User", id); // ✅ Good
+   throw new NotFoundError("User", id); // ✅ Also fine
    ```
 
 2. **Preserve original errors** for debugging:
+
    ```typescript
    try {
-     await externalAPI.call()
+     await externalAPI.call();
    } catch (e) {
-     throw errors.externalService('PaymentAPI', 'Payment failed', e)
+     throw errors.externalService("PaymentAPI", "Payment failed", e);
    }
    ```
 
 3. **Add context with meta**:
+
    ```typescript
-   throw errors.validation('Invalid user data', {
-     email: 'must be valid email',
-     age: 'must be at least 18',
-   })
+   throw errors.validation("Invalid user data", {
+     email: "must be valid email",
+     age: "must be at least 18",
+   });
    ```
 
 4. **Use Result type for expected errors**:
+
    ```typescript
    // For operations where errors are part of normal flow
    async function findUser(id: string): Promise<Result<User, AppError>> {
@@ -284,20 +298,23 @@ if (isOk(result)) {
 ## Integration with Logger
 
 ```typescript
-import { error as logError, info } from '@deepracticex/logger'
-import { createExpressErrorHandler, AppError } from '@deepracticex/error-handling'
+import { error as logError, info } from "@deepracticex/logger";
+import {
+  createExpressErrorHandler,
+  AppError,
+} from "@deepracticex/error-handling";
 
 app.use(
   createExpressErrorHandler({
     logger: (message, context) => {
       if (context?.statusCode && context.statusCode >= 500) {
-        logError(message, context)
+        logError(message, context);
       } else {
-        info(message, context)
+        info(message, context);
       }
     },
-  })
-)
+  }),
+);
 ```
 
 ## TypeScript Support
@@ -305,7 +322,7 @@ app.use(
 Full TypeScript support with proper type inference:
 
 ```typescript
-import type { AppError, Result } from '@deepracticex/error-handling'
+import type { AppError, Result } from "@deepracticex/error-handling";
 
 // Result type automatically infers success/error types
 async function getUser(id: string): Promise<Result<User, AppError>> {

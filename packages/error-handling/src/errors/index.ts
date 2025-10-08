@@ -1,4 +1,4 @@
-export { AppError } from './base.js'
+export { AppError } from "./base.js";
 export {
   ValidationError,
   UnauthorizedError,
@@ -9,10 +9,10 @@ export {
   RateLimitError,
   InternalError,
   ServiceUnavailableError,
-} from './http.js'
+} from "./http.js";
 export {
   DatabaseError,
   ExternalServiceError,
   ConfigurationError,
   BusinessRuleError,
-} from './business.js'
+} from "./business.js";

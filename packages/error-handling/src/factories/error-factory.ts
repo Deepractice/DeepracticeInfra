@@ -17,7 +17,7 @@ import {
   ExternalServiceError,
   ConfigurationError,
   BusinessRuleError,
-} from '../errors/index.js'
+} from "../errors/index.js";
 
 /**
  * Factory functions for creating errors
@@ -30,7 +30,7 @@ export const errors = {
    * @param fields - Optional field-specific validation errors
    */
   validation: (message: string, fields?: Record<string, string>) => {
-    return new ValidationError(message, fields)
+    return new ValidationError(message, fields);
   },
 
   /**
@@ -38,7 +38,7 @@ export const errors = {
    * @param message - Optional custom message
    */
   unauthorized: (message?: string) => {
-    return new UnauthorizedError(message)
+    return new UnauthorizedError(message);
   },
 
   /**
@@ -46,7 +46,7 @@ export const errors = {
    * @param message - Optional custom message
    */
   forbidden: (message?: string) => {
-    return new ForbiddenError(message)
+    return new ForbiddenError(message);
   },
 
   /**
@@ -55,7 +55,7 @@ export const errors = {
    * @param identifier - Optional resource identifier
    */
   notFound: (resource: string, identifier?: string) => {
-    return new NotFoundError(resource, identifier)
+    return new NotFoundError(resource, identifier);
   },
 
   /**
@@ -64,7 +64,7 @@ export const errors = {
    * @param meta - Optional additional context
    */
   conflict: (message: string, meta?: Record<string, unknown>) => {
-    return new ConflictError(message, meta)
+    return new ConflictError(message, meta);
   },
 
   /**
@@ -73,7 +73,7 @@ export const errors = {
    * @param meta - Optional additional context
    */
   unprocessable: (message: string, meta?: Record<string, unknown>) => {
-    return new UnprocessableEntityError(message, meta)
+    return new UnprocessableEntityError(message, meta);
   },
 
   /**
@@ -82,7 +82,7 @@ export const errors = {
    * @param retryAfter - Optional retry after seconds
    */
   rateLimit: (message?: string, retryAfter?: number) => {
-    return new RateLimitError(message, retryAfter)
+    return new RateLimitError(message, retryAfter);
   },
 
   /**
@@ -91,7 +91,7 @@ export const errors = {
    * @param originalError - Optional original error that caused this
    */
   internal: (message: string, originalError?: unknown) => {
-    return new InternalError(message, originalError)
+    return new InternalError(message, originalError);
   },
 
   /**
@@ -100,7 +100,7 @@ export const errors = {
    * @param retryAfter - Optional retry after seconds
    */
   unavailable: (message?: string, retryAfter?: number) => {
-    return new ServiceUnavailableError(message, retryAfter)
+    return new ServiceUnavailableError(message, retryAfter);
   },
 
   /**
@@ -110,7 +110,7 @@ export const errors = {
    * @param originalError - Optional original error
    */
   database: (message: string, operation?: string, originalError?: unknown) => {
-    return new DatabaseError(message, operation, originalError)
+    return new DatabaseError(message, operation, originalError);
   },
 
   /**
@@ -119,8 +119,12 @@ export const errors = {
    * @param message - Error message
    * @param originalError - Optional original error
    */
-  externalService: (service: string, message: string, originalError?: unknown) => {
-    return new ExternalServiceError(service, message, originalError)
+  externalService: (
+    service: string,
+    message: string,
+    originalError?: unknown,
+  ) => {
+    return new ExternalServiceError(service, message, originalError);
   },
 
   /**
@@ -129,7 +133,7 @@ export const errors = {
    * @param configKey - Optional configuration key
    */
   configuration: (message: string, configKey?: string) => {
-    return new ConfigurationError(message, configKey)
+    return new ConfigurationError(message, configKey);
   },
 
   /**
@@ -138,7 +142,11 @@ export const errors = {
    * @param rule - Optional rule identifier
    * @param meta - Optional additional context
    */
-  businessRule: (message: string, rule?: string, meta?: Record<string, unknown>) => {
-    return new BusinessRuleError(message, rule, meta)
+  businessRule: (
+    message: string,
+    rule?: string,
+    meta?: Record<string, unknown>,
+  ) => {
+    return new BusinessRuleError(message, rule, meta);
   },
-} as const
+} as const;

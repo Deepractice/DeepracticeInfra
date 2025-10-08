@@ -23,30 +23,30 @@ pnpm add @deepracticex/logger
 ### Basic Usage
 
 ```typescript
-import { info, warn, error, debug } from '@deepracticex/logger'
+import { info, warn, error, debug } from "@deepracticex/logger";
 
-info('Server started')
-warn('Low memory')
-error('Connection failed')
-debug('Debug info')
+info("Server started");
+warn("Low memory");
+error("Connection failed");
+debug("Debug info");
 ```
 
 ### Custom Logger Instance
 
 ```typescript
-import { createLogger } from '@deepracticex/logger'
+import { createLogger } from "@deepracticex/logger";
 
 const logger = createLogger({
-  level: 'debug',
-  name: '@deepracticex/account-service',
+  level: "debug",
+  name: "@deepracticex/account-service",
   console: true,
   file: {
-    dirname: '/var/log/myapp',
+    dirname: "/var/log/myapp",
   },
   colors: true,
-})
+});
 
-logger.info('Custom logger initialized')
+logger.info("Custom logger initialized");
 ```
 
 ## Configuration
@@ -55,15 +55,15 @@ logger.info('Custom logger initialized')
 
 ```typescript
 interface LoggerConfig {
-  level?: string // 'fatal' | 'error' | 'warn' | 'info' | 'debug' | 'trace'
-  console?: boolean // Enable console output (default: true)
+  level?: string; // 'fatal' | 'error' | 'warn' | 'info' | 'debug' | 'trace'
+  console?: boolean; // Enable console output (default: true)
   file?:
     | boolean
     | {
-        dirname?: string // Log directory (default: ~/.deepractice/logs)
-      }
-  colors?: boolean // Enable colors (default: true, auto-disabled in MCP stdio)
-  name?: string // Package/service name (default: 'app')
+        dirname?: string; // Log directory (default: ~/.deepractice/logs)
+      };
+  colors?: boolean; // Enable colors (default: true, auto-disabled in MCP stdio)
+  name?: string; // Package/service name (default: 'app')
 }
 ```
 

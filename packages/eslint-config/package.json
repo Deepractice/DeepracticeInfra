@@ -7,8 +7,15 @@
   "exports": {
     ".": "./index.js"
   },
-  "files": ["index.js", "README.md"],
-  "keywords": ["eslint", "config", "deepractice"],
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "keywords": [
+    "eslint",
+    "config",
+    "deepractice"
+  ],
   "author": "Deepractice",
   "license": "MIT",
   "peerDependencies": {

@@ -11,7 +11,7 @@
  */
 
 // Core error classes
-export { AppError } from './errors/base.js'
+export { AppError } from "./errors/base.js";
 export {
   // HTTP errors
   ValidationError,
@@ -28,17 +28,17 @@ export {
   ExternalServiceError,
   ConfigurationError,
   BusinessRuleError,
-} from './errors/index.js'
+} from "./errors/index.js";
 
 // Error factory
-export { errors } from './factories/index.js'
+export { errors } from "./factories/index.js";
 
 // Middleware
 export {
   createHonoErrorHandler,
   createExpressErrorHandler,
   type ErrorHandlerOptions,
-} from './middleware/index.js'
+} from "./middleware/index.js";
 
 // Result type (optional functional approach)
 export {
@@ -53,4 +53,4 @@ export {
   type Result,
   type Ok,
   type Err,
-} from './types.js'
+} from "./types.js";

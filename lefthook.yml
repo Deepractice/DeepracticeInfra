@@ -1,42 +1,28 @@
-# EXAMPLE USAGE:
-#
-#   Refer for explanation to following link:
-#   https://lefthook.dev/configuration/
-#
-# pre-push:
-#   jobs:
-#     - name: packages audit
-#       tags:
-#         - frontend
-#         - security
-#       run: yarn audit
-#
-#     - name: gems audit
-#       tags:
-#         - backend
-#         - security
-#       run: bundle audit
-#
-# pre-commit:
-#   parallel: true
-#   jobs:
-#     - run: yarn eslint {staged_files}
-#       glob: "*.{js,ts,jsx,tsx}"
-#
-#     - name: rubocop
-#       glob: "*.rb"
-#       exclude:
-#         - config/application.rb
-#         - config/routes.rb
-#       run: bundle exec rubocop --force-exclusion {all_files}
-#
-#     - name: govet
-#       files: git ls-files -m
-#       glob: "*.go"
-#       run: go vet {files}
-#
-#     - script: "hello.js"
-#       runner: node
-#
-#     - script: "hello.go"
-#       runner: go run
+# Lefthook configuration for DeepracticeInfra
+# https://lefthook.dev/configuration/
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{ts,js,json,md,yml,yaml}"
+      run: pnpm format:check {staged_files}
+      stage_fixed: true
+
+    lint:
+      glob: "*.{ts,js}"
+      run: pnpm lint
+
+pre-push:
+  parallel: true
+  commands:
+    typecheck:
+      run: pnpm typecheck
+
+    # Optional: skip tests and build in pre-push if too slow
+    # CI will catch these issues anyway
+    # test:
+    #   run: pnpm test
+    #
+    # build:
+    #   run: pnpm build

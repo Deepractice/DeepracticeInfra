@@ -3,14 +3,14 @@
  * Provides convenient error types for common HTTP scenarios
  */
 
-import { AppError } from './base.js'
+import { AppError } from "./base.js";
 
 /**
  * 400 Bad Request - Client sent invalid data
  */
 export class ValidationError extends AppError {
   constructor(message: string, fields?: Record<string, string>) {
-    super('VALIDATION_ERROR', message, 400, fields ? { fields } : undefined)
+    super("VALIDATION_ERROR", message, 400, fields ? { fields } : undefined);
   }
 }
 
@@ -18,8 +18,8 @@ export class ValidationError extends AppError {
  * 401 Unauthorized - Authentication required
  */
 export class UnauthorizedError extends AppError {
-  constructor(message = 'Authentication required') {
-    super('UNAUTHORIZED', message, 401)
+  constructor(message = "Authentication required") {
+    super("UNAUTHORIZED", message, 401);
   }
 }
 
@@ -27,8 +27,8 @@ export class UnauthorizedError extends AppError {
  * 403 Forbidden - Authenticated but not authorized
  */
 export class ForbiddenError extends AppError {
-  constructor(message = 'Access forbidden') {
-    super('FORBIDDEN', message, 403)
+  constructor(message = "Access forbidden") {
+    super("FORBIDDEN", message, 403);
   }
 }
 
@@ -39,8 +39,8 @@ export class NotFoundError extends AppError {
   constructor(resource: string, identifier?: string) {
     const message = identifier
       ? `${resource} with identifier '${identifier}' not found`
-      : `${resource} not found`
-    super('NOT_FOUND', message, 404, { resource, identifier })
+      : `${resource} not found`;
+    super("NOT_FOUND", message, 404, { resource, identifier });
   }
 }
 
@@ -49,7 +49,7 @@ export class NotFoundError extends AppError {
  */
 export class ConflictError extends AppError {
   constructor(message: string, meta?: Record<string, unknown>) {
-    super('CONFLICT', message, 409, meta)
+    super("CONFLICT", message, 409, meta);
   }
 }
 
@@ -58,7 +58,7 @@ export class ConflictError extends AppError {
  */
 export class UnprocessableEntityError extends AppError {
   constructor(message: string, meta?: Record<string, unknown>) {
-    super('UNPROCESSABLE_ENTITY', message, 422, meta)
+    super("UNPROCESSABLE_ENTITY", message, 422, meta);
   }
 }
 
@@ -66,8 +66,13 @@ export class UnprocessableEntityError extends AppError {
  * 429 Too Many Requests - Rate limit exceeded
  */
 export class RateLimitError extends AppError {
-  constructor(message = 'Rate limit exceeded', retryAfter?: number) {
-    super('RATE_LIMIT_EXCEEDED', message, 429, retryAfter ? { retryAfter } : undefined)
+  constructor(message = "Rate limit exceeded", retryAfter?: number) {
+    super(
+      "RATE_LIMIT_EXCEEDED",
+      message,
+      429,
+      retryAfter ? { retryAfter } : undefined,
+    );
   }
 }
 
@@ -79,10 +84,12 @@ export class InternalError extends AppError {
     const meta = originalError
       ? {
           originalError:
-            originalError instanceof Error ? originalError.message : String(originalError),
+            originalError instanceof Error
+              ? originalError.message
+              : String(originalError),
         }
-      : undefined
-    super('INTERNAL_ERROR', message, 500, meta)
+      : undefined;
+    super("INTERNAL_ERROR", message, 500, meta);
   }
 }
 
@@ -90,7 +97,15 @@ export class InternalError extends AppError {
  * 503 Service Unavailable - Service temporarily unavailable
  */
 export class ServiceUnavailableError extends AppError {
-  constructor(message = 'Service temporarily unavailable', retryAfter?: number) {
-    super('SERVICE_UNAVAILABLE', message, 503, retryAfter ? { retryAfter } : undefined)
+  constructor(
+    message = "Service temporarily unavailable",
+    retryAfter?: number,
+  ) {
+    super(
+      "SERVICE_UNAVAILABLE",
+      message,
+      503,
+      retryAfter ? { retryAfter } : undefined,
+    );
   }
 }

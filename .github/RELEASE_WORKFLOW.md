@@ -43,10 +43,10 @@ Issue → Development → PR
 
 Configure the following secrets in GitHub repository settings (`Settings → Secrets and variables → Actions`):
 
-| Secret Name | Description | How to Generate | Required For |
-|-------------|-------------|-----------------|--------------|
-| `NPM_TOKEN` | npm automation token for publishing packages | 1. Login to [npmjs.com](https://www.npmjs.com)<br>2. Go to Access Tokens<br>3. Generate New Token → Automation<br>4. Copy token | Publish Workflow |
-| `GH_PAT` | GitHub Personal Access Token for triggering workflows | 1. GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens<br>2. Generate new token<br>3. Repository access: Only select repositories → DeepracticeInfra<br>4. Permissions: Contents (Read/Write), Pull requests (Read/Write)<br>5. Copy token | Version & Release Workflows |
+| Secret Name | Description                                           | How to Generate                                                                                                                                                                                                                                                            | Required For                |
+| ----------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `NPM_TOKEN` | npm automation token for publishing packages          | 1. Login to [npmjs.com](https://www.npmjs.com)<br>2. Go to Access Tokens<br>3. Generate New Token → Automation<br>4. Copy token                                                                                                                                            | Publish Workflow            |
+| `GH_PAT`    | GitHub Personal Access Token for triggering workflows | 1. GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens<br>2. Generate new token<br>3. Repository access: Only select repositories → DeepracticeInfra<br>4. Permissions: Contents (Read/Write), Pull requests (Read/Write)<br>5. Copy token | Version & Release Workflows |
 
 ### Required Permissions
 
@@ -75,11 +75,11 @@ Ensure the following permissions are configured:
 
 The workflows use the following environment variables (automatically provided by GitHub Actions):
 
-| Variable | Source | Usage |
-|----------|--------|-------|
-| `GITHUB_TOKEN` | Set from `GH_PAT` secret | Creating PRs, releases, tags (must use PAT to trigger workflows) |
-| `NODE_AUTH_TOKEN` | Set from `NPM_TOKEN` secret | npm authentication |
-| `NPM_CONFIG_PROVENANCE` | Hardcoded `true` | Enable npm provenance |
+| Variable                | Source                      | Usage                                                            |
+| ----------------------- | --------------------------- | ---------------------------------------------------------------- |
+| `GITHUB_TOKEN`          | Set from `GH_PAT` secret    | Creating PRs, releases, tags (must use PAT to trigger workflows) |
+| `NODE_AUTH_TOKEN`       | Set from `NPM_TOKEN` secret | npm authentication                                               |
+| `NPM_CONFIG_PROVENANCE` | Hardcoded `true`            | Enable npm provenance                                            |
 
 **Why GH_PAT instead of auto-generated GITHUB_TOKEN?**
 

@@ -34,7 +34,11 @@
       "optional": true
     }
   },
-  "files": ["dist", "package.json", "README.md"],
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
   "keywords": [
     "error-handling",
     "errors",

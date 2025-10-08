@@ -7,8 +7,16 @@
   "exports": {
     ".": "./index.json"
   },
-  "files": ["index.json", ".prettierignore", "README.md"],
-  "keywords": ["prettier", "config", "deepractice"],
+  "files": [
+    "index.json",
+    ".prettierignore",
+    "README.md"
+  ],
+  "keywords": [
+    "prettier",
+    "config",
+    "deepractice"
+  ],
   "author": "Deepractice",
   "license": "MIT",
   "peerDependencies": {

@@ -9,8 +9,16 @@
     "./base": "./base.json",
     "./base.json": "./base.json"
   },
-  "files": ["*.json", "README.md"],
-  "keywords": ["typescript", "tsconfig", "config", "deepractice"],
+  "files": [
+    "*.json",
+    "README.md"
+  ],
+  "keywords": [
+    "typescript",
+    "tsconfig",
+    "config",
+    "deepractice"
+  ],
   "author": "Deepractice",
   "license": "MIT",
   "peerDependencies": {

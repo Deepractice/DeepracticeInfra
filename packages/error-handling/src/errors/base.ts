@@ -1,9 +1,9 @@
 // V8 stack trace API (Node.js specific)
 interface NodeError {
-  captureStackTrace(targetObject: object, constructorOpt?: Function): void
+  captureStackTrace(targetObject: object, constructorOpt?: Function): void;
 }
 
-const ErrorWithStack = Error as unknown as NodeError & ErrorConstructor
+const ErrorWithStack = Error as unknown as NodeError & ErrorConstructor;
 
 /**
  * Base error class for all application errors
@@ -21,14 +21,14 @@ export class AppError extends Error {
     public readonly code: string,
     message: string,
     public readonly statusCode: number = 500,
-    public readonly meta?: Record<string, unknown>
+    public readonly meta?: Record<string, unknown>,
   ) {
-    super(message)
-    this.name = this.constructor.name
+    super(message);
+    this.name = this.constructor.name;
 
     // Maintains proper stack trace for where error was thrown
-    if (typeof ErrorWithStack.captureStackTrace === 'function') {
-      ErrorWithStack.captureStackTrace(this, this.constructor)
+    if (typeof ErrorWithStack.captureStackTrace === "function") {
+      ErrorWithStack.captureStackTrace(this, this.constructor);
     }
   }
 
@@ -43,13 +43,13 @@ export class AppError extends Error {
       message: this.message,
       statusCode: this.statusCode,
       ...(this.meta && { meta: this.meta }),
-    }
+    };
   }
 
   /**
    * Check if an error is an AppError instance
    */
   static isAppError(error: unknown): error is AppError {
-    return error instanceof AppError
+    return error instanceof AppError;
   }
 }

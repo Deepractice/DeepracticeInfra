@@ -2,27 +2,27 @@
  * Cucumber hooks for logger tests
  */
 
-import { Before, After, BeforeAll, AfterAll, Status } from '@cucumber/cucumber'
-import type { LoggerWorld } from './world.js'
+import { Before, After, BeforeAll, AfterAll, Status } from "@cucumber/cucumber";
+import type { LoggerWorld } from "./world.js";
 
 BeforeAll(async function () {
-  console.log('🥒 Starting logger tests')
-})
+  console.log("🥒 Starting logger tests");
+});
 
 AfterAll(async function () {
-  console.log('✅ Logger tests completed')
-})
+  console.log("✅ Logger tests completed");
+});
 
 Before(async function (this: LoggerWorld) {
-  this.clear()
-})
+  this.clear();
+});
 
 After(async function (this: LoggerWorld, { result, pickle }) {
   if (result?.status === Status.FAILED) {
-    console.error(`❌ Scenario failed: ${pickle.name}`)
+    console.error(`❌ Scenario failed: ${pickle.name}`);
     if (result.message) {
-      console.error(result.message)
+      console.error(result.message);
     }
   }
-  this.clear()
-})
+  this.clear();
+});
