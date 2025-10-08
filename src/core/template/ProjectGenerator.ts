@@ -53,13 +53,7 @@ export class ProjectGenerator {
         lint: "turbo lint",
       },
       devDependencies: {
-        "@deepracticex/eslint-config": VERSIONS.eslintConfig,
-        "@deepracticex/prettier-config": VERSIONS.prettierConfig,
-        "@deepracticex/typescript-config": VERSIONS.typescriptConfig,
-        "@deepracticex/tsup-config": VERSIONS.tsupConfig,
-        "@deepracticex/vitest-config": VERSIONS.vitestConfig,
         "@deepracticex/cucumber-config": VERSIONS.cucumberConfig,
-        "@deepracticex/commitlint-config": VERSIONS.commitlintConfig,
         turbo: VERSIONS.turbo,
         typescript: VERSIONS.typescript,
         prettier: VERSIONS.prettier,
@@ -81,29 +75,86 @@ export class ProjectGenerator {
   }
 
   private async copyStaticTemplates(targetDir: string): Promise<void> {
-    // Copy .gitignore
-    const gitignoreSrc = path.join(this.templateDir, "_gitignore");
-    const gitignoreDest = path.join(targetDir, ".gitignore");
-    if (await fs.pathExists(gitignoreSrc)) {
-      await fs.copy(gitignoreSrc, gitignoreDest);
-    }
+    // Generate .gitignore
+    const gitignore = `# Dependencies
+node_modules/
+.pnpm-store/
 
-    // Copy pnpm-workspace.yaml
-    const workspaceSrc = path.join(this.templateDir, "pnpm-workspace.yaml");
-    const workspaceDest = path.join(targetDir, "pnpm-workspace.yaml");
-    if (await fs.pathExists(workspaceSrc)) {
-      await fs.copy(workspaceSrc, workspaceDest);
-    }
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.turbo/
+.cache/
+`;
+    await fs.writeFile(path.join(targetDir, ".gitignore"), gitignore);
+
+    // Generate pnpm-workspace.yaml
+    const workspace = `packages:
+  # Product core - Project business logic
+  - "src/*"
+  # Infrastructure layer - Technical capabilities
+  - "packages/*"
+  # Presentation layer - User interfaces
+  - "apps/*"
+  # Services layer - Microservices
+  - "services/*"
+  # Development tools
+  - "tools/*"
+  # Exclusions
+  - "!**/test/**"
+  - "!**/tests/**"
+  - "!**/dist/**"
+  - "!**/node_modules/**"
+`;
+    await fs.writeFile(path.join(targetDir, "pnpm-workspace.yaml"), workspace);
   }
 
   private async generateConfigFiles(
     targetDir: string,
     projectName: string,
   ): Promise<void> {
-    // tsconfig.json
+    // tsconfig.json (basic config without deepractice package)
     const tsconfig = {
-      extends: "@deepracticex/typescript-config/base.json",
       compilerOptions: {
+        target: "ES2022",
+        module: "ESNext",
+        moduleResolution: "bundler",
+        lib: ["ES2022"],
+        strict: true,
+        esModuleInterop: true,
+        skipLibCheck: true,
+        resolveJsonModule: true,
         baseUrl: ".",
         paths: {},
       },
@@ -140,7 +191,7 @@ pre-push:
 
     // commitlint.config.js
     const commitlintConfig = `export default {
-  extends: ['@deepracticex/commitlint-config'],
+  extends: ['@commitlint/config-conventional'],
 };
 `;
     await fs.writeFile(
@@ -148,15 +199,13 @@ pre-push:
       commitlintConfig,
     );
 
-    // eslint.config.js
-    const eslintConfig = `import { deepracticeConfig } from '@deepracticex/eslint-config';
-
-export default deepracticeConfig;
+    // eslint.config.js (basic config without deepractice package)
+    const eslintConfig = `export default [];
 `;
     await fs.writeFile(path.join(targetDir, "eslint.config.js"), eslintConfig);
 
-    // prettier.config.js
-    const prettierConfig = `export { default } from '@deepracticex/prettier-config';
+    // prettier.config.js (basic config without deepractice package)
+    const prettierConfig = `export default {};
 `;
     await fs.writeFile(
       path.join(targetDir, "prettier.config.js"),
@@ -200,8 +249,34 @@ This project uses:
 - **pnpm** for package management
 - **Turbo** for monorepo task orchestration
 - **TypeScript** for type safety
-- **Cucumber** for BDD testing
+- **Cucumber** for BDD testing (use \`cucumber-tsx\` for TypeScript support)
 - **Lefthook** for git hooks
+
+### Testing with Cucumber
+
+This project includes \`@deepracticex/cucumber-config\` which provides the \`cucumber-tsx\` command.
+This wrapper automatically handles TypeScript support and prevents NODE_OPTIONS inheritance issues.
+
+In your package.json:
+\`\`\`json
+{
+  "scripts": {
+    "test": "cucumber-tsx",
+    "test:dev": "cucumber-tsx --profile dev",
+    "test:ci": "cucumber-tsx --profile ci"
+  }
+}
+\`\`\`
+
+Create \`cucumber.cjs\` in your package:
+\`\`\`javascript
+const { createConfig } = require("@deepracticex/cucumber-config");
+
+module.exports = createConfig({
+  paths: ["features/**/*.feature"],
+  import: ["tests/e2e/**/*.steps.ts", "tests/e2e/support/**/*.ts"],
+});
+\`\`\`
 
 ---
 

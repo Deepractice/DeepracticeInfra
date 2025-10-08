@@ -15,9 +15,9 @@ Then(
     const files = dataTable.rawTable.slice(1).map((row) => row[0]!);
 
     for (const file of files) {
-      const filePath = path.join(process.cwd(), file);
+      const filePath = path.join(this.testDir!, file);
       const exists = await fs.pathExists(filePath);
-      expect(exists).to.be.true(`File ${file} should exist`);
+      expect(exists, `File ${file} should exist`).to.be.true;
     }
   },
 );
@@ -34,7 +34,7 @@ Then(
     for (const file of files) {
       const filePath = path.join(this.testDir!, directory, file);
       const exists = await fs.pathExists(filePath);
-      expect(exists).to.be.true(`File ${file} should exist in ${directory}`);
+      expect(exists, `File ${file} should exist in ${directory}`).to.be.true;
     }
   },
 );
@@ -45,9 +45,9 @@ Then(
     const directories = dataTable.rawTable.slice(1).map((row) => row[0]!);
 
     for (const dir of directories) {
-      const dirPath = path.join(process.cwd(), dir);
+      const dirPath = path.join(this.testDir!, dir);
       const exists = await fs.pathExists(dirPath);
-      expect(exists).to.be.true(`Directory ${dir} should exist`);
+      expect(exists, `Directory ${dir} should exist`).to.be.true;
     }
   },
 );
@@ -57,43 +57,43 @@ Then(
   async function (this: ProjectWorld, dirName: string) {
     const dirPath = path.join(this.testDir!, dirName);
     const exists = await fs.pathExists(dirPath);
-    expect(exists).to.be.true(`Directory ${dirName} should exist`);
+    expect(exists, `Directory ${dirName} should exist`).to.be.true;
   },
 );
 
 Then(
   "{string} directory should exist",
   async function (this: ProjectWorld, dirName: string) {
-    const dirPath = path.join(process.cwd(), dirName);
+    const dirPath = path.join(this.testDir!, dirName);
     const exists = await fs.pathExists(dirPath);
-    expect(exists).to.be.true(`Directory ${dirName} should exist`);
+    expect(exists, `Directory ${dirName} should exist`).to.be.true;
   },
 );
 
 Then(
   "{string} directory should not exist",
   async function (this: ProjectWorld, dirName: string) {
-    const dirPath = path.join(process.cwd(), dirName);
+    const dirPath = path.join(this.testDir!, dirName);
     const exists = await fs.pathExists(dirPath);
-    expect(exists).to.be.false(`Directory ${dirName} should not exist`);
+    expect(exists, `Directory ${dirName} should not exist`).to.be.false;
   },
 );
 
 Then(
   "{string} should exist",
   async function (this: ProjectWorld, fileName: string) {
-    const filePath = path.join(process.cwd(), fileName);
+    const filePath = path.join(this.testDir!, fileName);
     const exists = await fs.pathExists(filePath);
-    expect(exists).to.be.true(`File ${fileName} should exist`);
+    expect(exists, `File ${fileName} should exist`).to.be.true;
   },
 );
 
 Then(
   "{string} should not exist",
   async function (this: ProjectWorld, fileName: string) {
-    const filePath = path.join(process.cwd(), fileName);
+    const filePath = path.join(this.testDir!, fileName);
     const exists = await fs.pathExists(filePath);
-    expect(exists).to.be.false(`File ${fileName} should not exist`);
+    expect(exists, `File ${fileName} should not exist`).to.be.false;
   },
 );
 
@@ -105,7 +105,7 @@ Then(
     fileName: string,
     expectedContent: string,
   ) {
-    const filePath = path.join(process.cwd(), fileName);
+    const filePath = path.join(this.testDir!, fileName);
     const content = await fs.readFile(filePath, "utf-8");
     expect(content).to.include(
       expectedContent,
@@ -134,9 +134,9 @@ Then(
 Then(
   "file {string} should exist",
   async function (this: ProjectWorld, fileName: string) {
-    const filePath = path.join(process.cwd(), fileName);
+    const filePath = path.join(this.testDir!, fileName);
     const exists = await fs.pathExists(filePath);
-    expect(exists).to.be.true(`File ${fileName} should exist`);
+    expect(exists, `File ${fileName} should exist`).to.be.true;
   },
 );
 
@@ -144,9 +144,9 @@ Then(
 Then(
   "git repository should be initialized",
   async function (this: ProjectWorld) {
-    const gitDir = path.join(process.cwd(), ".git");
+    const gitDir = path.join(this.testDir!, ".git");
     const exists = await fs.pathExists(gitDir);
-    expect(exists).to.be.true("Git repository should be initialized");
+    expect(exists, "Git repository should be initialized").to.be.true;
   },
 );
 
@@ -155,18 +155,17 @@ Then(
   async function (this: ProjectWorld, directory: string) {
     const gitDir = path.join(this.testDir!, directory, ".git");
     const exists = await fs.pathExists(gitDir);
-    expect(exists).to.be.true(
-      `Git repository should be initialized in ${directory}`,
-    );
+    expect(exists, `Git repository should be initialized in ${directory}`).to.be
+      .true;
   },
 );
 
 Then(
   "git repository should not be initialized",
   async function (this: ProjectWorld) {
-    const gitDir = path.join(process.cwd(), ".git");
+    const gitDir = path.join(this.testDir!, ".git");
     const exists = await fs.pathExists(gitDir);
-    expect(exists).to.be.false("Git repository should not be initialized");
+    expect(exists, "Git repository should not be initialized").to.be.false;
   },
 );
 
@@ -174,7 +173,7 @@ Then(
   "git repository should have initial commit",
   async function (this: ProjectWorld) {
     const result = await execa("git", ["log", "--oneline"], {
-      cwd: process.cwd(),
+      cwd: this.testDir!,
       reject: false,
     });
 
@@ -187,7 +186,7 @@ Then(
   "git commit message should contain {string}",
   async function (this: ProjectWorld, expectedMessage: string) {
     const result = await execa("git", ["log", "-1", "--pretty=%B"], {
-      cwd: process.cwd(),
+      cwd: this.testDir!,
       reject: false,
     });
 
@@ -200,7 +199,7 @@ Then(
 When(
   "I create a test package in {string}",
   async function (this: ProjectWorld, packagePath: string) {
-    const pkgDir = path.join(process.cwd(), packagePath);
+    const pkgDir = path.join(this.testDir!, packagePath);
     await fs.ensureDir(path.join(pkgDir, "src"));
 
     await fs.writeJson(path.join(pkgDir, "package.json"), {
@@ -251,7 +250,7 @@ export default createConfig({ entry: ['src/index.ts'] });`,
 When(
   "I create directory {string}",
   async function (this: ProjectWorld, directory: string) {
-    const dirPath = path.join(process.cwd(), directory);
+    const dirPath = path.join(this.testDir!, directory);
     await fs.ensureDir(dirPath);
   },
 );
@@ -259,7 +258,7 @@ When(
 When(
   "I create {string} with:",
   async function (this: ProjectWorld, filePath: string, content: string) {
-    const fullPath = path.join(process.cwd(), filePath);
+    const fullPath = path.join(this.testDir!, filePath);
     await fs.ensureDir(path.dirname(fullPath));
     await fs.writeFile(fullPath, content);
   },

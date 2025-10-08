@@ -4,11 +4,15 @@
   "description": "Shared Cucumber configuration for Deepractice projects",
   "type": "commonjs",
   "main": "./base.cjs",
+  "bin": {
+    "cucumber-tsx": "./bin/cucumber-tsx.cjs"
+  },
   "exports": {
     ".": "./base.cjs"
   },
   "files": [
     "base.cjs",
+    "bin/cucumber-tsx.cjs",
     "README.md"
   ],
   "keywords": [

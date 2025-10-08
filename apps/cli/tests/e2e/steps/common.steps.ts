@@ -16,7 +16,7 @@ Given(
     const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
     this.testDir = tmpDir.toString();
     this.originalCwd = process.cwd();
-    process.chdir(tmpDir);
+    // Don't change process.cwd() - keep it in project root for module resolution
   },
 );
 
@@ -25,7 +25,7 @@ Given("I am in an empty directory", async function (this: ProjectWorld) {
     const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
     this.testDir = tmpDir.toString();
     this.originalCwd = process.cwd();
-    process.chdir(tmpDir);
+    // Don't change process.cwd() - keep it in project root for module resolution
   }
 
   // Ensure directory is truly empty
@@ -39,7 +39,7 @@ Given("I am in a test directory", async function (this: ProjectWorld) {
   const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
   this.testDir = tmpDir.toString();
   this.originalCwd = process.cwd();
-  process.chdir(tmpDir);
+  // Don't change process.cwd() - keep it in project root for module resolution
 });
 
 Given(
@@ -49,7 +49,7 @@ Given(
       const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
       this.testDir = tmpDir.toString();
       this.originalCwd = process.cwd();
-      process.chdir(tmpDir);
+      // Don't change process.cwd() - keep it in project root for module resolution
     }
 
     // Create a simple package.json to simulate existing project
@@ -75,17 +75,33 @@ When("I run {string}", async function (this: ProjectWorld, command: string) {
   this.lastCommand = command;
 
   try {
-    // Get the CLI binary path
-    const cliPath = path.resolve(__dirname, "../../../dist/cli.js");
-
-    // Parse command and replace "nodespec" with actual CLI path
     const parts = command.split(" ");
-    const args = parts.slice(1); // Remove "nodespec"
 
-    this.lastResult = await execa("node", [cliPath, ...args], {
-      cwd: process.cwd(),
-      reject: false,
-    });
+    // Check if this is a nodespec command or a shell command
+    if (parts[0] === "nodespec") {
+      // Execute nodespec CLI command
+      const projectRoot = this.originalCwd || process.cwd();
+      const cliPath = path.resolve(projectRoot, "dist/cli.js");
+      const args = parts.slice(1); // Remove "nodespec"
+
+      this.lastResult = await execa("node", [cliPath, ...args], {
+        cwd: this.testDir || process.cwd(),
+        reject: false,
+        env: {
+          ...process.env,
+          NODE_OPTIONS: undefined, // Remove NODE_OPTIONS to avoid tsx being required in test dirs
+        },
+      });
+    } else {
+      // Execute regular shell command
+      const cmd = parts[0]!;
+      const args = parts.slice(1);
+
+      this.lastResult = await execa(cmd, args, {
+        cwd: this.testDir || process.cwd(),
+        reject: false,
+      });
+    }
 
     this.exitCode = this.lastResult.exitCode;
     if (this.lastResult.stdout) {
@@ -94,9 +110,20 @@ When("I run {string}", async function (this: ProjectWorld, command: string) {
     if (this.lastResult.stderr) {
       this.stderr.push(this.lastResult.stderr);
     }
+
+    // Debug logging
+    if (this.exitCode !== 0) {
+      console.error("[DEBUG] Command failed:", command);
+      console.error("[DEBUG] CLI path:", cliPath);
+      console.error("[DEBUG] CWD:", this.testDir || process.cwd());
+      console.error("[DEBUG] Exit code:", this.exitCode);
+      console.error("[DEBUG] STDOUT:", this.lastResult.stdout || "(empty)");
+      console.error("[DEBUG] STDERR:", this.lastResult.stderr || "(empty)");
+    }
   } catch (error) {
     this.lastError = error as Error;
     this.exitCode = 1;
+    console.error("[DEBUG] Exception caught:", error);
   }
 });
 
@@ -134,7 +161,8 @@ When(
   "I navigate to {string}",
   function (this: ProjectWorld, directory: string) {
     const targetDir = path.join(this.testDir!, directory);
-    process.chdir(targetDir);
+    // Update testDir to the new directory instead of changing process.cwd()
+    this.testDir = targetDir;
   },
 );
 
