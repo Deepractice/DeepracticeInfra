@@ -8,7 +8,7 @@ interface AddOptions {}
 
 export async function addAction(
   appName: string,
-  options: AddOptions,
+  _options: AddOptions,
 ): Promise<void> {
   const spinner = ora();
 

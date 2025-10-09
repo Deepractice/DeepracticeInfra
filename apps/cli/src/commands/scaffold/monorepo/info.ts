@@ -155,7 +155,7 @@ async function getWorkspacePatterns(monorepoRoot: string): Promise<string[]> {
     const packagesMatch = content.match(
       /packages:\s*\n((?:\s*-\s*"[^"]+"\s*\n)+)/,
     );
-    if (packagesMatch) {
+    if (packagesMatch && packagesMatch[1]) {
       const patterns = packagesMatch[1]
         .split("\n")
         .filter((line) => line.trim())
