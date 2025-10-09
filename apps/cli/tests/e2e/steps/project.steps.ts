@@ -217,6 +217,7 @@ When(
         "@deepracticex/typescript-config": "latest",
         tsup: "^8.0.0",
         typescript: "^5.0.0",
+        vitest: "^2.0.0",
       },
     });
 

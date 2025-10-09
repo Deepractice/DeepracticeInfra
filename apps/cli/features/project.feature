@@ -51,6 +51,7 @@ Feature: Project Management
 
     # Verify the project structure is valid for building
     When I create a test package in "packages/test-lib"
+    And I run "pnpm install"
     And I run "pnpm build" in "packages/test-lib"
     Then the command should succeed
 
