@@ -10,6 +10,11 @@ export interface ErrorHandlingWorld extends World {
   error?: AppError;
   errorFactory?: any;
   errorJson?: any;
+  validationFields?: Record<string, string>;
+
+  // Result context
+  result?: any;
+  userInput?: any;
 
   // Generic context
   context: Record<string, any>;
@@ -25,6 +30,9 @@ class CustomWorld extends World implements ErrorHandlingWorld {
   error?: AppError;
   errorFactory?: any;
   errorJson?: any;
+  validationFields?: Record<string, string>;
+  result?: any;
+  userInput?: any;
 
   constructor(options: IWorldOptions) {
     super(options);
@@ -44,6 +52,9 @@ class CustomWorld extends World implements ErrorHandlingWorld {
     this.error = undefined;
     this.errorFactory = undefined;
     this.errorJson = undefined;
+    this.validationFields = undefined;
+    this.result = undefined;
+    this.userInput = undefined;
   }
 }
 

@@ -2,7 +2,7 @@
  * Step definitions for Result pattern
  */
 
-import { Given, When, Then } from "@cucumber/cucumber";
+import { Given, When, Then, DataTable } from "@cucumber/cucumber";
 import { expect } from "chai";
 import {
   ok,
@@ -44,6 +44,21 @@ Given(
   "I have an err result with a NotFoundError",
   function (this: ErrorHandlingWorld) {
     this.set("result", err(errors.notFound("Resource")));
+  },
+);
+
+Given(
+  "I have user input data:",
+  function (this: ErrorHandlingWorld, dataTable: DataTable) {
+    const data: Record<string, string> = {};
+    dataTable.hashes().forEach((row) => {
+      const field = row.field;
+      const value = row.value;
+      if (field && value) {
+        data[field] = value;
+      }
+    });
+    this.userInput = data;
   },
 );
 
@@ -120,6 +135,43 @@ When(
     );
   },
 );
+
+When(
+  "I validate the input using Result pattern",
+  function (this: ErrorHandlingWorld) {
+    const input = this.userInput;
+
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const age = Number(input.age);
+
+    const validationErrors: Record<string, string> = {};
+
+    if (!emailRegex.test(input.email)) {
+      validationErrors.email = "must be valid email";
+    }
+
+    if (age < 18) {
+      validationErrors.age = "must be at least 18";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      this.result = err(
+        errors.validation("Invalid user data", validationErrors),
+      );
+    } else {
+      this.result = ok(input);
+    }
+  },
+);
+
+When("I process the validated data", function (this: ErrorHandlingWorld) {
+  this.result = map(this.result, (data: any) => ({
+    ...data,
+    processed: true,
+    timestamp: new Date().toISOString(),
+  }));
+});
 
 // Then steps
 Then(
@@ -213,7 +265,7 @@ Then(
 );
 
 Then("the result should be err", function (this: ErrorHandlingWorld) {
-  const result = this.get("mappedResult");
+  const result = this.result || this.get("mappedResult");
   expect(result.ok).to.be.false;
 });
 
@@ -223,6 +275,39 @@ Then(
     const result = this.get("mappedResult");
     if (!result.ok) {
       expect(result.error.code).to.equal("NOT_FOUND");
+    }
+  },
+);
+
+Then("the final result should be ok", function (this: ErrorHandlingWorld) {
+  expect(this.result.ok).to.be.true;
+});
+
+Then(
+  "the result should contain processed user data",
+  function (this: ErrorHandlingWorld) {
+    if (this.result.ok) {
+      expect(this.result.value).to.have.property("processed", true);
+      expect(this.result.value).to.have.property("timestamp");
+    }
+  },
+);
+
+Then(
+  "the error should be a ValidationError",
+  function (this: ErrorHandlingWorld) {
+    if (!this.result.ok) {
+      expect(this.result.error.code).to.equal("VALIDATION_ERROR");
+    }
+  },
+);
+
+Then(
+  "the error should contain field errors",
+  function (this: ErrorHandlingWorld) {
+    if (!this.result.ok) {
+      expect(this.result.error.meta).to.have.property("fields");
+      expect(this.result.error.meta.fields).to.be.an("object");
     }
   },
 );

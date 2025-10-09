@@ -87,6 +87,6 @@ Feature: Error Factory
       And I serialize the error to JSON
       Then the JSON should have property "name" with value "NotFoundError"
       And the JSON should have property "code" with value "NOT_FOUND"
-      And the JSON should have property "statusCode" with value "404"
+      And the JSON should have "statusCode" equal to 404
       And the JSON should have property "message"
       And the JSON should have property "meta"
