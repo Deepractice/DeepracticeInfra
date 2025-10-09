@@ -177,6 +177,9 @@ Given(
       json.bin = {
         [json.name]: "./dist/non-existent.js",
       };
+      // Create dist directory so validator will check the bin file
+      const packageDir = path.dirname(fullPath);
+      await fs.ensureDir(path.join(packageDir, "dist"));
     }
 
     await fs.writeJson(fullPath, json, { spaces: 2 });

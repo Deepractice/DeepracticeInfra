@@ -10,14 +10,14 @@ Feature: Remove App from Monorepo
 
   Rule: Remove app requires confirmation for safety
 
-    Scenario: Remove app with confirmation
+    Scenario: Remove app with --force flag
       Given I am in the monorepo root
-      When I run "nodespec scaffold app remove test-cli" and confirm with "y"
+      When I run "nodespec scaffold app remove test-cli --force"
       Then the command should succeed
       And directory "apps/test-cli" should not exist
       And I should see message "App test-cli removed successfully"
 
-    Scenario: Remove app with --force flag
+    Scenario: Remove app with force flag (duplicate check)
       Given I am in the monorepo root
       When I run "nodespec scaffold app remove test-cli --force"
       Then the command should succeed

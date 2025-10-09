@@ -12,7 +12,12 @@ import type { ScaffoldWorld } from "../support/world";
 Given(
   "service {string} already exists in {string}",
   async function (this: ScaffoldWorld, serviceName: string, location: string) {
-    const serviceDir = path.join(this.testDir!, location, serviceName);
+    // Handle both formats:
+    // - "service 'test-api' exists in 'services/'" - location is parent dir
+    // - "service '@myorg/auth-api' exists in 'services/auth-api'" - location is full path
+    const serviceDir = location.endsWith("/")
+      ? path.join(this.testDir!, location, extractDirName(serviceName))
+      : path.join(this.testDir!, location);
     await fs.ensureDir(path.join(serviceDir, "src"));
     await fs.ensureDir(path.join(serviceDir, "src/routes"));
     await fs.ensureDir(path.join(serviceDir, "src/middleware"));
@@ -60,8 +65,12 @@ server.get('/health', (req, res) => {
 Given(
   "service {string} exists in {string}",
   async function (this: ScaffoldWorld, serviceName: string, location: string) {
-    // Alias for "service already exists" - minimal service structure
-    const serviceDir = path.join(this.testDir!, location, serviceName);
+    // Handle both formats:
+    // - "service 'test-api' exists in 'services/'" - location is parent dir
+    // - "service '@myorg/auth-api' exists in 'services/auth-api'" - location is full path
+    const serviceDir = location.endsWith("/")
+      ? path.join(this.testDir!, location, extractDirName(serviceName))
+      : path.join(this.testDir!, location);
     await fs.ensureDir(path.join(serviceDir, "src"));
 
     await fs.writeJson(path.join(serviceDir, "package.json"), {
@@ -80,7 +89,12 @@ Given(
 Given(
   "service {string} exists in {string} with valid structure",
   async function (this: ScaffoldWorld, serviceName: string, location: string) {
-    const serviceDir = path.join(this.testDir!, location, serviceName);
+    // Handle both formats:
+    // - "service 'test-api' exists in 'services/'" - location is parent dir
+    // - "service '@myorg/auth-api' exists in 'services/auth-api'" - location is full path
+    const serviceDir = location.endsWith("/")
+      ? path.join(this.testDir!, location, extractDirName(serviceName))
+      : path.join(this.testDir!, location);
     await fs.ensureDir(path.join(serviceDir, "src"));
     await fs.ensureDir(path.join(serviceDir, "src/routes"));
     await fs.ensureDir(path.join(serviceDir, "src/middleware"));
@@ -270,3 +284,15 @@ Then(
       .be.true;
   },
 );
+
+/**
+ * Extract directory name from service name
+ * For scoped services like @myorg/auth-api, returns auth-api
+ */
+function extractDirName(name: string): string {
+  if (name.startsWith("@")) {
+    const parts = name.split("/");
+    return parts.length > 1 ? parts[1]! : parts[0]!.slice(1);
+  }
+  return name;
+}

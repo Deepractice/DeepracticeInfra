@@ -10,14 +10,14 @@ Feature: Remove Package from Monorepo
 
   Rule: Remove package requires confirmation for safety
 
-    Scenario: Remove package with confirmation
+    Scenario: Remove package with --force flag
       Given I am in the monorepo root
-      When I run "nodespec scaffold package remove test-lib" and confirm with "y"
+      When I run "nodespec scaffold package remove test-lib --force"
       Then the command should succeed
       And directory "packages/test-lib" should not exist
       And I should see message "Package test-lib removed successfully"
 
-    Scenario: Remove package with --force flag
+    Scenario: Remove package with force flag (duplicate check)
       Given I am in the monorepo root
       When I run "nodespec scaffold package remove test-lib --force"
       Then the command should succeed

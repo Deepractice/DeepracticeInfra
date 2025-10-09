@@ -54,9 +54,11 @@ Then(
 
     // Check for strict ESLint configuration
     expect(json).to.have.property("extends");
-    expect(content).to.include(
-      "strict",
-      "ESLint config should contain strict rules",
+    expect(json).to.have.property("rules");
+    expect(json.rules).to.have.property("no-console", "error");
+    expect(json.rules).to.have.property(
+      "@typescript-eslint/no-explicit-any",
+      "error",
     );
   },
 );
@@ -70,10 +72,7 @@ Then(
 
     // Check for strict formatting configuration
     expect(json).to.be.an("object");
-    expect(content).to.include(
-      "strict",
-      "Prettier config should contain strict rules",
-    );
+    expect(json).to.have.property("trailingComma", "all");
   },
 );
 

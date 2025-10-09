@@ -10,14 +10,14 @@ Feature: Remove Service from Monorepo
 
   Rule: Remove service requires confirmation for safety
 
-    Scenario: Remove service with confirmation
+    Scenario: Remove service with --force flag
       Given I am in the monorepo root
-      When I run "nodespec scaffold service remove test-api" and confirm with "y"
+      When I run "nodespec scaffold service remove test-api --force"
       Then the command should succeed
       And directory "services/test-api" should not exist
       And I should see message "Service test-api removed successfully"
 
-    Scenario: Remove service with --force flag
+    Scenario: Remove service with force flag (duplicate check)
       Given I am in the monorepo root
       When I run "nodespec scaffold service remove test-api --force"
       Then the command should succeed

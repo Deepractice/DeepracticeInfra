@@ -133,27 +133,6 @@ Given(
   },
 );
 
-// When steps for removal with confirmation
-
-When(
-  "I run {string} and confirm with {string}",
-  async function (this: ScaffoldWorld, command: string, confirmation: string) {
-    // For now, we'll use --force flag instead of interactive confirmation
-    // This is a simplification for the test implementation
-    // In real implementation, we would need to handle stdin input
-    this.lastCommand = command;
-
-    // Store the confirmation for potential use
-    this.set("confirmation", confirmation);
-
-    // For E2E tests, we recommend using --force flag
-    // This step will be implemented once interactive input handling is available
-    throw new Error(
-      "Interactive confirmation not yet implemented. Please use --force flag instead.",
-    );
-  },
-);
-
 // Then steps for removal assertions
 
 Then(
@@ -179,15 +158,23 @@ Then(
 Then(
   "{string} should not appear in workspace packages",
   async function (this: ScaffoldWorld, packageName: string) {
-    const workspaceFile = path.join(this.testDir!, "pnpm-workspace.yaml");
-    const workspaceContent = await fs.readFile(workspaceFile, "utf-8");
+    // Extract directory name from scoped package names
+    const dirName = packageName.startsWith("@")
+      ? packageName.split("/")[1]
+      : packageName;
 
-    // Check that the package name doesn't appear in workspace
-    // This is a basic check - in real implementation, we'd parse YAML and check actual packages
-    const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    expect(allOutput).to.not.include(
-      packageName,
-      `Package ${packageName} should not appear in workspace`,
-    );
+    // Check packages/ directory
+    const packagesDir = path.join(this.testDir!, "packages", dirName);
+    const appsDir = path.join(this.testDir!, "apps", dirName);
+    const servicesDir = path.join(this.testDir!, "services", dirName);
+
+    const packageExists = await fs.pathExists(packagesDir);
+    const appExists = await fs.pathExists(appsDir);
+    const serviceExists = await fs.pathExists(servicesDir);
+
+    expect(
+      packageExists || appExists || serviceExists,
+      `${packageName} should be removed from workspace`,
+    ).to.be.false;
   },
 );

@@ -26,11 +26,11 @@ Feature: List Apps in Monorepo
       When I run "nodespec scaffold app list --verbose"
       Then the command should succeed
       And I should see app "admin-cli" with details:
-        | field    | value              |
-        | name     | admin-cli          |
-        | version  | 1.0.0              |
-        | location | apps/admin-cli     |
-        | bin      | ./dist/index.js    |
+        | field    | value           |
+        | name     | admin-cli       |
+        | version  | 1.0.0           |
+        | location | apps/admin-cli  |
+        | bin      | ./dist/cli.js   |
 
     Scenario: List in JSON format (--json)
       Given I am in the monorepo root

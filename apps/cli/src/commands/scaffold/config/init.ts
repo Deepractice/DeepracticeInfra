@@ -148,7 +148,7 @@ function generateConfigFiles(
   const prettierConfig = {
     semi: true,
     singleQuote: true,
-    trailingComma: isStrict ? ("all" as const) : ("es5" as const),
+    trailingComma: "all" as const,
     printWidth: 80,
     tabWidth: 2,
     useTabs: false,
