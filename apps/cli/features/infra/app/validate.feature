@@ -12,7 +12,7 @@ Feature: Validate App Structure
     Scenario: Validate single app by name
       Given I am in the monorepo root
       And app "admin-cli" exists in "apps/" with valid structure
-      When I run "nodespec scaffold app validate admin-cli"
+      When I run "nodespec infra app validate admin-cli"
       Then the command should succeed
       And I should see message "App admin-cli is valid"
 
@@ -20,7 +20,7 @@ Feature: Validate App Structure
       Given I am in the monorepo root
       And app "admin-cli" exists in "apps/" with valid structure
       And app "api-server" exists in "apps/" with valid structure
-      When I run "nodespec scaffold app validate --all"
+      When I run "nodespec infra app validate --all"
       Then the command should succeed
       And I should see message "All apps are valid (2 apps checked)"
 
@@ -30,7 +30,7 @@ Feature: Validate App Structure
       Given I am in the monorepo root
       And app "broken-cli" exists in "apps/"
       And "apps/broken-cli/tsconfig.json" does not exist
-      When I run "nodespec scaffold app validate broken-cli"
+      When I run "nodespec infra app validate broken-cli"
       Then the command should fail
       And I should see error message "Missing required file: tsconfig.json"
 
@@ -38,7 +38,7 @@ Feature: Validate App Structure
       Given I am in the monorepo root
       And app "invalid-cli" exists in "apps/"
       And "apps/invalid-cli/package.json" is missing "bin" field
-      When I run "nodespec scaffold app validate invalid-cli"
+      When I run "nodespec infra app validate invalid-cli"
       Then the command should fail
       And I should see error message "Missing required field in package.json: bin"
 
@@ -48,7 +48,7 @@ Feature: Validate App Structure
       Given I am in the monorepo root
       And app "invalid-cli" exists in "apps/"
       And "apps/invalid-cli/package.json" has "bin" field pointing to non-existent file
-      When I run "nodespec scaffold app validate invalid-cli"
+      When I run "nodespec infra app validate invalid-cli"
       Then the command should fail
       And I should see error message "Invalid bin configuration: file does not exist"
 
@@ -56,7 +56,7 @@ Feature: Validate App Structure
       Given I am in the monorepo root
       And app "valid-cli" exists in "apps/" with valid structure
       And app "broken-cli" exists in "apps/" with missing bin configuration
-      When I run "nodespec scaffold app validate --all"
+      When I run "nodespec infra app validate --all"
       Then the command should fail
       And I should see validation summary:
         | status | count |
@@ -64,7 +64,7 @@ Feature: Validate App Structure
         | errors | 1     |
       And I should see error for "broken-cli"
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: All apps must have package.json, tsconfig.json, src/index.ts
 # Business Rule: package.json must have bin field with valid executable path
 # Business Rule: TypeScript config must extend @deepracticex/typescript-config

@@ -17,7 +17,7 @@ Feature: List Configuration Files
         | .prettierrc.json  | Prettier   |
         | .editorconfig     | EditorConfig |
         | tsconfig.json     | TypeScript |
-      When I run "nodespec scaffold config list"
+      When I run "nodespec infra config list"
       Then the command should succeed
       And I should see configuration files listed:
         | file              | tool       | status |
@@ -29,7 +29,7 @@ Feature: List Configuration Files
     Scenario: Show which tool each config belongs to
       Given I am in the monorepo root
       And file ".eslintrc.json" exists
-      When I run "nodespec scaffold config list"
+      When I run "nodespec infra config list"
       Then the command should succeed
       And I should see ".eslintrc.json" mapped to tool "ESLint"
 
@@ -39,7 +39,7 @@ Feature: List Configuration Files
       Given I am in the monorepo root
       And ".eslintrc.json" extends "@deepracticex/eslint-config"
       And ".prettierrc.json" contains custom rules
-      When I run "nodespec scaffold config list"
+      When I run "nodespec infra config list"
       Then the command should succeed
       And I should see ".eslintrc.json" marked as "Standard"
       And I should see ".prettierrc.json" marked as "Customized"
@@ -48,14 +48,14 @@ Feature: List Configuration Files
       Given I am in the monorepo root
       And file ".eslintrc.json" exists
       And file ".prettierrc.json" does not exist
-      When I run "nodespec scaffold config list"
+      When I run "nodespec infra config list"
       Then the command should succeed
       And I should see missing configs:
         | file              | tool     | status  |
         | .prettierrc.json  | Prettier | Missing |
-      And I should see suggestion "Run 'nodespec scaffold config init' to add missing configs"
+      And I should see suggestion "Run 'nodespec infra config init' to add missing configs"
 
-# Linked to: Issue #12 (Configuration management)
+# Linked to: Issue #13 (Configuration management)
 # Business Rule: List shows all recognized configuration files
 # Business Rule: Indicates whether configs use standard or custom settings
 # Business Rule: Highlights missing recommended configurations

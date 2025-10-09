@@ -10,7 +10,7 @@ Feature: Create Monorepo in New Directory
 
     Scenario: Create new project in subdirectory
       Given I am in a test directory
-      When I run "nodespec scaffold monorepo create my-project --skip-git --skip-install"
+      When I run "nodespec infra monorepo create my-project --skip-git --skip-install"
       Then the command should succeed
       And directory "my-project" should exist
       And the following files should exist in "my-project":
@@ -25,7 +25,7 @@ Feature: Create Monorepo in New Directory
 
     Scenario: Create project with scoped name
       Given I am in a test directory
-      When I run "nodespec scaffold monorepo create @myorg/myapp --skip-git --skip-install"
+      When I run "nodespec infra monorepo create @myorg/myapp --skip-git --skip-install"
       Then the command should succeed
       And directory "myapp" should exist
       And "myapp/package.json" should contain "@myorg/myapp"
@@ -35,7 +35,7 @@ Feature: Create Monorepo in New Directory
     Scenario: Prevent creating project in existing directory
       Given I am in a test directory
       And directory "existing-project" exists
-      When I run "nodespec scaffold monorepo create existing-project --skip-git --skip-install"
+      When I run "nodespec infra monorepo create existing-project --skip-git --skip-install"
       Then the command should fail
       And I should see error message "Directory already exists"
 
@@ -43,7 +43,7 @@ Feature: Create Monorepo in New Directory
 
     Scenario: Initialize project and verify it works end-to-end
       Given I am in an empty directory
-      When I run "nodespec scaffold monorepo init --skip-git"
+      When I run "nodespec infra monorepo init --skip-git"
       Then the command should succeed
 
       # Verify dependencies can be installed
@@ -68,7 +68,7 @@ Feature: Create Monorepo in New Directory
 
     Scenario: Create project and develop a working package
       Given I am in a test directory
-      When I run "nodespec scaffold monorepo create my-monorepo --skip-git --skip-install"
+      When I run "nodespec infra monorepo create my-monorepo --skip-git --skip-install"
       Then the command should succeed
       And directory "my-monorepo" should exist
 
@@ -136,7 +136,7 @@ Feature: Create Monorepo in New Directory
       When I run "pnpm typecheck --filter @my-monorepo/math-lib"
       Then the command should succeed
 
-# Linked to: Issue #10 (CLI restructure)
+# Linked to: Issue #13 (CLI restructure)
 # Business Rule: Create command generates project in new directory based on project name
 # Business Rule: Scoped packages use unscoped name for directory (e.g., @org/pkg -> pkg/)
 # Business Rule: Generated monorepo must be fully functional out of the box

@@ -47,7 +47,7 @@ export async function validateAction(
   if (hasErrors) {
     console.log(chalk.yellow("\nRecommended Actions:"));
     console.log("  - Fix syntax errors in config files");
-    console.log("  - Run: nodespec scaffold config init --force");
+    console.log("  - Run: nodespec infra config init --force");
     process.exit(1);
   }
 }

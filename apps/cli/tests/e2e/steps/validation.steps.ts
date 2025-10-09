@@ -5,13 +5,13 @@ import { Given, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
-import type { ScaffoldWorld } from "../support/world";
+import type { InfraWorld } from "../support/world";
 
 // Given steps for validation scenarios
 
 Given(
   "package {string} exists in {string} with valid structure",
-  async function (this: ScaffoldWorld, packageName: string, location: string) {
+  async function (this: InfraWorld, packageName: string, location: string) {
     const packageDir = path.join(this.testDir!, location, packageName);
     await fs.ensureDir(path.join(packageDir, "src"));
 
@@ -44,7 +44,7 @@ Given(
 
 Given(
   "app {string} exists in {string} with valid structure",
-  async function (this: ScaffoldWorld, appName: string, location: string) {
+  async function (this: InfraWorld, appName: string, location: string) {
     const appDir = path.join(this.testDir!, location, appName);
     await fs.ensureDir(path.join(appDir, "src"));
 
@@ -84,7 +84,7 @@ Given(
 
 Given(
   "{string} does not exist",
-  async function (this: ScaffoldWorld, filePath: string) {
+  async function (this: InfraWorld, filePath: string) {
     const fullPath = path.join(this.testDir!, filePath);
     if (await fs.pathExists(fullPath)) {
       await fs.remove(fullPath);
@@ -94,7 +94,7 @@ Given(
 
 Given(
   "{string} is missing {string} field",
-  async function (this: ScaffoldWorld, jsonPath: string, fieldName: string) {
+  async function (this: InfraWorld, jsonPath: string, fieldName: string) {
     const fullPath = path.join(this.testDir!, jsonPath);
     const json = await fs.readJson(fullPath);
     delete json[fieldName];
@@ -105,7 +105,7 @@ Given(
 Given(
   "{string} does not extend {string}",
   async function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     tsconfigPath: string,
     extendsValue: string,
   ) {
@@ -118,7 +118,7 @@ Given(
 
 Given(
   "package {string} exists in {string} with missing tsconfig.json",
-  async function (this: ScaffoldWorld, packageName: string, location: string) {
+  async function (this: InfraWorld, packageName: string, location: string) {
     const packageDir = path.join(this.testDir!, location, packageName);
     await fs.ensureDir(path.join(packageDir, "src"));
 
@@ -140,7 +140,7 @@ Given(
 
 Given(
   "app {string} exists in {string} with missing bin configuration",
-  async function (this: ScaffoldWorld, appName: string, location: string) {
+  async function (this: InfraWorld, appName: string, location: string) {
     const appDir = path.join(this.testDir!, location, appName);
     await fs.ensureDir(path.join(appDir, "src"));
 
@@ -169,7 +169,7 @@ Given(
 
 Given(
   "{string} has {string} field pointing to non-existent file",
-  async function (this: ScaffoldWorld, jsonPath: string, fieldName: string) {
+  async function (this: InfraWorld, jsonPath: string, fieldName: string) {
     const fullPath = path.join(this.testDir!, jsonPath);
     const json = await fs.readJson(fullPath);
 
@@ -190,7 +190,7 @@ Given(
 
 Given(
   "the monorepo has been initialized with valid structure",
-  async function (this: ScaffoldWorld) {
+  async function (this: InfraWorld) {
     // Create complete valid monorepo structure
     await fs.writeJson(path.join(this.testDir!, "package.json"), {
       name: "test-monorepo",
@@ -219,7 +219,7 @@ Given(
   },
 );
 
-Given("the monorepo is initialized", async function (this: ScaffoldWorld) {
+Given("the monorepo is initialized", async function (this: InfraWorld) {
   // Create minimal monorepo structure (may be incomplete)
   await fs.writeJson(path.join(this.testDir!, "package.json"), {
     name: "test-monorepo",
@@ -241,7 +241,7 @@ Given("the monorepo is initialized", async function (this: ScaffoldWorld) {
 
 Given(
   "file {string} does not exist",
-  async function (this: ScaffoldWorld, filePath: string) {
+  async function (this: InfraWorld, filePath: string) {
     const fullPath = path.join(this.testDir!, filePath);
     if (await fs.pathExists(fullPath)) {
       await fs.remove(fullPath);
@@ -251,7 +251,7 @@ Given(
 
 Given(
   "directory {string} does not exist",
-  async function (this: ScaffoldWorld, dirPath: string) {
+  async function (this: InfraWorld, dirPath: string) {
     const fullPath = path.join(this.testDir!, dirPath);
     if (await fs.pathExists(fullPath)) {
       await fs.remove(fullPath);
@@ -261,11 +261,7 @@ Given(
 
 Given(
   "{string} does not contain {string}",
-  async function (
-    this: ScaffoldWorld,
-    filePath: string,
-    expectedContent: string,
-  ) {
+  async function (this: InfraWorld, filePath: string, expectedContent: string) {
     const fullPath = path.join(this.testDir!, filePath);
     const content = await fs.readFile(fullPath, "utf-8");
 
@@ -279,7 +275,7 @@ Given(
 
 Given(
   "{string} does not have {string} field",
-  async function (this: ScaffoldWorld, jsonPath: string, fieldName: string) {
+  async function (this: InfraWorld, jsonPath: string, fieldName: string) {
     const fullPath = path.join(this.testDir!, jsonPath);
     const json = await fs.readJson(fullPath);
     delete json[fieldName];
@@ -289,7 +285,7 @@ Given(
 
 Given(
   "{string} is invalid",
-  async function (this: ScaffoldWorld, filePath: string) {
+  async function (this: InfraWorld, filePath: string) {
     const fullPath = path.join(this.testDir!, filePath);
 
     if (filePath.endsWith(".json")) {
@@ -304,7 +300,7 @@ Given(
 
 Given(
   "the monorepo is partially initialized",
-  async function (this: ScaffoldWorld) {
+  async function (this: InfraWorld) {
     // Create incomplete monorepo structure
     await fs.writeJson(path.join(this.testDir!, "package.json"), {
       name: "test-monorepo",
@@ -318,27 +314,24 @@ Given(
   },
 );
 
-Given(
-  "the monorepo has validation errors",
-  async function (this: ScaffoldWorld) {
-    // Create monorepo with intentional errors
-    await fs.writeJson(path.join(this.testDir!, "package.json"), {
-      name: "test-monorepo",
-      version: "1.0.0",
-      private: true,
-    });
+Given("the monorepo has validation errors", async function (this: InfraWorld) {
+  // Create monorepo with intentional errors
+  await fs.writeJson(path.join(this.testDir!, "package.json"), {
+    name: "test-monorepo",
+    version: "1.0.0",
+    private: true,
+  });
 
-    // Missing pnpm-workspace.yaml
-    // Missing packages directory
-    await fs.ensureDir(path.join(this.testDir!, "apps"));
-  },
-);
+  // Missing pnpm-workspace.yaml
+  // Missing packages directory
+  await fs.ensureDir(path.join(this.testDir!, "apps"));
+});
 
 // Then steps for validation assertions
 
 Then(
   "I should see all error messages:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -354,7 +347,7 @@ Then(
 
 Then(
   "I should see validation summary:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -376,7 +369,7 @@ Then(
 
 Then(
   "I should see error for {string}",
-  function (this: ScaffoldWorld, itemName: string) {
+  function (this: InfraWorld, itemName: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       itemName,
@@ -387,7 +380,7 @@ Then(
 
 Then(
   "I should see validation summary showing:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -413,7 +406,7 @@ Then(
   },
 );
 
-Then("I should see all errors listed", function (this: ScaffoldWorld) {
+Then("I should see all errors listed", function (this: InfraWorld) {
   const allOutput = [...this.stdout, ...this.stderr].join("\n");
   expect(allOutput.length).to.be.greaterThan(
     0,
@@ -423,7 +416,7 @@ Then("I should see all errors listed", function (this: ScaffoldWorld) {
 
 Then(
   "the command should exit with code {int}",
-  function (this: ScaffoldWorld, expectedCode: number) {
+  function (this: InfraWorld, expectedCode: number) {
     expect(this.exitCode).to.equal(
       expectedCode,
       `Command should exit with code ${expectedCode}`,
@@ -433,7 +426,7 @@ Then(
 
 Then(
   "the error output should contain validation errors",
-  function (this: ScaffoldWorld) {
+  function (this: InfraWorld) {
     const errorOutput = this.stderr.join("\n");
     expect(errorOutput.length).to.be.greaterThan(
       0,

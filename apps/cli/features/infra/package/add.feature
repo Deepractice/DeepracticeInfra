@@ -11,7 +11,7 @@ Feature: Add Package to Monorepo
 
     Scenario: Add basic package to packages/ directory
       Given I am in the monorepo root
-      When I run "nodespec scaffold package add my-lib"
+      When I run "nodespec infra package add my-lib"
       Then the command should succeed
       And the following files should exist:
         | file                           |
@@ -25,14 +25,14 @@ Feature: Add Package to Monorepo
 
     Scenario: Add scoped package
       Given I am in the monorepo root
-      When I run "nodespec scaffold package add @myorg/utils"
+      When I run "nodespec infra package add @myorg/utils"
       Then the command should succeed
       And directory "packages/utils" should exist
       And "packages/utils/package.json" should contain "@myorg/utils"
 
     Scenario: Package includes TypeScript build configuration
       Given I am in the monorepo root
-      When I run "nodespec scaffold package add my-lib"
+      When I run "nodespec infra package add my-lib"
       Then the command should succeed
       And "packages/my-lib/package.json" should contain "\"build\": \"tsup\""
       And "packages/my-lib/package.json" should contain "\"typecheck\": \"tsc --noEmit\""
@@ -41,14 +41,14 @@ Feature: Add Package to Monorepo
 
     Scenario: Package includes proper exports configuration
       Given I am in the monorepo root
-      When I run "nodespec scaffold package add my-lib"
+      When I run "nodespec infra package add my-lib"
       Then the command should succeed
       And "packages/my-lib/package.json" should contain "\"main\": \"./dist/index.js\""
       And "packages/my-lib/package.json" should contain "\"types\": \"./dist/index.d.ts\""
 
     Scenario: Generated package is buildable
       Given I am in the monorepo root
-      When I run "nodespec scaffold package add my-lib"
+      When I run "nodespec infra package add my-lib"
       And I run "pnpm install"
       And I run "pnpm --filter my-lib run build"
       Then the command should succeed
@@ -60,19 +60,19 @@ Feature: Add Package to Monorepo
     Scenario: Prevent adding package that already exists
       Given I am in the monorepo root
       And package "existing-lib" already exists in "packages/"
-      When I run "nodespec scaffold package add existing-lib"
+      When I run "nodespec infra package add existing-lib"
       Then the command should fail
       And I should see error message "Package already exists"
 
     Scenario: Prevent adding package outside monorepo
       Given I am in a non-monorepo directory
-      When I run "nodespec scaffold package add my-lib"
+      When I run "nodespec infra package add my-lib"
       Then the command should fail
       And I should see error message "Not in a monorepo"
 
     Scenario: Validate package name format
       Given I am in the monorepo root
-      When I run "nodespec scaffold package add Invalid-Name"
+      When I run "nodespec infra package add Invalid-Name"
       Then the command should fail
       And I should see error message "Invalid package name"
 
@@ -80,12 +80,12 @@ Feature: Add Package to Monorepo
 
     Scenario: Add package to custom location
       Given I am in the monorepo root
-      When I run "nodespec scaffold package add my-lib --location src"
+      When I run "nodespec infra package add my-lib --location src"
       Then the command should succeed
       And directory "src/my-lib" should exist
       And "src/my-lib/package.json" should contain "my-lib"
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: Packages are added to packages/ directory by default
 # Business Rule: Scoped packages use unscoped directory name
 # Business Rule: Generated packages must be buildable without additional configuration

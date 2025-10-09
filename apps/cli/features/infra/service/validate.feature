@@ -12,7 +12,7 @@ Feature: Validate Service Structure
     Scenario: Validate single service by name
       Given I am in the monorepo root
       And service "api-gateway" exists in "services/" with valid structure
-      When I run "nodespec scaffold service validate api-gateway"
+      When I run "nodespec infra service validate api-gateway"
       Then the command should succeed
       And I should see message "Service api-gateway is valid"
 
@@ -20,7 +20,7 @@ Feature: Validate Service Structure
       Given I am in the monorepo root
       And service "api-gateway" exists in "services/" with valid structure
       And service "auth-service" exists in "services/" with valid structure
-      When I run "nodespec scaffold service validate --all"
+      When I run "nodespec infra service validate --all"
       Then the command should succeed
       And I should see message "All services are valid (2 services checked)"
 
@@ -30,7 +30,7 @@ Feature: Validate Service Structure
       Given I am in the monorepo root
       And service "broken-api" exists in "services/"
       And "services/broken-api/src/server.ts" does not exist
-      When I run "nodespec scaffold service validate broken-api"
+      When I run "nodespec infra service validate broken-api"
       Then the command should fail
       And I should see error message "Missing required file: src/server.ts"
 
@@ -38,7 +38,7 @@ Feature: Validate Service Structure
       Given I am in the monorepo root
       And service "invalid-api" exists in "services/"
       And "services/invalid-api/package.json" is missing "start" script
-      When I run "nodespec scaffold service validate invalid-api"
+      When I run "nodespec infra service validate invalid-api"
       Then the command should fail
       And I should see error message "Missing required script in package.json: start"
 
@@ -48,7 +48,7 @@ Feature: Validate Service Structure
       Given I am in the monorepo root
       And service "invalid-api" exists in "services/"
       And "services/invalid-api/src/server.ts" does not export server
-      When I run "nodespec scaffold service validate invalid-api"
+      When I run "nodespec infra service validate invalid-api"
       Then the command should fail
       And I should see error message "Invalid server configuration: must export server instance"
 
@@ -56,7 +56,7 @@ Feature: Validate Service Structure
       Given I am in the monorepo root
       And service "valid-api" exists in "services/" with valid structure
       And service "broken-api" exists in "services/" with missing server setup
-      When I run "nodespec scaffold service validate --all"
+      When I run "nodespec infra service validate --all"
       Then the command should fail
       And I should see validation summary:
         | status | count |
@@ -64,7 +64,7 @@ Feature: Validate Service Structure
         | errors | 1     |
       And I should see error for "broken-api"
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: All services must have package.json, tsconfig.json, src/index.ts, src/server.ts
 # Business Rule: package.json must have start and dev scripts
 # Business Rule: server.ts must export a proper server instance

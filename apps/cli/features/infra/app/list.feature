@@ -13,7 +13,7 @@ Feature: List Apps in Monorepo
       Given I am in the monorepo root
       And app "admin-cli" exists in "apps/" with version "1.0.0"
       And app "api-server" exists in "apps/" with version "2.1.0"
-      When I run "nodespec scaffold app list"
+      When I run "nodespec infra app list"
       Then the command should succeed
       And I should see output containing:
         | app        | version |
@@ -23,7 +23,7 @@ Feature: List Apps in Monorepo
     Scenario: List with detailed information (--verbose)
       Given I am in the monorepo root
       And app "admin-cli" exists in "apps/"
-      When I run "nodespec scaffold app list --verbose"
+      When I run "nodespec infra app list --verbose"
       Then the command should succeed
       And I should see app "admin-cli" with details:
         | field    | value           |
@@ -35,7 +35,7 @@ Feature: List Apps in Monorepo
     Scenario: List in JSON format (--json)
       Given I am in the monorepo root
       And app "admin-cli" exists in "apps/" with version "1.0.0"
-      When I run "nodespec scaffold app list --json"
+      When I run "nodespec infra app list --json"
       Then the command should succeed
       And the output should be valid JSON
       And the JSON should contain app "admin-cli" with version "1.0.0"
@@ -45,18 +45,18 @@ Feature: List Apps in Monorepo
     Scenario: Handle empty apps/ directory
       Given I am in the monorepo root
       And "apps/" directory is empty
-      When I run "nodespec scaffold app list"
+      When I run "nodespec infra app list"
       Then the command should succeed
       And I should see message "No apps found"
 
     Scenario: List scoped apps
       Given I am in the monorepo root
       And app "@myorg/admin-cli" exists in "apps/admin-cli"
-      When I run "nodespec scaffold app list"
+      When I run "nodespec infra app list"
       Then the command should succeed
       And I should see app "@myorg/admin-cli" with location "apps/admin-cli"
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: List shows all apps in workspace
 # Business Rule: Supports human-readable and machine-readable (JSON) formats
 # Business Rule: Verbose mode shows detailed app configuration including bin entry

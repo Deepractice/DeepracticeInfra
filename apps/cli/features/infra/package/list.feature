@@ -13,7 +13,7 @@ Feature: List Packages in Monorepo
       Given I am in the monorepo root
       And package "core-lib" exists in "packages/" with version "1.0.0"
       And package "utils" exists in "packages/" with version "2.1.0"
-      When I run "nodespec scaffold package list"
+      When I run "nodespec infra package list"
       Then the command should succeed
       And I should see output containing:
         | package  | version |
@@ -23,7 +23,7 @@ Feature: List Packages in Monorepo
     Scenario: List with detailed information (--verbose)
       Given I am in the monorepo root
       And package "core-lib" exists in "packages/"
-      When I run "nodespec scaffold package list --verbose"
+      When I run "nodespec infra package list --verbose"
       Then the command should succeed
       And I should see package "core-lib" with details:
         | field       | value                    |
@@ -36,7 +36,7 @@ Feature: List Packages in Monorepo
     Scenario: List in JSON format (--json)
       Given I am in the monorepo root
       And package "core-lib" exists in "packages/" with version "1.0.0"
-      When I run "nodespec scaffold package list --json"
+      When I run "nodespec infra package list --json"
       Then the command should succeed
       And the output should be valid JSON
       And the JSON should contain package "core-lib" with version "1.0.0"
@@ -47,7 +47,7 @@ Feature: List Packages in Monorepo
       Given I am in the monorepo root
       And package "core-lib" exists in "packages/"
       And package "custom-lib" exists in "src/"
-      When I run "nodespec scaffold package list"
+      When I run "nodespec infra package list"
       Then the command should succeed
       And I should see "core-lib" with location "packages/core-lib"
       And I should see "custom-lib" with location "src/custom-lib"
@@ -55,7 +55,7 @@ Feature: List Packages in Monorepo
     Scenario: List scoped packages
       Given I am in the monorepo root
       And package "@myorg/utils" exists in "packages/utils"
-      When I run "nodespec scaffold package list"
+      When I run "nodespec infra package list"
       Then the command should succeed
       And I should see package "@myorg/utils" with location "packages/utils"
 
@@ -64,11 +64,11 @@ Feature: List Packages in Monorepo
     Scenario: Handle empty packages/ directory
       Given I am in the monorepo root
       And "packages/" directory is empty
-      When I run "nodespec scaffold package list"
+      When I run "nodespec infra package list"
       Then the command should succeed
       And I should see message "No packages found"
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: List shows all packages in workspace
 # Business Rule: Supports human-readable and machine-readable (JSON) formats
 # Business Rule: Verbose mode shows detailed package configuration

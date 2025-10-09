@@ -12,7 +12,7 @@ Feature: Display Monorepo Information
     Scenario: Display project name and version
       Given I am in the monorepo root
       And "package.json" contains name "my-monorepo" and version "1.0.0"
-      When I run "nodespec scaffold monorepo info"
+      When I run "nodespec infra monorepo info"
       Then the command should succeed
       And I should see output containing:
         | field   | value        |
@@ -23,7 +23,7 @@ Feature: Display Monorepo Information
       Given I am in the monorepo root
       And 3 packages exist in "packages/"
       And 2 apps exist in "apps/"
-      When I run "nodespec scaffold monorepo info"
+      When I run "nodespec infra monorepo info"
       Then the command should succeed
       And I should see "Total packages: 5"
       And I should see workspace summary:
@@ -38,7 +38,7 @@ Feature: Display Monorepo Information
       And 3 packages exist in "packages/"
       And 2 apps exist in "apps/"
       And 1 service exists in "services/"
-      When I run "nodespec scaffold monorepo info"
+      When I run "nodespec infra monorepo info"
       Then the command should succeed
       And I should see workspace directories:
         | directory | count |
@@ -50,7 +50,7 @@ Feature: Display Monorepo Information
       Given I am in the monorepo root
       And "packages/" directory is empty
       And 2 apps exist in "apps/"
-      When I run "nodespec scaffold monorepo info"
+      When I run "nodespec infra monorepo info"
       Then the command should succeed
       And I should see "packages: 0"
       And I should see "apps: 2"
@@ -59,7 +59,7 @@ Feature: Display Monorepo Information
 
     Scenario: Show TypeScript and build tool configuration
       Given I am in the monorepo root
-      When I run "nodespec scaffold monorepo info"
+      When I run "nodespec infra monorepo info"
       Then the command should succeed
       And I should see configuration summary:
         | tool       | status |
@@ -69,7 +69,7 @@ Feature: Display Monorepo Information
 
     Scenario: Show detailed configuration with --verbose flag
       Given I am in the monorepo root
-      When I run "nodespec scaffold monorepo info --verbose"
+      When I run "nodespec infra monorepo info --verbose"
       Then the command should succeed
       And I should see detailed configuration:
         | tool           | version | config file           |
@@ -80,10 +80,10 @@ Feature: Display Monorepo Information
 
     Scenario: Handle non-monorepo directories gracefully
       Given I am in a non-monorepo directory
-      When I run "nodespec scaffold monorepo info"
+      When I run "nodespec infra monorepo info"
       Then the command should fail
       And I should see error message "Not in a NodeSpec monorepo"
-      And I should see suggestion "Use 'nodespec scaffold monorepo init' to initialize"
+      And I should see suggestion "Use 'nodespec infra monorepo init' to initialize"
 
 # Linked to: Issue #8 (Monorepo management)
 # Business Rule: Info displays project metadata, workspace structure, and tooling

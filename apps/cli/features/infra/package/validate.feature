@@ -12,7 +12,7 @@ Feature: Validate Package Structure
     Scenario: Validate single package by name
       Given I am in the monorepo root
       And package "core-lib" exists in "packages/" with valid structure
-      When I run "nodespec scaffold package validate core-lib"
+      When I run "nodespec infra package validate core-lib"
       Then the command should succeed
       And I should see message "Package core-lib is valid"
 
@@ -20,7 +20,7 @@ Feature: Validate Package Structure
       Given I am in the monorepo root
       And package "core-lib" exists in "packages/" with valid structure
       And package "utils" exists in "packages/" with valid structure
-      When I run "nodespec scaffold package validate --all"
+      When I run "nodespec infra package validate --all"
       Then the command should succeed
       And I should see message "All packages are valid (2 packages checked)"
 
@@ -30,7 +30,7 @@ Feature: Validate Package Structure
       Given I am in the monorepo root
       And package "broken-lib" exists in "packages/"
       And "packages/broken-lib/tsconfig.json" does not exist
-      When I run "nodespec scaffold package validate broken-lib"
+      When I run "nodespec infra package validate broken-lib"
       Then the command should fail
       And I should see error message "Missing required file: tsconfig.json"
 
@@ -38,7 +38,7 @@ Feature: Validate Package Structure
       Given I am in the monorepo root
       And package "invalid-lib" exists in "packages/"
       And "packages/invalid-lib/package.json" is missing "main" field
-      When I run "nodespec scaffold package validate invalid-lib"
+      When I run "nodespec infra package validate invalid-lib"
       Then the command should fail
       And I should see error message "Missing required field in package.json: main"
 
@@ -46,7 +46,7 @@ Feature: Validate Package Structure
       Given I am in the monorepo root
       And package "invalid-ts" exists in "packages/"
       And "packages/invalid-ts/tsconfig.json" does not extend "@deepracticex/typescript-config"
-      When I run "nodespec scaffold package validate invalid-ts"
+      When I run "nodespec infra package validate invalid-ts"
       Then the command should fail
       And I should see error message "Invalid TypeScript configuration: must extend @deepracticex/typescript-config"
 
@@ -57,7 +57,7 @@ Feature: Validate Package Structure
       And package "broken-lib" exists in "packages/"
       And "packages/broken-lib/tsconfig.json" does not exist
       And "packages/broken-lib/package.json" is missing "main" field
-      When I run "nodespec scaffold package validate broken-lib"
+      When I run "nodespec infra package validate broken-lib"
       Then the command should fail
       And I should see all error messages:
         | error                                      |
@@ -68,7 +68,7 @@ Feature: Validate Package Structure
       Given I am in the monorepo root
       And package "valid-lib" exists in "packages/" with valid structure
       And package "broken-lib" exists in "packages/" with missing tsconfig.json
-      When I run "nodespec scaffold package validate --all"
+      When I run "nodespec infra package validate --all"
       Then the command should fail
       And I should see validation summary:
         | status | count |
@@ -76,7 +76,7 @@ Feature: Validate Package Structure
         | errors | 1     |
       And I should see error for "broken-lib"
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: All packages must have package.json, tsconfig.json, src/index.ts
 # Business Rule: TypeScript config must extend @deepracticex/typescript-config
 # Business Rule: package.json must have required fields (name, version, main, types)

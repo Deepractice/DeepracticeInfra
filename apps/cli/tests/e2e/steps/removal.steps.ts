@@ -5,13 +5,13 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
-import type { ScaffoldWorld } from "../support/world";
+import type { InfraWorld } from "../support/world";
 
 // Given steps for removal scenarios
 
 Given(
   "package {string} exists in {string}",
-  async function (this: ScaffoldWorld, packageName: string, location: string) {
+  async function (this: InfraWorld, packageName: string, location: string) {
     // Handle both formats:
     // - "package 'test-lib' exists in 'packages/'" - location is parent dir
     // - "package '@myorg/utils' exists in 'packages/utils'" - location is full path
@@ -47,7 +47,7 @@ Given(
 
 Given(
   "app {string} exists in {string}",
-  async function (this: ScaffoldWorld, appName: string, location: string) {
+  async function (this: InfraWorld, appName: string, location: string) {
     // Handle both formats:
     // - "app 'test-cli' exists in 'apps/'" - location is parent dir
     // - "app '@myorg/admin-cli' exists in 'apps/admin-cli'" - location is full path
@@ -102,7 +102,7 @@ function extractDirName(name: string): string {
 Given(
   "{string} contains dependency on {string}",
   async function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     packageJsonPath: string,
     dependency: string,
   ) {
@@ -118,11 +118,7 @@ Given(
 
 Given(
   "{string} contains {string}",
-  async function (
-    this: ScaffoldWorld,
-    filePath: string,
-    expectedContent: string,
-  ) {
+  async function (this: InfraWorld, filePath: string, expectedContent: string) {
     const fullPath = path.join(this.testDir!, filePath);
     const content = await fs.readFile(fullPath, "utf-8");
 
@@ -137,7 +133,7 @@ Given(
 
 Then(
   "directory {string} should not exist",
-  async function (this: ScaffoldWorld, dirName: string) {
+  async function (this: InfraWorld, dirName: string) {
     const dirPath = path.join(this.testDir!, dirName);
     const exists = await fs.pathExists(dirPath);
     expect(exists, `Directory ${dirName} should not exist`).to.be.false;
@@ -146,7 +142,7 @@ Then(
 
 Then(
   "{string} should not appear in workspace packages",
-  async function (this: ScaffoldWorld, packageName: string) {
+  async function (this: InfraWorld, packageName: string) {
     // Extract directory name from scoped package names
     const dirName = packageName.startsWith("@")
       ? packageName.split("/")[1]

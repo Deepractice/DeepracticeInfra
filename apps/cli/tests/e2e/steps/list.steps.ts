@@ -5,14 +5,14 @@ import { Given, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
-import type { ScaffoldWorld } from "../support/world";
+import type { InfraWorld } from "../support/world";
 
 // Given steps for list scenarios
 
 Given(
   "package {string} exists in {string} with version {string}",
   async function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     packageName: string,
     location: string,
     version: string,
@@ -47,7 +47,7 @@ Given(
 Given(
   "app {string} exists in {string} with version {string}",
   async function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     appName: string,
     location: string,
     version: string,
@@ -87,7 +87,7 @@ Given(
 
 Given(
   "{string} directory is empty",
-  async function (this: ScaffoldWorld, dirName: string) {
+  async function (this: InfraWorld, dirName: string) {
     const dirPath = path.join(this.testDir!, dirName);
     await fs.ensureDir(dirPath);
     await fs.emptyDir(dirPath);
@@ -98,7 +98,7 @@ Given(
 
 Then(
   "I should see output containing:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -118,7 +118,7 @@ Then(
 Then(
   "I should see package {string} with details:",
   function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     packageName: string,
     dataTable: { rawTable: string[][] },
   ) {
@@ -142,7 +142,7 @@ Then(
 Then(
   "I should see app {string} with details:",
   function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     appName: string,
     dataTable: { rawTable: string[][] },
   ) {
@@ -163,7 +163,7 @@ Then(
   },
 );
 
-Then("the output should be valid JSON", function (this: ScaffoldWorld) {
+Then("the output should be valid JSON", function (this: InfraWorld) {
   const allOutput = [...this.stdout, ...this.stderr].join("\n");
 
   try {
@@ -175,7 +175,7 @@ Then("the output should be valid JSON", function (this: ScaffoldWorld) {
 
 Then(
   "the JSON should contain package {string} with version {string}",
-  function (this: ScaffoldWorld, packageName: string, version: string) {
+  function (this: InfraWorld, packageName: string, version: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const json = JSON.parse(allOutput);
 
@@ -202,7 +202,7 @@ Then(
 
 Then(
   "the JSON should contain app {string} with version {string}",
-  function (this: ScaffoldWorld, appName: string, version: string) {
+  function (this: InfraWorld, appName: string, version: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const json = JSON.parse(allOutput);
 
@@ -227,7 +227,7 @@ Then(
 
 Then(
   "I should see {string} with location {string}",
-  function (this: ScaffoldWorld, itemName: string, location: string) {
+  function (this: InfraWorld, itemName: string, location: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(itemName, `Output should contain ${itemName}`);
     expect(allOutput).to.include(
@@ -239,7 +239,7 @@ Then(
 
 Then(
   "I should see package {string} with location {string}",
-  function (this: ScaffoldWorld, packageName: string, location: string) {
+  function (this: InfraWorld, packageName: string, location: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       packageName,
@@ -254,7 +254,7 @@ Then(
 
 Then(
   "I should see app {string} with location {string}",
-  function (this: ScaffoldWorld, appName: string, location: string) {
+  function (this: InfraWorld, appName: string, location: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       appName,
@@ -272,7 +272,7 @@ Then(
 Given(
   "service {string} exists in {string} with version {string}",
   async function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     serviceName: string,
     location: string,
     version: string,
@@ -310,7 +310,7 @@ Given(
 Then(
   "I should see service {string} with details:",
   function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     serviceName: string,
     dataTable: { rawTable: string[][] },
   ) {
@@ -333,7 +333,7 @@ Then(
 
 Then(
   "the JSON should contain service {string} with version {string}",
-  function (this: ScaffoldWorld, serviceName: string, version: string) {
+  function (this: InfraWorld, serviceName: string, version: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const json = JSON.parse(allOutput);
 
@@ -360,7 +360,7 @@ Then(
 
 Then(
   "I should see service {string} with location {string}",
-  function (this: ScaffoldWorld, serviceName: string, location: string) {
+  function (this: InfraWorld, serviceName: string, location: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       serviceName,

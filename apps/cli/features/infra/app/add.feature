@@ -11,7 +11,7 @@ Feature: Add Application to Monorepo
 
     Scenario: Add basic CLI application
       Given I am in the monorepo root
-      When I run "nodespec scaffold app add my-cli"
+      When I run "nodespec infra app add my-cli"
       Then the command should succeed
       And the following files should exist:
         | file                          |
@@ -26,14 +26,14 @@ Feature: Add Application to Monorepo
 
     Scenario: Add scoped application
       Given I am in the monorepo root
-      When I run "nodespec scaffold app add @myorg/my-app"
+      When I run "nodespec infra app add @myorg/my-app"
       Then the command should succeed
       And directory "apps/my-app" should exist
       And "apps/my-app/package.json" should contain "@myorg/my-app"
 
     Scenario: Application includes executable configuration
       Given I am in the monorepo root
-      When I run "nodespec scaffold app add my-cli"
+      When I run "nodespec infra app add my-cli"
       Then the command should succeed
       And "apps/my-cli/package.json" should contain "\"bin\": {"
       And "apps/my-cli/src/cli.ts" should contain "#!/usr/bin/env node"
@@ -41,7 +41,7 @@ Feature: Add Application to Monorepo
 
     Scenario: Application includes build and dev scripts
       Given I am in the monorepo root
-      When I run "nodespec scaffold app add my-cli"
+      When I run "nodespec infra app add my-cli"
       Then the command should succeed
       And "apps/my-cli/package.json" should contain "\"build\": \"tsup\""
       And "apps/my-cli/package.json" should contain "\"dev\""
@@ -49,7 +49,7 @@ Feature: Add Application to Monorepo
 
     Scenario: Generated application is buildable and executable
       Given I am in the monorepo root
-      When I run "nodespec scaffold app add my-cli"
+      When I run "nodespec infra app add my-cli"
       And I run "pnpm install"
       And I run "pnpm --filter my-cli run build"
       Then the command should succeed
@@ -62,23 +62,23 @@ Feature: Add Application to Monorepo
     Scenario: Prevent adding app that already exists
       Given I am in the monorepo root
       And app "existing-app" already exists in "apps/"
-      When I run "nodespec scaffold app add existing-app"
+      When I run "nodespec infra app add existing-app"
       Then the command should fail
       And I should see error message "App already exists"
 
     Scenario: Prevent adding app outside monorepo
       Given I am in a non-monorepo directory
-      When I run "nodespec scaffold app add my-app"
+      When I run "nodespec infra app add my-app"
       Then the command should fail
       And I should see error message "Not in a monorepo"
 
     Scenario: Validate app name format
       Given I am in the monorepo root
-      When I run "nodespec scaffold app add Invalid-Name"
+      When I run "nodespec infra app add Invalid-Name"
       Then the command should fail
       And I should see error message "Invalid app name"
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: Apps are added to apps/ directory by default
 # Business Rule: Apps must include bin configuration for executability
 # Business Rule: Generated apps must be buildable and executable without additional configuration

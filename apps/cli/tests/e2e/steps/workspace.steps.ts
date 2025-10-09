@@ -6,13 +6,13 @@ import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
 import os from "node:os";
-import type { ScaffoldWorld } from "../support/world";
+import type { InfraWorld } from "../support/world";
 
 // Given steps for workspace context
 
 Given(
   "I am in a NodeSpec monorepo root directory",
-  async function (this: ScaffoldWorld) {
+  async function (this: InfraWorld) {
     // Initialize a minimal monorepo structure for testing
     if (!this.testDir) {
       const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
@@ -45,7 +45,7 @@ Given(
   },
 );
 
-Given("I am in the monorepo root", async function (this: ScaffoldWorld) {
+Given("I am in the monorepo root", async function (this: InfraWorld) {
   // Alias for "I am in a NodeSpec monorepo root directory"
   if (!this.testDir) {
     const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
@@ -77,50 +77,47 @@ Given("I am in the monorepo root", async function (this: ScaffoldWorld) {
   await fs.ensureDir(path.join(this.testDir, "services"));
 });
 
-Given(
-  "the monorepo has been initialized",
-  async function (this: ScaffoldWorld) {
-    // Verify monorepo structure exists
-    const workspaceFile = path.join(this.testDir!, "pnpm-workspace.yaml");
-    const exists = await fs.pathExists(workspaceFile);
+Given("the monorepo has been initialized", async function (this: InfraWorld) {
+  // Verify monorepo structure exists
+  const workspaceFile = path.join(this.testDir!, "pnpm-workspace.yaml");
+  const exists = await fs.pathExists(workspaceFile);
 
-    if (!exists) {
-      // If not initialized, create minimal structure
-      await fs.writeJson(path.join(this.testDir!, "package.json"), {
-        name: "test-monorepo",
-        version: "1.0.0",
-        private: true,
-        devDependencies: {
-          typescript: "^5.7.3",
-          tsup: "^8.3.5",
-          rimraf: "^6.0.1",
-          vitest: "^2.1.8",
-          tsx: "^4.19.2",
-        },
-      });
+  if (!exists) {
+    // If not initialized, create minimal structure
+    await fs.writeJson(path.join(this.testDir!, "package.json"), {
+      name: "test-monorepo",
+      version: "1.0.0",
+      private: true,
+      devDependencies: {
+        typescript: "^5.7.3",
+        tsup: "^8.3.5",
+        rimraf: "^6.0.1",
+        vitest: "^2.1.8",
+        tsx: "^4.19.2",
+      },
+    });
 
-      await fs.writeFile(
-        workspaceFile,
-        `packages:
+    await fs.writeFile(
+      workspaceFile,
+      `packages:
   - "packages/*"
   - "src/*"
   - "apps/*"
   - "services/*"
 `,
-      );
+    );
 
-      // Create workspace directories
-      await fs.ensureDir(path.join(this.testDir!, "packages"));
-      await fs.ensureDir(path.join(this.testDir!, "src"));
-      await fs.ensureDir(path.join(this.testDir!, "apps"));
-      await fs.ensureDir(path.join(this.testDir!, "services"));
-    }
-  },
-);
+    // Create workspace directories
+    await fs.ensureDir(path.join(this.testDir!, "packages"));
+    await fs.ensureDir(path.join(this.testDir!, "src"));
+    await fs.ensureDir(path.join(this.testDir!, "apps"));
+    await fs.ensureDir(path.join(this.testDir!, "services"));
+  }
+});
 
 Given(
   "package {string} already exists in {string}",
-  async function (this: ScaffoldWorld, packageName: string, location: string) {
+  async function (this: InfraWorld, packageName: string, location: string) {
     const packageDir = path.join(this.testDir!, location, packageName);
     await fs.ensureDir(path.join(packageDir, "src"));
 
@@ -141,7 +138,7 @@ Given(
 
 Given(
   "app {string} already exists in {string}",
-  async function (this: ScaffoldWorld, appName: string, location: string) {
+  async function (this: InfraWorld, appName: string, location: string) {
     const appDir = path.join(this.testDir!, location, appName);
     await fs.ensureDir(path.join(appDir, "src"));
 
@@ -166,7 +163,7 @@ Given(
   },
 );
 
-Given("I am in a non-monorepo directory", async function (this: ScaffoldWorld) {
+Given("I am in a non-monorepo directory", async function (this: InfraWorld) {
   if (!this.testDir) {
     const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
     this.testDir = tmpDir.toString();
@@ -190,7 +187,7 @@ Given("I am in a non-monorepo directory", async function (this: ScaffoldWorld) {
 
 Then(
   "file {string} should be executable",
-  async function (this: ScaffoldWorld, filePath: string) {
+  async function (this: InfraWorld, filePath: string) {
     const fullPath = path.join(this.testDir!, filePath);
     const exists = await fs.pathExists(fullPath);
     expect(exists, `File ${filePath} should exist`).to.be.true;
@@ -219,7 +216,7 @@ Then(
 Given(
   "{string} contains name {string} and version {string}",
   async function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     fileName: string,
     name: string,
     version: string,
@@ -234,7 +231,7 @@ Given(
 
 Given(
   "{int} packages exist in {string}",
-  async function (this: ScaffoldWorld, count: number, location: string) {
+  async function (this: InfraWorld, count: number, location: string) {
     const dirPath = path.join(this.testDir!, location);
     await fs.ensureDir(dirPath);
 
@@ -265,7 +262,7 @@ Given(
 
 Given(
   "{int} apps exist in {string}",
-  async function (this: ScaffoldWorld, count: number, location: string) {
+  async function (this: InfraWorld, count: number, location: string) {
     const dirPath = path.join(this.testDir!, location);
     await fs.ensureDir(dirPath);
 
@@ -297,7 +294,7 @@ Given(
 
 Given(
   "{int} service exists in {string}",
-  async function (this: ScaffoldWorld, count: number, location: string) {
+  async function (this: InfraWorld, count: number, location: string) {
     const dirPath = path.join(this.testDir!, location);
     await fs.ensureDir(dirPath);
 
@@ -331,7 +328,7 @@ Given(
 
 Then(
   "I should see {string}",
-  function (this: ScaffoldWorld, expectedText: string) {
+  function (this: InfraWorld, expectedText: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       expectedText,
@@ -342,7 +339,7 @@ Then(
 
 Then(
   "I should see workspace summary:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -359,7 +356,7 @@ Then(
 
 Then(
   "I should see workspace directories:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -379,7 +376,7 @@ Then(
 
 Then(
   "I should see configuration summary:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -398,7 +395,7 @@ Then(
 
 Then(
   "I should see detailed configuration:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 

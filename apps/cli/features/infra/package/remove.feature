@@ -12,14 +12,14 @@ Feature: Remove Package from Monorepo
 
     Scenario: Remove package with --force flag
       Given I am in the monorepo root
-      When I run "nodespec scaffold package remove test-lib --force"
+      When I run "nodespec infra package remove test-lib --force"
       Then the command should succeed
       And directory "packages/test-lib" should not exist
       And I should see message "Package test-lib removed successfully"
 
     Scenario: Remove package with force flag (duplicate check)
       Given I am in the monorepo root
-      When I run "nodespec scaffold package remove test-lib --force"
+      When I run "nodespec infra package remove test-lib --force"
       Then the command should succeed
       And directory "packages/test-lib" should not exist
       And I should see message "Package test-lib removed successfully"
@@ -28,7 +28,7 @@ Feature: Remove Package from Monorepo
 
     Scenario: Fail if package doesn't exist
       Given I am in the monorepo root
-      When I run "nodespec scaffold package remove non-existent --force"
+      When I run "nodespec infra package remove non-existent --force"
       Then the command should fail
       And I should see error message "Package non-existent not found"
 
@@ -37,7 +37,7 @@ Feature: Remove Package from Monorepo
       And package "core-lib" exists in "packages/"
       And package "dependent-lib" exists in "packages/"
       And "packages/dependent-lib/package.json" contains dependency on "core-lib"
-      When I run "nodespec scaffold package remove core-lib --force"
+      When I run "nodespec infra package remove core-lib --force"
       Then the command should fail
       And I should see error message "Cannot remove package: 1 package depends on it"
       And I should see message "dependent-lib"
@@ -47,7 +47,7 @@ Feature: Remove Package from Monorepo
     Scenario: Update workspace after removal
       Given I am in the monorepo root
       And "pnpm-workspace.yaml" contains "packages/*"
-      When I run "nodespec scaffold package remove test-lib --force"
+      When I run "nodespec infra package remove test-lib --force"
       Then the command should succeed
       And I run "pnpm install"
       Then the command should succeed
@@ -56,11 +56,11 @@ Feature: Remove Package from Monorepo
     Scenario: Remove scoped package
       Given I am in the monorepo root
       And package "@myorg/utils" exists in "packages/utils"
-      When I run "nodespec scaffold package remove @myorg/utils --force"
+      When I run "nodespec infra package remove @myorg/utils --force"
       Then the command should succeed
       And directory "packages/utils" should not exist
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: Package removal requires confirmation unless --force is used
 # Business Rule: Cannot remove package if other packages depend on it
 # Business Rule: Workspace is updated after removal to maintain consistency

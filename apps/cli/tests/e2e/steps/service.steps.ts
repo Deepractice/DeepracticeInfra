@@ -5,13 +5,13 @@ import { Given, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
-import type { ScaffoldWorld } from "../support/world";
+import type { InfraWorld } from "../support/world";
 
 // Given steps for service creation and setup
 
 Given(
   "service {string} already exists in {string}",
-  async function (this: ScaffoldWorld, serviceName: string, location: string) {
+  async function (this: InfraWorld, serviceName: string, location: string) {
     // Handle both formats:
     // - "service 'test-api' exists in 'services/'" - location is parent dir
     // - "service '@myorg/auth-api' exists in 'services/auth-api'" - location is full path
@@ -64,7 +64,7 @@ server.get('/health', (req, res) => {
 
 Given(
   "service {string} exists in {string}",
-  async function (this: ScaffoldWorld, serviceName: string, location: string) {
+  async function (this: InfraWorld, serviceName: string, location: string) {
     // Handle both formats:
     // - "service 'test-api' exists in 'services/'" - location is parent dir
     // - "service '@myorg/auth-api' exists in 'services/auth-api'" - location is full path
@@ -88,7 +88,7 @@ Given(
 
 Given(
   "service {string} exists in {string} with valid structure",
-  async function (this: ScaffoldWorld, serviceName: string, location: string) {
+  async function (this: InfraWorld, serviceName: string, location: string) {
     // Handle both formats:
     // - "service 'test-api' exists in 'services/'" - location is parent dir
     // - "service '@myorg/auth-api' exists in 'services/auth-api'" - location is full path
@@ -168,7 +168,7 @@ routes.get('/', (req, res) => {
 
 Given(
   "service {string} exists in {string} with missing server setup",
-  async function (this: ScaffoldWorld, serviceName: string, location: string) {
+  async function (this: InfraWorld, serviceName: string, location: string) {
     const serviceDir = path.join(this.testDir!, location, serviceName);
     await fs.ensureDir(path.join(serviceDir, "src"));
 
@@ -212,7 +212,7 @@ export const config = {};
 Given(
   "{string} is missing {string} script",
   async function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     packageJsonPath: string,
     scriptName: string,
   ) {
@@ -229,7 +229,7 @@ Given(
 
 Given(
   "{string} does not export server",
-  async function (this: ScaffoldWorld, serverFilePath: string) {
+  async function (this: InfraWorld, serverFilePath: string) {
     const fullPath = path.join(this.testDir!, serverFilePath);
 
     // Create or overwrite server.ts without exporting server
@@ -252,7 +252,7 @@ app.get('/health', (req, res) => {
 
 Then(
   "{string} should contain server setup",
-  async function (this: ScaffoldWorld, filePath: string) {
+  async function (this: InfraWorld, filePath: string) {
     const fullPath = path.join(this.testDir!, filePath);
     const exists = await fs.pathExists(fullPath);
     expect(exists, `File ${filePath} should exist`).to.be.true;

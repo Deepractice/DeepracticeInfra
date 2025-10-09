@@ -10,7 +10,7 @@ Feature: Validate Monorepo Structure
 
     Scenario: Validate complete monorepo structure
       Given the monorepo has been initialized with valid structure
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should succeed
       And I should see message "Monorepo structure is valid"
       And I should see validation summary showing:
@@ -25,14 +25,14 @@ Feature: Validate Monorepo Structure
     Scenario: Detect missing required files
       Given the monorepo is initialized
       And file "package.json" does not exist
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should fail
       And I should see error message "Missing required file: package.json"
 
     Scenario: Detect missing workspace configuration
       Given the monorepo is initialized
       And file "pnpm-workspace.yaml" does not exist
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should fail
       And I should see error message "Missing required file: pnpm-workspace.yaml"
 
@@ -41,7 +41,7 @@ Feature: Validate Monorepo Structure
     Scenario: Detect missing workspace directories
       Given the monorepo is initialized
       And directory "packages/" does not exist
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should fail
       And I should see error message "Missing required directory: packages/"
 
@@ -49,7 +49,7 @@ Feature: Validate Monorepo Structure
       Given the monorepo is initialized
       And directory "packages/" does not exist
       And directory "apps/" does not exist
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should fail
       And I should see all error messages:
         | error                                  |
@@ -61,14 +61,14 @@ Feature: Validate Monorepo Structure
     Scenario: Validate pnpm-workspace.yaml structure
       Given the monorepo is initialized
       And "pnpm-workspace.yaml" does not contain "packages/*"
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should fail
       And I should see error message "Invalid pnpm-workspace.yaml: missing packages/* in workspace"
 
     Scenario: Validate tsconfig.json configuration
       Given the monorepo is initialized
       And "tsconfig.json" does not have "references" field
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should fail
       And I should see error message "Invalid tsconfig.json: missing workspace references"
 
@@ -79,7 +79,7 @@ Feature: Validate Monorepo Structure
       And file "pnpm-workspace.yaml" does not exist
       And directory "packages/" does not exist
       And "tsconfig.json" is invalid
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should fail
       And I should see validation summary showing:
         | component         | status | errors |
@@ -90,7 +90,7 @@ Feature: Validate Monorepo Structure
 
     Scenario: Exit code indicates validation status
       Given the monorepo has validation errors
-      When I run "nodespec scaffold monorepo validate"
+      When I run "nodespec infra monorepo validate"
       Then the command should exit with code 1
       And the error output should contain validation errors
 

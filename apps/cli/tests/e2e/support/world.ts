@@ -1,10 +1,10 @@
 /**
- * Cucumber World - shared context for scaffold E2E tests
+ * Cucumber World - shared context for infra E2E tests
  */
 import { setWorldConstructor, World, IWorldOptions } from "@cucumber/cucumber";
 import type { Result } from "execa";
 
-export interface ScaffoldWorld extends World {
+export interface InfraWorld extends World {
   // Working directory context
   testDir?: string;
   originalCwd?: string;
@@ -27,7 +27,7 @@ export interface ScaffoldWorld extends World {
   get(key: string): unknown;
 }
 
-class CustomWorld extends World implements ScaffoldWorld {
+class CustomWorld extends World implements InfraWorld {
   testDir?: string;
   originalCwd?: string;
   lastCommand?: string;

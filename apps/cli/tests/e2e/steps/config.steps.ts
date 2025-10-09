@@ -5,13 +5,13 @@ import { Given, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
-import type { ScaffoldWorld } from "../support/world";
+import type { InfraWorld } from "../support/world";
 
 // Given steps for config scenarios
 
 Given(
   "file {string} already exists",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     await fs.ensureDir(path.dirname(filePath));
 
@@ -32,7 +32,7 @@ Given(
 
 Then(
   "the following config files should exist:",
-  async function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  async function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
     for (const row of rows) {
@@ -47,7 +47,7 @@ Then(
 
 Then(
   "{string} should contain strict ESLint rules",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     const content = await fs.readFile(filePath, "utf-8");
     const json = JSON.parse(content);
@@ -65,7 +65,7 @@ Then(
 
 Then(
   "{string} should contain strict formatting rules",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     const content = await fs.readFile(filePath, "utf-8");
     const json = JSON.parse(content);
@@ -78,7 +78,7 @@ Then(
 
 Then(
   "{string} should be updated",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     const exists = await fs.pathExists(filePath);
     expect(exists, `File ${fileName} should exist after update`).to.be.true;
@@ -98,7 +98,7 @@ Then(
 
 Then(
   "file {string} should not exist",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     const exists = await fs.pathExists(filePath);
     expect(exists, `File ${fileName} should not exist`).to.be.false;
@@ -108,7 +108,7 @@ Then(
 Then(
   "{string} should contain:",
   async function (
-    this: ScaffoldWorld,
+    this: InfraWorld,
     fileName: string,
     dataTable: { rawTable: string[][] },
   ) {
@@ -155,7 +155,7 @@ Then(
 
 Given(
   "the following config files exist:",
-  async function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  async function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
     for (const row of rows) {
@@ -176,7 +176,7 @@ Given(
 
 Given(
   "file {string} exists",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     await fs.ensureDir(path.dirname(filePath));
 
@@ -192,7 +192,7 @@ Given(
 
 Given(
   "{string} extends {string}",
-  async function (this: ScaffoldWorld, fileName: string, extendsValue: string) {
+  async function (this: InfraWorld, fileName: string, extendsValue: string) {
     const filePath = path.join(this.testDir!, fileName);
     await fs.ensureDir(path.dirname(filePath));
 
@@ -209,7 +209,7 @@ Given(
 
 Given(
   "{string} contains custom rules",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     await fs.ensureDir(path.dirname(filePath));
 
@@ -227,7 +227,7 @@ Given(
 
 Given(
   "all config files exist with valid configuration",
-  async function (this: ScaffoldWorld) {
+  async function (this: InfraWorld) {
     const configFiles = [
       {
         name: ".eslintrc.json",
@@ -259,7 +259,7 @@ Given(
 
 Given(
   "{string} exists with valid configuration",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     await fs.ensureDir(path.dirname(filePath));
 
@@ -289,7 +289,7 @@ Given(
 
 Given(
   "{string} has {string}",
-  async function (this: ScaffoldWorld, fileName: string, setting: string) {
+  async function (this: InfraWorld, fileName: string, setting: string) {
     const filePath = path.join(this.testDir!, fileName);
 
     // Parse setting like "semi: true" or just "semi"
@@ -314,7 +314,7 @@ Given(
 
 Given(
   "{string} has invalid {string}",
-  async function (this: ScaffoldWorld, fileName: string, fieldName: string) {
+  async function (this: InfraWorld, fileName: string, fieldName: string) {
     const filePath = path.join(this.testDir!, fileName);
     await fs.ensureDir(path.dirname(filePath));
 
@@ -328,7 +328,7 @@ Given(
 
 Given(
   "{string} has references to non-existent packages",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     await fs.ensureDir(path.dirname(filePath));
 
@@ -348,7 +348,7 @@ Given(
 
 Given(
   "package {string} is not installed",
-  async function (this: ScaffoldWorld, packageName: string) {
+  async function (this: InfraWorld, packageName: string) {
     // This step is passive - we just don't install the package
     // The package will not exist in node_modules
     // We can add a marker to track expected missing packages
@@ -361,7 +361,7 @@ Given(
 
 Given(
   "{string} has conflicting settings with Prettier",
-  async function (this: ScaffoldWorld, fileName: string) {
+  async function (this: InfraWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     await fs.ensureDir(path.dirname(filePath));
 
@@ -395,7 +395,7 @@ Given(
 
 Then(
   "I should see configuration files listed:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -420,7 +420,7 @@ Then(
 
 Then(
   "I should see {string} mapped to tool {string}",
-  function (this: ScaffoldWorld, fileName: string, toolName: string) {
+  function (this: InfraWorld, fileName: string, toolName: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       fileName,
@@ -435,7 +435,7 @@ Then(
 
 Then(
   "I should see {string} marked as {string}",
-  function (this: ScaffoldWorld, fileName: string, status: string) {
+  function (this: InfraWorld, fileName: string, status: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       fileName,
@@ -450,7 +450,7 @@ Then(
 
 Then(
   "I should see missing configs:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -477,7 +477,7 @@ Then(
 
 Then(
   "I should see conflict details:",
-  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     const rows = dataTable.rawTable.slice(1); // Skip header row
 
@@ -503,7 +503,7 @@ Then(
   },
 );
 
-Then("I should see recommended settings", function (this: ScaffoldWorld) {
+Then("I should see recommended settings", function (this: InfraWorld) {
   const allOutput = [...this.stdout, ...this.stderr].join("\n");
   expect(allOutput.length).to.be.greaterThan(
     0,
@@ -520,7 +520,7 @@ Then("I should see recommended settings", function (this: ScaffoldWorld) {
 
 Then(
   "I should see recommendation {string}",
-  function (this: ScaffoldWorld, recommendation: string) {
+  function (this: InfraWorld, recommendation: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       recommendation,
@@ -531,7 +531,7 @@ Then(
 
 Then(
   "I should see command suggestion {string}",
-  function (this: ScaffoldWorld, command: string) {
+  function (this: InfraWorld, command: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       command,

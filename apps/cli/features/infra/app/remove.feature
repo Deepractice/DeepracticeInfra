@@ -12,14 +12,14 @@ Feature: Remove App from Monorepo
 
     Scenario: Remove app with --force flag
       Given I am in the monorepo root
-      When I run "nodespec scaffold app remove test-cli --force"
+      When I run "nodespec infra app remove test-cli --force"
       Then the command should succeed
       And directory "apps/test-cli" should not exist
       And I should see message "App test-cli removed successfully"
 
     Scenario: Remove app with force flag (duplicate check)
       Given I am in the monorepo root
-      When I run "nodespec scaffold app remove test-cli --force"
+      When I run "nodespec infra app remove test-cli --force"
       Then the command should succeed
       And directory "apps/test-cli" should not exist
       And I should see message "App test-cli removed successfully"
@@ -28,7 +28,7 @@ Feature: Remove App from Monorepo
 
     Scenario: Fail if app doesn't exist
       Given I am in the monorepo root
-      When I run "nodespec scaffold app remove non-existent --force"
+      When I run "nodespec infra app remove non-existent --force"
       Then the command should fail
       And I should see error message "App non-existent not found"
 
@@ -37,7 +37,7 @@ Feature: Remove App from Monorepo
     Scenario: Update workspace after removal
       Given I am in the monorepo root
       And "pnpm-workspace.yaml" contains "apps/*"
-      When I run "nodespec scaffold app remove test-cli --force"
+      When I run "nodespec infra app remove test-cli --force"
       Then the command should succeed
       And I run "pnpm install"
       Then the command should succeed
@@ -46,10 +46,10 @@ Feature: Remove App from Monorepo
     Scenario: Remove scoped app
       Given I am in the monorepo root
       And app "@myorg/admin-cli" exists in "apps/admin-cli"
-      When I run "nodespec scaffold app remove @myorg/admin-cli --force"
+      When I run "nodespec infra app remove @myorg/admin-cli --force"
       Then the command should succeed
       And directory "apps/admin-cli" should not exist
 
-# Linked to: Issue #11 (Package/App management)
+# Linked to: Issue #13 (Package/App management)
 # Business Rule: App removal requires confirmation unless --force is used
 # Business Rule: Workspace is updated after removal to maintain consistency

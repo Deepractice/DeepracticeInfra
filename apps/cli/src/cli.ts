@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
-import { scaffoldCommand } from "./commands/scaffold/index.js";
+import { infraCommand } from "./commands/infra/index.js";
 
 const program = new Command();
 
@@ -11,6 +11,6 @@ program
   .version("0.0.1");
 
 // Register commands
-program.addCommand(scaffoldCommand);
+program.addCommand(infraCommand);
 
 program.parse();
