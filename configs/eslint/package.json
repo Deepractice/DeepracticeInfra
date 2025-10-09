@@ -18,6 +18,10 @@
   ],
   "author": "Deepractice",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deepractice/NodeSpec"
+  },
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",

@@ -48,5 +48,9 @@
     "deepractice"
   ],
   "author": "Deepractice",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deepractice/NodeSpec"
+  }
 }

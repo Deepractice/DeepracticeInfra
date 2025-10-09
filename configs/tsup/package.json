@@ -19,6 +19,10 @@
   ],
   "author": "Deepractice",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deepractice/NodeSpec"
+  },
   "peerDependencies": {
     "tsup": "^8.0.0",
     "typescript": "^5.0.0"

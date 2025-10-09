@@ -15,6 +15,10 @@
   ],
   "author": "Deepractice",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deepractice/NodeSpec"
+  },
   "peerDependencies": {
     "@changesets/cli": "^2.29.0",
     "turbo": "^2.5.0",

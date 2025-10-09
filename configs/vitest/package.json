@@ -18,6 +18,10 @@
   ],
   "author": "Deepractice",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deepractice/NodeSpec"
+  },
   "peerDependencies": {
     "vitest": "^2.0.0",
     "@vitest/coverage-v8": "^2.0.0",
