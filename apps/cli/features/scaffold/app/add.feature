@@ -51,7 +51,7 @@ Feature: Add Application to Monorepo
       Given I am in the monorepo root
       When I run "nodespec scaffold app add my-cli"
       And I run "pnpm install"
-      And I run "pnpm build --filter my-cli"
+      And I run "pnpm --filter my-cli run build"
       Then the command should succeed
       And file "apps/my-cli/dist/index.js" should exist
       And file "apps/my-cli/dist/cli.js" should exist

@@ -50,7 +50,7 @@ Feature: Add Package to Monorepo
       Given I am in the monorepo root
       When I run "nodespec scaffold package add my-lib"
       And I run "pnpm install"
-      And I run "pnpm build --filter my-lib"
+      And I run "pnpm --filter my-lib run build"
       Then the command should succeed
       And file "packages/my-lib/dist/index.js" should exist
       And file "packages/my-lib/dist/index.d.ts" should exist

@@ -70,7 +70,7 @@ export class AppGenerator {
       compilerOptions: {
         target: "ES2022",
         module: "ESNext",
-        lib: ["ES2022"],
+        lib: ["ES2022", "DOM"],
         moduleResolution: "bundler",
         strict: true,
         esModuleInterop: true,

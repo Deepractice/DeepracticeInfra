@@ -28,7 +28,7 @@ Feature: List Services in Monorepo
       And I should see service "api-gateway" with details:
         | field    | value                      |
         | name     | api-gateway                |
-        | version  | 1.0.0                      |
+        | version  | 0.0.1                      |
         | location | services/api-gateway       |
         | start    | node dist/index.js         |
         | dev      | tsx watch src/index.ts     |

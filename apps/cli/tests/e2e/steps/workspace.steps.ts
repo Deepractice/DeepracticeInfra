@@ -90,6 +90,13 @@ Given(
         name: "test-monorepo",
         version: "1.0.0",
         private: true,
+        devDependencies: {
+          typescript: "^5.7.3",
+          tsup: "^8.3.5",
+          rimraf: "^6.0.1",
+          vitest: "^2.1.8",
+          tsx: "^4.19.2",
+        },
       });
 
       await fs.writeFile(

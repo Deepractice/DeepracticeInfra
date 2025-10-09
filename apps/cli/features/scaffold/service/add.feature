@@ -57,7 +57,7 @@ Feature: Add Service to Monorepo
       Given I am in the monorepo root
       When I run "nodespec scaffold service add api-gateway"
       And I run "pnpm install"
-      And I run "pnpm build --filter api-gateway"
+      And I run "pnpm --filter api-gateway run build"
       Then the command should succeed
       And file "services/api-gateway/dist/index.js" should exist
       And file "services/api-gateway/dist/server.js" should exist

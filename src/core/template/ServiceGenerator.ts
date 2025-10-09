@@ -79,7 +79,7 @@ export class ServiceGenerator {
       compilerOptions: {
         target: "ES2022",
         module: "ESNext",
-        lib: ["ES2022"],
+        lib: ["ES2022", "DOM"],
         moduleResolution: "bundler",
         strict: true,
         esModuleInterop: true,
@@ -145,10 +145,10 @@ server.listen(PORT, () => {
  * Express server setup
  */
 
-import express from "express";
+import express, { type Express } from "express";
 import { router } from "./routes/index.js";
 
-export const server = express();
+export const server: Express = express();
 
 // Middleware
 server.use(express.json());
@@ -170,9 +170,9 @@ server.get("/health", (req, res) => {
  * API routes
  */
 
-import express from "express";
+import express, { type Router } from "express";
 
-export const router = express.Router();
+export const router: Router = express.Router();
 
 // Example route
 router.get("/", (req, res) => {
