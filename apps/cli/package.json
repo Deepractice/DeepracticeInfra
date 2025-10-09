@@ -20,9 +20,7 @@
     "dev": "NODE_OPTIONS='--import tsx' tsup --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
-    "test": "cucumber-tsx",
-    "test:dev": "cucumber-tsx --profile dev",
-    "test:ci": "cucumber-tsx --profile ci"
+    "test": "pnpm build && vitest run && cucumber-tsx"
   },
   "dependencies": {
     "@deepracticex/nodespec-core": "workspace:*",

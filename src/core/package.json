@@ -12,7 +12,8 @@
     "./executor": "./executor/index.ts"
   },
   "dependencies": {
-    "fs-extra": "^11.2.0"
+    "fs-extra": "^11.2.0",
+    "yaml": "^2.7.0"
   },
   "keywords": [
     "nodespec",
@@ -26,5 +27,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Deepractice/NodeSpec"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.8"
   }
 }

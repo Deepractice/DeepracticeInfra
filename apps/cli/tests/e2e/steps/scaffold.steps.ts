@@ -25,7 +25,7 @@ Then(
 Then(
   "the following files should exist in {string}:",
   async function (
-    this: ProjectWorld,
+    this: ScaffoldWorld,
     directory: string,
     dataTable: { rawTable: string[][] },
   ) {
@@ -101,7 +101,7 @@ Then(
 Then(
   "{string} should contain {string}",
   async function (
-    this: ProjectWorld,
+    this: ScaffoldWorld,
     fileName: string,
     expectedContent: string,
   ) {
@@ -117,7 +117,7 @@ Then(
 Then(
   "{string}\\/{string} should contain {string}",
   async function (
-    this: ProjectWorld,
+    this: ScaffoldWorld,
     directory: string,
     fileName: string,
     expectedContent: string,

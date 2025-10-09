@@ -1,22 +1,15 @@
 import { Command } from "commander";
-import { initAction } from "./init.js";
-import { createAction } from "./create.js";
+import { monorepoCommand } from "./monorepo/index.js";
+import { packageCommand } from "./package/index.js";
+import { appCommand } from "./app/index.js";
+import { configCommand } from "./config/index.js";
 
 export const scaffoldCommand = new Command("scaffold").description(
-  "Scaffold NodeSpec monorepo projects",
+  "Scaffold NodeSpec monorepo projects and components",
 );
 
-scaffoldCommand
-  .command("init")
-  .description("Initialize a new NodeSpec scaffold in the current directory")
-  .option("--name <name>", "Project name (defaults to directory name)")
-  .option("--skip-install", "Skip dependency installation")
-  .option("--skip-git", "Skip git initialization")
-  .action(initAction);
-
-scaffoldCommand
-  .command("create <name>")
-  .description("Create a new NodeSpec scaffold in a new directory")
-  .option("--skip-install", "Skip dependency installation")
-  .option("--skip-git", "Skip git initialization")
-  .action(createAction);
+// Register domain commands (three-layer structure: scaffold [domain] [action])
+scaffoldCommand.addCommand(monorepoCommand);
+scaffoldCommand.addCommand(packageCommand);
+scaffoldCommand.addCommand(appCommand);
+scaffoldCommand.addCommand(configCommand);

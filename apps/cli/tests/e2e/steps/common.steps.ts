@@ -44,7 +44,7 @@ Given("I am in a test directory", async function (this: ScaffoldWorld) {
 
 Given(
   "I am in a directory with an existing {string}",
-  async function (this: ProjectWorld, filename: string) {
+  async function (this: ScaffoldWorld, filename: string) {
     if (!this.testDir) {
       const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
       this.testDir = tmpDir.toString();
@@ -64,14 +64,14 @@ Given(
 
 Given(
   "directory {string} exists",
-  async function (this: ProjectWorld, dirName: string) {
+  async function (this: ScaffoldWorld, dirName: string) {
     const dirPath = path.join(this.testDir!, dirName);
     await fs.ensureDir(dirPath);
   },
 );
 
 // When steps - command execution
-When("I run {string}", async function (this: ProjectWorld, command: string) {
+When("I run {string}", async function (this: ScaffoldWorld, command: string) {
   this.lastCommand = command;
 
   try {
@@ -141,7 +141,7 @@ When("I run {string}", async function (this: ProjectWorld, command: string) {
 
 When(
   "I run {string} in {string}",
-  async function (this: ProjectWorld, command: string, directory: string) {
+  async function (this: ScaffoldWorld, command: string, directory: string) {
     this.lastCommand = command;
     const workDir = path.join(this.testDir!, directory);
 
@@ -175,7 +175,7 @@ When(
 
 When(
   "I navigate to {string}",
-  function (this: ProjectWorld, directory: string) {
+  function (this: ScaffoldWorld, directory: string) {
     const targetDir = path.join(this.testDir!, directory);
     // Update testDir to the new directory instead of changing process.cwd()
     this.testDir = targetDir;
@@ -200,7 +200,7 @@ Then("the command should fail", function (this: ScaffoldWorld) {
 
 Then(
   "I should see error message {string}",
-  function (this: ProjectWorld, expectedMessage: string) {
+  function (this: ScaffoldWorld, expectedMessage: string) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(expectedMessage);
   },
