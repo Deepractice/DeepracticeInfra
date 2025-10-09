@@ -27,7 +27,7 @@ export async function initAction(options: InitOptions): Promise<void> {
       process.exit(1);
     }
 
-    console.log(chalk.blue(`Initializing NodeSpec project: ${projectName}`));
+    console.log(chalk.blue(`Initializing NodeSpec scaffold: ${projectName}`));
     console.log(chalk.gray(`Target directory: ${targetDir}\n`));
 
     // Generate project structure using ProjectGenerator
@@ -50,7 +50,7 @@ export async function initAction(options: InitOptions): Promise<void> {
       spinner.succeed("Dependencies installed");
     }
 
-    console.log(chalk.green("\n✓ Project initialized successfully!\n"));
+    console.log(chalk.green("\n✓ Scaffold initialized successfully!\n"));
     console.log(chalk.blue("Next steps:"));
     if (options.skipInstall) {
       console.log(chalk.gray("  pnpm install"));

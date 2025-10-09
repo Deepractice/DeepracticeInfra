@@ -7,4 +7,5 @@ const { createConfig } = require("@deepracticex/cucumber-config");
 module.exports = createConfig({
   paths: ["features/**/*.feature"],
   import: ["tests/e2e/**/*.steps.ts", "tests/e2e/support/**/*.ts"],
+  timeout: 60000, // 60 seconds for steps that run pnpm install
 });

@@ -3,7 +3,7 @@
  */
 import { Before, After, BeforeAll, AfterAll } from "@cucumber/cucumber";
 import fs from "fs-extra";
-import type { ProjectWorld } from "./world";
+import type { ScaffoldWorld } from "./world";
 
 // Global setup
 BeforeAll(async function () {
@@ -16,7 +16,7 @@ AfterAll(async function () {
 });
 
 // Before each scenario
-Before(async function (this: ProjectWorld) {
+Before(async function (this: ScaffoldWorld) {
   // Reset state
   this.stdout = [];
   this.stderr = [];
@@ -27,7 +27,7 @@ Before(async function (this: ProjectWorld) {
 });
 
 // After each scenario
-After(async function (this: ProjectWorld) {
+After(async function (this: ScaffoldWorld) {
   // Restore original working directory
   if (this.originalCwd) {
     process.chdir(this.originalCwd);

@@ -1,5 +1,5 @@
 /**
- * Common step definitions for project E2E tests
+ * Common step definitions for scaffold E2E tests
  */
 import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
@@ -7,12 +7,12 @@ import { execa } from "execa";
 import fs from "fs-extra";
 import path from "node:path";
 import os from "node:os";
-import type { ProjectWorld } from "../support/world";
+import type { ScaffoldWorld } from "../support/world";
 
 // Background steps
 Given(
   "I am in a temporary test directory",
-  async function (this: ProjectWorld) {
+  async function (this: ScaffoldWorld) {
     const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
     this.testDir = tmpDir.toString();
     this.originalCwd = process.cwd();
@@ -20,7 +20,7 @@ Given(
   },
 );
 
-Given("I am in an empty directory", async function (this: ProjectWorld) {
+Given("I am in an empty directory", async function (this: ScaffoldWorld) {
   if (!this.testDir) {
     const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
     this.testDir = tmpDir.toString();
@@ -35,7 +35,7 @@ Given("I am in an empty directory", async function (this: ProjectWorld) {
   }
 });
 
-Given("I am in a test directory", async function (this: ProjectWorld) {
+Given("I am in a test directory", async function (this: ScaffoldWorld) {
   const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
   this.testDir = tmpDir.toString();
   this.originalCwd = process.cwd();
@@ -52,7 +52,7 @@ Given(
       // Don't change process.cwd() - keep it in project root for module resolution
     }
 
-    // Create a simple package.json to simulate existing project
+    // Create a simple package.json to simulate existing scaffold
     if (filename === "package.json") {
       await fs.writeJson(path.join(this.testDir, filename), {
         name: "existing-project",
@@ -178,7 +178,7 @@ When(
 );
 
 // Then steps - assertions
-Then("the command should succeed", function (this: ProjectWorld) {
+Then("the command should succeed", function (this: ScaffoldWorld) {
   if (this.exitCode !== 0) {
     console.log("STDOUT:", this.stdout.join("\n"));
     console.log("STDERR:", this.stderr.join("\n"));
@@ -186,7 +186,7 @@ Then("the command should succeed", function (this: ProjectWorld) {
   expect(this.exitCode).to.equal(0, `Command failed: ${this.lastCommand}`);
 });
 
-Then("the command should fail", function (this: ProjectWorld) {
+Then("the command should fail", function (this: ScaffoldWorld) {
   expect(this.exitCode).to.not.equal(
     0,
     `Command should have failed: ${this.lastCommand}`,

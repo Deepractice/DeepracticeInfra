@@ -1,17 +1,17 @@
 /**
- * Project-specific step definitions for init and create scenarios
+ * Scaffold-specific step definitions for init and create scenarios
  */
 import { Given, When, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
 import { execa } from "execa";
 import fs from "fs-extra";
 import path from "node:path";
-import type { ProjectWorld } from "../support/world";
+import type { ScaffoldWorld } from "../support/world";
 
 // File existence assertions
 Then(
   "the following files should exist:",
-  async function (this: ProjectWorld, dataTable: { rawTable: string[][] }) {
+  async function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
     const files = dataTable.rawTable.slice(1).map((row) => row[0]!);
 
     for (const file of files) {
@@ -41,7 +41,7 @@ Then(
 
 Then(
   "the following directories should exist:",
-  async function (this: ProjectWorld, dataTable: { rawTable: string[][] }) {
+  async function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
     const directories = dataTable.rawTable.slice(1).map((row) => row[0]!);
 
     for (const dir of directories) {
@@ -54,7 +54,7 @@ Then(
 
 Then(
   "directory {string} should exist",
-  async function (this: ProjectWorld, dirName: string) {
+  async function (this: ScaffoldWorld, dirName: string) {
     const dirPath = path.join(this.testDir!, dirName);
     const exists = await fs.pathExists(dirPath);
     expect(exists, `Directory ${dirName} should exist`).to.be.true;
@@ -63,7 +63,7 @@ Then(
 
 Then(
   "{string} directory should exist",
-  async function (this: ProjectWorld, dirName: string) {
+  async function (this: ScaffoldWorld, dirName: string) {
     const dirPath = path.join(this.testDir!, dirName);
     const exists = await fs.pathExists(dirPath);
     expect(exists, `Directory ${dirName} should exist`).to.be.true;
@@ -72,7 +72,7 @@ Then(
 
 Then(
   "{string} directory should not exist",
-  async function (this: ProjectWorld, dirName: string) {
+  async function (this: ScaffoldWorld, dirName: string) {
     const dirPath = path.join(this.testDir!, dirName);
     const exists = await fs.pathExists(dirPath);
     expect(exists, `Directory ${dirName} should not exist`).to.be.false;
@@ -81,7 +81,7 @@ Then(
 
 Then(
   "{string} should exist",
-  async function (this: ProjectWorld, fileName: string) {
+  async function (this: ScaffoldWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     const exists = await fs.pathExists(filePath);
     expect(exists, `File ${fileName} should exist`).to.be.true;
@@ -90,7 +90,7 @@ Then(
 
 Then(
   "{string} should not exist",
-  async function (this: ProjectWorld, fileName: string) {
+  async function (this: ScaffoldWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     const exists = await fs.pathExists(filePath);
     expect(exists, `File ${fileName} should not exist`).to.be.false;
@@ -133,7 +133,7 @@ Then(
 
 Then(
   "file {string} should exist",
-  async function (this: ProjectWorld, fileName: string) {
+  async function (this: ScaffoldWorld, fileName: string) {
     const filePath = path.join(this.testDir!, fileName);
     const exists = await fs.pathExists(filePath);
     expect(exists, `File ${fileName} should exist`).to.be.true;
@@ -143,7 +143,7 @@ Then(
 // Git-related assertions
 Then(
   "git repository should be initialized",
-  async function (this: ProjectWorld) {
+  async function (this: ScaffoldWorld) {
     const gitDir = path.join(this.testDir!, ".git");
     const exists = await fs.pathExists(gitDir);
     expect(exists, "Git repository should be initialized").to.be.true;
@@ -152,7 +152,7 @@ Then(
 
 Then(
   "git repository should be initialized in {string}",
-  async function (this: ProjectWorld, directory: string) {
+  async function (this: ScaffoldWorld, directory: string) {
     const gitDir = path.join(this.testDir!, directory, ".git");
     const exists = await fs.pathExists(gitDir);
     expect(exists, `Git repository should be initialized in ${directory}`).to.be
@@ -162,7 +162,7 @@ Then(
 
 Then(
   "git repository should not be initialized",
-  async function (this: ProjectWorld) {
+  async function (this: ScaffoldWorld) {
     const gitDir = path.join(this.testDir!, ".git");
     const exists = await fs.pathExists(gitDir);
     expect(exists, "Git repository should not be initialized").to.be.false;
@@ -171,7 +171,7 @@ Then(
 
 Then(
   "git repository should have initial commit",
-  async function (this: ProjectWorld) {
+  async function (this: ScaffoldWorld) {
     const result = await execa("git", ["log", "--oneline"], {
       cwd: this.testDir!,
       reject: false,
@@ -184,7 +184,7 @@ Then(
 
 Then(
   "git commit message should contain {string}",
-  async function (this: ProjectWorld, expectedMessage: string) {
+  async function (this: ScaffoldWorld, expectedMessage: string) {
     const result = await execa("git", ["log", "-1", "--pretty=%B"], {
       cwd: this.testDir!,
       reject: false,
@@ -198,7 +198,7 @@ Then(
 // File creation helpers
 When(
   "I create a test package in {string}",
-  async function (this: ProjectWorld, packagePath: string) {
+  async function (this: ScaffoldWorld, packagePath: string) {
     const pkgDir = path.join(this.testDir!, packagePath);
     await fs.ensureDir(path.join(pkgDir, "src"));
 
@@ -252,7 +252,7 @@ export default createConfig({ entry: ['src/index.ts'] });`,
 
 When(
   "I create directory {string}",
-  async function (this: ProjectWorld, directory: string) {
+  async function (this: ScaffoldWorld, directory: string) {
     const dirPath = path.join(this.testDir!, directory);
     await fs.ensureDir(dirPath);
   },
@@ -260,7 +260,7 @@ When(
 
 When(
   "I create {string} with:",
-  async function (this: ProjectWorld, filePath: string, content: string) {
+  async function (this: ScaffoldWorld, filePath: string, content: string) {
     const fullPath = path.join(this.testDir!, filePath);
     await fs.ensureDir(path.dirname(fullPath));
     await fs.writeFile(fullPath, content);

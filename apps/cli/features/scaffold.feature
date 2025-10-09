@@ -1,14 +1,14 @@
-Feature: Project Management
+Feature: Project Scaffolding
   As a developer using NodeSpec
-  I want to manage monorepo projects
-  So that I can quickly bootstrap and maintain standardized Node.js projects
+  I want to scaffold monorepo projects
+  So that I can quickly scaffold standardized Node.js projects
 
   Background:
     Given I am in a temporary test directory
 
   Scenario: Initialize project in current directory
     Given I am in an empty directory
-    When I run "nodespec project init --skip-git --skip-install"
+    When I run "nodespec scaffold init --skip-git --skip-install"
     Then the command should succeed
     And the following files should exist:
       | file                  |
@@ -32,7 +32,7 @@ Feature: Project Management
 
   Scenario: Initialize project and verify it works end-to-end
     Given I am in an empty directory
-    When I run "nodespec project init --skip-git"
+    When I run "nodespec scaffold init --skip-git"
     Then the command should succeed
 
     # Verify dependencies can be installed
@@ -57,13 +57,13 @@ Feature: Project Management
 
   Scenario: Initialize project with custom name
     Given I am in an empty directory
-    When I run "nodespec project init --name my-awesome-project --skip-git --skip-install"
+    When I run "nodespec scaffold init --name my-awesome-project --skip-git --skip-install"
     Then the command should succeed
     And "package.json" should contain "my-awesome-project"
 
   Scenario: Create new project in subdirectory
     Given I am in a test directory
-    When I run "nodespec project create my-project --skip-git --skip-install"
+    When I run "nodespec scaffold create my-project --skip-git --skip-install"
     Then the command should succeed
     And directory "my-project" should exist
     And the following files should exist in "my-project":
@@ -78,54 +78,54 @@ Feature: Project Management
 
   Scenario: Create project with scoped name
     Given I am in a test directory
-    When I run "nodespec project create @myorg/myapp --skip-git --skip-install"
+    When I run "nodespec scaffold create @myorg/myapp --skip-git --skip-install"
     Then the command should succeed
     And directory "myapp" should exist
     And "myapp/package.json" should contain "@myorg/myapp"
 
   Scenario: Prevent overwriting existing project
     Given I am in a directory with an existing "package.json"
-    When I run "nodespec project init --skip-git --skip-install"
+    When I run "nodespec scaffold init --skip-git --skip-install"
     Then the command should fail
     And I should see error message "Project already exists"
 
   Scenario: Prevent creating project in existing directory
     Given I am in a test directory
     And directory "existing-project" exists
-    When I run "nodespec project create existing-project --skip-git --skip-install"
+    When I run "nodespec scaffold create existing-project --skip-git --skip-install"
     Then the command should fail
     And I should see error message "Directory already exists"
 
   Scenario: Auto install dependencies after initialization
     Given I am in an empty directory
-    When I run "nodespec project init"
+    When I run "nodespec scaffold init"
     Then the command should succeed
     And "node_modules" directory should exist
     And "pnpm-lock.yaml" should exist
 
   Scenario: Skip dependency installation with flag
     Given I am in an empty directory
-    When I run "nodespec project init --skip-install --skip-git"
+    When I run "nodespec scaffold init --skip-install --skip-git"
     Then the command should succeed
     And "node_modules" directory should not exist
     And "pnpm-lock.yaml" should not exist
 
   Scenario: Initialize with git commit
     Given I am in an empty directory
-    When I run "nodespec project init --skip-install"
+    When I run "nodespec scaffold init --skip-install"
     Then the command should succeed
     And git repository should have initial commit
     And git commit message should contain "Initial commit from NodeSpec"
 
   Scenario: Skip git initialization with flag
     Given I am in an empty directory
-    When I run "nodespec project init --skip-git --skip-install"
+    When I run "nodespec scaffold init --skip-git --skip-install"
     Then the command should succeed
     And git repository should not be initialized
 
   Scenario: Create project and develop a working package
     Given I am in a test directory
-    When I run "nodespec project create my-monorepo --skip-git --skip-install"
+    When I run "nodespec scaffold create my-monorepo --skip-git --skip-install"
     Then the command should succeed
     And directory "my-monorepo" should exist
 
