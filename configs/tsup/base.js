@@ -1,15 +1,13 @@
-import { defineConfig, type Options } from "tsup";
+import { defineConfig } from "tsup";
 import path from "path";
 
 /**
  * Create a tsup configuration with Deepractice defaults
  *
- * @param options - Additional tsup options to merge
- * @returns tsup configuration
+ * @param {import('tsup').Options} options - Additional tsup options to merge
+ * @returns {ReturnType<typeof defineConfig>} tsup configuration
  */
-export function createConfig(
-  options: Options = {},
-): ReturnType<typeof defineConfig> {
+export function createConfig(options = {}) {
   return defineConfig({
     // Output formats
     format: ["cjs", "esm"],

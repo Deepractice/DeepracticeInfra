@@ -18,19 +18,19 @@
  *   }
  */
 
-const { spawn } = require('child_process');
-const path = require('path');
+const { spawn } = require("child_process");
+const path = require("path");
 
 // Set NODE_OPTIONS for tsx support
 const env = {
   ...process.env,
-  NODE_OPTIONS: '--import tsx'
+  NODE_OPTIONS: "--import tsx",
 };
 
 // Find cucumber-js binary
 const cucumberBin = path.resolve(
   __dirname,
-  '../../../node_modules/.bin/cucumber-js'
+  "../../../node_modules/.bin/cucumber-js",
 );
 
 // Pass through all command line arguments
@@ -39,16 +39,16 @@ const args = process.argv.slice(2);
 // Spawn cucumber-js with tsx support
 const cucumber = spawn(cucumberBin, args, {
   env,
-  stdio: 'inherit',
-  shell: process.platform === 'win32'
+  stdio: "inherit",
+  shell: process.platform === "win32",
 });
 
 // Exit with cucumber's exit code
-cucumber.on('exit', (code) => {
+cucumber.on("exit", (code) => {
   process.exit(code || 0);
 });
 
-cucumber.on('error', (err) => {
-  console.error('Failed to start cucumber:', err);
+cucumber.on("error", (err) => {
+  console.error("Failed to start cucumber:", err);
   process.exit(1);
 });

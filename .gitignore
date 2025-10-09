@@ -47,4 +47,4 @@ lefthook-local.yml
 # Note: changeset files should be committed until consumed by version workflow
 
 # Test reports
-**/tests/reports/
+**/reports/

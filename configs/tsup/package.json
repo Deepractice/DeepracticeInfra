@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "description": "Shared tsup build configuration for Deepractice projects",
   "type": "module",
-  "main": "./base.ts",
+  "main": "./base.js",
   "exports": {
-    ".": "./base.ts"
+    ".": "./base.js"
   },
   "files": [
-    "base.ts",
+    "base.js",
     "README.md"
   ],
   "keywords": [

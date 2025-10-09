@@ -65,6 +65,16 @@ When(
 );
 
 When(
+  "I create a not found error with:",
+  function (this: ErrorHandlingWorld, dataTable: DataTable) {
+    const data = dataTable.rowsHash();
+    const resource = data.resource;
+    const identifier = data.identifier;
+    this.error = this.errorFactory.notFound(resource, identifier);
+  },
+);
+
+When(
   "I create a validation error with message {string} and fields:",
   function (this: ErrorHandlingWorld, message: string, dataTable: DataTable) {
     const fields: Record<string, string> = {};
@@ -96,6 +106,47 @@ When(
 When("I serialize the error to JSON", function (this: ErrorHandlingWorld) {
   this.errorJson = this.error!.toJSON();
 });
+
+Given(
+  "I have validation errors:",
+  function (this: ErrorHandlingWorld, dataTable: DataTable) {
+    this.validationFields = {};
+    dataTable.hashes().forEach((row) => {
+      const field = row.field;
+      const message = row.message;
+      if (field && message) {
+        this.validationFields![field] = message;
+      }
+    });
+  },
+);
+
+When(
+  "I create a validation error with message {string}",
+  function (this: ErrorHandlingWorld, message: string) {
+    this.error = this.errorFactory.validation(message, this.validationFields);
+  },
+);
+
+When(
+  "I create a database error with:",
+  function (this: ErrorHandlingWorld, dataTable: DataTable) {
+    const data = dataTable.rowsHash();
+    const message = data.message;
+    const operation = data.operation;
+    this.error = this.errorFactory.database(message, operation);
+  },
+);
+
+When(
+  "I create an external service error with:",
+  function (this: ErrorHandlingWorld, dataTable: DataTable) {
+    const data = dataTable.rowsHash();
+    const service = data.service;
+    const message = data.message;
+    this.error = this.errorFactory.externalService(service, message);
+  },
+);
 
 // Then steps - Assertions
 Then(
@@ -173,5 +224,25 @@ Then(
   "the JSON should have property {string}",
   function (this: ErrorHandlingWorld, property: string) {
     expect(this.errorJson).to.have.property(property);
+  },
+);
+
+Then(
+  "the error meta should contain:",
+  function (this: ErrorHandlingWorld, dataTable: DataTable) {
+    dataTable.hashes().forEach((row) => {
+      const key = row.key;
+      const value = row.value;
+      if (key && value) {
+        expect(this.error!.meta).to.have.property(key, value);
+      }
+    });
+  },
+);
+
+Then(
+  "the JSON should have property {string} with value {string}",
+  function (this: ErrorHandlingWorld, property: string, value: string) {
+    expect(this.errorJson![property]).to.equal(value);
   },
 );
