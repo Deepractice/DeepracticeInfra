@@ -102,3 +102,8 @@ jobs:
             --title "Release ${{ steps.extract_version.outputs.tag }}" \
             --notes "${{ steps.release_notes.outputs.notes }}" \
             --latest
+
+      - name: Delete Release Branch
+        run: |
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          git push origin --delete "$BRANCH_NAME" || echo "Branch already deleted"
