@@ -31,4 +31,5 @@ monorepoCommand
 monorepoCommand
   .command("info")
   .description("Display monorepo information")
+  .option("--verbose", "Show detailed configuration information")
   .action(infoAction);

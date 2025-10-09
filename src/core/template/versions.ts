@@ -10,7 +10,7 @@ export const VERSIONS = {
   eslintConfig: "^0.1.0",
   prettierConfig: "^0.1.0",
   typescriptConfig: "^0.1.0",
-  tsupConfig: "^0.1.0",
+  tsupConfig: "^0.0.1",
   vitestConfig: "^0.1.0",
   cucumberConfig: "^0.1.0",
   commitlintConfig: "^0.1.0",

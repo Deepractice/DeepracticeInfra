@@ -3,7 +3,9 @@ import fs from "fs-extra";
 import chalk from "chalk";
 import { WorkspaceUtils } from "@deepracticex/nodespec-core";
 
-export async function infoAction(): Promise<void> {
+export async function infoAction(options: {
+  verbose?: boolean;
+}): Promise<void> {
   try {
     const monorepoRoot = process.cwd();
 
@@ -49,6 +51,75 @@ export async function infoAction(): Promise<void> {
       console.log(chalk.gray(`  - ${pattern}`));
     }
     console.log();
+
+    // Verbose output: show detailed configuration
+    if (options.verbose) {
+      console.log(chalk.blue("Detailed Configuration:\n"));
+
+      // Show all packages with their locations
+      if (purePackages.length > 0) {
+        console.log(chalk.white("Packages:"));
+        for (const pkg of purePackages) {
+          console.log(chalk.gray(`  - ${pkg.name} (${pkg.location})`));
+        }
+        console.log();
+      }
+
+      // Show all apps with their locations
+      if (apps.length > 0) {
+        console.log(chalk.white("Apps:"));
+        for (const app of apps) {
+          console.log(chalk.gray(`  - ${app.name} (${app.location})`));
+        }
+        console.log();
+      }
+
+      // Show all services with their locations
+      if (services.length > 0) {
+        console.log(chalk.white("Services:"));
+        for (const service of services) {
+          console.log(chalk.gray(`  - ${service.name} (${service.location})`));
+        }
+        console.log();
+      }
+
+      // Show package.json scripts if available
+      if (packageJson.scripts && Object.keys(packageJson.scripts).length > 0) {
+        console.log(chalk.white("Available Scripts:"));
+        for (const [name, command] of Object.entries(packageJson.scripts)) {
+          console.log(chalk.gray(`  - ${name}: ${command}`));
+        }
+        console.log();
+      }
+
+      // Show workspace dependencies if available
+      if (
+        packageJson.dependencies &&
+        Object.keys(packageJson.dependencies).length > 0
+      ) {
+        console.log(chalk.white("Dependencies:"));
+        for (const [name, version] of Object.entries(
+          packageJson.dependencies,
+        )) {
+          console.log(chalk.gray(`  - ${name}: ${version}`));
+        }
+        console.log();
+      }
+
+      // Show workspace devDependencies if available
+      if (
+        packageJson.devDependencies &&
+        Object.keys(packageJson.devDependencies).length > 0
+      ) {
+        console.log(chalk.white("Dev Dependencies:"));
+        for (const [name, version] of Object.entries(
+          packageJson.devDependencies,
+        )) {
+          console.log(chalk.gray(`  - ${name}: ${version}`));
+        }
+        console.log();
+      }
+    }
   } catch (error) {
     console.error(
       chalk.red(
