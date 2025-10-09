@@ -47,11 +47,11 @@ export async function validateAction(
         }
       }
 
-      console.log(
-        chalk.blue(
-          `\nValidation complete: ${validCount} valid, ${errorCount} errors`,
-        ),
-      );
+      console.log(chalk.blue(`\nValidation Summary:`));
+      console.log(chalk.blue(`| Status | Count |`));
+      console.log(chalk.blue(`|--------|-------|`));
+      console.log(chalk.green(`| valid  | ${validCount}     |`));
+      console.log(chalk.red(`| errors | ${errorCount}     |`));
 
       if (errorCount > 0) {
         process.exit(1);

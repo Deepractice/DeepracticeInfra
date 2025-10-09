@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { initAction } from "./init.js";
 import { createAction } from "./create.js";
 import { validateAction } from "./validate.js";
+import { infoAction } from "./info.js";
 
 export const monorepoCommand = new Command("monorepo").description(
   "Manage NodeSpec monorepo projects",
@@ -26,3 +27,8 @@ monorepoCommand
   .command("validate")
   .description("Validate monorepo structure and configuration")
   .action(validateAction);
+
+monorepoCommand
+  .command("info")
+  .description("Display monorepo information")
+  .action(infoAction);

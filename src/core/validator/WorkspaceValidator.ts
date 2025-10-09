@@ -103,6 +103,19 @@ export class WorkspaceValidator {
       }
     }
 
+    // Check for src/cli.ts and validate shebang
+    const cliPath = path.join(appDir, "src/cli.ts");
+    if (await fs.pathExists(cliPath)) {
+      const content = await fs.readFile(cliPath, "utf-8");
+      if (!content.startsWith("#!/usr/bin/env node")) {
+        errors.push({
+          type: "file",
+          message: "src/cli.ts must have shebang: #!/usr/bin/env node",
+          path: cliPath,
+        });
+      }
+    }
+
     // Validate package.json structure
     await this.validatePackageJson(appDir, errors, "app");
 

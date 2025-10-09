@@ -12,7 +12,13 @@ import type { ScaffoldWorld } from "../support/world";
 Given(
   "package {string} exists in {string}",
   async function (this: ScaffoldWorld, packageName: string, location: string) {
-    const packageDir = path.join(this.testDir!, location, packageName);
+    // Handle both formats:
+    // - "package 'test-lib' exists in 'packages/'" - location is parent dir
+    // - "package '@myorg/utils' exists in 'packages/utils'" - location is full path
+    const packageDir = location.endsWith("/")
+      ? path.join(this.testDir!, location, extractDirName(packageName))
+      : path.join(this.testDir!, location);
+
     await fs.ensureDir(path.join(packageDir, "src"));
 
     await fs.writeJson(path.join(packageDir, "package.json"), {
@@ -34,7 +40,7 @@ Given(
 
     await fs.writeFile(
       path.join(packageDir, "src/index.ts"),
-      `export const ${packageName.replace(/-/g, "_")} = true;`,
+      `export const ${packageName.replace(/[@/-]/g, "_")} = true;`,
     );
   },
 );
@@ -42,7 +48,13 @@ Given(
 Given(
   "app {string} exists in {string}",
   async function (this: ScaffoldWorld, appName: string, location: string) {
-    const appDir = path.join(this.testDir!, location, appName);
+    // Handle both formats:
+    // - "app 'test-cli' exists in 'apps/'" - location is parent dir
+    // - "app '@myorg/admin-cli' exists in 'apps/admin-cli'" - location is full path
+    const appDir = location.endsWith("/")
+      ? path.join(this.testDir!, location, extractDirName(appName))
+      : path.join(this.testDir!, location);
+
     await fs.ensureDir(path.join(appDir, "src"));
 
     await fs.writeJson(path.join(appDir, "package.json"), {
@@ -65,7 +77,7 @@ Given(
 
     await fs.writeFile(
       path.join(appDir, "src/index.ts"),
-      `export const ${appName.replace(/-/g, "_")} = true;`,
+      `export const ${appName.replace(/[@/-]/g, "_")} = true;`,
     );
 
     await fs.writeFile(
@@ -74,6 +86,18 @@ Given(
     );
   },
 );
+
+/**
+ * Extract directory name from package name
+ * For scoped packages like @myorg/admin-cli, returns admin-cli
+ */
+function extractDirName(name: string): string {
+  if (name.startsWith("@")) {
+    const parts = name.split("/");
+    return parts.length > 1 ? parts[1]! : parts[0]!.slice(1);
+  }
+  return name;
+}
 
 Given(
   "{string} contains dependency on {string}",
