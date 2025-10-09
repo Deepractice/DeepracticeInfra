@@ -78,11 +78,18 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "ci@nodespec.dev"
+          git config --global user.name "NodeSpec CI"
+
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Run Tests
         run: pnpm test
+        env:
+          CI: true
 
       - name: Upload Test Reports
         if: always()

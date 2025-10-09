@@ -96,7 +96,12 @@ When("I run {string}", async function (this: ProjectWorld, command: string) {
     } else {
       // Execute regular shell command
       const cmd = parts[0]!;
-      const args = parts.slice(1);
+      let args = parts.slice(1);
+
+      // In CI, pnpm install needs --no-frozen-lockfile for tests that dynamically add packages
+      if (process.env.CI && cmd === "pnpm" && args[0] === "install") {
+        args.push("--no-frozen-lockfile");
+      }
 
       this.lastResult = await execa(cmd, args, {
         cwd: this.testDir || process.cwd(),
