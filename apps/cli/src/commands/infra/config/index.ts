@@ -28,7 +28,6 @@ configCommand
   .action(listAction);
 
 configCommand
-  .command("validate [config]")
+  .command("validate [type]")
   .description("Validate configuration files")
-  .option("--all", "Validate all configuration files")
   .action(validateAction);

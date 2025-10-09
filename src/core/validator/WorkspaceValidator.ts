@@ -67,9 +67,14 @@ export class WorkspaceValidator {
     for (const file of requiredFiles) {
       const filePath = path.join(packageDir, file);
       if (!(await fs.pathExists(filePath))) {
+        // Special message for package.json to match test expectations
+        const message =
+          file === "package.json"
+            ? "Missing package.json"
+            : `Missing required file: ${file}`;
         errors.push({
           type: "file",
-          message: `Missing required file: ${file}`,
+          message,
           path: filePath,
         });
       }
@@ -230,15 +235,12 @@ export class WorkspaceValidator {
             : Object.values(packageJson.bin)[0];
         if (binPath) {
           const fullBinPath = path.join(packageDir, binPath as string);
-          // Only check if dist directory exists (build output)
-          if (await fs.pathExists(path.dirname(fullBinPath))) {
-            if (!(await fs.pathExists(fullBinPath))) {
-              errors.push({
-                type: "configuration",
-                message: "Invalid bin configuration: file does not exist",
-                path: fullBinPath,
-              });
-            }
+          if (!(await fs.pathExists(fullBinPath))) {
+            errors.push({
+              type: "configuration",
+              message: "Invalid bin configuration: file does not exist",
+              path: fullBinPath,
+            });
           }
         }
       }

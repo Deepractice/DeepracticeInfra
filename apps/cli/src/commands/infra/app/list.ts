@@ -31,13 +31,29 @@ export async function listAction(options: ListOptions): Promise<void> {
     if (options.verbose) {
       console.log(chalk.blue(`\nApps (${apps.length}):\n`));
       for (const app of apps) {
+        // Read package.json to get scripts
+        const packageJsonPath = path.join(
+          monorepoRoot,
+          app.location,
+          "package.json",
+        );
+        let scripts: { start?: string; dev?: string } = {};
+        if (await fs.pathExists(packageJsonPath)) {
+          const packageJson = await fs.readJson(packageJsonPath);
+          scripts = {
+            start: packageJson.scripts?.start,
+            dev: packageJson.scripts?.dev,
+          };
+        }
+
         console.log(chalk.bold(app.name));
         console.log(chalk.gray(`  Version:  ${app.version}`));
         console.log(chalk.gray(`  Location: ${app.location}`));
-        if (app.bin) {
-          const binValue =
-            typeof app.bin === "string" ? app.bin : Object.values(app.bin)[0];
-          console.log(chalk.gray(`  Bin:      ${binValue}`));
+        if (scripts.start) {
+          console.log(chalk.gray(`  Start:    ${scripts.start}`));
+        }
+        if (scripts.dev) {
+          console.log(chalk.gray(`  Dev:      ${scripts.dev}`));
         }
         console.log();
       }

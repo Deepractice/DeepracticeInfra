@@ -159,8 +159,8 @@ async function validateService(
   if (await fs.pathExists(serverFilePath)) {
     const serverContent = await fs.readFile(serverFilePath, "utf-8");
     if (
-      !serverContent.includes("export") ||
-      !serverContent.includes("server")
+      !serverContent.includes("export const server") &&
+      !serverContent.includes("export { server }")
     ) {
       errors.push("Invalid server configuration: must export server instance");
     }

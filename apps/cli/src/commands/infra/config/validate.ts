@@ -8,17 +8,13 @@ interface ValidationResult {
   errors: string[];
 }
 
-export async function validateAction(
-  configName?: string,
-  options: { all?: boolean } = {},
-): Promise<void> {
+export async function validateAction(type?: string): Promise<void> {
   const cwd = process.cwd();
   const results: ValidationResult[] = [];
 
-  const configFiles =
-    options.all || !configName
-      ? [".eslintrc.json", ".prettierrc.json", "tsconfig.json"]
-      : [configName];
+  const configFiles = !type
+    ? [".eslintrc.json", ".prettierrc.json", "tsconfig.json"]
+    : [type];
 
   for (const file of configFiles) {
     const result = await validateConfig(path.join(cwd, file));
