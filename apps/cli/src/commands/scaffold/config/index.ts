@@ -1,5 +1,7 @@
 import { Command } from "commander";
 import { initAction } from "./init.js";
+import { listAction } from "./list.js";
+import { validateAction } from "./validate.js";
 
 export const configCommand = new Command("config").description(
   "Manage configuration files in NodeSpec monorepo",
@@ -19,3 +21,14 @@ configCommand
   .option("--skip-editorconfig", "Skip EditorConfig configuration")
   .option("--skip-gitignore", "Skip .gitignore file")
   .action(initAction);
+
+configCommand
+  .command("list")
+  .description("List all configuration files")
+  .action(listAction);
+
+configCommand
+  .command("validate [config]")
+  .description("Validate configuration files")
+  .option("--all", "Validate all configuration files")
+  .action(validateAction);
