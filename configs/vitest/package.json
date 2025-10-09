@@ -5,7 +5,8 @@
   "type": "module",
   "main": "./base.ts",
   "exports": {
-    ".": "./base.ts"
+    ".": "./base.ts",
+    "./base": "./base.ts"
   },
   "files": [
     "base.ts",
