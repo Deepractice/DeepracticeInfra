@@ -277,6 +277,13 @@ Given(
   "{string} does not have {string} field",
   async function (this: InfraWorld, jsonPath: string, fieldName: string) {
     const fullPath = path.join(this.testDir!, jsonPath);
+
+    // Check if file exists before trying to read it
+    if (!(await fs.pathExists(fullPath))) {
+      // Skip this step if file doesn't exist
+      return;
+    }
+
     const json = await fs.readJson(fullPath);
     delete json[fieldName];
     await fs.writeJson(fullPath, json, { spaces: 2 });

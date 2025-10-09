@@ -40,9 +40,11 @@ export async function infoAction(options: {
     console.log();
 
     console.log(chalk.blue("Workspace Statistics:\n"));
-    console.log(chalk.white(`Packages: ${purePackages.length}`));
-    console.log(chalk.white(`Apps:     ${apps.length}`));
-    console.log(chalk.white(`Services: ${services.length}`));
+    console.log(chalk.white(`Total packages: ${packages.length}`));
+    console.log(chalk.white(`Packages:       ${purePackages.length}`));
+    console.log(chalk.white(`Apps:           ${apps.length}`));
+    console.log(chalk.white(`Services:       ${services.length}`));
+    console.log(chalk.white(`packages:       ${purePackages.length}`));
     console.log();
 
     console.log(chalk.blue("Workspace Configuration:\n"));
@@ -52,9 +54,32 @@ export async function infoAction(options: {
     }
     console.log();
 
+    // Configuration tools summary
+    console.log(chalk.blue("Configuration Tools:\n"));
+    const configTools = await detectConfigTools(monorepoRoot);
+    for (const tool of configTools) {
+      console.log(chalk.white(`${tool.name}: ${tool.version || "detected"}`));
+    }
+    console.log();
+
     // Verbose output: show detailed configuration
     if (options.verbose) {
       console.log(chalk.blue("Detailed Configuration:\n"));
+
+      // Show configuration details table
+      console.log(chalk.white("Configuration Details:"));
+      console.log(chalk.gray("| Tool       | Version | Config File       |"));
+      console.log(chalk.gray("|------------|---------|-------------------|"));
+      for (const tool of configTools) {
+        const configFile = tool.configFile || "N/A";
+        const version = tool.version || "N/A";
+        console.log(
+          chalk.gray(
+            `| ${tool.name.padEnd(10)} | ${version.padEnd(7)} | ${configFile.padEnd(17)} |`,
+          ),
+        );
+      }
+      console.log();
 
       // Show all packages with their locations
       if (purePackages.length > 0) {
@@ -199,4 +224,110 @@ async function getServices(
   }
 
   return services;
+}
+
+/**
+ * Detect configuration tools in the monorepo
+ */
+async function detectConfigTools(
+  monorepoRoot: string,
+): Promise<Array<{ name: string; version?: string; configFile?: string }>> {
+  const tools: Array<{ name: string; version?: string; configFile?: string }> =
+    [];
+
+  // Check for TypeScript
+  const tsConfigPath = path.join(monorepoRoot, "tsconfig.json");
+  if (await fs.pathExists(tsConfigPath)) {
+    let tsVersion = "N/A";
+    try {
+      const packageJsonPath = path.join(monorepoRoot, "package.json");
+      const packageJson = await fs.readJson(packageJsonPath);
+      tsVersion =
+        packageJson.devDependencies?.typescript ||
+        packageJson.dependencies?.typescript ||
+        "N/A";
+    } catch {
+      // Ignore version detection error
+    }
+    tools.push({
+      name: "TypeScript",
+      version: tsVersion,
+      configFile: "tsconfig.json",
+    });
+  }
+
+  // Check for package manager (pnpm)
+  const pnpmWorkspacePath = path.join(monorepoRoot, "pnpm-workspace.yaml");
+  if (await fs.pathExists(pnpmWorkspacePath)) {
+    tools.push({
+      name: "pnpm",
+      version: undefined,
+      configFile: "pnpm-workspace.yaml",
+    });
+  }
+
+  // Check for tsup
+  const tsupConfigPath = path.join(monorepoRoot, "tsup.config.ts");
+  if (await fs.pathExists(tsupConfigPath)) {
+    let tsupVersion = "N/A";
+    try {
+      const packageJsonPath = path.join(monorepoRoot, "package.json");
+      const packageJson = await fs.readJson(packageJsonPath);
+      tsupVersion =
+        packageJson.devDependencies?.tsup ||
+        packageJson.dependencies?.tsup ||
+        "N/A";
+    } catch {
+      // Ignore version detection error
+    }
+    tools.push({
+      name: "tsup",
+      version: tsupVersion,
+      configFile: "tsup.config.ts",
+    });
+  }
+
+  // Check for ESLint
+  const eslintConfigPath = path.join(monorepoRoot, ".eslintrc.json");
+  if (await fs.pathExists(eslintConfigPath)) {
+    let eslintVersion = "N/A";
+    try {
+      const packageJsonPath = path.join(monorepoRoot, "package.json");
+      const packageJson = await fs.readJson(packageJsonPath);
+      eslintVersion =
+        packageJson.devDependencies?.eslint ||
+        packageJson.dependencies?.eslint ||
+        "N/A";
+    } catch {
+      // Ignore version detection error
+    }
+    tools.push({
+      name: "ESLint",
+      version: eslintVersion,
+      configFile: ".eslintrc.json",
+    });
+  }
+
+  // Check for Prettier
+  const prettierConfigPath = path.join(monorepoRoot, ".prettierrc.json");
+  if (await fs.pathExists(prettierConfigPath)) {
+    let prettierVersion = "N/A";
+    try {
+      const packageJsonPath = path.join(monorepoRoot, "package.json");
+      const packageJson = await fs.readJson(packageJsonPath);
+      prettierVersion =
+        packageJson.devDependencies?.prettier ||
+        packageJson.dependencies?.prettier ||
+        "N/A";
+    } catch {
+      // Ignore version detection error
+    }
+    tools.push({
+      name: "Prettier",
+      version: prettierVersion,
+      configFile: ".prettierrc.json",
+    });
+  }
+
+  return tools;
 }

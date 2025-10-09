@@ -82,7 +82,7 @@ Feature: Add Service to Monorepo
       Given I am in a non-monorepo directory
       When I run "nodespec infra service add api-gateway"
       Then the command should fail
-      And I should see error message "Not in a monorepo"
+      And I should see error message "Not in a monorepo - pnpm-workspace.yaml not found"
 
     Scenario: Validate service name format
       Given I am in the monorepo root

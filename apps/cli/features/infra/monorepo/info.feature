@@ -82,7 +82,7 @@ Feature: Display Monorepo Information
       Given I am in a non-monorepo directory
       When I run "nodespec infra monorepo info"
       Then the command should fail
-      And I should see error message "Not in a NodeSpec monorepo"
+      And I should see error message "Not in a monorepo - pnpm-workspace.yaml not found"
       And I should see suggestion "Use 'nodespec infra monorepo init' to initialize"
 
 # Linked to: Issue #8 (Monorepo management)

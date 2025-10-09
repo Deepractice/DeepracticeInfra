@@ -70,7 +70,7 @@ Feature: Add Application to Monorepo
       Given I am in a non-monorepo directory
       When I run "nodespec infra app add my-app"
       Then the command should fail
-      And I should see error message "Not in a monorepo"
+      And I should see error message "Not in a monorepo - pnpm-workspace.yaml not found"
 
     Scenario: Validate app name format
       Given I am in the monorepo root
