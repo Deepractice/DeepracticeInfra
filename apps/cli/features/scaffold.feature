@@ -18,6 +18,11 @@ Feature: Project Scaffolding
       | .gitignore            |
       | README.md             |
       | lefthook.yml          |
+      | src/README.md         |
+      | src/core/package.json |
+      | src/core/index.ts     |
+      | src/domain/package.json |
+      | src/domain/index.ts   |
     And "package.json" should contain "packageManager"
     And "pnpm-workspace.yaml" should contain "packages/*"
     And "pnpm-workspace.yaml" should contain "src/*"
@@ -27,8 +32,70 @@ Feature: Project Scaffolding
       | directory |
       | packages  |
       | src       |
+      | src/core     |
+      | src/domain   |
       | apps      |
       | services  |
+
+  Rule: Generate complete src/ directory structure with core and domain packages
+
+    Scenario: Generate src/ structure with core and domain packages
+      Given I am in an empty directory
+      When I run "nodespec scaffold init --skip-git --skip-install"
+      Then the command should succeed
+      And the following directories should exist:
+        | directory    |
+        | src/core     |
+        | src/domain   |
+      And the following files should exist:
+        | file                       |
+        | src/README.md              |
+        | src/core/package.json      |
+        | src/core/index.ts          |
+        | src/domain/package.json    |
+        | src/domain/index.ts        |
+
+    Scenario: Verify src/core package.json structure
+      Given I am in an empty directory
+      When I run "nodespec scaffold init --skip-git --skip-install"
+      Then the command should succeed
+      And "src/core/package.json" should contain "\"private\": true"
+      And "src/core/package.json" should contain "\"main\": \"./index.ts\""
+
+    Scenario: Verify src/domain package.json structure
+      Given I am in an empty directory
+      When I run "nodespec scaffold init --skip-git --skip-install"
+      Then the command should succeed
+      And "src/domain/package.json" should contain "\"private\": true"
+      And "src/domain/package.json" should contain "\"main\": \"./index.ts\""
+
+    Scenario: Package names follow naming convention
+      Given I am in an empty directory
+      When I run "nodespec scaffold init --skip-git --skip-install"
+      Then the command should succeed
+      And "src/core/package.json" should contain "-core"
+      And "src/domain/package.json" should contain "-domain"
+
+    Scenario: Package names adopt custom project name
+      Given I am in an empty directory
+      When I run "nodespec scaffold init --name my-awesome-app --skip-git --skip-install"
+      Then the command should succeed
+      And "src/core/package.json" should contain "my-awesome-app-core"
+      And "src/domain/package.json" should contain "my-awesome-app-domain"
+
+    Scenario: src/README.md explains architecture philosophy
+      Given I am in an empty directory
+      When I run "nodespec scaffold init --skip-git --skip-install"
+      Then the command should succeed
+      And "src/README.md" should contain "core"
+      And "src/README.md" should contain "domain"
+
+    Scenario: index.ts files contain valid TypeScript
+      Given I am in an empty directory
+      When I run "nodespec scaffold init --skip-git --skip-install"
+      Then the command should succeed
+      And "src/core/index.ts" should contain "export"
+      And "src/domain/index.ts" should contain "export"
 
   Scenario: Initialize project and verify it works end-to-end
     Given I am in an empty directory

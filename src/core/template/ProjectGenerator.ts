@@ -18,10 +18,11 @@ export class ProjectGenerator {
     await this.generatePackageJson(targetDir, options.name);
     await this.copyStaticTemplates(targetDir);
     await this.generateConfigFiles(targetDir, options.name);
+    await this.generateSrcStructure(targetDir, options.name);
   }
 
   private async createDirectories(targetDir: string): Promise<void> {
-    const dirs = ["packages", "src", "apps", "services"];
+    const dirs = ["packages", "apps", "services"];
     for (const dir of dirs) {
       await fs.ensureDir(path.join(targetDir, dir));
       await fs.writeFile(path.join(targetDir, dir, ".gitkeep"), "");
@@ -312,5 +313,219 @@ module.exports = createConfig({
 Built with [NodeSpec](https://github.com/Deepractice/DeepracticeNodeSpec) - Deepractice's Node.js development standard
 `;
     await fs.writeFile(path.join(targetDir, "README.md"), readme);
+  }
+
+  private async generateSrcStructure(
+    targetDir: string,
+    projectName: string,
+  ): Promise<void> {
+    const srcDir = path.join(targetDir, "src");
+    await fs.ensureDir(srcDir);
+
+    // Generate src/README.md
+    await this.generateSrcReadme(srcDir, projectName);
+
+    // Generate src/core/
+    await this.generateCorePackage(srcDir, projectName);
+
+    // Generate src/domain/
+    await this.generateDomainPackage(srcDir, projectName);
+  }
+
+  private async generateSrcReadme(
+    srcDir: string,
+    projectName: string,
+  ): Promise<void> {
+    const readme = `# src
+
+**Product Core** - The business logic of ${projectName}.
+
+## What is This?
+
+This directory contains the **core business logic** of ${projectName} - the product-specific code that makes ${projectName} work. This code is:
+
+- **Specialized**: Built specifically for ${projectName}'s needs
+- **Not for sharing**: Unlike \`packages/\`, this code is not intended for external use
+- **Technical in nature**: Focused on technical implementation rather than business complexity
+
+## Why \`src/\` not \`domains/\`?
+
+${projectName} is a **technical product** (CLI tool, template engine, task orchestrator), not a business-heavy system. We use a **technical layering approach** (\`core/\`) rather than Domain-Driven Design (\`domain/\`).
+
+## Structure
+
+\`\`\`
+src/
+├── core/         # Technical implementations
+└── domain/       # Business logic (reserved for future use)
+\`\`\`
+
+Each module focuses on a specific technical capability needed by ${projectName}.
+
+## Relationship with Other Layers
+
+\`\`\`
+apps/cli → src/ → packages/
+                → configs/
+\`\`\`
+
+- **apps/** depend on \`src/\` for business logic
+- **src/** depends on \`packages/\` for technical infrastructure
+- **packages/** are independently usable (ecosystem layer)
+
+## Design Philosophy
+
+### Core (src/) - Technical Products
+
+- Algorithm-intensive
+- Clear technical logic
+- Performance-sensitive
+- Modules, services, utility functions
+
+\`\`\`typescript
+// Core style - technical implementation
+class TemplateEngine {
+  parse(template: string): AST {}
+  compile(ast: AST): Function {}
+  render(compiled: Function, data: object): string {}
+}
+\`\`\`
+
+### vs Domain (alternative) - Business Products
+
+- Business rule-intensive
+- Frequent changes
+- Entities, aggregates, domain services
+- Would be appropriate for systems like e-commerce, CRM
+
+\`\`\`typescript
+// Domain style - business concepts
+class Order extends AggregateRoot {
+  addItem(product: Product) {
+    if (this.items.length >= 100) {
+      throw new BusinessRuleError("Max 100 items");
+    }
+  }
+}
+\`\`\`
+
+## Development Guidelines
+
+1. **Keep it technical**: Focus on "how" rather than "what"
+2. **Performance matters**: CLI startup speed is critical
+3. **Pure logic**: No UI concerns (that's for \`apps/\`)
+4. **Testable**: Write unit tests for all core logic
+5. **Independent**: Should work without any specific UI
+
+## Getting Started
+
+Each module will have its own package.json as part of the monorepo workspace:
+
+\`\`\`
+src/
+└── core/
+    ├── src/
+    │   └── index.ts
+    ├── package.json
+    └── README.md
+\`\`\`
+
+---
+
+**Remember**: This is the technical heart of ${projectName} - where templates are generated, tasks are executed, and guides are served.
+`;
+
+    await fs.writeFile(path.join(srcDir, "README.md"), readme);
+  }
+
+  private async generateCorePackage(
+    srcDir: string,
+    projectName: string,
+  ): Promise<void> {
+    const coreDir = path.join(srcDir, "core");
+    await fs.ensureDir(coreDir);
+
+    // Generate core/package.json
+    const corePackageJson = {
+      name: `${projectName}-core`,
+      version: "0.0.1",
+      description: `${projectName} core - Technical implementations`,
+      private: true,
+      type: "module",
+      main: "./index.ts",
+      exports: {
+        ".": "./index.ts",
+      },
+      keywords: [projectName, "core"],
+      author: "Deepractice",
+      license: "MIT",
+    };
+
+    await fs.writeJson(path.join(coreDir, "package.json"), corePackageJson, {
+      spaces: 2,
+    });
+
+    // Generate core/index.ts
+    const coreIndex = `/**
+ * ${projectName} Core
+ *
+ * Technical implementations for ${projectName}.
+ * Place your core modules and services here.
+ */
+
+export {};
+`;
+
+    await fs.writeFile(path.join(coreDir, "index.ts"), coreIndex);
+  }
+
+  private async generateDomainPackage(
+    srcDir: string,
+    projectName: string,
+  ): Promise<void> {
+    const domainDir = path.join(srcDir, "domain");
+    await fs.ensureDir(domainDir);
+
+    // Generate domain/package.json
+    const domainPackageJson = {
+      name: `${projectName}-domain`,
+      version: "0.0.1",
+      description: `${projectName} domain - Business logic with DDD patterns (reserved for future use)`,
+      private: true,
+      type: "module",
+      main: "./index.ts",
+      exports: {
+        ".": "./index.ts",
+      },
+      keywords: [projectName, "domain", "ddd"],
+      author: "Deepractice",
+      license: "MIT",
+    };
+
+    await fs.writeJson(
+      path.join(domainDir, "package.json"),
+      domainPackageJson,
+      {
+        spaces: 2,
+      },
+    );
+
+    // Generate domain/index.ts
+    const domainIndex = `/**
+ * ${projectName} Domain Layer
+ *
+ * Reserved for future business logic with DDD patterns.
+ * Currently empty as ${projectName} is primarily a technical product.
+ *
+ * Use this layer when:
+ * - Business rules become complex
+ * - Need entities, value objects, aggregates
+ * - Domain concepts require rich behavior
+ */
+
+export {};
+`;
+
+    await fs.writeFile(path.join(domainDir, "index.ts"), domainIndex);
   }
 }
