@@ -213,8 +213,10 @@ When(
         typecheck: "tsc --noEmit",
       },
       devDependencies: {
-        "@deepracticex/tsup-config": "workspace:*",
-        "@deepracticex/typescript-config": "workspace:*",
+        "@deepracticex/tsup-config": "latest",
+        "@deepracticex/typescript-config": "latest",
+        tsup: "^8.0.0",
+        typescript: "^5.0.0",
       },
     });
 

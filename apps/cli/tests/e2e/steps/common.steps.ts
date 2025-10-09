@@ -76,12 +76,13 @@ When("I run {string}", async function (this: ProjectWorld, command: string) {
 
   try {
     const parts = command.split(" ");
+    let cliPath: string | undefined;
 
     // Check if this is a nodespec command or a shell command
     if (parts[0] === "nodespec") {
       // Execute nodespec CLI command
       const projectRoot = this.originalCwd || process.cwd();
-      const cliPath = path.resolve(projectRoot, "dist/cli.js");
+      cliPath = path.resolve(projectRoot, "dist/cli.js");
       const args = parts.slice(1); // Remove "nodespec"
 
       this.lastResult = await execa("node", [cliPath, ...args], {
@@ -100,6 +101,10 @@ When("I run {string}", async function (this: ProjectWorld, command: string) {
       this.lastResult = await execa(cmd, args, {
         cwd: this.testDir || process.cwd(),
         reject: false,
+        env: {
+          ...process.env,
+          NODE_OPTIONS: undefined, // Remove NODE_OPTIONS to avoid tsx being required in test dirs
+        },
       });
     }
 
@@ -114,7 +119,9 @@ When("I run {string}", async function (this: ProjectWorld, command: string) {
     // Debug logging
     if (this.exitCode !== 0) {
       console.error("[DEBUG] Command failed:", command);
-      console.error("[DEBUG] CLI path:", cliPath);
+      if (cliPath) {
+        console.error("[DEBUG] CLI path:", cliPath);
+      }
       console.error("[DEBUG] CWD:", this.testDir || process.cwd());
       console.error("[DEBUG] Exit code:", this.exitCode);
       console.error("[DEBUG] STDOUT:", this.lastResult.stdout || "(empty)");
@@ -141,6 +148,10 @@ When(
       this.lastResult = await execa(cmd, args, {
         cwd: workDir,
         reject: false,
+        env: {
+          ...process.env,
+          NODE_OPTIONS: undefined, // Remove NODE_OPTIONS to avoid tsx being required in test dirs
+        },
       });
 
       this.exitCode = this.lastResult.exitCode;

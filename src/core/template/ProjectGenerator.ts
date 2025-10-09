@@ -37,10 +37,12 @@ export class ProjectGenerator {
       version: "0.0.1",
       private: true,
       type: "module",
+      packageManager: "pnpm@10.15.1",
       scripts: {
         build: "turbo build",
         dev: "turbo dev",
         test: "turbo test",
+        "test:ci": "turbo test:ci",
         typecheck: "turbo typecheck",
         clean: "turbo clean",
         format: "prettier --write .",
@@ -154,6 +156,39 @@ coverage/
       },
     };
     await fs.writeJson(path.join(targetDir, "tsconfig.json"), tsconfig, {
+      spaces: 2,
+    });
+
+    // turbo.json
+    const turboConfig = {
+      $schema: "https://turbo.build/schema.json",
+      tasks: {
+        build: {
+          dependsOn: ["^build"],
+          outputs: ["dist/**"],
+        },
+        dev: {
+          cache: false,
+          persistent: true,
+        },
+        test: {
+          dependsOn: ["build"],
+        },
+        "test:ci": {
+          dependsOn: ["build"],
+        },
+        typecheck: {
+          dependsOn: ["^build"],
+        },
+        lint: {
+          dependsOn: ["^build"],
+        },
+        clean: {
+          cache: false,
+        },
+      },
+    };
+    await fs.writeJson(path.join(targetDir, "turbo.json"), turboConfig, {
       spaces: 2,
     });
 

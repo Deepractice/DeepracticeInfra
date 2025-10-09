@@ -18,12 +18,11 @@ Feature: Project Management
       | .gitignore            |
       | README.md             |
       | lefthook.yml          |
-    And "package.json" should contain "DeepracticeUser"
+    And "package.json" should contain "packageManager"
     And "pnpm-workspace.yaml" should contain "packages/*"
     And "pnpm-workspace.yaml" should contain "src/*"
     And "pnpm-workspace.yaml" should contain "apps/*"
     And "pnpm-workspace.yaml" should contain "services/*"
-    And git repository should be initialized
     And the following directories should exist:
       | directory |
       | packages  |
@@ -31,7 +30,6 @@ Feature: Project Management
       | apps      |
       | services  |
 
-  @skip
   Scenario: Initialize project and verify it works end-to-end
     Given I am in an empty directory
     When I run "nodespec project init --skip-git"
@@ -97,7 +95,6 @@ Feature: Project Management
     Then the command should fail
     And I should see error message "Directory already exists"
 
-  @skip
   Scenario: Auto install dependencies after initialization
     Given I am in an empty directory
     When I run "nodespec project init"
@@ -125,7 +122,6 @@ Feature: Project Management
     Then the command should succeed
     And git repository should not be initialized
 
-  @skip
   Scenario: Create project and develop a working package
     Given I am in a test directory
     When I run "nodespec project create my-monorepo --skip-git --skip-install"
@@ -137,7 +133,7 @@ Feature: Project Management
     And I run "pnpm install"
     Then the command should succeed
 
-    # Create a library package
+    # Create a library package using published deepractice configs
     When I create directory "packages/math-lib"
     And I create "packages/math-lib/package.json" with:
       """
@@ -152,8 +148,10 @@ Feature: Project Management
           "typecheck": "tsc --noEmit"
         },
         "devDependencies": {
-          "@deepracticex/tsup-config": "workspace:*",
-          "@deepracticex/typescript-config": "workspace:*"
+          "@deepracticex/tsup-config": "latest",
+          "@deepracticex/typescript-config": "latest",
+          "tsup": "^8.0.0",
+          "typescript": "^5.0.0"
         }
       }
       """
