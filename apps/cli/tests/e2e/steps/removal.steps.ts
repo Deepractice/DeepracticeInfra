@@ -145,17 +145,6 @@ Then(
 );
 
 Then(
-  "I should see message {string}",
-  function (this: ScaffoldWorld, expectedMessage: string) {
-    const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    expect(allOutput).to.include(
-      expectedMessage,
-      `Output should contain message: ${expectedMessage}`,
-    );
-  },
-);
-
-Then(
   "{string} should not appear in workspace packages",
   async function (this: ScaffoldWorld, packageName: string) {
     // Extract directory name from scoped package names

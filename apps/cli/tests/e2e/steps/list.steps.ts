@@ -266,3 +266,111 @@ Then(
     );
   },
 );
+
+// Service list step definitions
+
+Given(
+  "service {string} exists in {string} with version {string}",
+  async function (
+    this: ScaffoldWorld,
+    serviceName: string,
+    location: string,
+    version: string,
+  ) {
+    const serviceDir = path.join(this.testDir!, location, serviceName);
+    await fs.ensureDir(path.join(serviceDir, "src"));
+
+    await fs.writeJson(path.join(serviceDir, "package.json"), {
+      name: serviceName,
+      version: version,
+      type: "module",
+      main: "./dist/index.js",
+      scripts: {
+        start: "node dist/index.js",
+        dev: "tsx watch src/index.ts",
+      },
+    });
+
+    await fs.writeJson(path.join(serviceDir, "tsconfig.json"), {
+      extends: "@deepracticex/typescript-config/base.json",
+      compilerOptions: {
+        outDir: "./dist",
+        rootDir: "./src",
+      },
+      include: ["src/**/*"],
+    });
+
+    await fs.writeFile(
+      path.join(serviceDir, "src/index.ts"),
+      `console.log('${serviceName}');`,
+    );
+  },
+);
+
+Then(
+  "I should see service {string} with details:",
+  function (
+    this: ScaffoldWorld,
+    serviceName: string,
+    dataTable: { rawTable: string[][] },
+  ) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    expect(allOutput).to.include(
+      serviceName,
+      `Output should contain service ${serviceName}`,
+    );
+
+    const rows = dataTable.rawTable.slice(1); // Skip header row
+    for (const row of rows) {
+      const [field, value] = row;
+      expect(allOutput).to.include(
+        value!,
+        `Output should contain ${field}: ${value}`,
+      );
+    }
+  },
+);
+
+Then(
+  "the JSON should contain service {string} with version {string}",
+  function (this: ScaffoldWorld, serviceName: string, version: string) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    const json = JSON.parse(allOutput);
+
+    // Check if the JSON contains the service with the expected version
+    let found = false;
+    if (Array.isArray(json)) {
+      found = json.some(
+        (svc: { name: string; version: string }) =>
+          svc.name === serviceName && svc.version === version,
+      );
+    } else if (json.services) {
+      found = json.services.some(
+        (svc: { name: string; version: string }) =>
+          svc.name === serviceName && svc.version === version,
+      );
+    }
+
+    expect(
+      found,
+      `JSON should contain service ${serviceName} with version ${version}`,
+    ).to.be.true;
+  },
+);
+
+Then(
+  "I should see service {string} with location {string}",
+  function (this: ScaffoldWorld, serviceName: string, location: string) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    expect(allOutput).to.include(
+      serviceName,
+      `Output should contain service ${serviceName}`,
+    );
+    expect(allOutput).to.include(
+      location,
+      `Output should contain location ${location}`,
+    );
+  },
+);
+
+// Package list step definitions (additional ones not already defined)

@@ -19,6 +19,9 @@ export interface ScaffoldWorld extends World {
   stdout: string[];
   stderr: string[];
 
+  // Test state
+  expectedMissingPackages?: string[];
+
   // Helper methods
   set(key: string, value: unknown): void;
   get(key: string): unknown;

@@ -205,3 +205,22 @@ Then(
     expect(allOutput).to.include(expectedMessage);
   },
 );
+
+Then(
+  "I should see message {string}",
+  function (this: ScaffoldWorld, expectedMessage: string) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    expect(allOutput).to.include(expectedMessage);
+  },
+);
+
+Then(
+  "I should see suggestion {string}",
+  function (this: ScaffoldWorld, suggestion: string) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    expect(allOutput).to.include(
+      suggestion,
+      `Output should contain suggestion: ${suggestion}`,
+    );
+  },
+);

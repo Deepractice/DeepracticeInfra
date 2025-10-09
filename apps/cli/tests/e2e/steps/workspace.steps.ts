@@ -206,3 +206,212 @@ Then(
     }
   },
 );
+
+// Monorepo info step definitions
+
+Given(
+  "{string} contains name {string} and version {string}",
+  async function (
+    this: ScaffoldWorld,
+    fileName: string,
+    name: string,
+    version: string,
+  ) {
+    const filePath = path.join(this.testDir!, fileName);
+    const pkg = await fs.readJson(filePath);
+    pkg.name = name;
+    pkg.version = version;
+    await fs.writeJson(filePath, pkg, { spaces: 2 });
+  },
+);
+
+Given(
+  "{int} packages exist in {string}",
+  async function (this: ScaffoldWorld, count: number, location: string) {
+    const dirPath = path.join(this.testDir!, location);
+    await fs.ensureDir(dirPath);
+
+    for (let i = 1; i <= count; i++) {
+      const packageName = `package-${i}`;
+      const packageDir = path.join(dirPath, packageName);
+      await fs.ensureDir(path.join(packageDir, "src"));
+
+      await fs.writeJson(
+        path.join(packageDir, "package.json"),
+        {
+          name: `@test/${packageName}`,
+          version: "1.0.0",
+          type: "module",
+          main: "./dist/index.js",
+          types: "./dist/index.d.ts",
+        },
+        { spaces: 2 },
+      );
+
+      await fs.writeFile(
+        path.join(packageDir, "src/index.ts"),
+        `export const ${packageName.replace(/-/g, "_")} = true;`,
+      );
+    }
+  },
+);
+
+Given(
+  "{int} apps exist in {string}",
+  async function (this: ScaffoldWorld, count: number, location: string) {
+    const dirPath = path.join(this.testDir!, location);
+    await fs.ensureDir(dirPath);
+
+    for (let i = 1; i <= count; i++) {
+      const appName = `app-${i}`;
+      const appDir = path.join(dirPath, appName);
+      await fs.ensureDir(path.join(appDir, "src"));
+
+      await fs.writeJson(
+        path.join(appDir, "package.json"),
+        {
+          name: `@test/${appName}`,
+          version: "1.0.0",
+          type: "module",
+          bin: {
+            [appName]: "./dist/cli.js",
+          },
+        },
+        { spaces: 2 },
+      );
+
+      await fs.writeFile(
+        path.join(appDir, "src/index.ts"),
+        `export const ${appName.replace(/-/g, "_")} = true;`,
+      );
+    }
+  },
+);
+
+Given(
+  "{int} service exists in {string}",
+  async function (this: ScaffoldWorld, count: number, location: string) {
+    const dirPath = path.join(this.testDir!, location);
+    await fs.ensureDir(dirPath);
+
+    for (let i = 1; i <= count; i++) {
+      const serviceName = `service-${i}`;
+      const serviceDir = path.join(dirPath, serviceName);
+      await fs.ensureDir(path.join(serviceDir, "src"));
+
+      await fs.writeJson(
+        path.join(serviceDir, "package.json"),
+        {
+          name: `@test/${serviceName}`,
+          version: "1.0.0",
+          type: "module",
+          main: "./dist/index.js",
+          scripts: {
+            start: "node dist/index.js",
+            dev: "tsx watch src/index.ts",
+          },
+        },
+        { spaces: 2 },
+      );
+
+      await fs.writeFile(
+        path.join(serviceDir, "src/index.ts"),
+        `console.log('${serviceName}');`,
+      );
+    }
+  },
+);
+
+Then(
+  "I should see {string}",
+  function (this: ScaffoldWorld, expectedText: string) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    expect(allOutput).to.include(
+      expectedText,
+      `Output should contain: ${expectedText}`,
+    );
+  },
+);
+
+Then(
+  "I should see workspace summary:",
+  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    const rows = dataTable.rawTable.slice(1); // Skip header row
+
+    for (const row of rows) {
+      const [type, count] = row;
+      expect(allOutput).to.include(type!, `Output should contain type ${type}`);
+      expect(allOutput).to.include(
+        count!,
+        `Output should contain count ${count}`,
+      );
+    }
+  },
+);
+
+Then(
+  "I should see workspace directories:",
+  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    const rows = dataTable.rawTable.slice(1); // Skip header row
+
+    for (const row of rows) {
+      const [directory, count] = row;
+      expect(allOutput).to.include(
+        directory!,
+        `Output should contain directory ${directory}`,
+      );
+      expect(allOutput).to.include(
+        count!,
+        `Output should contain count ${count}`,
+      );
+    }
+  },
+);
+
+Then(
+  "I should see configuration summary:",
+  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    const rows = dataTable.rawTable.slice(1); // Skip header row
+
+    for (const row of rows) {
+      const [tool, status] = row;
+      expect(allOutput).to.include(tool!, `Output should contain tool ${tool}`);
+      if (status) {
+        expect(allOutput).to.include(
+          status,
+          `Output should contain status ${status}`,
+        );
+      }
+    }
+  },
+);
+
+Then(
+  "I should see detailed configuration:",
+  function (this: ScaffoldWorld, dataTable: { rawTable: string[][] }) {
+    const allOutput = [...this.stdout, ...this.stderr].join("\n");
+    const rows = dataTable.rawTable.slice(1); // Skip header row
+
+    for (const row of rows) {
+      const [tool, version, configFile] = row;
+      expect(allOutput).to.include(tool!, `Output should contain tool ${tool}`);
+      if (version) {
+        // Version might be in various formats like "5.x", "8.x", etc.
+        // Just check if the output contains some version-like pattern near the tool name
+        expect(allOutput).to.include(
+          tool!,
+          `Output should contain version info for ${tool}`,
+        );
+      }
+      if (configFile) {
+        expect(allOutput).to.include(
+          configFile,
+          `Output should contain config file ${configFile}`,
+        );
+      }
+    }
+  },
+);
