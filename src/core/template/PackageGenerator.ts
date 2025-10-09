@@ -51,8 +51,6 @@ export class PackageGenerator {
       author: "Deepractice",
       license: "MIT",
       devDependencies: {
-        "@deepracticex/tsup-config": VERSIONS.tsupConfig,
-        "@deepracticex/typescript-config": VERSIONS.typescriptConfig,
         tsup: VERSIONS.tsup,
         typescript: VERSIONS.typescript,
         rimraf: VERSIONS.rimraf,
@@ -66,12 +64,21 @@ export class PackageGenerator {
 
   private async generateTsConfig(targetDir: string): Promise<void> {
     const tsconfig = {
-      extends: "@deepracticex/typescript-config/base.json",
       compilerOptions: {
+        target: "ES2022",
+        module: "ESNext",
+        lib: ["ES2022"],
+        moduleResolution: "bundler",
+        strict: true,
+        esModuleInterop: true,
+        skipLibCheck: true,
+        forceConsistentCasingInFileNames: true,
+        declaration: true,
         outDir: "./dist",
         rootDir: "./src",
       },
       include: ["src/**/*"],
+      exclude: ["node_modules", "dist"],
     };
 
     await fs.writeJson(path.join(targetDir, "tsconfig.json"), tsconfig, {
@@ -80,10 +87,17 @@ export class PackageGenerator {
   }
 
   private async generateTsupConfig(targetDir: string): Promise<void> {
-    const tsupConfig = `import { createConfig } from "@deepracticex/tsup-config";
+    const tsupConfig = `import { defineConfig } from "tsup";
 
-export default createConfig({
+export default defineConfig({
   entry: ["src/index.ts"],
+  format: ["esm"],
+  dts: true,
+  clean: true,
+  splitting: false,
+  sourcemap: true,
+  target: "es2022",
+  shims: true,
 });
 `;
 

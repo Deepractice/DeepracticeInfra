@@ -60,8 +60,6 @@ export class ServiceGenerator {
         dotenv: "^16.3.1",
       },
       devDependencies: {
-        "@deepracticex/tsup-config": VERSIONS.tsupConfig,
-        "@deepracticex/typescript-config": VERSIONS.typescriptConfig,
         "@types/express": "^4.17.21",
         "@types/node": "^20.10.0",
         tsup: VERSIONS.tsup,
@@ -78,12 +76,21 @@ export class ServiceGenerator {
 
   private async generateTsConfig(targetDir: string): Promise<void> {
     const tsconfig = {
-      extends: "@deepracticex/typescript-config/base.json",
       compilerOptions: {
+        target: "ES2022",
+        module: "ESNext",
+        lib: ["ES2022"],
+        moduleResolution: "bundler",
+        strict: true,
+        esModuleInterop: true,
+        skipLibCheck: true,
+        forceConsistentCasingInFileNames: true,
+        declaration: true,
         outDir: "./dist",
         rootDir: "./src",
       },
       include: ["src/**/*"],
+      exclude: ["node_modules", "dist"],
     };
 
     await fs.writeJson(path.join(targetDir, "tsconfig.json"), tsconfig, {
@@ -92,10 +99,17 @@ export class ServiceGenerator {
   }
 
   private async generateTsupConfig(targetDir: string): Promise<void> {
-    const tsupConfig = `import { createConfig } from "@deepracticex/tsup-config";
+    const tsupConfig = `import { defineConfig } from "tsup";
 
-export default createConfig({
+export default defineConfig({
   entry: ["src/index.ts", "src/server.ts"],
+  format: ["esm"],
+  dts: true,
+  clean: true,
+  splitting: false,
+  sourcemap: true,
+  target: "es2022",
+  shims: true,
 });
 `;
 
