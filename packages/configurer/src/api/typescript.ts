@@ -3,7 +3,9 @@
  */
 export const typescript = {
   /**
-   * Base configuration: Core TypeScript settings
+   * Base configuration: Core TypeScript compiler options
+   * Following @tsconfig/bases best practice: only compiler options, no paths
+   * Projects must define their own: outDir, paths, include, exclude
    */
   base: {
     compilerOptions: {
@@ -17,8 +19,6 @@ export const typescript = {
       jsxFragmentFactory: "Fragment",
 
       /* Output */
-      outDir: "./dist",
-      rootDir: "./src",
       sourceMap: true,
       declaration: true,
       declarationMap: true,
@@ -45,14 +45,8 @@ export const typescript = {
       skipLibCheck: true,
       forceConsistentCasingInFileNames: true,
 
-      /* Advanced */
-      incremental: true,
-      tsBuildInfoFile: ".tsbuildinfo",
-
       /* Types */
       types: ["vitest/globals"],
     },
-    include: ["src/**/*.ts", "src/**/*.tsx"],
-    exclude: ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"],
   },
 };

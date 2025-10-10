@@ -308,7 +308,7 @@ When(
   },
 );
 
-When("I import {string} directly from subpath", function (subpath: string) {
+When("I import {string} directly from subpath", function (_subpath: string) {
   // This would test actual imports like @deepracticex/configurer/api/eslint
   expect(true).to.be.true; // Placeholder
 });

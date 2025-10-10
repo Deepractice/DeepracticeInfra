@@ -34,10 +34,7 @@
     "execa": "^9.5.2"
   },
   "devDependencies": {
-    "@deepracticex/tsup-config": "workspace:*",
-    "@deepracticex/typescript-config": "workspace:*",
-    "@deepracticex/vitest-config": "workspace:*",
-    "@deepracticex/cucumber-config": "workspace:*"
+    "@deepracticex/configurer": "workspace:*"
   },
   "files": [
     "dist",

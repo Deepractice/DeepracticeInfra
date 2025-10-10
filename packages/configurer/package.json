@@ -41,10 +41,11 @@
       "types": "./dist/api/tsup.d.ts",
       "import": "./dist/api/tsup.js",
       "require": "./dist/api/tsup.cjs"
-    }
+    },
+    "./typescript-base.json": "./dist/typescript-base.json"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && tsx scripts/build-configs.ts",
     "dev": "tsup --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",

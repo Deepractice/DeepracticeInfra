@@ -27,8 +27,7 @@
     "chalk": "^5.4.1"
   },
   "devDependencies": {
-    "@deepracticex/tsup-config": "workspace:*",
-    "@deepracticex/typescript-config": "workspace:*"
+    "@deepracticex/configurer": "workspace:*"
   },
   "files": [
     "dist",

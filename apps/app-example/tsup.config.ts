@@ -1,6 +1,6 @@
-import { createConfig } from "@deepracticex/tsup-config";
+import { tsup } from "@deepracticex/configurer";
 
-export default createConfig({
+export default tsup.createConfig({
   entry: ["src/index.ts", "src/cli.ts"],
   format: ["esm"],
   dts: true,

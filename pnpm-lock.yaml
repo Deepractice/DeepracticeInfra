@@ -26,30 +26,9 @@ importers:
       "@cucumber/pretty-formatter":
         specifier: ^1.0.1
         version: 1.0.1(@cucumber/cucumber@11.3.0)(@cucumber/messages@27.2.0)
-      "@deepracticex/commitlint-config":
+      "@deepracticex/configurer":
         specifier: workspace:*
-        version: link:configs/commitlint
-      "@deepracticex/cucumber-config":
-        specifier: workspace:*
-        version: link:configs/cucumber
-      "@deepracticex/eslint-config":
-        specifier: workspace:*
-        version: link:configs/eslint
-      "@deepracticex/monorepo-config":
-        specifier: workspace:*
-        version: link:configs/monorepo
-      "@deepracticex/prettier-config":
-        specifier: workspace:*
-        version: link:configs/prettier
-      "@deepracticex/tsup-config":
-        specifier: workspace:*
-        version: link:configs/tsup
-      "@deepracticex/typescript-config":
-        specifier: workspace:*
-        version: link:configs/typescript
-      "@deepracticex/vitest-config":
-        specifier: workspace:*
-        version: link:configs/vitest
+        version: link:packages/configurer
       "@faker-js/faker":
         specifier: ^9.4.0
         version: 9.9.0
@@ -141,12 +120,9 @@ importers:
         specifier: ^12.1.0
         version: 12.1.0
     devDependencies:
-      "@deepracticex/tsup-config":
+      "@deepracticex/configurer":
         specifier: workspace:*
-        version: link:../../configs/tsup
-      "@deepracticex/typescript-config":
-        specifier: workspace:*
-        version: link:../../configs/typescript
+        version: link:../../packages/configurer
 
   apps/cli:
     dependencies:
@@ -172,34 +148,9 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
     devDependencies:
-      "@deepracticex/cucumber-config":
+      "@deepracticex/configurer":
         specifier: workspace:*
-        version: link:../../configs/cucumber
-      "@deepracticex/tsup-config":
-        specifier: workspace:*
-        version: link:../../configs/tsup
-      "@deepracticex/typescript-config":
-        specifier: workspace:*
-        version: link:../../configs/typescript
-      "@deepracticex/vitest-config":
-        specifier: workspace:*
-        version: link:../../configs/vitest
-
-  configs/commitlint: {}
-
-  configs/cucumber: {}
-
-  configs/eslint: {}
-
-  configs/monorepo: {}
-
-  configs/prettier: {}
-
-  configs/tsup: {}
-
-  configs/typescript: {}
-
-  configs/vitest: {}
+        version: link:../../packages/configurer
 
   packages/configurer:
     dependencies:

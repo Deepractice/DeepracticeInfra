@@ -1,7 +1,7 @@
 /**
  * Step definitions for package and app removal scenarios
  */
-import { Given, When, Then } from "@cucumber/cucumber";
+import { Given, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
@@ -145,7 +145,7 @@ Then(
   async function (this: InfraWorld, packageName: string) {
     // Extract directory name from scoped package names
     const dirName = packageName.startsWith("@")
-      ? packageName.split("/")[1]
+      ? (packageName.split("/")[1] ?? packageName)
       : packageName;
 
     // Check packages/ directory

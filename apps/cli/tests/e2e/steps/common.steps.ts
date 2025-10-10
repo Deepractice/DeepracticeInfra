@@ -112,10 +112,10 @@ When("I run {string}", async function (this: InfraWorld, command: string) {
 
     this.exitCode = this.lastResult.exitCode;
     if (this.lastResult.stdout) {
-      this.stdout.push(this.lastResult.stdout);
+      this.stdout.push(String(this.lastResult.stdout));
     }
     if (this.lastResult.stderr) {
-      this.stderr.push(this.lastResult.stderr);
+      this.stderr.push(String(this.lastResult.stderr));
     }
 
     // Debug logging
@@ -158,10 +158,10 @@ When(
 
       this.exitCode = this.lastResult.exitCode;
       if (this.lastResult.stdout) {
-        this.stdout.push(this.lastResult.stdout);
+        this.stdout.push(String(this.lastResult.stdout));
       }
       if (this.lastResult.stderr) {
-        this.stderr.push(this.lastResult.stderr);
+        this.stderr.push(String(this.lastResult.stderr));
       }
     } catch (error) {
       this.lastError = error as Error;
