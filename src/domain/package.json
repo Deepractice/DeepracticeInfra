@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/nodespec-domain",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "NodeSpec domain - Business logic with DDD patterns (reserved for future use)",
   "private": true,
   "type": "module",
