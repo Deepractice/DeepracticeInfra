@@ -18,7 +18,7 @@
     "dev": "tsup --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "test:dev": "vitest",
     "test:ui": "vitest --ui"
   },
