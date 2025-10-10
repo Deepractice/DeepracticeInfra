@@ -7,3 +7,4 @@ export * from "./ServicePackageJsonProcessor.js";
 export * from "./TsConfigProcessor.js";
 export * from "./TypeScriptProcessor.js";
 export * from "./MarkdownProcessor.js";
+export * from "./GenericFileProcessor.js";

@@ -1,0 +1,142 @@
+{
+  "name": "@deepracticex/configurer",
+  "version": "0.1.0",
+  "description": "Unified configuration system for Deepractice Node.js projects",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./eslint": {
+      "types": "./dist/api/eslint.d.ts",
+      "import": "./dist/api/eslint.js",
+      "require": "./dist/api/eslint.cjs"
+    },
+    "./prettier": {
+      "types": "./dist/api/prettier.d.ts",
+      "import": "./dist/api/prettier.js",
+      "require": "./dist/api/prettier.cjs"
+    },
+    "./typescript": {
+      "types": "./dist/api/typescript.d.ts",
+      "import": "./dist/api/typescript.js",
+      "require": "./dist/api/typescript.cjs"
+    },
+    "./commitlint": {
+      "types": "./dist/api/commitlint.d.ts",
+      "import": "./dist/api/commitlint.js",
+      "require": "./dist/api/commitlint.cjs"
+    },
+    "./vitest": {
+      "types": "./dist/api/vitest.d.ts",
+      "import": "./dist/api/vitest.js",
+      "require": "./dist/api/vitest.cjs"
+    },
+    "./tsup": {
+      "types": "./dist/api/tsup.d.ts",
+      "import": "./dist/api/tsup.js",
+      "require": "./dist/api/tsup.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rimraf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:dev": "vitest",
+    "test:ui": "vitest --ui",
+    "test:ci": "vitest run --coverage"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "config",
+    "configuration",
+    "eslint",
+    "prettier",
+    "typescript",
+    "vitest",
+    "tsup",
+    "commitlint",
+    "cucumber",
+    "deepractice",
+    "nodespec"
+  ],
+  "author": "Deepractice",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deepractice/NodeSpec"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^10.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@typescript-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@typescript-eslint/parser": {
+      "optional": true
+    },
+    "eslint": {
+      "optional": true
+    },
+    "eslint-config-prettier": {
+      "optional": true
+    },
+    "eslint-plugin-prettier": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    },
+    "typescript": {
+      "optional": true
+    },
+    "vitest": {
+      "optional": true
+    },
+    "tsup": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "@cucumber/gherkin": "^36.0.0",
+    "@deepracticex/vitest-cucumber": "workspace:*",
+    "@eslint/js": "^9.37.0",
+    "@types/chai": "^5.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@typescript-eslint/parser": "^8.46.0",
+    "chai": "^5.3.3",
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "glob": "^11.0.3",
+    "pixelmatch": "^7.1.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.6",
+    "vitest": "^3.2.4"
+  }
+}

@@ -7,6 +7,7 @@ import {
   TsConfigProcessor,
   TypeScriptProcessor,
   MarkdownProcessor,
+  GenericFileProcessor,
 } from "./processor/index.js";
 
 /**
@@ -31,12 +32,15 @@ export abstract class BaseGenerator {
   protected processors: FileProcessor[] = [];
 
   constructor() {
-    // Register all file processors (order doesn't matter - atomic matching)
+    // Register all file processors
+    // NOTE: GenericFileProcessor must be LAST as it's a catch-all
+    // Specific processors (PackageJson, TsConfig) must match first
     this.processors = [
       new PackageJsonProcessor(),
       new TsConfigProcessor(),
       new TypeScriptProcessor(),
       new MarkdownProcessor(),
+      new GenericFileProcessor(), // Must be last - catches all unmatched files
     ];
   }
 

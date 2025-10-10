@@ -1,4 +1,5 @@
 import path from "node:path";
+import fs from "fs-extra";
 import { BaseGenerator, type FileMapping } from "./BaseGenerator.js";
 import type { ProcessContext } from "./processor/types.js";
 import {
@@ -6,6 +7,7 @@ import {
   TsConfigProcessor,
   TypeScriptProcessor,
   MarkdownProcessor,
+  GenericFileProcessor,
 } from "./processor/index.js";
 
 export interface MonorepoOptions {
@@ -22,11 +24,13 @@ export class MonorepoGenerator extends BaseGenerator {
   constructor() {
     super();
     // Use monorepo-specific processors
+    // NOTE: GenericFileProcessor must be LAST as catch-all
     this.processors = [
       new MonorepoPackageJsonProcessor(),
       new TsConfigProcessor(),
       new TypeScriptProcessor(),
       new MarkdownProcessor(),
+      new GenericFileProcessor(), // Must be last - catches all unmatched files
     ];
   }
   async generate(targetDir: string, options: MonorepoOptions): Promise<void> {
@@ -40,16 +44,14 @@ export class MonorepoGenerator extends BaseGenerator {
     await this.createDirectories(targetDir);
 
     // Copy NodeSpec's own configuration files as templates
+    // Note: Only include files that exist in NodeSpec root
     const files: FileMapping[] = [
       { source: "package.json", target: "package.json" },
-      { source: "tsconfig.json", target: "tsconfig.json" },
       { source: "turbo.json", target: "turbo.json" },
       { source: ".gitignore", target: ".gitignore" },
       { source: "pnpm-workspace.yaml", target: "pnpm-workspace.yaml" },
       { source: "lefthook.yml", target: "lefthook.yml" },
       { source: "commitlint.config.js", target: "commitlint.config.js" },
-      { source: "eslint.config.js", target: "eslint.config.js" },
-      { source: "prettier.config.js", target: "prettier.config.js" },
       { source: "README.md", target: "README.md" },
     ];
 
@@ -60,7 +62,6 @@ export class MonorepoGenerator extends BaseGenerator {
   }
 
   private async createDirectories(targetDir: string): Promise<void> {
-    const fs = await import("fs-extra");
     const dirs = ["packages", "apps", "services"];
     for (const dir of dirs) {
       await fs.ensureDir(path.join(targetDir, dir));
@@ -72,7 +73,6 @@ export class MonorepoGenerator extends BaseGenerator {
     targetDir: string,
     projectName: string,
   ): Promise<void> {
-    const fs = await import("fs-extra");
     const srcDir = path.join(targetDir, "src");
     await fs.ensureDir(srcDir);
 
@@ -92,7 +92,6 @@ export class MonorepoGenerator extends BaseGenerator {
     srcDir: string,
     projectName: string,
   ): Promise<void> {
-    const fs = await import("fs-extra");
     const coreDir = path.join(srcDir, "core");
     await fs.ensureDir(coreDir);
 
@@ -132,7 +131,6 @@ export {};
     srcDir: string,
     projectName: string,
   ): Promise<void> {
-    const fs = await import("fs-extra");
     const domainDir = path.join(srcDir, "domain");
     await fs.ensureDir(domainDir);
 

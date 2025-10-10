@@ -5,6 +5,7 @@ import {
   ServicePackageJsonProcessor,
   TsConfigProcessor,
   TypeScriptProcessor,
+  GenericFileProcessor,
 } from "./processor/index.js";
 
 export interface ServiceOptions {
@@ -19,10 +20,12 @@ export class ServiceGenerator extends BaseGenerator {
   constructor() {
     super();
     // Use service-specific processors
+    // NOTE: GenericFileProcessor must be LAST as catch-all
     this.processors = [
       new ServicePackageJsonProcessor(),
       new TsConfigProcessor(),
       new TypeScriptProcessor(),
+      new GenericFileProcessor(), // Must be last - catches all unmatched files
     ];
   }
 

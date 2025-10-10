@@ -1,0 +1,1 @@
+export { generateCucumberTests } from "./integration";
