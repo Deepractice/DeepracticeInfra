@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/nodespec-cli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "NodeSpec CLI - AI-friendly Node.js project scaffolding tool",
   "type": "module",
   "bin": {

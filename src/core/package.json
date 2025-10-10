@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/nodespec-core",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "NodeSpec core - Technical implementations (template engine, guide service, task executor)",
   "private": true,
   "type": "module",
