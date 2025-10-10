@@ -50,7 +50,7 @@ Feature: Validate App Structure
       And "apps/invalid-cli/package.json" has "bin" field pointing to non-existent file
       When I run "nodespec infra app validate invalid-cli"
       Then the command should fail
-      And I should see error message "Invalid bin configuration: file does not exist"
+      And I should see error message "Invalid bin configuration: source file"
 
     Scenario: Validate all apps and report all errors
       Given I am in the monorepo root

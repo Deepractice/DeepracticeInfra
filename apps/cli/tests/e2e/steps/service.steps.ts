@@ -77,6 +77,10 @@ Given(
       name: serviceName,
       version: "0.0.1",
       type: "module",
+      scripts: {
+        start: "node dist/index.js",
+        dev: "tsx watch src/index.ts",
+      },
     });
 
     await fs.writeFile(
