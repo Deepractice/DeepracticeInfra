@@ -1,121 +1,46 @@
 import path from "node:path";
-import fs from "fs-extra";
-import { VERSIONS } from "./versions.js";
+import { BaseGenerator, type FileMapping } from "./BaseGenerator.js";
+import type { ProcessContext } from "./processor/types.js";
 
 export interface PackageOptions {
   name: string;
   location?: string;
 }
 
-export class PackageGenerator {
+/**
+ * Generator for creating packages using NodeSpec's template package as source
+ */
+export class PackageGenerator extends BaseGenerator {
   async generate(monorepoRoot: string, options: PackageOptions): Promise<void> {
     const location = options.location || "packages";
     const dirName = this.extractDirectoryName(options.name);
     const targetDir = path.join(monorepoRoot, location, dirName);
 
-    await this.createPackageStructure(targetDir);
-    await this.generatePackageJson(targetDir, options.name);
-    await this.generateTsConfig(targetDir);
-    await this.generateTsupConfig(targetDir);
-    await this.generateSourceFiles(targetDir);
-  }
-
-  private async createPackageStructure(targetDir: string): Promise<void> {
-    await fs.ensureDir(path.join(targetDir, "src"));
-  }
-
-  private async generatePackageJson(
-    targetDir: string,
-    packageName: string,
-  ): Promise<void> {
-    const packageJson = {
-      name: packageName,
-      version: "0.0.1",
-      description: `${packageName} package`,
-      type: "module",
-      main: "./dist/index.js",
-      types: "./dist/index.d.ts",
-      exports: {
-        ".": {
-          types: "./dist/index.d.ts",
-          default: "./dist/index.js",
-        },
-      },
-      scripts: {
-        build: "tsup",
-        dev: "tsup --watch",
-        typecheck: "tsc --noEmit",
-        clean: "rimraf dist",
-      },
-      keywords: [packageName],
-      author: "Deepractice",
-      license: "MIT",
-      devDependencies: {
-        "@deepracticex/typescript-config": VERSIONS.typescriptConfig,
-        "@deepracticex/tsup-config": VERSIONS.tsupConfig,
-        tsup: VERSIONS.tsup,
-        typescript: VERSIONS.typescript,
-        rimraf: VERSIONS.rimraf,
-      },
+    const context: ProcessContext = {
+      packageName: options.name,
+      dirName,
     };
 
-    await fs.writeJson(path.join(targetDir, "package.json"), packageJson, {
-      spaces: 2,
-    });
-  }
-
-  private async generateTsConfig(targetDir: string): Promise<void> {
-    const tsconfig = {
-      extends: "@deepracticex/typescript-config/base",
-      compilerOptions: {
-        outDir: "./dist",
-        rootDir: "./src",
-        types: [], // Override to remove vitest/globals requirement
+    // Define file mappings from template to target
+    const files: FileMapping[] = [
+      {
+        source: "packages/template/package.json",
+        target: "package.json",
       },
-      include: ["src/**/*"],
-      exclude: ["node_modules", "dist"],
-    };
+      {
+        source: "packages/template/tsconfig.json",
+        target: "tsconfig.json",
+      },
+      {
+        source: "packages/template/tsup.config.ts",
+        target: "tsup.config.ts",
+      },
+      {
+        source: "packages/template/src/index.ts",
+        target: "src/index.ts",
+      },
+    ];
 
-    await fs.writeJson(path.join(targetDir, "tsconfig.json"), tsconfig, {
-      spaces: 2,
-    });
-  }
-
-  private async generateTsupConfig(targetDir: string): Promise<void> {
-    const tsupConfig = `import { createConfig } from "@deepracticex/tsup-config";
-
-export default createConfig({
-  entry: ["src/index.ts"],
-});
-`;
-
-    await fs.writeFile(path.join(targetDir, "tsup.config.ts"), tsupConfig);
-  }
-
-  private async generateSourceFiles(targetDir: string): Promise<void> {
-    const indexTs = `/**
- * Main package entry point
- */
-
-export {};
-`;
-
-    await fs.writeFile(path.join(targetDir, "src", "index.ts"), indexTs);
-  }
-
-  /**
-   * Extract directory name from package name
-   * @param name - Package name (may include scope like @org/name)
-   * @returns Directory name without scope
-   * @example
-   * extractDirectoryName('@myorg/utils') // 'utils'
-   * extractDirectoryName('my-lib') // 'my-lib'
-   */
-  private extractDirectoryName(name: string): string {
-    if (name.startsWith("@")) {
-      const parts = name.split("/");
-      return parts.length > 1 ? parts[1]! : parts[0]!.slice(1);
-    }
-    return name;
+    await this.processFiles(files, targetDir, context);
   }
 }

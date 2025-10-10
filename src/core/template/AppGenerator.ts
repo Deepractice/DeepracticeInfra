@@ -1,152 +1,63 @@
 import path from "node:path";
-import fs from "fs-extra";
-import { VERSIONS } from "./versions.js";
+import { BaseGenerator, type FileMapping } from "./BaseGenerator.js";
+import {
+  AppPackageJsonProcessor,
+  type AppProcessContext,
+} from "./processor/AppPackageJsonProcessor.js";
+import { TsConfigProcessor, TypeScriptProcessor } from "./processor/index.js";
 
 export interface AppOptions {
   name: string;
 }
 
-export class AppGenerator {
+/**
+ * Generator for creating apps using NodeSpec's CLI app as source
+ */
+export class AppGenerator extends BaseGenerator {
+  constructor() {
+    super();
+    // Override processors for app-specific handling
+    this.processors = [
+      new AppPackageJsonProcessor(), // Use app-specific package.json processor
+      new TsConfigProcessor(),
+      new TypeScriptProcessor(),
+    ];
+  }
+
   async generate(monorepoRoot: string, options: AppOptions): Promise<void> {
     const dirName = this.extractDirectoryName(options.name);
     const targetDir = path.join(monorepoRoot, "apps", dirName);
 
-    await this.createAppStructure(targetDir);
-    await this.generatePackageJson(targetDir, options.name, dirName);
-    await this.generateTsConfig(targetDir);
-    await this.generateTsupConfig(targetDir);
-    await this.generateSourceFiles(targetDir, dirName);
-  }
-
-  private async createAppStructure(targetDir: string): Promise<void> {
-    await fs.ensureDir(path.join(targetDir, "src"));
-  }
-
-  private async generatePackageJson(
-    targetDir: string,
-    appName: string,
-    binName: string,
-  ): Promise<void> {
-    const packageJson = {
-      name: appName,
-      version: "0.0.1",
-      description: `${appName} application`,
-      type: "module",
-      bin: {
-        [binName]: "./dist/cli.js",
-      },
-      main: "./dist/index.js",
-      types: "./dist/index.d.ts",
-      exports: {
-        ".": {
-          types: "./dist/index.d.ts",
-          default: "./dist/index.js",
-        },
-      },
-      scripts: {
-        build: "tsup",
-        dev: "tsup --watch",
-        start: `node ./dist/cli.js`,
-        typecheck: "tsc --noEmit",
-        clean: "rimraf dist",
-      },
-      keywords: [appName],
-      author: "Deepractice",
-      license: "MIT",
-      devDependencies: {
-        tsup: VERSIONS.tsup,
-        typescript: VERSIONS.typescript,
-        rimraf: VERSIONS.rimraf,
-      },
+    const context: AppProcessContext = {
+      packageName: options.name,
+      dirName,
+      binName: dirName, // Use dirName as binary name
     };
 
-    await fs.writeJson(path.join(targetDir, "package.json"), packageJson, {
-      spaces: 2,
-    });
-  }
-
-  private async generateTsConfig(targetDir: string): Promise<void> {
-    const tsconfig = {
-      compilerOptions: {
-        target: "ES2022",
-        module: "ESNext",
-        lib: ["ES2022", "DOM"],
-        moduleResolution: "bundler",
-        strict: true,
-        esModuleInterop: true,
-        skipLibCheck: true,
-        forceConsistentCasingInFileNames: true,
-        declaration: true,
-        outDir: "./dist",
-        rootDir: "./src",
+    // Define file mappings from CLI template to target
+    const files: FileMapping[] = [
+      {
+        source: "apps/cli/package.json",
+        target: "package.json",
       },
-      include: ["src/**/*"],
-      exclude: ["node_modules", "dist"],
-    };
+      {
+        source: "apps/cli/tsconfig.json",
+        target: "tsconfig.json",
+      },
+      {
+        source: "apps/cli/tsup.config.ts",
+        target: "tsup.config.ts",
+      },
+      {
+        source: "apps/cli/src/index.ts",
+        target: "src/index.ts",
+      },
+      {
+        source: "apps/cli/src/cli.ts",
+        target: "src/cli.ts",
+      },
+    ];
 
-    await fs.writeJson(path.join(targetDir, "tsconfig.json"), tsconfig, {
-      spaces: 2,
-    });
-  }
-
-  private async generateTsupConfig(targetDir: string): Promise<void> {
-    const tsupConfig = `import { defineConfig } from "tsup";
-
-export default defineConfig({
-  entry: ["src/index.ts", "src/cli.ts"],
-  format: ["esm"],
-  dts: true,
-  clean: true,
-  splitting: false,
-  sourcemap: true,
-  target: "es2022",
-  shims: true,
-});
-`;
-
-    await fs.writeFile(path.join(targetDir, "tsup.config.ts"), tsupConfig);
-  }
-
-  private async generateSourceFiles(
-    targetDir: string,
-    appName: string,
-  ): Promise<void> {
-    // Generate index.ts
-    const indexTs = `/**
- * ${appName} - Main application entry point
- */
-
-export function main() {
-  console.log("Hello from ${appName}!");
-}
-`;
-
-    await fs.writeFile(path.join(targetDir, "src", "index.ts"), indexTs);
-
-    // Generate cli.ts
-    const cliTs = `#!/usr/bin/env node
-
-import { main } from "./index.js";
-
-main();
-`;
-
-    await fs.writeFile(path.join(targetDir, "src", "cli.ts"), cliTs);
-  }
-
-  /**
-   * Extract directory name from app name
-   * @param name - App name (may include scope like @org/name)
-   * @returns Directory name without scope
-   * @example
-   * extractDirectoryName('@myorg/my-app') // 'my-app'
-   * extractDirectoryName('my-cli') // 'my-cli'
-   */
-  private extractDirectoryName(name: string): string {
-    if (name.startsWith("@")) {
-      const parts = name.split("/");
-      return parts.length > 1 ? parts[1]! : parts[0]!.slice(1);
-    }
-    return name;
+    await this.processFiles(files, targetDir, context);
   }
 }
