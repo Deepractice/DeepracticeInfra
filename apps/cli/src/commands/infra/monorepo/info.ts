@@ -41,9 +41,9 @@ export async function infoAction(options: {
 
     console.log(chalk.blue("Workspace Statistics:\n"));
     console.log(chalk.white(`Total packages: ${packages.length}`));
-    console.log(chalk.white(`packages: ${purePackages.length}`));
-    console.log(chalk.white(`apps: ${apps.length}`));
-    console.log(chalk.white(`services: ${services.length}`));
+    console.log(chalk.white(`Packages: ${purePackages.length}`));
+    console.log(chalk.white(`Apps: ${apps.length}`));
+    console.log(chalk.white(`Services: ${services.length}`));
     console.log();
 
     console.log(chalk.blue("Workspace Configuration:\n"));
@@ -265,7 +265,7 @@ async function detectConfigTools(
   const pnpmWorkspacePath = path.join(monorepoRoot, "pnpm-workspace.yaml");
   if (await fs.pathExists(pnpmWorkspacePath)) {
     tools.push({
-      name: "pnpm",
+      name: "pnpm workspace",
       version: undefined,
       configFile: "pnpm-workspace.yaml",
     });

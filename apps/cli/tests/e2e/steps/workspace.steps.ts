@@ -53,8 +53,19 @@ Given("I am in the monorepo root", async function (this: InfraWorld) {
     this.originalCwd = process.cwd();
   }
 
+  // Check if package.json already exists (monorepo already initialized)
+  const packageJsonPath = path.join(this.testDir, "package.json");
+  if (await fs.pathExists(packageJsonPath)) {
+    // Monorepo already initialized, just ensure directories exist
+    await fs.ensureDir(path.join(this.testDir, "packages"));
+    await fs.ensureDir(path.join(this.testDir, "src"));
+    await fs.ensureDir(path.join(this.testDir, "apps"));
+    await fs.ensureDir(path.join(this.testDir, "services"));
+    return;
+  }
+
   // Create minimal monorepo structure
-  await fs.writeJson(path.join(this.testDir, "package.json"), {
+  await fs.writeJson(packageJsonPath, {
     name: "test-monorepo",
     version: "1.0.0",
     private: true,
@@ -80,11 +91,13 @@ Given("I am in the monorepo root", async function (this: InfraWorld) {
 Given("the monorepo has been initialized", async function (this: InfraWorld) {
   // Verify monorepo structure exists
   const workspaceFile = path.join(this.testDir!, "pnpm-workspace.yaml");
-  const exists = await fs.pathExists(workspaceFile);
+  const packageJsonPath = path.join(this.testDir!, "package.json");
+  const tsconfigPath = path.join(this.testDir!, "tsconfig.json");
+  const tsupConfigPath = path.join(this.testDir!, "tsup.config.ts");
 
-  if (!exists) {
-    // If not initialized, create minimal structure
-    await fs.writeJson(path.join(this.testDir!, "package.json"), {
+  // Create package.json if it doesn't exist
+  if (!(await fs.pathExists(packageJsonPath))) {
+    await fs.writeJson(packageJsonPath, {
       name: "test-monorepo",
       version: "1.0.0",
       private: true,
@@ -96,7 +109,10 @@ Given("the monorepo has been initialized", async function (this: InfraWorld) {
         tsx: "^4.19.2",
       },
     });
+  }
 
+  // Create pnpm-workspace.yaml if it doesn't exist
+  if (!(await fs.pathExists(workspaceFile))) {
     await fs.writeFile(
       workspaceFile,
       `packages:
@@ -106,9 +122,11 @@ Given("the monorepo has been initialized", async function (this: InfraWorld) {
   - "services/*"
 `,
     );
+  }
 
-    // Create tsconfig.json for TypeScript detection
-    await fs.writeJson(path.join(this.testDir!, "tsconfig.json"), {
+  // Create tsconfig.json for TypeScript detection
+  if (!(await fs.pathExists(tsconfigPath))) {
+    await fs.writeJson(tsconfigPath, {
       compilerOptions: {
         target: "ES2020",
         module: "ESNext",
@@ -116,19 +134,18 @@ Given("the monorepo has been initialized", async function (this: InfraWorld) {
         strict: true,
       },
     });
-
-    // Create tsup.config.ts for tsup detection
-    await fs.writeFile(
-      path.join(this.testDir!, "tsup.config.ts"),
-      `export default {};\n`,
-    );
-
-    // Create workspace directories
-    await fs.ensureDir(path.join(this.testDir!, "packages"));
-    await fs.ensureDir(path.join(this.testDir!, "src"));
-    await fs.ensureDir(path.join(this.testDir!, "apps"));
-    await fs.ensureDir(path.join(this.testDir!, "services"));
   }
+
+  // Create tsup.config.ts for tsup detection
+  if (!(await fs.pathExists(tsupConfigPath))) {
+    await fs.writeFile(tsupConfigPath, `export default {};\n`);
+  }
+
+  // Create workspace directories
+  await fs.ensureDir(path.join(this.testDir!, "packages"));
+  await fs.ensureDir(path.join(this.testDir!, "src"));
+  await fs.ensureDir(path.join(this.testDir!, "apps"));
+  await fs.ensureDir(path.join(this.testDir!, "services"));
 });
 
 Given(

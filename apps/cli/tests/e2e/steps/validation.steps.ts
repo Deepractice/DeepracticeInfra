@@ -235,6 +235,17 @@ Given("the monorepo is initialized", async function (this: InfraWorld) {
 `,
   );
 
+  // Create tsconfig.json with references field for validation tests
+  await fs.writeJson(path.join(this.testDir!, "tsconfig.json"), {
+    compilerOptions: {
+      target: "ES2020",
+      module: "ESNext",
+      moduleResolution: "bundler",
+      strict: true,
+    },
+    references: [],
+  });
+
   await fs.ensureDir(path.join(this.testDir!, "packages"));
   await fs.ensureDir(path.join(this.testDir!, "apps"));
 });
@@ -434,10 +445,10 @@ Then(
 Then(
   "the error output should contain validation errors",
   function (this: InfraWorld) {
-    const errorOutput = this.stderr.join("\n");
-    expect(errorOutput.length).to.be.greaterThan(
-      0,
-      "Error output should contain validation errors",
+    const output = this.stdout.join("\n");
+    expect(output).to.include(
+      "Monorepo validation failed",
+      "Output should contain validation error message",
     );
   },
 );

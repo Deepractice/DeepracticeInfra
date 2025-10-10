@@ -70,6 +70,7 @@ export class PackageGenerator {
       compilerOptions: {
         outDir: "./dist",
         rootDir: "./src",
+        types: [], // Override to remove vitest/globals requirement
       },
       include: ["src/**/*"],
       exclude: ["node_modules", "dist"],

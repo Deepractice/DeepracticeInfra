@@ -52,8 +52,8 @@ Feature: Display Monorepo Information
       And 2 apps exist in "apps/"
       When I run "nodespec infra monorepo info"
       Then the command should succeed
-      And I should see "packages: 0"
-      And I should see "apps: 2"
+      And I should see "Packages: 0"
+      And I should see "Apps: 2"
 
   Rule: Display TypeScript and build tool configuration
 
@@ -62,10 +62,10 @@ Feature: Display Monorepo Information
       When I run "nodespec infra monorepo info"
       Then the command should succeed
       And I should see configuration summary:
-        | tool       | status |
-        | TypeScript | ✓      |
-        | pnpm       | ✓      |
-        | tsup       | ✓      |
+        | tool           | status |
+        | TypeScript     | ✓      |
+        | pnpm workspace | ✓      |
+        | tsup           | ✓      |
 
     Scenario: Show detailed configuration with --verbose flag
       Given I am in the monorepo root

@@ -82,10 +82,10 @@ Feature: Validate Monorepo Structure
       When I run "nodespec infra monorepo validate"
       Then the command should fail
       And I should see validation summary showing:
-        | component         | status | errors |
-        | Directory structure | ✗    | 1      |
-        | Required files      | ✗    | 1      |
-        | TypeScript config   | ✗    | 1      |
+        | component           | status | errors |
+        | Directory structure | ✗      | 1      |
+        | Required files      | ✗      | 1      |
+        | Configuration       | ✗      | 1      |
       And I should see all errors listed
 
     Scenario: Exit code indicates validation status
