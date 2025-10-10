@@ -40,6 +40,9 @@ coverage/
 .eslintcache
 .turbo/
 
+# Tsup bundled configs
+*.bundled_*.mjs
+
 # Lefthook
 lefthook-local.yml
 
