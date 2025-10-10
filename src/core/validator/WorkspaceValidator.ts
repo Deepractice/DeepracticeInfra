@@ -234,12 +234,18 @@ export class WorkspaceValidator {
             ? packageJson.bin
             : Object.values(packageJson.bin)[0];
         if (binPath) {
-          const fullBinPath = path.join(packageDir, binPath as string);
-          if (!(await fs.pathExists(fullBinPath))) {
+          // For TypeScript projects, check if source file exists instead of compiled output
+          // e.g., ./dist/cli.js -> src/cli.ts
+          const sourcePath = (binPath as string)
+            .replace(/^\.\/dist\//, "src/")
+            .replace(/\.js$/, ".ts");
+          const fullSourcePath = path.join(packageDir, sourcePath);
+
+          if (!(await fs.pathExists(fullSourcePath))) {
             errors.push({
               type: "configuration",
-              message: "Invalid bin configuration: file does not exist",
-              path: fullBinPath,
+              message: `Invalid bin configuration: source file ${sourcePath} does not exist`,
+              path: fullSourcePath,
             });
           }
         }

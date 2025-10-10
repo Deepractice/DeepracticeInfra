@@ -7,13 +7,13 @@
 
 export const VERSIONS = {
   // Deepractice configs (ecosystem)
-  eslintConfig: "^0.0.1",
-  prettierConfig: "^0.0.1",
-  typescriptConfig: "^0.0.1",
-  tsupConfig: "^0.0.1",
-  vitestConfig: "^0.0.1",
-  cucumberConfig: "^0.0.1",
-  commitlintConfig: "^0.0.1",
+  eslintConfig: "latest",
+  prettierConfig: "latest",
+  typescriptConfig: "latest",
+  tsupConfig: "latest",
+  vitestConfig: "latest",
+  cucumberConfig: "latest",
+  commitlintConfig: "latest",
 
   // Build tools
   turbo: "^2.3.3",
