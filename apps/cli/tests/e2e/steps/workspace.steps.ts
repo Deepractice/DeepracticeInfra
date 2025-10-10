@@ -107,6 +107,22 @@ Given("the monorepo has been initialized", async function (this: InfraWorld) {
 `,
     );
 
+    // Create tsconfig.json for TypeScript detection
+    await fs.writeJson(path.join(this.testDir!, "tsconfig.json"), {
+      compilerOptions: {
+        target: "ES2020",
+        module: "ESNext",
+        moduleResolution: "bundler",
+        strict: true,
+      },
+    });
+
+    // Create tsup.config.ts for tsup detection
+    await fs.writeFile(
+      path.join(this.testDir!, "tsup.config.ts"),
+      `export default {};\n`,
+    );
+
     // Create workspace directories
     await fs.ensureDir(path.join(this.testDir!, "packages"));
     await fs.ensureDir(path.join(this.testDir!, "src"));

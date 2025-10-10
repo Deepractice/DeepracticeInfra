@@ -40,6 +40,7 @@ export async function infoAction(options: {
     console.log();
 
     console.log(chalk.blue("Workspace Statistics:\n"));
+    console.log(chalk.white(`Total packages: ${packages.length}`));
     console.log(chalk.white(`packages: ${purePackages.length}`));
     console.log(chalk.white(`apps: ${apps.length}`));
     console.log(chalk.white(`services: ${services.length}`));
@@ -163,7 +164,9 @@ export async function infoAction(options: {
 async function validateMonorepo(cwd: string): Promise<void> {
   const workspaceFile = path.join(cwd, "pnpm-workspace.yaml");
   if (!(await fs.pathExists(workspaceFile))) {
-    throw new Error("Not in a monorepo - pnpm-workspace.yaml not found");
+    throw new Error(
+      "Not in a monorepo - pnpm-workspace.yaml not found\n\nUse 'nodespec infra monorepo init' to initialize",
+    );
   }
 }
 
