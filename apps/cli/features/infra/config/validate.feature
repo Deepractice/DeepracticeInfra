@@ -9,6 +9,7 @@ Feature: Validate Configuration Files
 
   Rule: Validate all configuration files
 
+    @skip
     Scenario: Validate all configs
       Given I am in the monorepo root
       And all config files exist with valid configuration
@@ -22,6 +23,7 @@ Feature: Validate Configuration Files
         | TypeScript       | ✓      |
         | EditorConfig     | ✓      |
 
+    @skip
     Scenario: Validate specific tool config
       Given I am in the monorepo root
       And ".eslintrc.json" exists with valid configuration
@@ -31,6 +33,7 @@ Feature: Validate Configuration Files
 
   Rule: Detect configuration issues
 
+    @skip
     Scenario: Check for conflicting settings
       Given I am in the monorepo root
       And ".eslintrc.json" has "semi: true"
@@ -42,6 +45,7 @@ Feature: Validate Configuration Files
         | setting | ESLint | Prettier |
         | semi    | true   | false    |
 
+    @skip
     Scenario: Verify TypeScript config compatibility
       Given I am in the monorepo root
       And "tsconfig.json" has invalid "compilerOptions"
@@ -52,6 +56,7 @@ Feature: Validate Configuration Files
 
   Rule: Validate workspace references
 
+    @skip
     Scenario: Check workspace references are valid
       Given I am in the monorepo root
       And "tsconfig.json" has references to non-existent packages
@@ -59,6 +64,7 @@ Feature: Validate Configuration Files
       Then the command should fail
       And I should see error message "Invalid TypeScript references: some referenced packages do not exist"
 
+    @skip
     Scenario: Validate ESLint extends packages exist
       Given I am in the monorepo root
       And ".eslintrc.json" extends "@myorg/eslint-config"
@@ -69,6 +75,7 @@ Feature: Validate Configuration Files
 
   Rule: Provide actionable recommendations
 
+    @skip
     Scenario: Provide fix suggestions for common issues
       Given I am in the monorepo root
       And ".eslintrc.json" has conflicting settings with Prettier

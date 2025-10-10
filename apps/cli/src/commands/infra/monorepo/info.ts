@@ -40,11 +40,9 @@ export async function infoAction(options: {
     console.log();
 
     console.log(chalk.blue("Workspace Statistics:\n"));
-    console.log(chalk.white(`Total packages: ${packages.length}`));
-    console.log(chalk.white(`Packages:       ${purePackages.length}`));
-    console.log(chalk.white(`Apps:           ${apps.length}`));
-    console.log(chalk.white(`Services:       ${services.length}`));
-    console.log(chalk.white(`packages:       ${purePackages.length}`));
+    console.log(chalk.white(`packages: ${purePackages.length}`));
+    console.log(chalk.white(`apps: ${apps.length}`));
+    console.log(chalk.white(`services: ${services.length}`));
     console.log();
 
     console.log(chalk.blue("Workspace Configuration:\n"));
@@ -55,12 +53,16 @@ export async function infoAction(options: {
     console.log();
 
     // Configuration tools summary
-    console.log(chalk.blue("Configuration Tools:\n"));
     const configTools = await detectConfigTools(monorepoRoot);
-    for (const tool of configTools) {
-      console.log(chalk.white(`${tool.name}: ${tool.version || "detected"}`));
+    if (configTools.length > 0) {
+      console.log(chalk.blue("Configuration Tools:\n"));
+      console.log(chalk.white("| Tool       | Status |"));
+      console.log(chalk.white("|------------|--------|"));
+      for (const tool of configTools) {
+        console.log(chalk.white(`| ${tool.name.padEnd(10)} | ✓      |`));
+      }
+      console.log();
     }
-    console.log();
 
     // Verbose output: show detailed configuration
     if (options.verbose) {

@@ -1,14 +1,9 @@
-import path from "node:path";
-import fs from "fs-extra";
 import chalk from "chalk";
 import { WorkspaceValidator } from "@deepracticex/nodespec-core";
 
 export async function validateAction(): Promise<void> {
   try {
     const monorepoRoot = process.cwd();
-
-    // Validate we are in a monorepo
-    await validateMonorepo(monorepoRoot);
 
     const validator = new WorkspaceValidator();
     const result = await validator.validateMonorepo(monorepoRoot);
@@ -82,15 +77,5 @@ export async function validateAction(): Promise<void> {
       ),
     );
     process.exit(1);
-  }
-}
-
-/**
- * Validate we are in a monorepo by checking for pnpm-workspace.yaml
- */
-async function validateMonorepo(cwd: string): Promise<void> {
-  const workspaceFile = path.join(cwd, "pnpm-workspace.yaml");
-  if (!(await fs.pathExists(workspaceFile))) {
-    throw new Error("Not in a monorepo - pnpm-workspace.yaml not found");
   }
 }

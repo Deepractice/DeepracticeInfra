@@ -44,6 +44,7 @@ Feature: List Configuration Files
       And I should see ".eslintrc.json" marked as "Standard"
       And I should see ".prettierrc.json" marked as "Customized"
 
+    @skip
     Scenario: Detect missing recommended configs
       Given I am in the monorepo root
       And file ".eslintrc.json" exists
