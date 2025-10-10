@@ -70,7 +70,9 @@ jobs:
       - name: Generate Release Notes
         id: release_notes
         run: |
-          NOTES="# Release ${{ steps.extract_version.outputs.tag }}
+          # Create release notes file to avoid shell escaping issues
+          cat > release-notes.md << 'NOTES_EOF'
+          # Release ${{ steps.extract_version.outputs.tag }}
 
           ## Packages
 
@@ -78,21 +80,26 @@ jobs:
 
           ## Changes
 
-          "
+          NOTES_EOF
 
           # Extract CHANGELOG content from each package
           for pkg in packages/*/CHANGELOG.md; do
             if [ -f "$pkg" ]; then
               PKG_NAME=$(dirname "$pkg" | xargs basename)
-              NOTES="${NOTES}\n### @deepracticex/${PKG_NAME}\n\n"
+              echo "" >> release-notes.md
+              echo "### @deepracticex/${PKG_NAME}" >> release-notes.md
+              echo "" >> release-notes.md
               # Get the latest version section from CHANGELOG
-              NOTES="${NOTES}$(awk '/^## /{if(++count==2)exit;if(count==1)next}count==1' "$pkg")\n"
+              awk '/^## /{if(++count==2)exit;if(count==1)next}count==1' "$pkg" >> release-notes.md
             fi
           done
 
-          echo "notes<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$NOTES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          # Write to GitHub output using file content
+          {
+            echo "notes<<EOF"
+            cat release-notes.md
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         env:
