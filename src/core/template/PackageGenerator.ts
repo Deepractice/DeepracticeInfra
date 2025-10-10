@@ -8,7 +8,7 @@ export interface PackageOptions {
 }
 
 /**
- * Generator for creating packages using NodeSpec's template package as source
+ * Generator for creating packages using NodeSpec's example package as source
  */
 export class PackageGenerator extends BaseGenerator {
   async generate(monorepoRoot: string, options: PackageOptions): Promise<void> {
@@ -19,24 +19,25 @@ export class PackageGenerator extends BaseGenerator {
     const context: ProcessContext = {
       packageName: options.name,
       dirName,
+      nodespecRoot: this.getNodeSpecRoot(),
     };
 
-    // Define file mappings from template to target
+    // Define file mappings from example to target
     const files: FileMapping[] = [
       {
-        source: "packages/template/package.json",
+        source: "packages/example/package.json",
         target: "package.json",
       },
       {
-        source: "packages/template/tsconfig.json",
+        source: "packages/example/tsconfig.json",
         target: "tsconfig.json",
       },
       {
-        source: "packages/template/tsup.config.ts",
+        source: "packages/example/tsup.config.ts",
         target: "tsup.config.ts",
       },
       {
-        source: "packages/template/src/index.ts",
+        source: "packages/example/src/index.ts",
         target: "src/index.ts",
       },
     ];

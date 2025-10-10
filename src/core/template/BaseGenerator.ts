@@ -43,15 +43,34 @@ export abstract class BaseGenerator {
   /**
    * Get the root directory of NodeSpec project
    * This is the source of truth for all templates
+   *
+   * Supports two modes:
+   * - Development: Uses NodeSpec repo root directly
+   * - Production: Uses mirror directory bundled with CLI
    */
   protected getNodeSpecRoot(): string {
-    // When running from source: find NodeSpec repo root
-    // When running from published CLI: use embedded template directory
-    // TODO: Implement runtime detection for published package
-
-    // For now, assume running from source
-    // Go up from src/core/template/BaseGenerator.ts to repo root
     const currentFile = fileURLToPath(import.meta.url);
+
+    // Production mode: Check for mirror in CLI dist
+    // When bundled in CLI: apps/cli/dist/cli.js
+    // Mirror is at: apps/cli/dist/mirror/
+    const currentDir = path.dirname(currentFile);
+    const mirrorInCLI = path.join(currentDir, "mirror");
+
+    if (fs.existsSync(mirrorInCLI)) {
+      return mirrorInCLI;
+    }
+
+    // Check mirror in parent directory (alternative structure)
+    const parentDir = path.dirname(currentDir);
+    const mirrorInParent = path.join(parentDir, "mirror");
+
+    if (fs.existsSync(mirrorInParent)) {
+      return mirrorInParent;
+    }
+
+    // Development mode: Find NodeSpec repo root
+    // From src/core/template/BaseGenerator.ts -> repo root
     const coreDir = path.dirname(path.dirname(currentFile)); // src/core
     const srcDir = path.dirname(coreDir); // src
     const repoRoot = path.dirname(srcDir); // repo root

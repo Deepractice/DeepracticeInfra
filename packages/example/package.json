@@ -1,7 +1,7 @@
 {
-  "name": "@deepracticex/template",
+  "name": "@deepracticex/package-example",
   "version": "1.1.0",
-  "description": "Template package demonstrating Deepractice package development standards",
+  "description": "Example package demonstrating Deepractice package development standards",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -28,10 +28,10 @@
     "README.md"
   ],
   "keywords": [
-    "template",
+    "example",
     "typescript",
     "deepractice",
-    "package-template"
+    "package-example"
   ],
   "author": "Deepractice",
   "license": "MIT",

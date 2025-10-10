@@ -16,7 +16,7 @@
     }
   },
   "scripts": {
-    "build": "NODE_OPTIONS='--import tsx' tsup",
+    "build": "NODE_OPTIONS='--import tsx' tsup && tsx scripts/copy-mirror.ts",
     "dev": "NODE_OPTIONS='--import tsx' tsup --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@deepracticex/nodespec-core": "workspace:*",
+    "@deepracticex/nodespec-mirror": "workspace:*",
     "commander": "^12.1.0",
     "chalk": "^5.4.1",
     "ora": "^8.1.1",

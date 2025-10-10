@@ -2,18 +2,15 @@ import fs from "fs-extra";
 import type { FileProcessor, ProcessContext } from "./types.js";
 import { DependencyResolver } from "./DependencyResolver.js";
 
-/**
- * Extended context with NodeSpec root
- */
-export interface PackageProcessContext extends ProcessContext {
+export interface MonorepoProcessContext extends ProcessContext {
   nodespecRoot: string;
 }
 
 /**
- * Processor for package.json files
- * Merges template with context-specific values and resolves workspace dependencies
+ * Processor for monorepo root package.json files
+ * Handles private monorepo configuration
  */
-export class PackageJsonProcessor implements FileProcessor {
+export class MonorepoPackageJsonProcessor implements FileProcessor {
   canProcess(fileName: string): boolean {
     return fileName.endsWith("package.json");
   }
@@ -24,26 +21,20 @@ export class PackageJsonProcessor implements FileProcessor {
     context: ProcessContext,
   ): Promise<void> {
     const template = await fs.readJson(sourcePath);
-    const pkgContext = context as PackageProcessContext;
+    const monorepoContext = context as MonorepoProcessContext;
 
     // Resolve workspace dependencies
-    const dependencies = await DependencyResolver.resolveWorkspaceDependencies(
-      template.dependencies,
-      pkgContext.nodespecRoot,
-    );
     const devDependencies =
       await DependencyResolver.resolveWorkspaceDependencies(
         template.devDependencies,
-        pkgContext.nodespecRoot,
+        monorepoContext.nodespecRoot,
       );
 
-    // Merge strategy: preserve template, only override necessary fields
+    // Merge strategy: preserve template, only override name
+    // Keep version, private, and all other fields from template
     const result = {
       ...template,
       name: context.packageName,
-      version: "0.0.1",
-      description: `${context.packageName} package`,
-      ...(Object.keys(dependencies).length > 0 && { dependencies }),
       ...(Object.keys(devDependencies).length > 0 && { devDependencies }),
     };
 

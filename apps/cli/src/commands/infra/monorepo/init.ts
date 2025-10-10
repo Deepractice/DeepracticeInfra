@@ -3,7 +3,7 @@ import fs from "fs-extra";
 import chalk from "chalk";
 import ora from "ora";
 import { execa } from "execa";
-import { ProjectGenerator } from "@deepracticex/nodespec-core";
+import { MonorepoGenerator } from "@deepracticex/nodespec-core";
 
 interface InitOptions {
   name?: string;
@@ -30,9 +30,9 @@ export async function initAction(options: InitOptions): Promise<void> {
     console.log(chalk.blue(`Initializing NodeSpec monorepo: ${projectName}`));
     console.log(chalk.gray(`Target directory: ${targetDir}\n`));
 
-    // Generate project structure using ProjectGenerator
+    // Generate project structure using MonorepoGenerator
     spinner.start("Generating project structure");
-    const generator = new ProjectGenerator();
+    const generator = new MonorepoGenerator();
     await generator.generate(targetDir, { name: projectName });
     spinner.succeed("Project structure generated");
 

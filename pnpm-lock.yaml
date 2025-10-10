@@ -132,11 +132,30 @@ importers:
         specifier: ^3.24.1
         version: 3.25.76
 
+  apps/app-example:
+    dependencies:
+      chalk:
+        specifier: ^5.4.1
+        version: 5.6.2
+      commander:
+        specifier: ^12.1.0
+        version: 12.1.0
+    devDependencies:
+      "@deepracticex/tsup-config":
+        specifier: workspace:*
+        version: link:../../configs/tsup
+      "@deepracticex/typescript-config":
+        specifier: workspace:*
+        version: link:../../configs/typescript
+
   apps/cli:
     dependencies:
       "@deepracticex/nodespec-core":
         specifier: workspace:*
         version: link:../../src/core
+      "@deepracticex/nodespec-mirror":
+        specifier: workspace:*
+        version: link:../../src/mirror
       chalk:
         specifier: ^5.4.1
         version: 5.6.2
@@ -184,6 +203,8 @@ importers:
 
   packages/error-handling: {}
 
+  packages/example: {}
+
   packages/logger:
     dependencies:
       pino:
@@ -193,13 +214,14 @@ importers:
         specifier: ^13.1.1
         version: 13.1.1
 
-  packages/template: {}
-
   src/core:
     dependencies:
       fs-extra:
         specifier: ^11.2.0
         version: 11.3.2
+      globby:
+        specifier: ^14.0.2
+        version: 14.1.0
       yaml:
         specifier: ^2.7.0
         version: 2.8.1
@@ -209,6 +231,15 @@ importers:
         version: 22.18.8
 
   src/domain: {}
+
+  src/mirror:
+    dependencies:
+      fs-extra:
+        specifier: ^11.2.0
+        version: 11.3.2
+      globby:
+        specifier: ^14.0.2
+        version: 14.1.0
 
 packages:
   "@babel/code-frame@7.27.1":
@@ -1336,6 +1367,13 @@ packages:
         integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==,
       }
 
+  "@sindresorhus/merge-streams@2.3.0":
+    resolution:
+      {
+        integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==,
+      }
+    engines: { node: ">=18" }
+
   "@sindresorhus/merge-streams@4.0.0":
     resolution:
       {
@@ -2388,6 +2426,13 @@ packages:
       }
     engines: { node: ">=10" }
 
+  globby@14.1.0:
+    resolution:
+      {
+        integrity: sha512-0Ia46fDOaT7k4og1PDW4YbodWWr3scS2vAr2lTbsplOt2WkKp0vQbkI9wKis/T5LV/dqPjO3bpS/z6GTJB82LA==,
+      }
+    engines: { node: ">=18" }
+
   graceful-fs@4.2.11:
     resolution:
       {
@@ -2453,6 +2498,13 @@ packages:
     resolution:
       {
         integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==,
+      }
+    engines: { node: ">= 4" }
+
+  ignore@7.0.5:
+    resolution:
+      {
+        integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==,
       }
     engines: { node: ">= 4" }
 
@@ -3267,6 +3319,13 @@ packages:
       }
     engines: { node: ">=8" }
 
+  path-type@6.0.0:
+    resolution:
+      {
+        integrity: sha512-Vj7sf++t5pBD637NSfkxpHSMfWaeig5+DKWLhcqIYx6mWQz5hdJTGDVMQiJcw1ZYkhs7AazKDGpRVji1LJCZUQ==,
+      }
+    engines: { node: ">=18" }
+
   pathe@1.1.2:
     resolution:
       {
@@ -3663,6 +3722,13 @@ packages:
         integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==,
       }
     engines: { node: ">=8" }
+
+  slash@5.1.0:
+    resolution:
+      {
+        integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==,
+      }
+    engines: { node: ">=14.16" }
 
   slow-redact@0.3.1:
     resolution:
@@ -5067,6 +5133,8 @@ snapshots:
 
   "@sec-ant/readable-stream@0.4.1": {}
 
+  "@sindresorhus/merge-streams@2.3.0": {}
+
   "@sindresorhus/merge-streams@4.0.0": {}
 
   "@teppeis/multimaps@3.0.0": {}
@@ -5688,6 +5756,15 @@ snapshots:
       merge2: 1.4.1
       slash: 3.0.0
 
+  globby@14.1.0:
+    dependencies:
+      "@sindresorhus/merge-streams": 2.3.0
+      fast-glob: 3.3.3
+      ignore: 7.0.5
+      path-type: 6.0.0
+      slash: 5.1.0
+      unicorn-magic: 0.3.0
+
   graceful-fs@4.2.11: {}
 
   has-ansi@4.0.1:
@@ -5713,6 +5790,8 @@ snapshots:
       safer-buffer: 2.1.2
 
   ignore@5.3.2: {}
+
+  ignore@7.0.5: {}
 
   import-fresh@3.3.1:
     dependencies:
@@ -6086,6 +6165,8 @@ snapshots:
 
   path-type@4.0.0: {}
 
+  path-type@6.0.0: {}
+
   pathe@1.1.2: {}
 
   pathe@2.0.3: {}
@@ -6303,6 +6384,8 @@ snapshots:
   sisteransi@1.0.5: {}
 
   slash@3.0.0: {}
+
+  slash@5.1.0: {}
 
   slow-redact@0.3.1: {}
 

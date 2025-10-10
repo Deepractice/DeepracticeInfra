@@ -1,0 +1,46 @@
+{
+  "name": "@deepracticex/app-example",
+  "version": "0.0.1",
+  "description": "Example app demonstrating Deepractice app development standards",
+  "type": "module",
+  "bin": {
+    "app-example": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "NODE_OPTIONS='--import tsx' tsup",
+    "dev": "NODE_OPTIONS='--import tsx' tsup --watch",
+    "clean": "rimraf dist",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/cli.js"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "chalk": "^5.4.1"
+  },
+  "devDependencies": {
+    "@deepracticex/tsup-config": "workspace:*",
+    "@deepracticex/typescript-config": "workspace:*"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "cli",
+    "app",
+    "example",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT"
+}

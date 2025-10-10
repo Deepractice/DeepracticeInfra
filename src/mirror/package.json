@@ -1,0 +1,28 @@
+{
+  "name": "@deepracticex/nodespec-mirror",
+  "version": "2025.10.10",
+  "description": "NodeSpec mirror - Complete snapshot of NodeSpec project for template generation (version format: YYYY.MM.DD)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsx scripts/sync-mirror.ts",
+    "clean": "rimraf dist"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "globby": "^14.0.2"
+  },
+  "keywords": [
+    "nodespec",
+    "mirror",
+    "template",
+    "deepractice"
+  ],
+  "author": "Deepractice",
+  "license": "MIT"
+}

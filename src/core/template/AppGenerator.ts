@@ -11,7 +11,7 @@ export interface AppOptions {
 }
 
 /**
- * Generator for creating apps using NodeSpec's CLI app as source
+ * Generator for creating apps using NodeSpec's app-example as source
  */
 export class AppGenerator extends BaseGenerator {
   constructor() {
@@ -32,28 +32,29 @@ export class AppGenerator extends BaseGenerator {
       packageName: options.name,
       dirName,
       binName: dirName, // Use dirName as binary name
+      nodespecRoot: this.getNodeSpecRoot(),
     };
 
-    // Define file mappings from CLI template to target
+    // Define file mappings from app-example to target
     const files: FileMapping[] = [
       {
-        source: "apps/cli/package.json",
+        source: "apps/app-example/package.json",
         target: "package.json",
       },
       {
-        source: "apps/cli/tsconfig.json",
+        source: "apps/app-example/tsconfig.json",
         target: "tsconfig.json",
       },
       {
-        source: "apps/cli/tsup.config.ts",
+        source: "apps/app-example/tsup.config.ts",
         target: "tsup.config.ts",
       },
       {
-        source: "apps/cli/src/index.ts",
+        source: "apps/app-example/src/index.ts",
         target: "src/index.ts",
       },
       {
-        source: "apps/cli/src/cli.ts",
+        source: "apps/app-example/src/cli.ts",
         target: "src/cli.ts",
       },
     ];

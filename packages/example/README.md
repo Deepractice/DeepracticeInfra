@@ -1,8 +1,8 @@
-# @deepracticex/template
+# @deepracticex/package-example
 
-**Deepractice Package Development Standards Template**
+**Deepractice Package Development Standards Example**
 
-This package serves as the standard template for all Deepractice packages. It demonstrates best practices for package structure, code organization, testing, and configuration.
+This package serves as the standard example for all Deepractice packages. It demonstrates best practices for package structure, code organization, testing, and configuration.
 
 ## Table of Contents
 
@@ -21,8 +21,8 @@ This package serves as the standard template for all Deepractice packages. It de
 ### Creating a New Package
 
 ```bash
-# 1. Copy this template
-cp -r packages/template packages/your-package
+# 1. Copy this example
+cp -r packages/example packages/your-package
 
 # 2. Update package.json
 cd packages/your-package
@@ -389,7 +389,7 @@ export default defineConfig({
 
 **When creating a new package:**
 
-1. Copy the template
+1. Copy the example
 2. Update name, description, keywords
 3. Run `pnpm install` from root
 4. Start coding - all tools are ready!
@@ -493,7 +493,7 @@ pnpm changeset publish
 
 ## Questions?
 
-This template embodies Deepractice package development standards. If you have questions or suggestions for improvements, please discuss with the team.
+This example embodies Deepractice package development standards. If you have questions or suggestions for improvements, please discuss with the team.
 
 **Key Principle**: Make it easy to do the right thing.
 
