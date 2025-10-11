@@ -1,5 +1,5 @@
 import { Given, When, Then } from "@cucumber/cucumber";
-import { expect } from "vitest";
+import { expect } from "./test-helpers";
 
 interface UserContext {
   systemInitialized?: boolean;

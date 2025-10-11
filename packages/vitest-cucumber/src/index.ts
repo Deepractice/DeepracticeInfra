@@ -9,6 +9,9 @@ export { Given, When, Then, And, But } from "~/api";
 export { Before, After, BeforeAll, AfterAll } from "~/api";
 export { vitestCucumber } from "~/api";
 
+// Export DataTable class (not just type)
+export { DataTable } from "~/types";
+
 // Export public types
 export type {
   VitestCucumberPluginOptions,
@@ -16,7 +19,6 @@ export type {
   StepFunction,
   StepDefinition,
   Step,
-  DataTable,
   DocString,
   Scenario,
   Feature,

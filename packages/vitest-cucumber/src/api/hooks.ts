@@ -1,35 +1,38 @@
+import { HookRegistry } from "../core/runtime/HookRegistry";
+import type { HookFunction } from "../core/runtime/HookRegistry";
+
 /**
- * Hooks for test lifecycle (stubs for now)
+ * Hooks for test lifecycle
  */
 
 /**
  * Run before each scenario
  */
-export function Before(_fn: () => void | Promise<void>): void {
-  // TODO: Implement hook registration
-  console.warn("Before hook not yet implemented");
+export function Before(fn: HookFunction): void {
+  const registry = HookRegistry.getInstance();
+  registry.register({ type: "Before", fn });
 }
 
 /**
  * Run after each scenario
  */
-export function After(_fn: () => void | Promise<void>): void {
-  // TODO: Implement hook registration
-  console.warn("After hook not yet implemented");
+export function After(fn: HookFunction): void {
+  const registry = HookRegistry.getInstance();
+  registry.register({ type: "After", fn });
 }
 
 /**
  * Run before all scenarios
  */
-export function BeforeAll(_fn: () => void | Promise<void>): void {
-  // TODO: Implement hook registration
-  console.warn("BeforeAll hook not yet implemented");
+export function BeforeAll(fn: HookFunction): void {
+  const registry = HookRegistry.getInstance();
+  registry.register({ type: "BeforeAll", fn });
 }
 
 /**
  * Run after all scenarios
  */
-export function AfterAll(_fn: () => void | Promise<void>): void {
-  // TODO: Implement hook registration
-  console.warn("AfterAll hook not yet implemented");
+export function AfterAll(fn: HookFunction): void {
+  const registry = HookRegistry.getInstance();
+  registry.register({ type: "AfterAll", fn });
 }

@@ -5,7 +5,6 @@ export type { VitestCucumberPluginOptions } from "./plugin-options";
 export type { StepType, StepFunction, StepDefinition } from "./step-definition";
 export type {
   Step,
-  DataTable,
   DocString,
   Background,
   Examples,
@@ -14,6 +13,9 @@ export type {
   Feature,
   StepContext,
 } from "./feature";
+
+// Export DataTable as a class (not just type)
+export { DataTable } from "../core/runtime/DataTable";
 
 /**
  * Legacy types for integration testing (backward compatibility)

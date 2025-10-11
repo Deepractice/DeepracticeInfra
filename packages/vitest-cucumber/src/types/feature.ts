@@ -15,22 +15,12 @@ export interface Step {
   /**
    * Optional data table attached to step
    */
-  dataTable?: DataTable;
+  dataTable?: import("../core/runtime/DataTable").DataTable;
 
   /**
    * Optional doc string attached to step
    */
   docString?: DocString;
-}
-
-/**
- * Data table for a step
- */
-export interface DataTable {
-  /**
-   * Rows of the data table
-   */
-  rows: string[][];
 }
 
 /**

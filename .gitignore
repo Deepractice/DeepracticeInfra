@@ -51,3 +51,4 @@ lefthook-local.yml
 
 # Test reports
 **/reports/
+../../temp/

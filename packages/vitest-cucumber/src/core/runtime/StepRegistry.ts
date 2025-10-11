@@ -1,11 +1,23 @@
 import type { StepDefinition, StepType } from "~/types";
+import {
+  ParameterTypeConverter,
+  type ParameterInfo,
+} from "./ParameterTypeConverter";
+
+/**
+ * Extended step definition with parameter type information
+ */
+export interface ExtendedStepDefinition extends StepDefinition {
+  parameterTypes: ParameterInfo[];
+  regex: RegExp;
+}
 
 /**
  * Global registry for step definitions
  */
 export class StepRegistry {
   private static instance: StepRegistry;
-  private steps: StepDefinition[] = [];
+  private steps: ExtendedStepDefinition[] = [];
 
   private constructor() {}
 
@@ -23,7 +35,23 @@ export class StepRegistry {
    * Register a step definition
    */
   public register(step: StepDefinition): void {
-    this.steps.push(step);
+    // Extract parameter types and convert to regex if needed
+    const parameterTypes = ParameterTypeConverter.extractParameterTypes(
+      step.pattern,
+    );
+
+    const regex =
+      typeof step.pattern === "string"
+        ? ParameterTypeConverter.cucumberExpressionToRegex(step.pattern)
+        : step.pattern;
+
+    const extendedStep: ExtendedStepDefinition = {
+      ...step,
+      parameterTypes,
+      regex,
+    };
+
+    this.steps.push(extendedStep);
   }
 
   /**
@@ -32,24 +60,17 @@ export class StepRegistry {
   public findMatch(
     type: StepType,
     text: string,
-  ): { step: StepDefinition; matches: RegExpMatchArray | null } | null {
+  ): { step: ExtendedStepDefinition; matches: RegExpMatchArray | null } | null {
     for (const step of this.steps) {
       // Skip if type doesn't match (except for And/But which inherit from previous)
       if (type !== "And" && type !== "But" && step.type !== type) {
         continue;
       }
 
-      if (typeof step.pattern === "string") {
-        // Exact string match
-        if (step.pattern === text) {
-          return { step, matches: null };
-        }
-      } else {
-        // RegExp match
-        const matches = text.match(step.pattern);
-        if (matches) {
-          return { step, matches };
-        }
+      // Use the compiled regex for matching
+      const matches = text.match(step.regex);
+      if (matches) {
+        return { step, matches };
       }
     }
 
@@ -66,7 +87,7 @@ export class StepRegistry {
   /**
    * Get all registered steps
    */
-  public getAll(): StepDefinition[] {
+  public getAll(): ExtendedStepDefinition[] {
     return [...this.steps];
   }
 }

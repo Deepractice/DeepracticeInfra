@@ -11,14 +11,34 @@ export class CodeGenerator {
     const lines: string[] = [];
 
     // Import statements
-    lines.push("import { describe, it, beforeEach } from 'vitest';");
     lines.push(
-      "import { StepExecutor, ContextManager } from '@deepracticex/vitest-cucumber/runtime';",
+      "import { describe, it, beforeEach, afterEach, beforeAll, afterAll } from 'vitest';",
+    );
+    lines.push(
+      "import { StepExecutor, ContextManager, DataTable, HookRegistry } from '@deepracticex/vitest-cucumber/runtime';",
     );
     lines.push("");
 
     // Feature describe block
     lines.push(`describe('${this.escapeString(feature.name)}', () => {`);
+
+    // Generate BeforeAll/AfterAll hooks
+    lines.push("");
+    lines.push("  beforeAll(async () => {");
+    lines.push("    const hookRegistry = HookRegistry.getInstance();");
+    lines.push("    const contextManager = new ContextManager();");
+    lines.push(
+      "    await hookRegistry.executeHooks('BeforeAll', contextManager.getContext());",
+    );
+    lines.push("  });");
+    lines.push("");
+    lines.push("  afterAll(async () => {");
+    lines.push("    const hookRegistry = HookRegistry.getInstance();");
+    lines.push("    const contextManager = new ContextManager();");
+    lines.push(
+      "    await hookRegistry.executeHooks('AfterAll', contextManager.getContext());",
+    );
+    lines.push("  });");
 
     // Generate feature-level background
     if (feature.background) {
@@ -55,16 +75,26 @@ export class CodeGenerator {
 
     lines.push("");
     lines.push(`${ind}it('${this.escapeString(scenario.name)}', async () => {`);
+    lines.push(`${ind}  const hookRegistry = HookRegistry.getInstance();`);
     lines.push(`${ind}  const contextManager = new ContextManager();`);
-    lines.push(
-      `${ind}  const executor = new StepExecutor(contextManager.getContext());`,
-    );
+    lines.push(`${ind}  const context = contextManager.getContext();`);
+    lines.push(`${ind}  const executor = new StepExecutor(context);`);
+    lines.push("");
+
+    // Execute Before hooks
+    lines.push(`${ind}  // Execute Before hooks`);
+    lines.push(`${ind}  await hookRegistry.executeHooks('Before', context);`);
     lines.push("");
 
     // Generate steps
+    lines.push(`${ind}  // Execute steps`);
     for (const step of scenario.steps) {
       lines.push(this.generateStep(step, indent + 1));
     }
+
+    // Execute After hooks
+    lines.push(`${ind}  // Execute After hooks`);
+    lines.push(`${ind}  await hookRegistry.executeHooks('After', context);`);
 
     lines.push(`${ind}});`);
 
@@ -84,9 +114,9 @@ export class CodeGenerator {
     lines.push(`${ind}  text: '${this.escapeString(step.text)}',`);
 
     if (step.dataTable) {
-      lines.push(`${ind}  dataTable: {`);
-      lines.push(`${ind}    rows: ${JSON.stringify(step.dataTable.rows)}`);
-      lines.push(`${ind}  },`);
+      lines.push(
+        `${ind}  dataTable: new DataTable(${JSON.stringify(step.dataTable.raw())}),`,
+      );
     }
 
     if (step.docString) {
@@ -209,13 +239,23 @@ export class CodeGenerator {
         lines.push(
           `${ind}  it('Example: ${this.escapeString(exampleDesc)}', async () => {`,
         );
-        lines.push(`${ind}    const contextManager = new ContextManager();`);
         lines.push(
-          `${ind}    const executor = new StepExecutor(contextManager.getContext());`,
+          `${ind}    const hookRegistry = HookRegistry.getInstance();`,
+        );
+        lines.push(`${ind}    const contextManager = new ContextManager();`);
+        lines.push(`${ind}    const context = contextManager.getContext();`);
+        lines.push(`${ind}    const executor = new StepExecutor(context);`);
+        lines.push("");
+
+        // Execute Before hooks
+        lines.push(`${ind}    // Execute Before hooks`);
+        lines.push(
+          `${ind}    await hookRegistry.executeHooks('Before', context);`,
         );
         lines.push("");
 
         // Generate steps with replaced placeholders
+        lines.push(`${ind}    // Execute steps`);
         for (const step of scenario.steps) {
           const replacedStep = {
             ...step,
@@ -223,6 +263,12 @@ export class CodeGenerator {
           };
           lines.push(this.generateStep(replacedStep, indent + 2));
         }
+
+        // Execute After hooks
+        lines.push(`${ind}    // Execute After hooks`);
+        lines.push(
+          `${ind}    await hookRegistry.executeHooks('After', context);`,
+        );
 
         lines.push(`${ind}  });`);
       }

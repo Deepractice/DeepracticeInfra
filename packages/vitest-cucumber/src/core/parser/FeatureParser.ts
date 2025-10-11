@@ -3,12 +3,12 @@ import type {
   Feature,
   Scenario,
   Step,
-  DataTable,
   DocString,
   Background,
   Examples,
   Rule,
 } from "~/types";
+import { DataTable } from "../runtime/DataTable";
 import { GherkinParser } from "./GherkinParser";
 
 /**
@@ -103,9 +103,10 @@ export class FeatureParser {
    * Convert Gherkin data table
    */
   private convertDataTable(dataTable: Messages.DataTable): DataTable {
-    return {
-      rows: dataTable.rows.map((row) => row.cells.map((cell) => cell.value)),
-    };
+    const rows = dataTable.rows.map((row) =>
+      row.cells.map((cell) => cell.value),
+    );
+    return new DataTable(rows);
   }
 
   /**
