@@ -5,21 +5,20 @@ import * as Messages from "@cucumber/messages";
  * Wrapper around @cucumber/gherkin parser
  */
 export class GherkinParser {
-  private parser: any;
-  private builder: any;
-
-  constructor() {
-    const uuidFn = Messages.IdGenerator.uuid();
-    this.builder = new Gherkin.AstBuilder(uuidFn);
-    this.parser = new Gherkin.Parser(this.builder);
-  }
-
   /**
    * Parse Gherkin text into AST
+   * Creates fresh parser instances for each parse to avoid state pollution
    */
   public parse(content: string): Messages.GherkinDocument {
     try {
-      const gherkinDocument = this.parser.parse(content);
+      // Create fresh instances for each parse to avoid state pollution
+      // This is necessary because the parser and builder maintain internal state
+      const uuidFn = Messages.IdGenerator.uuid();
+      const builder = new Gherkin.AstBuilder(uuidFn);
+      const matcher = new Gherkin.GherkinClassicTokenMatcher();
+      const parser = new Gherkin.Parser(builder, matcher);
+
+      const gherkinDocument = parser.parse(content);
       return gherkinDocument;
     } catch (error) {
       throw new Error(

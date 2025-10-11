@@ -1,4 +1,5 @@
 import { defineConfig } from "vitest/config";
+import { vitestCucumber } from "@deepracticex/vitest-cucumber";
 
 /**
  * Vitest configuration presets for Deepractice projects
@@ -10,6 +11,7 @@ export const vitest = {
    * Includes:
    * - Unit tests: tests/unit/**\/*.test.ts, tests/unit/**\/*.spec.ts
    * - E2E tests: tests/e2e/**\/*.test.ts
+   * - Cucumber BDD: **\/*.feature files with automatic step discovery
    * - Coverage reporting (v8 provider)
    *
    * Usage:
@@ -19,6 +21,7 @@ export const vitest = {
    * - Run with coverage: pnpm test --coverage
    */
   base: defineConfig({
+    plugins: [vitestCucumber()],
     test: {
       globals: true,
       environment: "node",
@@ -38,6 +41,7 @@ export const vitest = {
         "tests/unit/**/*.test.ts",
         "tests/unit/**/*.spec.ts",
         "tests/e2e/**/*.test.ts",
+        "**/*.feature",
       ],
       exclude: ["node_modules/**", "dist/**"],
       testTimeout: 30000, // Accommodate longer E2E tests

@@ -25,5 +25,6 @@ export default defineConfig({
     "@commitlint/config-conventional",
     "vitest",
     "tsup",
+    "@deepracticex/vitest-cucumber",
   ],
 });

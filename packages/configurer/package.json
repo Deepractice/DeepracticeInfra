@@ -120,12 +120,12 @@
   },
   "dependencies": {
     "@commitlint/cli": "^19.0.0",
-    "@commitlint/config-conventional": "^19.0.0"
+    "@commitlint/config-conventional": "^19.0.0",
+    "@deepracticex/vitest-cucumber": "workspace:*"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.3.0",
     "@cucumber/gherkin": "^36.0.0",
-    "@deepracticex/vitest-cucumber": "workspace:*",
     "@eslint/js": "^9.37.0",
     "@types/chai": "^5.2.2",
     "@typescript-eslint/eslint-plugin": "^8.46.0",

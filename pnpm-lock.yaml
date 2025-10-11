@@ -29,6 +29,9 @@ importers:
       "@deepracticex/configurer":
         specifier: workspace:*
         version: link:packages/configurer
+      "@deepracticex/vitest-cucumber":
+        specifier: workspace:*
+        version: link:packages/vitest-cucumber
       "@faker-js/faker":
         specifier: ^9.4.0
         version: 9.9.0
@@ -160,6 +163,9 @@ importers:
       "@commitlint/config-conventional":
         specifier: ^19.0.0
         version: 19.8.1
+      "@deepracticex/vitest-cucumber":
+        specifier: workspace:*
+        version: link:../vitest-cucumber
     devDependencies:
       "@cucumber/cucumber":
         specifier: ^11.3.0
@@ -167,9 +173,6 @@ importers:
       "@cucumber/gherkin":
         specifier: ^36.0.0
         version: 36.0.0
-      "@deepracticex/vitest-cucumber":
-        specifier: workspace:*
-        version: link:../vitest-cucumber
       "@eslint/js":
         specifier: ^9.37.0
         version: 9.37.0
@@ -212,7 +215,7 @@ importers:
 
   packages/error-handling: {}
 
-  packages/example: {}
+  packages/example-package: {}
 
   packages/logger:
     dependencies:
