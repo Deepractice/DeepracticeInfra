@@ -121,7 +121,7 @@
   "dependencies": {
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
-    "@deepracticex/vitest-cucumber": "workspace:*"
+    "@deepracticex/vitest-cucumber": "^0.1.0"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.3.0",

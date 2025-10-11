@@ -2,8 +2,8 @@
  * Step definitions for Result pattern
  */
 
-import { Given, When, Then, DataTable } from "@cucumber/cucumber";
-import { expect } from "chai";
+import { Given, When, Then, DataTable } from "@deepracticex/configurer/vitest";
+import { expect } from "vitest";
 import {
   ok,
   err,
@@ -13,8 +13,8 @@ import {
   unwrapOr,
   map,
   flatMap,
-} from "../../../src/index.js";
-import { errors } from "../../../src/index.js";
+  errors,
+} from "~/index.js";
 import type { ErrorHandlingWorld } from "../support/world.js";
 
 // Given steps
@@ -178,7 +178,7 @@ Then(
   "the result should have ok equal to true",
   function (this: ErrorHandlingWorld) {
     const result = this.get("result");
-    expect(result.ok).to.be.true;
+    expect(result.ok).toBe(true);
   },
 );
 
@@ -187,7 +187,7 @@ Then(
   function (this: ErrorHandlingWorld, expectedValue: string) {
     const result = this.get("result");
     if (result.ok) {
-      expect(result.value).to.equal(expectedValue);
+      expect(result.value).toBe(expectedValue);
     } else {
       throw new Error("Result is not ok");
     }
@@ -198,7 +198,7 @@ Then(
   "the result should have ok equal to false",
   function (this: ErrorHandlingWorld) {
     const result = this.get("result");
-    expect(result.ok).to.be.false;
+    expect(result.ok).toBe(false);
   },
 );
 
@@ -207,7 +207,7 @@ Then(
   function (this: ErrorHandlingWorld) {
     const result = this.get("result");
     if (!result.ok) {
-      expect(result.error.code).to.equal("NOT_FOUND");
+      expect(result.error.code).toBe("NOT_FOUND");
     } else {
       throw new Error("Result is ok, not error");
     }
@@ -215,40 +215,40 @@ Then(
 );
 
 Then("the check should return true", function (this: ErrorHandlingWorld) {
-  expect(this.get("checkResult")).to.be.true;
+  expect(this.get("checkResult")).toBe(true);
 });
 
 Then(
   "I should get the value {string}",
   function (this: ErrorHandlingWorld, expectedValue: string) {
-    expect(this.get("unwrapped")).to.equal(expectedValue);
+    expect(this.get("unwrapped")).toBe(expectedValue);
   },
 );
 
 Then("it should throw the error", function (this: ErrorHandlingWorld) {
-  expect(this.get("thrownError")).to.exist;
+  expect(this.get("thrownError")).toBeDefined();
 });
 
 Then(
   "the result should be ok with value {string}",
   function (this: ErrorHandlingWorld, expectedValue: string) {
     const result = this.get("mappedResult");
-    expect(result.ok).to.be.true;
+    expect(result.ok).toBe(true);
     if (result.ok) {
-      expect(result.value).to.equal(expectedValue);
+      expect(result.value).toBe(expectedValue);
     }
   },
 );
 
 Then("the result should still be err", function (this: ErrorHandlingWorld) {
   const result = this.get("mappedResult");
-  expect(result.ok).to.be.false;
+  expect(result.ok).toBe(false);
 });
 
 Then("the error should be preserved", function (this: ErrorHandlingWorld) {
   const result = this.get("mappedResult");
   if (!result.ok) {
-    expect(result.error).to.exist;
+    expect(result.error).toBeDefined();
   }
 });
 
@@ -256,17 +256,17 @@ Then(
   "the result should be ok with user data",
   function (this: ErrorHandlingWorld) {
     const result = this.get("mappedResult");
-    expect(result.ok).to.be.true;
+    expect(result.ok).toBe(true);
     if (result.ok) {
-      expect(result.value).to.have.property("id");
-      expect(result.value).to.have.property("name");
+      expect(result.value).toHaveProperty("id");
+      expect(result.value).toHaveProperty("name");
     }
   },
 );
 
 Then("the result should be err", function (this: ErrorHandlingWorld) {
   const result = this.result || this.get("mappedResult");
-  expect(result.ok).to.be.false;
+  expect(result.ok).toBe(false);
 });
 
 Then(
@@ -274,21 +274,21 @@ Then(
   function (this: ErrorHandlingWorld) {
     const result = this.get("mappedResult");
     if (!result.ok) {
-      expect(result.error.code).to.equal("NOT_FOUND");
+      expect(result.error.code).toBe("NOT_FOUND");
     }
   },
 );
 
 Then("the final result should be ok", function (this: ErrorHandlingWorld) {
-  expect(this.result.ok).to.be.true;
+  expect(this.result.ok).toBe(true);
 });
 
 Then(
   "the result should contain processed user data",
   function (this: ErrorHandlingWorld) {
     if (this.result.ok) {
-      expect(this.result.value).to.have.property("processed", true);
-      expect(this.result.value).to.have.property("timestamp");
+      expect(this.result.value).toHaveProperty("processed", true);
+      expect(this.result.value).toHaveProperty("timestamp");
     }
   },
 );
@@ -297,7 +297,7 @@ Then(
   "the error should be a ValidationError",
   function (this: ErrorHandlingWorld) {
     if (!this.result.ok) {
-      expect(this.result.error.code).to.equal("VALIDATION_ERROR");
+      expect(this.result.error.code).toBe("VALIDATION_ERROR");
     }
   },
 );
@@ -306,8 +306,8 @@ Then(
   "the error should contain field errors",
   function (this: ErrorHandlingWorld) {
     if (!this.result.ok) {
-      expect(this.result.error.meta).to.have.property("fields");
-      expect(this.result.error.meta.fields).to.be.an("object");
+      expect(this.result.error.meta).toHaveProperty("fields");
+      expect(this.result.error.meta.fields).toBeTypeOf("object");
     }
   },
 );

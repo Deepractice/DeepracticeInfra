@@ -2,9 +2,9 @@
  * Step definitions for error factory and error creation
  */
 
-import { Given, When, Then, DataTable } from "@cucumber/cucumber";
-import { expect } from "chai";
-import { errors, AppError } from "../../../src/index.js";
+import { Given, When, Then, DataTable } from "@deepracticex/configurer/vitest";
+import { expect } from "vitest";
+import { errors, AppError } from "~/index.js";
 import type { ErrorHandlingWorld } from "../support/world.js";
 
 // Background steps
@@ -152,78 +152,78 @@ When(
 Then(
   "the error should be an instance of AppError",
   function (this: ErrorHandlingWorld) {
-    expect(AppError.isAppError(this.error)).to.be.true;
+    expect(AppError.isAppError(this.error)).toBe(true);
   },
 );
 
 Then(
   "the error status code should be {int}",
   function (this: ErrorHandlingWorld, statusCode: number) {
-    expect(this.error!.statusCode).to.equal(statusCode);
+    expect(this.error!.statusCode).toBe(statusCode);
   },
 );
 
 Then(
   "the error code should be {string}",
   function (this: ErrorHandlingWorld, errorCode: string) {
-    expect(this.error!.code).to.equal(errorCode);
+    expect(this.error!.code).toBe(errorCode);
   },
 );
 
 Then(
   "the error message should be {string}",
   function (this: ErrorHandlingWorld, expectedMessage: string) {
-    expect(this.error!.message).to.equal(expectedMessage);
+    expect(this.error!.message).toBe(expectedMessage);
   },
 );
 
 Then(
   "the error meta should have {string} equal to {string}",
   function (this: ErrorHandlingWorld, key: string, value: string) {
-    expect(this.error!.meta).to.have.property(key, value);
+    expect(this.error!.meta).toHaveProperty(key, value);
   },
 );
 
 Then(
   "the error should have status code {int}",
   function (this: ErrorHandlingWorld, statusCode: number) {
-    expect(this.error!.statusCode).to.equal(statusCode);
+    expect(this.error!.statusCode).toBe(statusCode);
   },
 );
 
 Then(
   "the error meta should contain field errors",
   function (this: ErrorHandlingWorld) {
-    expect(this.error!.meta).to.have.property("fields");
-    expect(this.error!.meta!.fields).to.be.an("object");
+    expect(this.error!.meta).toHaveProperty("fields");
+    expect(this.error!.meta!.fields).toBeTypeOf("object");
   },
 );
 
 Then(
   "the field {string} error should be {string}",
   function (this: ErrorHandlingWorld, field: string, errorMessage: string) {
-    expect(this.error!.meta!.fields).to.have.property(field, errorMessage);
+    expect(this.error!.meta!.fields).toHaveProperty(field, errorMessage);
   },
 );
 
 Then(
   "the JSON should have {string} equal to {string}",
   function (this: ErrorHandlingWorld, property: string, value: string) {
-    expect(this.errorJson![property]).to.equal(value);
+    expect(this.errorJson![property]).toBe(value);
   },
 );
 
 Then(
   "the JSON should have {string} equal to {int}",
   function (this: ErrorHandlingWorld, property: string, value: number) {
-    expect(this.errorJson![property]).to.equal(value);
+    expect(this.errorJson![property]).toBe(value);
   },
 );
 
 Then(
   "the JSON should have property {string}",
   function (this: ErrorHandlingWorld, property: string) {
-    expect(this.errorJson).to.have.property(property);
+    expect(this.errorJson).toHaveProperty(property);
   },
 );
 
@@ -234,7 +234,7 @@ Then(
       const key = row.key;
       const value = row.value;
       if (key && value) {
-        expect(this.error!.meta).to.have.property(key, value);
+        expect(this.error!.meta).toHaveProperty(key, value);
       }
     });
   },
@@ -243,6 +243,6 @@ Then(
 Then(
   "the JSON should have property {string} with value {string}",
   function (this: ErrorHandlingWorld, property: string, value: string) {
-    expect(this.errorJson![property]).to.equal(value);
+    expect(this.errorJson![property]).toBe(value);
   },
 );

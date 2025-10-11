@@ -47,7 +47,6 @@
     "@cucumber/cucumber": "^11.1.0",
     "@cucumber/pretty-formatter": "^1.0.1",
     "@deepracticex/configurer": "workspace:*",
-    "@deepracticex/vitest-cucumber": "workspace:*",
     "@faker-js/faker": "^9.4.0",
     "@types/chai": "^5.0.1",
     "@types/express": "^5.0.0",

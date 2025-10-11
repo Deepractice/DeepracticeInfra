@@ -1,5 +1,8 @@
 import { defineConfig } from "vitest/config";
-import { vitestCucumber } from "@deepracticex/vitest-cucumber";
+import {
+  vitestCucumber,
+  type VitestCucumberPluginOptions,
+} from "@deepracticex/vitest-cucumber";
 
 /**
  * Vitest configuration presets for Deepractice projects
@@ -47,4 +50,68 @@ export const vitest = {
       testTimeout: 30000, // Accommodate longer E2E tests
     },
   }),
+
+  /**
+   * Create a custom Vitest config with Cucumber support
+   *
+   * @param cucumberOptions - Custom options for vitest-cucumber plugin
+   * @returns Vitest configuration with custom Cucumber settings
+   *
+   * @example
+   * ```ts
+   * // Custom step directory location
+   * export default vitest.withCucumber({
+   *   steps: "tests/e2e/steps",
+   * });
+   * ```
+   */
+  withCucumber(
+    cucumberOptions?: VitestCucumberPluginOptions,
+  ): ReturnType<typeof defineConfig> {
+    return defineConfig({
+      plugins: [vitestCucumber(cucumberOptions)],
+      test: {
+        globals: true,
+        environment: "node",
+        passWithNoTests: true,
+        coverage: {
+          provider: "v8",
+          reporter: ["text", "json", "html"],
+          exclude: [
+            "node_modules/**",
+            "dist/**",
+            "tests/**",
+            "**/*.config.*",
+            "**/*.d.ts",
+          ],
+        },
+        include: [
+          "tests/unit/**/*.test.ts",
+          "tests/unit/**/*.spec.ts",
+          "tests/e2e/**/*.test.ts",
+          "**/*.feature",
+        ],
+        exclude: ["node_modules/**", "dist/**"],
+        testTimeout: 30000,
+      },
+    });
+  },
 };
+
+// Re-export vitest-cucumber APIs for unified imports
+export {
+  Given,
+  When,
+  Then,
+  And,
+  But,
+  Before,
+  After,
+  BeforeAll,
+  AfterAll,
+  DataTable,
+  setWorldConstructor,
+  type VitestCucumberPluginOptions,
+  type StepFunction,
+  type StepDefinition,
+} from "@deepracticex/vitest-cucumber";

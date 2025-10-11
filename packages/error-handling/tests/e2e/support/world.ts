@@ -1,11 +1,10 @@
 /**
- * Cucumber World for error-handling tests
+ * World context for error-handling tests
  */
 
-import { setWorldConstructor, World, IWorldOptions } from "@cucumber/cucumber";
-import type { AppError } from "../../../src/index.js";
+import type { AppError } from "~/index.js";
 
-export interface ErrorHandlingWorld extends World {
+export interface ErrorHandlingWorld {
   // Error context
   error?: AppError;
   errorFactory?: any;
@@ -25,37 +24,26 @@ export interface ErrorHandlingWorld extends World {
   clear(): void;
 }
 
-class CustomWorld extends World implements ErrorHandlingWorld {
-  context: Record<string, any>;
-  error?: AppError;
-  errorFactory?: any;
-  errorJson?: any;
-  validationFields?: Record<string, string>;
-  result?: any;
-  userInput?: any;
+// World factory - creates fresh context for each scenario
+export function createWorld(): ErrorHandlingWorld {
+  const context: Record<string, any> = {};
 
-  constructor(options: IWorldOptions) {
-    super(options);
-    this.context = {};
-  }
-
-  set(key: string, value: any) {
-    this.context[key] = value;
-  }
-
-  get(key: string) {
-    return this.context[key];
-  }
-
-  clear() {
-    this.context = {};
-    this.error = undefined;
-    this.errorFactory = undefined;
-    this.errorJson = undefined;
-    this.validationFields = undefined;
-    this.result = undefined;
-    this.userInput = undefined;
-  }
+  return {
+    context,
+    set(key: string, value: any) {
+      this.context[key] = value;
+    },
+    get(key: string) {
+      return this.context[key];
+    },
+    clear() {
+      this.context = {};
+      this.error = undefined;
+      this.errorFactory = undefined;
+      this.errorJson = undefined;
+      this.validationFields = undefined;
+      this.result = undefined;
+      this.userInput = undefined;
+    },
+  };
 }
-
-setWorldConstructor(CustomWorld);
