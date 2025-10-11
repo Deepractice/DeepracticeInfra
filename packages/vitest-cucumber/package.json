@@ -11,6 +11,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./runtime": {
+      "types": "./dist/runtime.d.ts",
+      "import": "./dist/runtime.js",
+      "require": "./dist/runtime.cjs"
     }
   },
   "scripts": {
@@ -49,6 +54,8 @@
     "vitest": "^2.0.0 || ^3.0.0"
   },
   "dependencies": {
+    "@cucumber/gherkin": "^30.0.3",
+    "@cucumber/messages": "^26.0.0",
     "glob": "^11.0.0"
   },
   "devDependencies": {
@@ -56,6 +63,7 @@
     "@types/node": "^22.0.0",
     "tsup": "^8.5.0",
     "typescript": "^5.7.3",
+    "vite": "^7.1.9",
     "vitest": "^3.2.4"
   }
 }

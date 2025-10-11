@@ -1,3 +1,20 @@
+/**
+ * Type definitions for vitest-cucumber
+ */
+export type { VitestCucumberPluginOptions } from "./plugin-options";
+export type { StepType, StepFunction, StepDefinition } from "./step-definition";
+export type {
+  Step,
+  DataTable,
+  DocString,
+  Scenario,
+  Feature,
+  StepContext,
+} from "./feature";
+
+/**
+ * Legacy types for integration testing (backward compatibility)
+ */
 export interface CucumberRunnerOptions {
   featureGlob: string;
   stepGlob: string;
