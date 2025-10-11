@@ -8,7 +8,7 @@ import {
   BeforeAll,
   AfterAll,
   setWorldConstructor,
-} from "@deepracticex/configurer/vitest";
+} from "@deepracticex/configurer/cucumber";
 import { createWorld, type ErrorHandlingWorld } from "./world.js";
 
 // Register World factory

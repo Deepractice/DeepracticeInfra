@@ -2,7 +2,12 @@
  * Step definitions for Result pattern
  */
 
-import { Given, When, Then, DataTable } from "@deepracticex/configurer/vitest";
+import {
+  Given,
+  When,
+  Then,
+  DataTable,
+} from "@deepracticex/configurer/cucumber";
 import { expect } from "vitest";
 import {
   ok,

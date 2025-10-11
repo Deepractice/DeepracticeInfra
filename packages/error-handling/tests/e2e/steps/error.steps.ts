@@ -2,7 +2,12 @@
  * Step definitions for error factory and error creation
  */
 
-import { Given, When, Then, DataTable } from "@deepracticex/configurer/vitest";
+import {
+  Given,
+  When,
+  Then,
+  DataTable,
+} from "@deepracticex/configurer/cucumber";
 import { expect } from "vitest";
 import { errors, AppError } from "~/index.js";
 import type { ErrorHandlingWorld } from "../support/world.js";
