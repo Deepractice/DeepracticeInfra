@@ -1,13 +1,13 @@
 /**
  * Common step definitions for infra E2E tests
  */
-import { Given, When, Then } from "@cucumber/cucumber";
+import { Given, When, Then } from "@deepracticex/testing-utils";
 import { expect } from "chai";
 import { execa } from "execa";
 import fs from "fs-extra";
 import path from "node:path";
 import os from "node:os";
-import type { InfraWorld } from "../support/world";
+import type { InfraWorld } from "../support/world.js";
 
 // Background steps
 Given("I am in a temporary test directory", async function (this: InfraWorld) {

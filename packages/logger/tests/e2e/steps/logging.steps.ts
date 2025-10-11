@@ -2,22 +2,21 @@
  * Step definitions for basic logging functionality
  */
 
-import { Given, When, Then, DataTable } from "@cucumber/cucumber";
-import { expect } from "chai";
-import { createLogger } from "../../../src/index.js";
+import { Given, When, Then, DataTable } from "@deepracticex/testing-utils";
+import { expect } from "vitest";
+import { createLogger } from "~/index.js";
 import type { LoggerWorld } from "../support/world.js";
 
-// Mock to capture log output
-const captureLog = (world: LoggerWorld) => {
+// Given steps
+Given("I have a logger instance", function (this: LoggerWorld) {
+  // Initialize logger with log capture
   const capturedLogs: any[] = [];
-
-  // Create logger with custom stream
   const logger = createLogger({
     console: false,
     file: false,
   });
 
-  // Intercept log methods
+  // Intercept log methods to capture output
   const originalInfo = logger.info.bind(logger);
   const originalWarn = logger.warn.bind(logger);
   const originalError = logger.error.bind(logger);
@@ -43,13 +42,8 @@ const captureLog = (world: LoggerWorld) => {
     return originalDebug(...args);
   };
 
-  world.logger = logger;
-  world.logRecords = capturedLogs;
-};
-
-// Given steps
-Given("I have a logger instance", function (this: LoggerWorld) {
-  captureLog(this);
+  this.logger = logger;
+  this.logRecords = capturedLogs;
 });
 
 // When steps
@@ -116,13 +110,43 @@ When(
 When(
   "I create a logger with name {string}",
   function (this: LoggerWorld, packageName: string) {
-    this.logger = createLogger({
+    // Create a new logger with custom package name
+    const capturedLogs: any[] = [];
+    const logger = createLogger({
       name: packageName,
       console: false,
       file: false,
     });
+
+    // Intercept log methods
+    const originalInfo = logger.info.bind(logger);
+    const originalWarn = logger.warn.bind(logger);
+    const originalError = logger.error.bind(logger);
+    const originalDebug = logger.debug.bind(logger);
+
+    logger.info = (...args: any[]) => {
+      capturedLogs.push({ level: "info", args });
+      return originalInfo(...args);
+    };
+
+    logger.warn = (...args: any[]) => {
+      capturedLogs.push({ level: "warn", args });
+      return originalWarn(...args);
+    };
+
+    logger.error = (...args: any[]) => {
+      capturedLogs.push({ level: "error", args });
+      return originalError(...args);
+    };
+
+    logger.debug = (...args: any[]) => {
+      capturedLogs.push({ level: "debug", args });
+      return originalDebug(...args);
+    };
+
+    this.logger = logger;
+    this.logRecords = capturedLogs;
     this.set("packageName", packageName);
-    captureLog(this);
   },
 );
 

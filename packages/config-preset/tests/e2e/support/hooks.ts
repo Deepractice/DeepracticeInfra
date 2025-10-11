@@ -1,5 +1,5 @@
 /**
- * Vitest-Cucumber hooks for logger tests
+ * Vitest-Cucumber hooks for config-preset tests
  */
 
 import {
@@ -15,11 +15,7 @@ import { createWorld } from "./world.js";
 setWorldConstructor(createWorld);
 
 BeforeAll(async function () {
-  console.log("🥒 Starting logger tests");
-});
-
-AfterAll(async function () {
-  console.log("✅ Logger tests completed");
+  console.log("🥒 Starting config-preset tests");
 });
 
 Before(async function () {
@@ -29,4 +25,8 @@ Before(async function () {
 
 After(async function () {
   // Cleanup happens automatically through World factory
+});
+
+AfterAll(async function () {
+  console.log("✅ Config-preset tests completed");
 });

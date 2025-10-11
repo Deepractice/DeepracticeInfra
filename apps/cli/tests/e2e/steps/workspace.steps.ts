@@ -1,12 +1,12 @@
 /**
  * Workspace-specific step definitions for package and app management
  */
-import { Given, Then } from "@cucumber/cucumber";
+import { Given, Then, DataTable } from "@deepracticex/testing-utils";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
 import os from "node:os";
-import type { InfraWorld } from "../support/world";
+import type { InfraWorld } from "../support/world.js";
 
 // Given steps for workspace context
 
@@ -372,9 +372,9 @@ Then(
 
 Then(
   "I should see workspace summary:",
-  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
 
     for (const row of rows) {
       const [type, count] = row;
@@ -389,9 +389,9 @@ Then(
 
 Then(
   "I should see workspace directories:",
-  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
 
     for (const row of rows) {
       const [directory, count] = row;
@@ -409,9 +409,9 @@ Then(
 
 Then(
   "I should see configuration summary:",
-  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
 
     for (const row of rows) {
       const [tool, status] = row;
@@ -428,9 +428,9 @@ Then(
 
 Then(
   "I should see detailed configuration:",
-  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
 
     for (const row of rows) {
       const [tool, version, configFile] = row;

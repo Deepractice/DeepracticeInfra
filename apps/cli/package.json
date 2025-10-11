@@ -16,13 +16,12 @@
     }
   },
   "scripts": {
-    "build": "NODE_OPTIONS='--import tsx' tsup && tsx scripts/copy-mirror.ts",
-    "dev": "NODE_OPTIONS='--import tsx' tsup --watch",
+    "build": "tsup && tsx scripts/copy-mirror.ts",
+    "dev": "tsup --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
-    "test": "pnpm build && vitest run && cucumber-tsx",
-    "test:unit": "vitest run",
-    "test:e2e": "pnpm build && cucumber-tsx"
+    "test": "pnpm build && vitest run",
+    "test:dev": "vitest"
   },
   "dependencies": {
     "@deepracticex/nodespec-core": "workspace:*",
@@ -34,7 +33,8 @@
     "execa": "^9.5.2"
   },
   "devDependencies": {
-    "@deepracticex/config-preset": "workspace:*"
+    "@deepracticex/config-preset": "workspace:*",
+    "@deepracticex/testing-utils": "workspace:*"
   },
   "files": [
     "dist",

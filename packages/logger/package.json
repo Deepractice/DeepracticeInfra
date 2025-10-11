@@ -18,9 +18,9 @@
     "dev": "tsup --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
-    "test": "NODE_OPTIONS='--import tsx' cucumber-js",
-    "test:dev": "NODE_OPTIONS='--import tsx' cucumber-js --profile dev",
-    "test:ci": "NODE_OPTIONS='--import tsx' cucumber-js --profile ci"
+    "test": "vitest run",
+    "test:dev": "vitest",
+    "test:ci": "vitest run --coverage"
   },
   "dependencies": {
     "pino": "^9.9.0",
@@ -42,5 +42,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Deepractice/NodeSpec"
+  },
+  "devDependencies": {
+    "@deepracticex/testing-utils": "workspace:*"
   }
 }

@@ -1,11 +1,11 @@
 /**
  * Step definitions for package and app list scenarios
  */
-import { Given, Then } from "@cucumber/cucumber";
+import { Given, Then, DataTable } from "@deepracticex/testing-utils";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
-import type { InfraWorld } from "../support/world";
+import type { InfraWorld } from "../support/world.js";
 
 // Given steps for list scenarios
 
@@ -98,9 +98,9 @@ Given(
 
 Then(
   "I should see output containing:",
-  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
 
     for (const row of rows) {
       const [item, version] = row;
@@ -117,18 +117,14 @@ Then(
 
 Then(
   "I should see package {string} with details:",
-  function (
-    this: InfraWorld,
-    packageName: string,
-    dataTable: { rawTable: string[][] },
-  ) {
+  function (this: InfraWorld, packageName: string, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       packageName,
       `Output should contain package ${packageName}`,
     );
 
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
     for (const row of rows) {
       const [field, value] = row;
       expect(allOutput).to.include(
@@ -141,18 +137,14 @@ Then(
 
 Then(
   "I should see app {string} with details:",
-  function (
-    this: InfraWorld,
-    appName: string,
-    dataTable: { rawTable: string[][] },
-  ) {
+  function (this: InfraWorld, appName: string, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       appName,
       `Output should contain app ${appName}`,
     );
 
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
     for (const row of rows) {
       const [field, value] = row;
       expect(allOutput).to.include(
@@ -309,18 +301,14 @@ Given(
 
 Then(
   "I should see service {string} with details:",
-  function (
-    this: InfraWorld,
-    serviceName: string,
-    dataTable: { rawTable: string[][] },
-  ) {
+  function (this: InfraWorld, serviceName: string, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
     expect(allOutput).to.include(
       serviceName,
       `Output should contain service ${serviceName}`,
     );
 
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
     for (const row of rows) {
       const [field, value] = row;
       expect(allOutput).to.include(

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * app-example CLI
+ * example-cli
  */
 
 import { Command } from "commander";
@@ -11,7 +11,7 @@ import { greet } from "./index.js";
 const program = new Command();
 
 program
-  .name("app-example")
+  .name("example-cli")
   .description("Example CLI application")
   .version("0.0.1");
 
@@ -27,7 +27,7 @@ program
   .command("hello")
   .description("Say hello")
   .action(() => {
-    console.log(chalk.blue("Hello from app-example!"));
+    console.log(chalk.blue("Hello from example-cli!"));
   });
 
 program.parse();

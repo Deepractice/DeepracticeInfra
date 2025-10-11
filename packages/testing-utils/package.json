@@ -52,7 +52,7 @@
     "url": "https://github.com/Deepractice/NodeSpec"
   },
   "peerDependencies": {
-    "@deepracticex/vitest-cucumber": "^1.0.0"
+    "@deepracticex/vitest-cucumber": "^1.0.1"
   },
   "peerDependenciesMeta": {
     "@deepracticex/vitest-cucumber": {

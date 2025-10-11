@@ -1,18 +1,21 @@
 /**
  * Infrastructure-specific step definitions for init and create scenarios
  */
-import { When, Then } from "@cucumber/cucumber";
+import { When, Then, DataTable } from "@deepracticex/testing-utils";
 import { expect } from "chai";
 import { execa } from "execa";
 import fs from "fs-extra";
 import path from "node:path";
-import type { InfraWorld } from "../support/world";
+import type { InfraWorld } from "../support/world.js";
 
 // File existence assertions
 Then(
   "the following files should exist:",
-  async function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
-    const files = dataTable.rawTable.slice(1).map((row) => row[0]!);
+  async function (this: InfraWorld, dataTable: DataTable) {
+    const files = dataTable
+      .raw()
+      .slice(1)
+      .map((row) => row[0]!);
 
     for (const file of files) {
       const filePath = path.join(this.testDir!, file);
@@ -24,12 +27,11 @@ Then(
 
 Then(
   "the following files should exist in {string}:",
-  async function (
-    this: InfraWorld,
-    directory: string,
-    dataTable: { rawTable: string[][] },
-  ) {
-    const files = dataTable.rawTable.slice(1).map((row) => row[0]!);
+  async function (this: InfraWorld, directory: string, dataTable: DataTable) {
+    const files = dataTable
+      .raw()
+      .slice(1)
+      .map((row) => row[0]!);
 
     for (const file of files) {
       const filePath = path.join(this.testDir!, directory, file);
@@ -41,8 +43,11 @@ Then(
 
 Then(
   "the following directories should exist:",
-  async function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
-    const directories = dataTable.rawTable.slice(1).map((row) => row[0]!);
+  async function (this: InfraWorld, dataTable: DataTable) {
+    const directories = dataTable
+      .raw()
+      .slice(1)
+      .map((row) => row[0]!);
 
     for (const dir of directories) {
       const dirPath = path.join(this.testDir!, dir);

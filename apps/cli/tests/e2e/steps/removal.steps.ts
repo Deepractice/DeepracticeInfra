@@ -1,11 +1,11 @@
 /**
  * Step definitions for package and app removal scenarios
  */
-import { Given, Then } from "@cucumber/cucumber";
+import { Given, Then } from "@deepracticex/testing-utils";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
-import type { InfraWorld } from "../support/world";
+import type { InfraWorld } from "../support/world.js";
 
 // Given steps for removal scenarios
 

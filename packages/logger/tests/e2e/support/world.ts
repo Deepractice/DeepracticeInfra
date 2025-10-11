@@ -1,11 +1,10 @@
 /**
- * Cucumber World for logger tests
+ * World context for logger tests
  */
 
-import { setWorldConstructor, World, IWorldOptions } from "@cucumber/cucumber";
-import type { Logger } from "../../../src/index.js";
+import type { Logger } from "~/index.js";
 
-export interface LoggerWorld extends World {
+export interface LoggerWorld {
   // Logger context
   logger?: Logger;
   logRecords: any[];
@@ -14,38 +13,30 @@ export interface LoggerWorld extends World {
   // Generic context
   context: Record<string, any>;
 
-  // Context methods
+  // Helper methods
   set(key: string, value: any): void;
   get(key: string): any;
   clear(): void;
 }
 
-class CustomWorld extends World implements LoggerWorld {
-  logger?: Logger;
-  logRecords: any[];
-  lastLog?: any;
-  context: Record<string, any>;
+// World factory - creates fresh context for each scenario
+export function createWorld(): LoggerWorld {
+  const context: Record<string, any> = {};
 
-  constructor(options: IWorldOptions) {
-    super(options);
-    this.context = {};
-    this.logRecords = [];
-  }
-
-  set(key: string, value: any) {
-    this.context[key] = value;
-  }
-
-  get(key: string) {
-    return this.context[key];
-  }
-
-  clear() {
-    this.context = {};
-    this.logger = undefined;
-    this.logRecords = [];
-    this.lastLog = undefined;
-  }
+  return {
+    context,
+    logRecords: [],
+    set(key: string, value: any) {
+      this.context[key] = value;
+    },
+    get(key: string) {
+      return this.context[key];
+    },
+    clear() {
+      this.context = {};
+      this.logger = undefined;
+      this.logRecords = [];
+      this.lastLog = undefined;
+    },
+  };
 }
-
-setWorldConstructor(CustomWorld);

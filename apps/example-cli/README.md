@@ -1,6 +1,6 @@
-# @deepracticex/app-example
+# @deepracticex/example-cli
 
-**Deepractice App Development Standards Example**
+**Deepractice CLI Development Standards Example**
 
 This application serves as the standard example for all Deepractice CLI applications. It demonstrates best practices for CLI app development with TypeScript.
 
@@ -32,8 +32,8 @@ node dist/cli.js
 
 # Or via npm link (for development)
 pnpm link --global
-app-example greet "Alice"
-app-example hello
+example-cli greet "Alice"
+example-cli hello
 ```
 
 ### Development
@@ -52,7 +52,7 @@ pnpm clean
 ## Directory Structure
 
 ```
-apps/app-example/
+apps/example-cli/
 ├── src/
 │   ├── index.ts              # Main entry point
 │   └── cli.ts                # CLI entry point
@@ -69,7 +69,7 @@ apps/app-example/
 Greet someone by name.
 
 ```bash
-app-example greet [name]
+example-cli greet [name]
 ```
 
 ### hello
@@ -77,7 +77,7 @@ app-example greet [name]
 Display a hello message.
 
 ```bash
-app-example hello
+example-cli hello
 ```
 
 ## Development Guidelines

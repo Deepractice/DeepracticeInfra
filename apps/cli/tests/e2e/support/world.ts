@@ -1,10 +1,9 @@
 /**
- * Cucumber World - shared context for infra E2E tests
+ * World context for CLI E2E tests
  */
-import { setWorldConstructor, World, IWorldOptions } from "@cucumber/cucumber";
 import type { Result } from "execa";
 
-export interface InfraWorld extends World {
+export interface InfraWorld {
   // Working directory context
   testDir?: string;
   originalCwd?: string;
@@ -22,34 +21,42 @@ export interface InfraWorld extends World {
   // Test state
   expectedMissingPackages?: string[];
 
+  // Context storage
+  context: Map<string, unknown>;
+
   // Helper methods
   set(key: string, value: unknown): void;
   get(key: string): unknown;
+  clear(): void;
 }
 
-class CustomWorld extends World implements InfraWorld {
-  testDir?: string;
-  originalCwd?: string;
-  lastCommand?: string;
-  lastResult?: Result;
-  lastError?: Error;
-  exitCode?: number;
-  stdout: string[] = [];
-  stderr: string[] = [];
+export function createWorld(): InfraWorld {
+  const context = new Map<string, unknown>();
 
-  private context: Map<string, unknown> = new Map();
+  return {
+    stdout: [],
+    stderr: [],
+    context,
 
-  constructor(options: IWorldOptions) {
-    super(options);
-  }
+    set(key: string, value: unknown) {
+      this.context.set(key, value);
+    },
 
-  set(key: string, value: unknown): void {
-    this.context.set(key, value);
-  }
+    get(key: string) {
+      return this.context.get(key);
+    },
 
-  get(key: string): unknown {
-    return this.context.get(key);
-  }
+    clear() {
+      this.context.clear();
+      this.testDir = undefined;
+      this.originalCwd = undefined;
+      this.lastCommand = undefined;
+      this.lastResult = undefined;
+      this.lastError = undefined;
+      this.exitCode = undefined;
+      this.stdout = [];
+      this.stderr = [];
+      this.expectedMissingPackages = undefined;
+    },
+  };
 }
-
-setWorldConstructor(CustomWorld);

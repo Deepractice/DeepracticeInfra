@@ -1,7 +1,7 @@
 /**
- * app-example
+ * example-cli
  *
- * Example application demonstrating Deepractice app development standards
+ * Example CLI application demonstrating Deepractice CLI development standards
  */
 
 export function greet(name: string): string {

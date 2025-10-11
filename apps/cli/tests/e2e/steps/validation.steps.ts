@@ -1,11 +1,11 @@
 /**
  * Step definitions for validation scenarios (package, app, and monorepo)
  */
-import { Given, Then } from "@cucumber/cucumber";
+import { Given, Then, DataTable } from "@deepracticex/testing-utils";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
-import type { InfraWorld } from "../support/world";
+import type { InfraWorld } from "../support/world.js";
 
 // Given steps for validation scenarios
 
@@ -349,9 +349,9 @@ Given("the monorepo has validation errors", async function (this: InfraWorld) {
 
 Then(
   "I should see all error messages:",
-  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
 
     for (const row of rows) {
       const errorMessage = row[0]!;
@@ -365,9 +365,9 @@ Then(
 
 Then(
   "I should see validation summary:",
-  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
 
     for (const row of rows) {
       const [status, count] = row;
@@ -398,9 +398,9 @@ Then(
 
 Then(
   "I should see validation summary showing:",
-  function (this: InfraWorld, dataTable: { rawTable: string[][] }) {
+  function (this: InfraWorld, dataTable: DataTable) {
     const allOutput = [...this.stdout, ...this.stderr].join("\n");
-    const rows = dataTable.rawTable.slice(1); // Skip header row
+    const rows = dataTable.raw().slice(1); // Skip header row
 
     for (const row of rows) {
       const [component, status, errors] = row;

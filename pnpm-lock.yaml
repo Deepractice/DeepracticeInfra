@@ -25,7 +25,7 @@ importers:
         version: 11.3.0
       "@cucumber/pretty-formatter":
         specifier: ^1.0.1
-        version: 1.0.1(@cucumber/cucumber@11.3.0)(@cucumber/messages@30.1.0)
+        version: 1.0.1(@cucumber/cucumber@11.3.0)(@cucumber/messages@27.2.0)
       "@deepracticex/config-preset":
         specifier: workspace:*
         version: link:packages/config-preset
@@ -111,19 +111,6 @@ importers:
         specifier: ^3.24.1
         version: 3.25.76
 
-  apps/app-example:
-    dependencies:
-      chalk:
-        specifier: ^5.4.1
-        version: 5.6.2
-      commander:
-        specifier: ^12.1.0
-        version: 12.1.0
-    devDependencies:
-      "@deepracticex/config-preset":
-        specifier: workspace:*
-        version: link:../../packages/config-preset
-
   apps/cli:
     dependencies:
       "@deepracticex/nodespec-core":
@@ -151,6 +138,22 @@ importers:
       "@deepracticex/config-preset":
         specifier: workspace:*
         version: link:../../packages/config-preset
+      "@deepracticex/testing-utils":
+        specifier: workspace:*
+        version: link:../../packages/testing-utils
+
+  apps/example-cli:
+    dependencies:
+      chalk:
+        specifier: ^5.4.1
+        version: 5.6.2
+      commander:
+        specifier: ^12.1.0
+        version: 12.1.0
+    devDependencies:
+      "@deepracticex/config-preset":
+        specifier: workspace:*
+        version: link:../../packages/config-preset
 
   packages/config-preset:
     dependencies:
@@ -161,30 +164,21 @@ importers:
         specifier: ^19.0.0
         version: 19.8.1
     devDependencies:
-      "@cucumber/cucumber":
-        specifier: ^11.3.0
-        version: 11.3.0
-      "@cucumber/gherkin":
-        specifier: ^36.0.0
-        version: 36.0.0
+      "@deepracticex/testing-utils":
+        specifier: workspace:*
+        version: link:../testing-utils
       "@deepracticex/vitest-cucumber-plugin":
         specifier: ^1.1.0
         version: 1.1.0(vitest@2.1.9(@types/node@22.18.9))
       "@eslint/js":
         specifier: ^9.37.0
         version: 9.37.0
-      "@types/chai":
-        specifier: ^5.2.2
-        version: 5.2.2
       "@typescript-eslint/eslint-plugin":
         specifier: ^8.46.0
         version: 8.46.0(@typescript-eslint/parser@8.46.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3)
       "@typescript-eslint/parser":
         specifier: ^8.46.0
         version: 8.46.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3)
-      chai:
-        specifier: ^5.3.3
-        version: 5.3.3
       eslint:
         specifier: ^9.37.0
         version: 9.37.0(jiti@2.6.1)
@@ -227,6 +221,10 @@ importers:
       pino-pretty:
         specifier: ^13.1.1
         version: 13.1.2
+    devDependencies:
+      "@deepracticex/testing-utils":
+        specifier: workspace:*
+        version: link:../testing-utils
 
   packages/testing-utils:
     dependencies:
@@ -699,12 +697,6 @@ packages:
         integrity: sha512-wlZfdPif7JpBWJdqvHk1Mkr21L5vl4EfxVUOS4JinWGf3FLRV6IKUekBv5bb5VX79fkDcfDvESzcQ8WQc07Wgw==,
       }
 
-  "@cucumber/gherkin@36.0.0":
-    resolution:
-      {
-        integrity: sha512-L/WomevUuGSHWeJqLN9yEsz37ns0M1BiRu8Isp+hlYTBAYzt6ZkLiUEK3W9gT5STu++lL/2tE04bD8Ma1p0AYw==,
-      }
-
   "@cucumber/html-formatter@21.10.1":
     resolution:
       {
@@ -739,12 +731,6 @@ packages:
     resolution:
       {
         integrity: sha512-f2o/HqKHgsqzFLdq6fAhfG1FNOQPdBdyMGpKwhb7hZqg0yZtx9BVqkTyuoNk83Fcvk3wjMVfouFXXHNEk4nddA==,
-      }
-
-  "@cucumber/messages@30.1.0":
-    resolution:
-      {
-        integrity: sha512-KxnsSjHz9EGF23GeZc3BRMK2+bagt2p87mwwNfisBK7BfuyvnXJumyBQJJN4xv5SLSzBKxH3FsZnuOf8LwsHhg==,
       }
 
   "@cucumber/pretty-formatter@1.0.1":
@@ -5619,10 +5605,6 @@ snapshots:
     dependencies:
       "@cucumber/messages": 26.0.1
 
-  "@cucumber/gherkin@36.0.0":
-    dependencies:
-      "@cucumber/messages": 30.1.0
-
   "@cucumber/html-formatter@21.10.1(@cucumber/messages@27.2.0)":
     dependencies:
       "@cucumber/messages": 27.2.0
@@ -5653,15 +5635,10 @@ snapshots:
       reflect-metadata: 0.2.2
       uuid: 11.0.5
 
-  "@cucumber/messages@30.1.0":
-    dependencies:
-      class-transformer: 0.5.1
-      reflect-metadata: 0.2.2
-
-  "@cucumber/pretty-formatter@1.0.1(@cucumber/cucumber@11.3.0)(@cucumber/messages@30.1.0)":
+  "@cucumber/pretty-formatter@1.0.1(@cucumber/cucumber@11.3.0)(@cucumber/messages@27.2.0)":
     dependencies:
       "@cucumber/cucumber": 11.3.0
-      "@cucumber/messages": 30.1.0
+      "@cucumber/messages": 27.2.0
       ansi-styles: 5.2.0
       cli-table3: 0.6.5
       figures: 3.2.0

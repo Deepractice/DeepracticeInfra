@@ -1,9 +1,17 @@
 /**
- * Cucumber hooks for test setup and cleanup
+ * Vitest-Cucumber hooks for test setup and cleanup
  */
-import { Before, After, BeforeAll, AfterAll } from "@cucumber/cucumber";
-import fs from "fs-extra";
-import type { InfraWorld } from "./world";
+import {
+  Before,
+  After,
+  BeforeAll,
+  AfterAll,
+  setWorldConstructor,
+} from "@deepracticex/testing-utils";
+import { createWorld } from "./world.js";
+
+// Register World factory
+setWorldConstructor(createWorld);
 
 // Global setup
 BeforeAll(async function () {
@@ -16,38 +24,13 @@ AfterAll(async function () {
 });
 
 // Before each scenario
-Before(async function (this: InfraWorld) {
-  // Reset state
-  this.stdout = [];
-  this.stderr = [];
-  this.lastCommand = undefined;
-  this.lastResult = undefined;
-  this.lastError = undefined;
-  this.exitCode = undefined;
+Before(async function () {
+  // Context is now shared between Background and Scenario (plugin 1.1.0+)
+  // No need to initialize here
 });
 
 // After each scenario
-After(async function (this: InfraWorld) {
-  // Restore original working directory
-  if (this.originalCwd) {
-    process.chdir(this.originalCwd);
-  }
-
-  // Clean up test directory
-  if (this.testDir) {
-    try {
-      await fs.remove(this.testDir);
-    } catch (error) {
-      console.error(
-        `Failed to clean up test directory: ${this.testDir}`,
-        error,
-      );
-    }
-  }
-
-  // Restore any captured console methods
-  const restoreConsole = this.get("restoreConsole") as (() => void) | undefined;
-  if (restoreConsole) {
-    restoreConsole();
-  }
+After(async function () {
+  // Cleanup happens automatically through World factory
+  // Additional cleanup if needed can be added here
 });

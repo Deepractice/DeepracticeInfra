@@ -1,10 +1,10 @@
 {
-  "name": "@deepracticex/app-example",
+  "name": "@deepracticex/example-cli",
   "version": "0.0.1",
-  "description": "Example app demonstrating Deepractice app development standards",
+  "description": "Example CLI application demonstrating Deepractice CLI development standards",
   "type": "module",
   "bin": {
-    "app-example": "./dist/cli.js"
+    "example-cli": "./dist/cli.js"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -16,8 +16,8 @@
     }
   },
   "scripts": {
-    "build": "NODE_OPTIONS='--import tsx' tsup",
-    "dev": "NODE_OPTIONS='--import tsx' tsup --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
     "start": "node dist/cli.js"
