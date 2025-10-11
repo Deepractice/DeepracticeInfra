@@ -9,7 +9,7 @@ import {
   AfterAll,
   setWorldConstructor,
 } from "@deepracticex/configurer/cucumber";
-import { createWorld, type ErrorHandlingWorld } from "./world.js";
+import { createWorld } from "./world.js";
 
 // Register World factory
 setWorldConstructor(createWorld);
@@ -22,10 +22,11 @@ AfterAll(async function () {
   console.log("✅ Error-handling tests completed");
 });
 
-Before(async function (this: ErrorHandlingWorld) {
-  this.clear();
+Before(async function () {
+  // Context is automatically provided by Cucumber
+  // World constructor will create fresh context for each scenario
 });
 
-After(async function (this: ErrorHandlingWorld) {
-  this.clear();
+After(async function () {
+  // Cleanup happens automatically through World constructor
 });
