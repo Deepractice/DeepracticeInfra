@@ -4,7 +4,7 @@ Feature: ESLint Configuration
   So that I can maintain consistent code quality across projects
 
   Background:
-    Given I have installed "@deepracticex/configurer"
+    Given I have installed "@deepracticex/config-preset"
 
   Scenario: Use base ESLint config
     When I import eslint.base from the package

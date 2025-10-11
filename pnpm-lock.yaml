@@ -26,9 +26,9 @@ importers:
       "@cucumber/pretty-formatter":
         specifier: ^1.0.1
         version: 1.0.1(@cucumber/cucumber@11.3.0)(@cucumber/messages@30.1.0)
-      "@deepracticex/configurer":
+      "@deepracticex/config-preset":
         specifier: workspace:*
-        version: link:packages/configurer
+        version: link:packages/config-preset
       "@faker-js/faker":
         specifier: ^9.4.0
         version: 9.9.0
@@ -120,9 +120,9 @@ importers:
         specifier: ^12.1.0
         version: 12.1.0
     devDependencies:
-      "@deepracticex/configurer":
+      "@deepracticex/config-preset":
         specifier: workspace:*
-        version: link:../../packages/configurer
+        version: link:../../packages/config-preset
 
   apps/cli:
     dependencies:
@@ -148,11 +148,11 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
     devDependencies:
-      "@deepracticex/configurer":
+      "@deepracticex/config-preset":
         specifier: workspace:*
-        version: link:../../packages/configurer
+        version: link:../../packages/config-preset
 
-  packages/configurer:
+  packages/config-preset:
     dependencies:
       "@commitlint/cli":
         specifier: ^19.0.0
@@ -160,9 +160,6 @@ importers:
       "@commitlint/config-conventional":
         specifier: ^19.0.0
         version: 19.8.1
-      "@deepracticex/vitest-cucumber":
-        specifier: ^0.1.0
-        version: 0.1.0(@cucumber/cucumber@11.3.0)(vitest@2.1.9(@types/node@22.18.9))
     devDependencies:
       "@cucumber/cucumber":
         specifier: ^11.3.0
@@ -170,6 +167,9 @@ importers:
       "@cucumber/gherkin":
         specifier: ^36.0.0
         version: 36.0.0
+      "@deepracticex/vitest-cucumber-plugin":
+        specifier: ^1.1.0
+        version: 1.1.0(vitest@2.1.9(@types/node@22.18.9))
       "@eslint/js":
         specifier: ^9.37.0
         version: 9.37.0
@@ -207,9 +207,17 @@ importers:
         specifier: ^4.20.6
         version: 4.20.6
 
-  packages/error-handling: {}
+  packages/error-handling:
+    devDependencies:
+      "@deepracticex/testing-utils":
+        specifier: workspace:*
+        version: link:../testing-utils
 
-  packages/example-package: {}
+  packages/example-package:
+    devDependencies:
+      "@deepracticex/testing-utils":
+        specifier: workspace:*
+        version: link:../testing-utils
 
   packages/logger:
     dependencies:
@@ -219,6 +227,22 @@ importers:
       pino-pretty:
         specifier: ^13.1.1
         version: 13.1.2
+
+  packages/testing-utils:
+    dependencies:
+      "@deepracticex/vitest-cucumber":
+        specifier: ^1.0.1
+        version: 1.0.1(vitest@2.1.9(@types/node@22.18.9))
+    devDependencies:
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(jiti@2.6.1)(postcss@8.5.6)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
+      typescript:
+        specifier: ^5.7.3
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@22.18.9)
 
   src/core:
     dependencies:
@@ -746,13 +770,20 @@ packages:
         integrity: sha512-xa3pER+ntZhGCxRXSguDTKEHTZpUUsp+RzTRNnit+vi5cqnk6abLdSLg5i3HZXU3c74nQ8afQC6IT507EN74oQ==,
       }
 
-  "@deepracticex/vitest-cucumber@0.1.0":
+  "@deepracticex/vitest-cucumber-plugin@1.1.0":
     resolution:
       {
-        integrity: sha512-gVl9Z2kqqKBw6CpttXwZfDCTDC0rnsfcU1drScSaS5/kV2fByH2PCyG8zCQND4KEUYCjNB9mvYSOsPX5pcwRrA==,
+        integrity: sha512-4ToyzxtBjSescxn5QX3a7UDggua5fwZ6mNfC5jhrpZwEthGCgsKKsik+K++CK7OpAcMuQ+aog9B7vcJ4AjdBsQ==,
       }
     peerDependencies:
-      "@cucumber/cucumber": ^11.0.0
+      vitest: ^2.0.0 || ^3.0.0
+
+  "@deepracticex/vitest-cucumber@1.0.1":
+    resolution:
+      {
+        integrity: sha512-6EAZnPHny/6U5QDotYgMWQojHMZtG+xvD+KjuehEZCGoGeEAEmwZhGN6Y3Aes2PXKZ43lXY4kXms2jpCAXomKQ==,
+      }
+    peerDependencies:
       vitest: ^2.0.0 || ^3.0.0
 
   "@esbuild/aix-ppc64@0.21.5":
@@ -5644,12 +5675,15 @@ snapshots:
 
   "@cucumber/tag-expressions@6.1.2": {}
 
-  "@deepracticex/vitest-cucumber@0.1.0(@cucumber/cucumber@11.3.0)(vitest@2.1.9(@types/node@22.18.9))":
+  "@deepracticex/vitest-cucumber-plugin@1.1.0(vitest@2.1.9(@types/node@22.18.9))":
     dependencies:
-      "@cucumber/cucumber": 11.3.0
       "@cucumber/gherkin": 30.0.4
       "@cucumber/messages": 26.0.1
       glob: 11.0.3
+      vitest: 2.1.9(@types/node@22.18.9)
+
+  "@deepracticex/vitest-cucumber@1.0.1(vitest@2.1.9(@types/node@22.18.9))":
+    dependencies:
       vitest: 2.1.9(@types/node@22.18.9)
 
   "@esbuild/aix-ppc64@0.21.5":

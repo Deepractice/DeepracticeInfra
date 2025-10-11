@@ -4,7 +4,7 @@ Feature: Tsup Configuration
   So that I can maintain consistent build setup across packages
 
   Background:
-    Given I have installed "@deepracticex/configurer"
+    Given I have installed "@deepracticex/config-preset"
     Scenario: Use base Tsup config
       When I import tsup.base from the package
       Then the config should output both ESM and CommonJS formats

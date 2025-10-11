@@ -4,7 +4,7 @@ Feature: Commitlint Configuration
   So that I can maintain consistent commit message format across projects
 
   Background:
-    Given I have installed "@deepracticex/configurer"
+    Given I have installed "@deepracticex/config-preset"
     Scenario: Use default Commitlint config
       When I import commitlint.base from the package
       Then the config should extend "@commitlint/config-conventional"

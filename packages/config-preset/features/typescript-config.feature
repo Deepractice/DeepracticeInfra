@@ -4,7 +4,7 @@ Feature: TypeScript Configuration
   So that I can maintain consistent TypeScript compilation across projects
 
   Background:
-    Given I have installed "@deepracticex/configurer"
+    Given I have installed "@deepracticex/config-preset"
 
   Scenario: Use base TypeScript config
     When I extend typescript.base in my tsconfig.json

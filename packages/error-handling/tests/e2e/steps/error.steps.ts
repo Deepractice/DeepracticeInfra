@@ -7,7 +7,7 @@ import {
   When,
   Then,
   DataTable,
-} from "@deepracticex/configurer/cucumber";
+} from "@deepracticex/testing-utils/cucumber";
 import { expect } from "vitest";
 import { errors, AppError } from "~/index.js";
 import type { ErrorHandlingWorld } from "../support/world.js";
@@ -212,15 +212,15 @@ Then(
 );
 
 Then(
-  "the JSON should have {string} equal to {string}",
-  function (this: ErrorHandlingWorld, property: string, value: string) {
+  "the JSON should have {string} equal to {int}",
+  function (this: ErrorHandlingWorld, property: string, value: number) {
     expect(this.errorJson![property]).toBe(value);
   },
 );
 
 Then(
-  "the JSON should have {string} equal to {int}",
-  function (this: ErrorHandlingWorld, property: string, value: number) {
+  "the JSON should have {string} equal to {string}",
+  function (this: ErrorHandlingWorld, property: string, value: string) {
     expect(this.errorJson![property]).toBe(value);
   },
 );

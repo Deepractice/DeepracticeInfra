@@ -8,7 +8,7 @@ import {
   BeforeAll,
   AfterAll,
   setWorldConstructor,
-} from "@deepracticex/configurer/cucumber";
+} from "@deepracticex/testing-utils/cucumber";
 import { createWorld } from "./world.js";
 
 // Register World factory
@@ -23,8 +23,9 @@ AfterAll(async function () {
 });
 
 Before(async function () {
-  // Context is automatically provided by Cucumber
-  // World constructor will create fresh context for each scenario
+  // Initialize error factory for all scenarios
+  const { errors } = await import("~/index.js");
+  this.errorFactory = errors;
 });
 
 After(async function () {

@@ -1,5 +1,5 @@
 {
-  "extends": "@deepracticex/configurer/typescript-base.json",
+  "extends": "@deepracticex/config-preset/typescript-base.json",
   "compilerOptions": {
     "outDir": "./dist",
     "paths": {

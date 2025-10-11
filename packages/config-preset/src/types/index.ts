@@ -1,5 +1,5 @@
 /**
- * Type definitions for @deepracticex/configurer
+ * Type definitions for @deepracticex/config-preset
  */
 
 export type EslintPreset = "default" | "strict";

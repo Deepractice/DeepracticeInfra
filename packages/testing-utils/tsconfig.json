@@ -2,10 +2,11 @@
   "extends": "@deepracticex/config-preset/typescript-base.json",
   "compilerOptions": {
     "outDir": "./dist",
+    "rootDir": "./src",
     "paths": {
       "~/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "tests/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"]
 }

@@ -5,7 +5,7 @@ import {
   Before,
   After,
   DataTable,
-} from "@deepracticex/configurer/cucumber";
+} from "@deepracticex/testing-utils/cucumber";
 import { expect } from "vitest";
 
 interface TestContext {
@@ -136,8 +136,11 @@ Then(
 // DocString
 When(
   "I create a JSON configuration:",
-  function (this: TestContext, docString: string) {
-    this.jsonConfig = JSON.parse(docString);
+  function (this: TestContext, docString: any) {
+    // vitest-cucumber 1.0.1 passes DocString as {contentType, content} object
+    const jsonString =
+      typeof docString === "string" ? docString : docString.content;
+    this.jsonConfig = JSON.parse(jsonString);
   },
 );
 
@@ -149,7 +152,9 @@ Then("the configuration should be valid JSON", function (this: TestContext) {
 Then(
   "it should have feature {string}",
   function (this: TestContext, feature: string) {
-    expect(this.jsonConfig.features).toContain(feature);
+    expect(this.jsonConfig).toBeDefined();
+    expect(this.jsonConfig!.features).toBeDefined();
+    expect(this.jsonConfig!.features).toContain(feature);
   },
 );
 

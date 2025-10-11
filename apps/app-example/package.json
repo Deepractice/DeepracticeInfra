@@ -27,7 +27,7 @@
     "chalk": "^5.4.1"
   },
   "devDependencies": {
-    "@deepracticex/configurer": "workspace:*"
+    "@deepracticex/config-preset": "workspace:*"
   },
   "files": [
     "dist",

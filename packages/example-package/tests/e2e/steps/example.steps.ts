@@ -1,8 +1,8 @@
 /**
  * Step definitions for Example feature
  */
-import { Given, When, Then } from "@cucumber/cucumber";
-import { expect } from "chai";
+import { Given, When, Then } from "@deepracticex/testing-utils/cucumber";
+import { expect } from "vitest";
 import { createExample } from "@/index";
 import type { ExampleWorld } from "../support/world";
 
@@ -76,32 +76,33 @@ When("I dispose the instance", function (this: ExampleWorld) {
 Then(
   "the result should be {string}",
   function (this: ExampleWorld, expected: string) {
-    expect(this.result).to.equal(expected);
+    expect(this.result).toBe(expected);
   },
 );
 
 Then(
   "the status should be {string}",
   function (this: ExampleWorld, expected: string) {
-    expect(this.result).to.equal(expected);
+    expect(this.result).toBe(expected);
   },
 );
 
 Then(
   "it should throw an error {string}",
   function (this: ExampleWorld, expectedMessage: string) {
-    expect(this.error).to.exist;
-    expect(this.error!.message).to.include(expectedMessage);
+    expect(this.error).toBeDefined();
+    expect(this.error!.message).toContain(expectedMessage);
   },
 );
 
 Then("it should log the processing message", function (this: ExampleWorld) {
-  expect(this.consoleLogs).to.have.length.greaterThan(0);
-  expect(this.consoleLogs.some((log) => log.includes("Processing:"))).to.be
-    .true;
+  expect(this.consoleLogs.length).toBeGreaterThan(0);
+  expect(this.consoleLogs.some((log) => log.includes("Processing:"))).toBe(
+    true,
+  );
 });
 
 Then("the instance should be cleaned up", function (this: ExampleWorld) {
   // In real scenario, you would verify resources are released
-  expect(this.example).to.exist;
+  expect(this.example).toBeDefined();
 });

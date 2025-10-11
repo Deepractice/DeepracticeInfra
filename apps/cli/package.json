@@ -34,7 +34,7 @@
     "execa": "^9.5.2"
   },
   "devDependencies": {
-    "@deepracticex/configurer": "workspace:*"
+    "@deepracticex/config-preset": "workspace:*"
   },
   "files": [
     "dist",

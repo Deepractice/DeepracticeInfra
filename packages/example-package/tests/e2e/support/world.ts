@@ -1,10 +1,10 @@
 /**
  * Cucumber World - shared context across steps
  */
-import { setWorldConstructor, World, IWorldOptions } from "@cucumber/cucumber";
+import { setWorldConstructor } from "@deepracticex/testing-utils/cucumber";
 import type { Example } from "@/index";
 
-export interface ExampleWorld extends World {
+export interface ExampleWorld {
   // Example instances
   example?: Example;
   secondExample?: Example;
@@ -19,26 +19,24 @@ export interface ExampleWorld extends World {
   get(key: string): unknown;
 }
 
-class CustomWorld extends World implements ExampleWorld {
-  example?: Example;
-  secondExample?: Example;
-  result?: string;
-  error?: Error;
-  consoleLogs: string[] = [];
+function createWorld(): ExampleWorld {
+  const context = new Map<string, unknown>();
 
-  private context: Map<string, unknown> = new Map();
+  return {
+    example: undefined,
+    secondExample: undefined,
+    result: undefined,
+    error: undefined,
+    consoleLogs: [],
 
-  constructor(options: IWorldOptions) {
-    super(options);
-  }
+    set(key: string, value: unknown): void {
+      context.set(key, value);
+    },
 
-  set(key: string, value: unknown): void {
-    this.context.set(key, value);
-  }
-
-  get(key: string): unknown {
-    return this.context.get(key);
-  }
+    get(key: string): unknown {
+      return context.get(key);
+    },
+  };
 }
 
-setWorldConstructor(CustomWorld);
+setWorldConstructor(createWorld);

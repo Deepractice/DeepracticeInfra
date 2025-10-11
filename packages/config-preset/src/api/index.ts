@@ -1,5 +1,5 @@
 /**
- * Public API exports for @deepracticex/configurer
+ * Public API exports for @deepracticex/config-preset
  *
  * This module provides configuration presets for all development tools
  * used in Deepractice projects.
@@ -11,4 +11,3 @@ export { typescript } from "./typescript";
 export { commitlint } from "./commitlint";
 export { vitest } from "./vitest";
 export { tsup } from "./tsup";
-export * as cucumber from "./cucumber";

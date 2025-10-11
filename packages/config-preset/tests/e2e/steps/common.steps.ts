@@ -309,7 +309,7 @@ When(
 );
 
 When("I import {string} directly from subpath", function (_subpath: string) {
-  // This would test actual imports like @deepracticex/configurer/api/eslint
+  // This would test actual imports like @deepracticex/config-preset/api/eslint
   expect(true).to.be.true; // Placeholder
 });
 
@@ -372,11 +372,11 @@ Then("all base config features should be available", function () {
 // Package exports steps
 When("I import from {string}", async function (importPath: string) {
   this.importPath = importPath;
-  if (importPath === "@deepracticex/configurer") {
+  if (importPath === "@deepracticex/config-preset") {
     const configs = await import("../../../src/index");
     this.allConfigs = configs;
   } else {
-    // Handle subpath imports like "@deepracticex/configurer/eslint"
+    // Handle subpath imports like "@deepracticex/config-preset/eslint"
     const module = importPath.split("/").pop();
     if (!module) {
       throw new Error(`Invalid import path: ${importPath}`);
@@ -443,5 +443,5 @@ Then("the require should work correctly", function () {
 
 // Common steps
 Given("I have installed {string}", function (packageName: string) {
-  expect(packageName).to.equal("@deepracticex/configurer");
+  expect(packageName).to.equal("@deepracticex/config-preset");
 });

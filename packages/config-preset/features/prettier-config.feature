@@ -4,7 +4,7 @@ Feature: Prettier Configuration
   So that I can maintain consistent code formatting across projects
 
   Background:
-    Given I have installed "@deepracticex/configurer"
+    Given I have installed "@deepracticex/config-preset"
     Scenario: Use default Prettier config
       When I import prettier.base from the package
       Then the config should have semi set to true

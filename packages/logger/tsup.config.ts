@@ -1,4 +1,4 @@
-import { tsup } from "@deepracticex/configurer";
+import { tsup } from "@deepracticex/config-preset";
 
 export default tsup.createConfig({
   entry: ["src/index.ts"],

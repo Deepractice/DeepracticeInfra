@@ -4,7 +4,7 @@ Feature: Vitest Configuration
   So that I can maintain consistent testing setup across projects
 
   Background:
-    Given I have installed "@deepracticex/configurer"
+    Given I have installed "@deepracticex/config-preset"
 
   Scenario: Use base Vitest config
     When I import vitest.base from the package

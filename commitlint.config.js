@@ -1,3 +1,3 @@
-import { commitlint } from "@deepracticex/configurer";
+import { commitlint } from "@deepracticex/config-preset";
 
 export default commitlint.base;

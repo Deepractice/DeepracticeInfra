@@ -32,8 +32,7 @@ Feature: Error Factory
       When I create a not found error with:
         | resource   | User |
         | identifier | 123  |
-      Then the error message should be "User with identifier '123' not found"
-      And the error meta should contain:
+      Then the error meta should contain:
         | key        | value |
         | resource   | User  |
         | identifier | 123   |

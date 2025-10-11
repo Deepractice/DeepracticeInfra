@@ -1,4 +1,4 @@
-# @deepracticex/configurer
+# @deepracticex/config-preset
 
 Unified configuration system for Deepractice Node.js projects. Provides standardized, pre-configured setups for ESLint, Prettier, TypeScript, Commitlint, Vitest, and tsup.
 
@@ -8,13 +8,12 @@ Unified configuration system for Deepractice Node.js projects. Provides standard
 - **Consistent Standards**: Ensures all projects follow the same conventions
 - **Type-Safe**: Full TypeScript support with IntelliSense
 - **Extensible**: Factory methods for customization when needed
-- **BDD Testing**: Built-in Cucumber integration for Vitest
 - **Monorepo-Friendly**: Designed for pnpm workspaces
 
 ## Installation
 
 ```bash
-pnpm add -D @deepracticex/configurer
+pnpm add -D @deepracticex/config-preset
 ```
 
 ### Peer Dependencies
@@ -45,7 +44,7 @@ pnpm add -D tsup
 Create `eslint.config.js`:
 
 ```javascript
-import { eslint } from "@deepracticex/configurer";
+import { eslint } from "@deepracticex/config-preset";
 
 export default eslint.base;
 ```
@@ -62,7 +61,7 @@ export default eslint.base;
 Create `.prettierrc.js`:
 
 ```javascript
-import { prettier } from "@deepracticex/configurer";
+import { prettier } from "@deepracticex/config-preset";
 
 export default prettier.base;
 ```
@@ -82,7 +81,7 @@ Create `tsconfig.json`:
 
 ```json
 {
-  "extends": "@deepracticex/configurer/typescript-base.json",
+  "extends": "@deepracticex/config-preset/typescript-base.json",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src"
@@ -105,7 +104,7 @@ Create `tsconfig.json`:
 Create `vitest.config.ts`:
 
 ```typescript
-import { vitest } from "@deepracticex/configurer";
+import { vitest } from "@deepracticex/config-preset";
 
 export default vitest.base;
 ```
@@ -114,21 +113,16 @@ export default vitest.base;
 
 - Unit tests: `tests/unit/**/*.test.ts`
 - E2E tests: `tests/e2e/**/*.test.ts`
-- Cucumber BDD: `**/*.feature` files
 - Coverage reporting with v8
 - 30s timeout for E2E tests
 
-#### Custom Cucumber Configuration
+#### BDD Testing with Cucumber
 
-```typescript
-import { vitest } from "@deepracticex/configurer";
+For Cucumber/Gherkin BDD testing, install the separate testing utilities package:
 
-export default vitest.withCucumber({
-  steps: "tests/e2e/custom-steps",
-});
+```bash
+pnpm add -D @deepracticex/testing-utils
 ```
-
-#### Using Cucumber Hooks
 
 ```typescript
 import {
@@ -137,7 +131,7 @@ import {
   Then,
   Before,
   After,
-} from "@deepracticex/configurer/cucumber";
+} from "@deepracticex/testing-utils/bdd";
 
 Before(async function () {
   // Setup before each scenario
@@ -160,12 +154,14 @@ After(async function () {
 });
 ```
 
+See [@deepracticex/testing-utils](../testing-utils/README.md) for complete documentation.
+
 ### tsup Configuration
 
 Create `tsup.config.ts`:
 
 ```typescript
-import { tsup } from "@deepracticex/configurer";
+import { tsup } from "@deepracticex/config-preset";
 
 export default tsup.base;
 ```
@@ -181,7 +177,7 @@ export default tsup.base;
 #### Custom Build Configuration
 
 ```typescript
-import { tsup } from "@deepracticex/configurer";
+import { tsup } from "@deepracticex/config-preset";
 
 export default tsup.createConfig({
   entry: ["src/index.ts", "src/cli.ts"],
@@ -194,7 +190,7 @@ export default tsup.createConfig({
 Create `commitlint.config.js`:
 
 ```javascript
-import { commitlint } from "@deepracticex/configurer";
+import { commitlint } from "@deepracticex/config-preset";
 
 export default commitlint.base;
 ```
@@ -301,9 +297,11 @@ Feature: User Authentication
 
 Organize steps by domain:
 
+For BDD step definitions, use `@deepracticex/testing-utils`:
+
 ```typescript
 // tests/e2e/steps/auth.steps.ts
-import { Given, When, Then } from "@deepracticex/configurer";
+import { Given, When, Then } from "@deepracticex/testing-utils/bdd";
 import { expect } from "vitest";
 
 Given(
@@ -321,6 +319,8 @@ Then("the login should succeed", async function () {
   expect(this.result.success).toBe(true);
 });
 ```
+
+See [@deepracticex/testing-utils](../testing-utils/README.md) for complete BDD documentation.
 
 ### Path Aliases
 
@@ -364,20 +364,14 @@ import {
   vitest,
   tsup,
   commitlint,
-} from "@deepracticex/configurer";
+} from "@deepracticex/config-preset";
 
 // Specific tools (subpath imports)
-import { vitest } from "@deepracticex/configurer/vitest";
-import { eslint } from "@deepracticex/configurer/eslint";
+import { vitest } from "@deepracticex/config-preset/vitest";
+import { eslint } from "@deepracticex/config-preset/eslint";
 
-// Cucumber BDD utilities (separate module)
-import {
-  Given,
-  When,
-  Then,
-  Before,
-  After,
-} from "@deepracticex/configurer/cucumber";
+// BDD testing utilities (separate package)
+// import { Given, When, Then } from "@deepracticex/testing-utils/bdd";
 ```
 
 ## TypeScript Support
@@ -385,7 +379,7 @@ import {
 All configurations are fully typed:
 
 ```typescript
-import { vitest, type VitestPreset } from "@deepracticex/configurer";
+import { vitest, type VitestPreset } from "@deepracticex/config-preset";
 
 const preset: VitestPreset = "base"; // "base" | "coverage"
 ```
@@ -409,27 +403,24 @@ export default [
 
 ```javascript
 // eslint.config.js - 3 lines
-import { eslint } from "@deepracticex/configurer";
+import { eslint } from "@deepracticex/config-preset";
 export default eslint.base;
 ```
 
-### Adding Cucumber to Existing Project
+### Adding BDD Testing
 
-1. Install vitest-cucumber:
+For Cucumber/Gherkin BDD testing:
+
+1. Install testing utilities:
 
 ```bash
-pnpm add -D @deepracticex/vitest-cucumber
+pnpm add -D @deepracticex/testing-utils
 ```
 
-2. Update `vitest.config.ts`:
+2. Create feature files in `features/` directory
+3. Write step definitions using `@deepracticex/testing-utils/bdd`
 
-```typescript
-import { vitest } from "@deepracticex/configurer";
-export default vitest.base; // Already includes Cucumber
-```
-
-3. Create feature files in `features/` directory
-4. Create step definitions in `tests/e2e/steps/`
+See [@deepracticex/testing-utils](../testing-utils/README.md) for detailed setup instructions.
 
 ## Troubleshooting
 
@@ -448,13 +439,6 @@ Add to your `tsconfig.json`:
   }
 }
 ```
-
-### Cucumber Steps Not Found
-
-Ensure your step files match the glob pattern:
-
-- Default: `tests/e2e/steps/**/*.ts`
-- Files must have `.steps.ts` or `.ts` extension
 
 ### Path Alias Not Working
 

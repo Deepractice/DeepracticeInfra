@@ -2,14 +2,14 @@ import { defineConfig } from "vitest/config";
 import {
   vitestCucumber,
   type VitestCucumberPluginOptions,
-} from "@deepracticex/vitest-cucumber";
+} from "@deepracticex/vitest-cucumber-plugin";
 
 /**
  * Vitest configuration presets for Deepractice projects
  */
 export const vitest = {
   /**
-   * Base configuration: Standard testing setup for all tests (unit + e2e)
+   * Base configuration: Standard testing setup with Cucumber BDD support
    *
    * Includes:
    * - Unit tests: tests/unit/**\/*.test.ts, tests/unit/**\/*.spec.ts
@@ -24,7 +24,11 @@ export const vitest = {
    * - Run with coverage: pnpm test --coverage
    */
   base: defineConfig({
-    plugins: [vitestCucumber()],
+    plugins: [
+      vitestCucumber({
+        runtimeModule: "@deepracticex/testing-utils",
+      }),
+    ],
     test: {
       globals: true,
       environment: "node",
@@ -61,7 +65,7 @@ export const vitest = {
    * ```ts
    * // Custom step directory location
    * export default vitest.withCucumber({
-   *   steps: "tests/e2e/steps",
+   *   steps: "tests/e2e/custom-steps",
    * });
    * ```
    */
@@ -69,7 +73,12 @@ export const vitest = {
     cucumberOptions?: VitestCucumberPluginOptions,
   ): ReturnType<typeof defineConfig> {
     return defineConfig({
-      plugins: [vitestCucumber(cucumberOptions)],
+      plugins: [
+        vitestCucumber({
+          runtimeModule: "@deepracticex/testing-utils",
+          ...cucumberOptions,
+        }),
+      ],
       test: {
         globals: true,
         environment: "node",

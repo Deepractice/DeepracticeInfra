@@ -7,7 +7,7 @@ import {
   When,
   Then,
   DataTable,
-} from "@deepracticex/configurer/cucumber";
+} from "@deepracticex/testing-utils/cucumber";
 import { expect } from "vitest";
 import {
   ok,

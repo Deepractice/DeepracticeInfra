@@ -1,0 +1,70 @@
+{
+  "name": "@deepracticex/testing-utils",
+  "version": "0.1.0",
+  "description": "Testing utility functions for Deepractice Node.js projects",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./cucumber": {
+      "types": "./dist/api/cucumber.d.ts",
+      "import": "./dist/api/cucumber.js",
+      "require": "./dist/api/cucumber.cjs"
+    },
+    "./runtime": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rimraf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:dev": "vitest"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "testing",
+    "cucumber",
+    "gherkin",
+    "bdd",
+    "vitest",
+    "deepractice",
+    "nodespec"
+  ],
+  "author": "Deepractice",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Deepractice/NodeSpec"
+  },
+  "peerDependencies": {
+    "@deepracticex/vitest-cucumber": "^1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepracticex/vitest-cucumber": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "@deepracticex/vitest-cucumber": "^1.0.1"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}

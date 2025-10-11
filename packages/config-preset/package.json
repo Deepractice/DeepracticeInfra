@@ -1,7 +1,7 @@
 {
-  "name": "@deepracticex/configurer",
+  "name": "@deepracticex/config-preset",
   "version": "0.1.0",
-  "description": "Unified configuration system for Deepractice Node.js projects",
+  "description": "Pure configuration presets for Deepractice Node.js projects",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -42,11 +42,6 @@
       "import": "./dist/api/tsup.js",
       "require": "./dist/api/tsup.cjs"
     },
-    "./cucumber": {
-      "types": "./dist/api/cucumber.d.ts",
-      "import": "./dist/api/cucumber.js",
-      "require": "./dist/api/cucumber.cjs"
-    },
     "./typescript-base.json": "./dist/typescript-base.json"
   },
   "scripts": {
@@ -73,7 +68,6 @@
     "vitest",
     "tsup",
     "commitlint",
-    "cucumber",
     "deepractice",
     "nodespec"
   ],
@@ -84,6 +78,7 @@
     "url": "https://github.com/Deepractice/NodeSpec"
   },
   "peerDependencies": {
+    "@deepracticex/vitest-cucumber-plugin": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^9.0.0",
@@ -95,6 +90,9 @@
     "vitest": "^2.0.0"
   },
   "peerDependenciesMeta": {
+    "@deepracticex/vitest-cucumber-plugin": {
+      "optional": true
+    },
     "@typescript-eslint/eslint-plugin": {
       "optional": true
     },
@@ -125,12 +123,12 @@
   },
   "dependencies": {
     "@commitlint/cli": "^19.0.0",
-    "@commitlint/config-conventional": "^19.0.0",
-    "@deepracticex/vitest-cucumber": "^0.1.0"
+    "@commitlint/config-conventional": "^19.0.0"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.3.0",
     "@cucumber/gherkin": "^36.0.0",
+    "@deepracticex/vitest-cucumber-plugin": "^1.1.0",
     "@eslint/js": "^9.37.0",
     "@types/chai": "^5.2.2",
     "@typescript-eslint/eslint-plugin": "^8.46.0",

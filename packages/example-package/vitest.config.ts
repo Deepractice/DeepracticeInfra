@@ -1,4 +1,4 @@
-import { vitest } from "@deepracticex/configurer/vitest";
+import { vitest } from "@deepracticex/config-preset/vitest";
 import { defineConfig, mergeConfig } from "vitest/config";
 import path from "node:path";
 

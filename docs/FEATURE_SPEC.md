@@ -120,7 +120,7 @@ Avoid Background for:
 
 ```gherkin
 Background:
-  Given I have installed "@deepracticex/configurer"
+  Given I have installed "@deepracticex/config-preset"
   And I am in a temporary test directory
 ```
 
@@ -241,7 +241,7 @@ Then the config should target {string}
 **❌ Avoid:**
 
 ```gherkin
-Given I have installed @deepracticex/configurer
+Given I have installed @deepracticex/config-preset
 # Problem: Special chars in regex, hard to reuse
 ```
 
@@ -385,7 +385,7 @@ Scenario: Run CLI command
 
 ```gherkin
 Scenario: Use configuration preset
-  Given I have installed "@deepracticex/configurer"
+  Given I have installed "@deepracticex/config-preset"
   When I extend typescript.base in my tsconfig.json
   Then the config should target "ES2022"
   And the config should enable strict mode
