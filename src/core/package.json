@@ -11,9 +11,15 @@
     "./guide": "./guide/index.ts",
     "./executor": "./executor/index.ts"
   },
+  "files": [
+    "**/*.ts",
+    "package.json",
+    "README.md"
+  ],
   "dependencies": {
     "fs-extra": "^11.2.0",
-    "yaml": "^2.7.0"
+    "yaml": "^2.7.0",
+    "globby": "^14.0.2"
   },
   "keywords": [
     "nodespec",

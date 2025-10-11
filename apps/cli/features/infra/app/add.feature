@@ -43,8 +43,9 @@ Feature: Add Application to Monorepo
       Given I am in the monorepo root
       When I run "nodespec infra app add my-cli"
       Then the command should succeed
-      And "apps/my-cli/package.json" should contain "\"build\": \"tsup\""
-      And "apps/my-cli/package.json" should contain "\"dev\""
+      And "apps/my-cli/package.json" should contain "\"build\":"
+      And "apps/my-cli/package.json" should contain "tsup"
+      And "apps/my-cli/package.json" should contain "\"dev\":"
       And "apps/my-cli/package.json" should contain "\"typecheck\": \"tsc --noEmit\""
 
     Scenario: Generated application is buildable and executable

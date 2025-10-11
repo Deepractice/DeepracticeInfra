@@ -1,3 +1,3 @@
-export default {
-  extends: ["@deepracticex/commitlint-config"],
-};
+import { commitlint } from "@deepracticex/configurer";
+
+export default commitlint.base;

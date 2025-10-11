@@ -1,7 +1,7 @@
 /**
  * Infrastructure-specific step definitions for init and create scenarios
  */
-import { Given, When, Then } from "@cucumber/cucumber";
+import { When, Then } from "@cucumber/cucumber";
 import { expect } from "chai";
 import { execa } from "execa";
 import fs from "fs-extra";

@@ -107,7 +107,7 @@ Given(
   async function (
     this: InfraWorld,
     tsconfigPath: string,
-    extendsValue: string,
+    _extendsValue: string,
   ) {
     const fullPath = path.join(this.testDir!, tsconfigPath);
     const tsconfig = await fs.readJson(fullPath);

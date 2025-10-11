@@ -1,6 +1,6 @@
-import { createConfig } from "@deepracticex/tsup-config";
+import { tsup } from "@deepracticex/configurer";
 
-export default createConfig({
+export default tsup.createConfig({
   entry: ["src/index.ts"],
   external: ["pino", "pino-pretty"],
 });

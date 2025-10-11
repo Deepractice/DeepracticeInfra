@@ -1,3 +1,3 @@
-import { baseConfig } from "@deepracticex/vitest-config/base";
+import { vitest } from "@deepracticex/configurer";
 
-export default baseConfig;
+export default vitest.base;
