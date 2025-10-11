@@ -42,6 +42,11 @@
       "import": "./dist/api/tsup.js",
       "require": "./dist/api/tsup.cjs"
     },
+    "./cucumber": {
+      "types": "./dist/api/cucumber.d.ts",
+      "import": "./dist/api/cucumber.js",
+      "require": "./dist/api/cucumber.cjs"
+    },
     "./typescript-base.json": "./dist/typescript-base.json"
   },
   "scripts": {
@@ -137,7 +142,6 @@
     "glob": "^11.0.3",
     "pixelmatch": "^7.1.0",
     "tsup": "^8.5.0",
-    "tsx": "^4.20.6",
-    "vitest": "^3.2.4"
+    "tsx": "^4.20.6"
   }
 }

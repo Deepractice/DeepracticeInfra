@@ -97,21 +97,3 @@ export const vitest = {
     });
   },
 };
-
-// Re-export vitest-cucumber APIs for unified imports
-export {
-  Given,
-  When,
-  Then,
-  And,
-  But,
-  Before,
-  After,
-  BeforeAll,
-  AfterAll,
-  DataTable,
-  setWorldConstructor,
-  type VitestCucumberPluginOptions,
-  type StepFunction,
-  type StepDefinition,
-} from "@deepracticex/vitest-cucumber";

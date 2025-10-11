@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@cucumber/cucumber";
+import { Given, When, Then } from "../../../src/api/cucumber";
 import { expect } from "chai";
 import { eslint } from "../../../src/api/eslint";
 import { prettier } from "../../../src/api/prettier";
@@ -327,6 +327,118 @@ Then("the ESM import should work", function () {
 
 Then("the CJS require should work", function () {
   expect(true).to.be.true; // Placeholder for actual CJS test
+});
+
+// Additional Tsup steps
+Then("the config should output both ESM and CommonJS formats", function () {
+  expect(this.importedConfig.format).to.include("esm");
+  expect(this.importedConfig.format).to.include("cjs");
+});
+
+Then("the config should generate source maps", function () {
+  expect(this.importedConfig.sourcemap).to.be.true;
+});
+
+Then("the config should clean output directory before build", function () {
+  expect(this.importedConfig.clean).to.be.true;
+});
+
+Then("the config should configure ~ alias to src directory", function () {
+  expect(this.importedConfig.esbuildOptions).to.not.be.undefined;
+});
+
+When("I use tsup.createConfig with custom options", function () {
+  this.customConfig = tsup.createConfig({
+    entry: ["src/custom.ts"],
+  });
+});
+
+Then("the custom options should merge with base config", function () {
+  expect(this.customConfig).to.not.be.undefined;
+  expect(this.customConfig.format).to.include("esm");
+  expect(this.customConfig.entry).to.include("src/custom.ts");
+});
+
+Then("the ~ alias should resolve to src directory", function () {
+  expect(this.customConfig.esbuildOptions).to.not.be.undefined;
+});
+
+Then("all base config features should be available", function () {
+  expect(this.customConfig.dts).to.be.true;
+  expect(this.customConfig.sourcemap).to.be.true;
+  expect(this.customConfig.clean).to.be.true;
+});
+
+// Package exports steps
+When("I import from {string}", async function (importPath: string) {
+  this.importPath = importPath;
+  if (importPath === "@deepracticex/configurer") {
+    const configs = await import("../../../src/index");
+    this.allConfigs = configs;
+  } else {
+    // Handle subpath imports like "@deepracticex/configurer/eslint"
+    const module = importPath.split("/").pop();
+    if (!module) {
+      throw new Error(`Invalid import path: ${importPath}`);
+    }
+    const moduleImport = await import(`../../../src/api/${module}`);
+    this.moduleConfig = moduleImport[module];
+  }
+});
+
+Then("I should be able to access eslint configs", function () {
+  expect(this.allConfigs.eslint).to.not.be.undefined;
+  expect(this.allConfigs.eslint.base).to.not.be.undefined;
+});
+
+Then("I should be able to access prettier configs", function () {
+  expect(this.allConfigs.prettier).to.not.be.undefined;
+  expect(this.allConfigs.prettier.base).to.not.be.undefined;
+});
+
+Then("I should be able to access typescript configs", function () {
+  expect(this.allConfigs.typescript).to.not.be.undefined;
+  expect(this.allConfigs.typescript.base).to.not.be.undefined;
+});
+
+Then("I should be able to access all other configs", function () {
+  expect(this.allConfigs.commitlint).to.not.be.undefined;
+  expect(this.allConfigs.vitest).to.not.be.undefined;
+  expect(this.allConfigs.tsup).to.not.be.undefined;
+});
+
+Then(
+  "I should only load the {string} configuration",
+  function (_moduleName: string) {
+    expect(this.moduleConfig).to.not.be.undefined;
+    expect(this.moduleConfig.base).to.not.be.undefined;
+  },
+);
+
+Then("the import should be type-safe", function () {
+  expect(this.moduleConfig).to.not.be.undefined;
+});
+
+Given("my project uses ES modules", function () {
+  this.projectType = "esm";
+});
+
+Given("my project uses CommonJS", function () {
+  this.projectType = "cjs";
+});
+
+Then("the import should work correctly", function () {
+  expect(this.allConfigs).to.not.be.undefined;
+});
+
+When("I require from {string}", async function (importPath: string) {
+  this.importPath = importPath;
+  const configs = await import("../../../src/index");
+  this.allConfigs = configs;
+});
+
+Then("the require should work correctly", function () {
+  expect(this.allConfigs).to.not.be.undefined;
 });
 
 // Common steps

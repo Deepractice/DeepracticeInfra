@@ -9,6 +9,7 @@ export default defineConfig({
     "api/commitlint": "src/api/commitlint.ts",
     "api/vitest": "src/api/vitest.ts",
     "api/tsup": "src/api/tsup.ts",
+    "api/cucumber": "src/api/cucumber.ts",
   },
   format: ["esm", "cjs"],
   dts: true,
