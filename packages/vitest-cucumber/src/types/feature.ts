@@ -49,6 +49,31 @@ export interface DocString {
 }
 
 /**
+ * Background steps that run before each scenario
+ */
+export interface Background {
+  /**
+   * Steps to execute before each scenario
+   */
+  steps: Step[];
+}
+
+/**
+ * Examples table for Scenario Outline
+ */
+export interface Examples {
+  /**
+   * Table headers (parameter names)
+   */
+  headers: string[];
+
+  /**
+   * Data rows (each row is a test case)
+   */
+  rows: string[][];
+}
+
+/**
  * A scenario within a feature
  */
 export interface Scenario {
@@ -61,6 +86,41 @@ export interface Scenario {
    * Steps in the scenario
    */
   steps: Step[];
+
+  /**
+   * Optional tags
+   */
+  tags?: string[];
+
+  /**
+   * Indicates if this is a Scenario Outline
+   */
+  isOutline?: boolean;
+
+  /**
+   * Examples for Scenario Outline
+   */
+  examples?: Examples[];
+}
+
+/**
+ * Rule groups related scenarios
+ */
+export interface Rule {
+  /**
+   * Rule name
+   */
+  name: string;
+
+  /**
+   * Scenarios within the rule
+   */
+  scenarios: Scenario[];
+
+  /**
+   * Optional background for the rule
+   */
+  background?: Background;
 
   /**
    * Optional tags
@@ -83,9 +143,19 @@ export interface Feature {
   description?: string;
 
   /**
+   * Background steps that run before each scenario
+   */
+  background?: Background;
+
+  /**
    * Scenarios in the feature
    */
   scenarios: Scenario[];
+
+  /**
+   * Rules in the feature
+   */
+  rules?: Rule[];
 
   /**
    * Optional tags

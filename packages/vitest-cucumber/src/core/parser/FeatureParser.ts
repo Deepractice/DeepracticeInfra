@@ -1,5 +1,14 @@
 import type * as Messages from "@cucumber/messages";
-import type { Feature, Scenario, Step, DataTable, DocString } from "~/types";
+import type {
+  Feature,
+  Scenario,
+  Step,
+  DataTable,
+  DocString,
+  Background,
+  Examples,
+  Rule,
+} from "~/types";
 import { GherkinParser } from "./GherkinParser";
 
 /**
@@ -30,17 +39,25 @@ export class FeatureParser {
    */
   private convertFeature(feature: Messages.Feature): Feature {
     const scenarios: Scenario[] = [];
+    const rules: Rule[] = [];
+    let background: Background | undefined;
 
     for (const child of feature.children || []) {
-      if (child.scenario) {
+      if (child.background) {
+        background = this.convertBackground(child.background);
+      } else if (child.scenario) {
         scenarios.push(this.convertScenario(child.scenario));
+      } else if (child.rule) {
+        rules.push(this.convertRule(child.rule));
       }
     }
 
     return {
       name: feature.name || "Unnamed Feature",
       description: feature.description,
+      background,
       scenarios,
+      rules: rules.length > 0 ? rules : undefined,
       tags: feature.tags?.map((t) => t.name),
     };
   }
@@ -50,11 +67,15 @@ export class FeatureParser {
    */
   private convertScenario(scenario: Messages.Scenario): Scenario {
     const steps = scenario.steps.map((s) => this.convertStep(s));
+    const examples = scenario.examples?.map((e) => this.convertExamples(e));
+    const isOutline = examples && examples.length > 0;
 
     return {
       name: scenario.name || "Unnamed Scenario",
       steps,
       tags: scenario.tags?.map((t) => t.name),
+      isOutline: isOutline || undefined,
+      examples: isOutline ? examples : undefined,
     };
   }
 
@@ -94,6 +115,53 @@ export class FeatureParser {
     return {
       contentType: docString.mediaType,
       content: docString.content,
+    };
+  }
+
+  /**
+   * Convert Gherkin background to our Background type
+   */
+  private convertBackground(background: Messages.Background): Background {
+    return {
+      steps: background.steps.map((s) => this.convertStep(s)),
+    };
+  }
+
+  /**
+   * Convert Gherkin rule to our Rule type
+   */
+  private convertRule(rule: Messages.Rule): Rule {
+    const scenarios: Scenario[] = [];
+    let background: Background | undefined;
+
+    for (const child of rule.children || []) {
+      if (child.background) {
+        background = this.convertBackground(child.background);
+      } else if (child.scenario) {
+        scenarios.push(this.convertScenario(child.scenario));
+      }
+    }
+
+    return {
+      name: rule.name || "Unnamed Rule",
+      scenarios,
+      background,
+      tags: rule.tags?.map((t) => t.name),
+    };
+  }
+
+  /**
+   * Convert Gherkin examples to our Examples type
+   */
+  private convertExamples(examples: Messages.Examples): Examples {
+    const headers = examples.tableHeader?.cells.map((cell) => cell.value) || [];
+    const rows =
+      examples.tableBody?.map((row) => row.cells.map((cell) => cell.value)) ||
+      [];
+
+    return {
+      headers,
+      rows,
     };
   }
 }

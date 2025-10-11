@@ -7,7 +7,10 @@ export type {
   Step,
   DataTable,
   DocString,
+  Background,
+  Examples,
   Scenario,
+  Rule,
   Feature,
   StepContext,
 } from "./feature";
