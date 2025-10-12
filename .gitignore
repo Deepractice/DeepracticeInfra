@@ -51,4 +51,7 @@ lefthook-local.yml
 
 # Test reports
 **/reports/
-../../temp/
+
+# Temp and cache directories
+temp/
+.promptx/
