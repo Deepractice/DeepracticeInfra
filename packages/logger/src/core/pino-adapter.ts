@@ -37,8 +37,10 @@ export function createPinoLogger(config: LoggerConfig = {}): pino.Logger {
 
   // For Electron desktop app, avoid worker thread issues
   const isElectron = process.versions && "electron" in process.versions;
+  const isTest =
+    process.env.NODE_ENV === "test" || process.env.VITEST === "true";
 
-  if (isElectron || process.env.DEEPRACTICE_NO_WORKERS === "true") {
+  if (isElectron || isTest || process.env.DEEPRACTICE_NO_WORKERS === "true") {
     // For Electron: use sync mode to avoid worker thread issues
     if (finalConfig.file) {
       const fileConfig =

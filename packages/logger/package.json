@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/logger",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Unified logging system for Deepractice projects using Pino",
   "type": "module",
   "main": "./dist/index.js",
