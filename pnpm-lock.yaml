@@ -207,6 +207,31 @@ importers:
         specifier: workspace:*
         version: link:../testing-utils
 
+  packages/eslint-config:
+    dependencies:
+      "@typescript-eslint/eslint-plugin":
+        specifier: ^8.0.0
+        version: 8.46.0(@typescript-eslint/parser@8.46.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3))(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3)
+      "@typescript-eslint/utils":
+        specifier: ^8.0.0
+        version: 8.46.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3)
+    devDependencies:
+      "@deepracticex/config-preset":
+        specifier: workspace:*
+        version: link:../config-preset
+      "@deepracticex/testing-utils":
+        specifier: workspace:*
+        version: link:../testing-utils
+      "@typescript-eslint/parser":
+        specifier: ^8.46.0
+        version: 8.46.0(eslint@9.37.0(jiti@2.6.1))(typescript@5.9.3)
+      eslint:
+        specifier: ^9.0.0
+        version: 9.37.0(jiti@2.6.1)
+      typescript:
+        specifier: ^5.0.0
+        version: 5.9.3
+
   packages/example-package:
     devDependencies:
       "@deepracticex/testing-utils":
@@ -7192,7 +7217,7 @@ snapshots:
   normalize-package-data@6.0.2:
     dependencies:
       hosted-git-info: 7.0.2
-      semver: 7.7.1
+      semver: 7.7.3
       validate-npm-package-license: 3.0.4
 
   npm-run-path@6.0.0:
