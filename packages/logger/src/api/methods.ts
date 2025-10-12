@@ -2,7 +2,7 @@
  * Convenience logging methods - simple functional API
  */
 import { createLogger } from "~/api/logger.js";
-import type { Logger } from "~/types/config.js";
+import type { Logger } from "~/types/index.js";
 
 // Lazy-initialized default logger to avoid environment detection at module load time
 let defaultLogger: Logger | null = null;
