@@ -2,50 +2,62 @@
  * Convenience logging methods - simple functional API
  */
 import { createLogger } from "~/api/logger.js";
+import type { Logger } from "~/types/config.js";
 
-// Default logger instance for convenience methods
-const defaultLogger = createLogger();
+// Lazy-initialized default logger to avoid environment detection at module load time
+let defaultLogger: Logger | null = null;
+
+/**
+ * Get or create the default logger instance
+ * This ensures we don't trigger environment detection until first use
+ */
+function getDefaultLogger(): Logger {
+  if (!defaultLogger) {
+    defaultLogger = createLogger();
+  }
+  return defaultLogger;
+}
 
 /**
  * Log trace level message
  */
 export const trace: any = (...args: any[]) => {
-  defaultLogger.trace(...args);
+  getDefaultLogger().trace(...args);
 };
 
 /**
  * Log debug level message
  */
 export const debug: any = (...args: any[]) => {
-  defaultLogger.debug(...args);
+  getDefaultLogger().debug(...args);
 };
 
 /**
  * Log info level message
  */
 export const info: any = (...args: any[]) => {
-  defaultLogger.info(...args);
+  getDefaultLogger().info(...args);
 };
 
 /**
  * Log warning level message
  */
 export const warn: any = (...args: any[]) => {
-  defaultLogger.warn(...args);
+  getDefaultLogger().warn(...args);
 };
 
 /**
  * Log error level message
  */
 export const error: any = (...args: any[]) => {
-  defaultLogger.error(...args);
+  getDefaultLogger().error(...args);
 };
 
 /**
  * Log fatal level message
  */
 export const fatal: any = (...args: any[]) => {
-  defaultLogger.fatal(...args);
+  getDefaultLogger().fatal(...args);
 };
 
 /**
@@ -57,10 +69,11 @@ export const verbose: any = trace;
  * Generic log method with level
  */
 export const log: any = (level: string, ...args: any[]) => {
-  const method = (defaultLogger as any)[level];
+  const logger = getDefaultLogger();
+  const method = (logger as any)[level];
   if (typeof method === "function") {
     method(...args);
   } else {
-    defaultLogger.info(...args);
+    logger.info(...args);
   }
 };

@@ -1,4 +1,9 @@
 /**
+ * Runtime environment type
+ */
+export type RuntimeEnvironment = "nodejs" | "cloudflare-workers" | "browser";
+
+/**
  * Logger configuration interface
  */
 export interface LoggerConfig {
@@ -35,4 +40,11 @@ export interface LoggerConfig {
    * @default "app"
    */
   name?: string;
+
+  /**
+   * Explicitly specify the runtime environment
+   * If not provided, will auto-detect
+   * @default auto-detect
+   */
+  environment?: RuntimeEnvironment;
 }

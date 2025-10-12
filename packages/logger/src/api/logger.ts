@@ -2,38 +2,48 @@
  * Default logger implementation
  */
 import type { Logger, LoggerConfig } from "~/types/index.js";
-import { createPinoLogger } from "~/core/index.js";
+import { createLoggerAdapter } from "~/core/adapter-factory.js";
 
 export class DefaultLogger implements Logger {
-  private pinoLogger: any;
+  private adapter: any;
+  private initPromise: Promise<void>;
 
   constructor(config: LoggerConfig = {}) {
-    this.pinoLogger = createPinoLogger(config);
+    // Initialize adapter asynchronously
+    this.initPromise = createLoggerAdapter(config).then((adapter) => {
+      this.adapter = adapter;
+    });
   }
 
   // All methods are typed as `any` for maximum flexibility
-  trace: any = (...args: any[]) => {
-    (this.pinoLogger.trace as any)(...args);
+  trace: any = async (...args: any[]) => {
+    await this.initPromise;
+    (this.adapter.trace as any)(...args);
   };
 
-  debug: any = (...args: any[]) => {
-    (this.pinoLogger.debug as any)(...args);
+  debug: any = async (...args: any[]) => {
+    await this.initPromise;
+    (this.adapter.debug as any)(...args);
   };
 
-  info: any = (...args: any[]) => {
-    (this.pinoLogger.info as any)(...args);
+  info: any = async (...args: any[]) => {
+    await this.initPromise;
+    (this.adapter.info as any)(...args);
   };
 
-  warn: any = (...args: any[]) => {
-    (this.pinoLogger.warn as any)(...args);
+  warn: any = async (...args: any[]) => {
+    await this.initPromise;
+    (this.adapter.warn as any)(...args);
   };
 
-  error: any = (...args: any[]) => {
-    (this.pinoLogger.error as any)(...args);
+  error: any = async (...args: any[]) => {
+    await this.initPromise;
+    (this.adapter.error as any)(...args);
   };
 
-  fatal: any = (...args: any[]) => {
-    (this.pinoLogger.fatal as any)(...args);
+  fatal: any = async (...args: any[]) => {
+    await this.initPromise;
+    (this.adapter.fatal as any)(...args);
   };
 }
 

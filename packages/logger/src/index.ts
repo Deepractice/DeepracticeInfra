@@ -1,31 +1,15 @@
 /**
  * @deepracticex/logger
  *
- * Unified logging solution with Pino
- * - Simple and flexible API
- * - Automatic caller location tracking
- * - Daily log rotation
- * - MCP stdio mode support (no ANSI colors)
- * - Electron compatibility (sync mode to avoid worker threads)
+ * Unified logging solution with environment-aware adapters
+ * - Pino for Node.js (high performance, structured logging)
+ * - Console adapter for edge runtimes (Cloudflare Workers, Deno, browser)
+ * - Zero side effects: no instances created at module load time
+ * - Explicit configuration: users must explicitly create logger instances
  */
 
-// Export public API
-export {
-  DefaultLogger,
-  createLogger,
-  trace,
-  debug,
-  info,
-  warn,
-  error,
-  fatal,
-  verbose,
-  log,
-} from "~/api/index.js";
+// Export core API only
+export { DefaultLogger, createLogger } from "~/api/logger.js";
 
 // Export types
 export type { Logger, LoggerConfig, LogLevel } from "~/types/index.js";
-
-// Default export - ready-to-use logger instance
-import { createLogger } from "~/api/logger.js";
-export default createLogger();

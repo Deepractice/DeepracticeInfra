@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/logger",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Unified logging system for Deepractice projects using Pino",
   "type": "module",
   "main": "./dist/index.js",
@@ -11,6 +11,21 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./nodejs": {
+      "types": "./dist/nodejs.d.ts",
+      "import": "./dist/nodejs.js",
+      "require": "./dist/nodejs.cjs"
+    },
+    "./cloudflare-workers": {
+      "types": "./dist/cloudflare-workers.d.ts",
+      "import": "./dist/cloudflare-workers.js",
+      "require": "./dist/cloudflare-workers.cjs"
+    },
+    "./browser": {
+      "types": "./dist/browser.d.ts",
+      "import": "./dist/browser.js",
+      "require": "./dist/browser.cjs"
     }
   },
   "scripts": {
