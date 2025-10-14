@@ -2,7 +2,7 @@ import { defineConfig } from "vitest/config";
 import {
   vitestCucumber,
   type VitestCucumberPluginOptions,
-} from "@deepracticex/vitest-cucumber-plugin";
+} from "@deepracticex/vitest-cucumber/plugin";
 
 /**
  * Vitest configuration presets for Deepractice projects

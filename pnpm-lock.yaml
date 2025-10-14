@@ -145,7 +145,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/config-preset
       "@deepracticex/vitest-cucumber":
-        specifier: ^1.1.0
+        specifier: ^1.2.0
         version: 1.2.0(vitest@2.1.9(@types/node@22.18.9))
       "@types/js-yaml":
         specifier: ^4.0.9
@@ -174,7 +174,7 @@ importers:
         version: 19.8.1
     devDependencies:
       "@deepracticex/vitest-cucumber":
-        specifier: ^1.1.0
+        specifier: ^1.2.0
         version: 1.2.0(vitest@2.1.9(@types/node@22.18.9))
       "@deepracticex/vitest-cucumber-plugin":
         specifier: ^1.1.0
@@ -213,13 +213,13 @@ importers:
   packages/error-handling:
     devDependencies:
       "@deepracticex/vitest-cucumber":
-        specifier: ^1.1.0
+        specifier: ^1.2.0
         version: 1.2.0(vitest@2.1.9(@types/node@22.18.9))
 
   packages/example-package:
     devDependencies:
       "@deepracticex/vitest-cucumber":
-        specifier: ^1.1.0
+        specifier: ^1.2.0
         version: 1.2.0(vitest@2.1.9(@types/node@22.18.9))
 
   packages/logger:
@@ -232,7 +232,7 @@ importers:
         version: 13.1.2
     devDependencies:
       "@deepracticex/vitest-cucumber":
-        specifier: ^1.1.0
+        specifier: ^1.2.0
         version: 1.2.0(vitest@2.1.9(@types/node@22.18.9))
 
   packages/testing-utils:

@@ -26,17 +26,17 @@
   "dependencies": {
     "@deepracticex/nodespec-core": "workspace:*",
     "@deepracticex/nodespec-mirror": "workspace:*",
-    "commander": "^12.1.0",
     "chalk": "^5.4.1",
-    "ora": "^8.1.1",
-    "prompts": "^2.4.2",
+    "commander": "^12.1.0",
     "execa": "^9.5.2",
+    "globby": "^14.0.2",
     "js-yaml": "^4.1.0",
-    "globby": "^14.0.2"
+    "ora": "^8.1.1",
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@deepracticex/config-preset": "workspace:*",
-    "@deepracticex/vitest-cucumber": "^1.1.0",
+    "@deepracticex/vitest-cucumber": "^1.2.0",
     "@types/js-yaml": "^4.0.9"
   },
   "files": [

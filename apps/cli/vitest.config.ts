@@ -5,15 +5,15 @@ import { vitest } from "@deepracticex/config-preset/vitest";
 export default mergeConfig(
   vitest.withCucumber({
     steps: "tests/e2e/steps",
-    verbose: false,
+    verbose: true,
   }),
   defineConfig({
     test: {
-      pool: "forks",
+      pool: "threads",
       poolOptions: {
-        forks: {
-          maxForks: 4,
-          minForks: 1,
+        threads: {
+          maxThreads: 4,
+          minThreads: 1,
         },
       },
     },
