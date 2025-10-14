@@ -1,7 +1,7 @@
 /**
  * Cucumber hooks - setup and teardown
  */
-import { Before, After } from "@deepracticex/vitest-cucumber/cucumber";
+import { Before, After } from "@deepracticex/vitest-cucumber";
 import type { ExampleWorld } from "./world";
 
 Before(function (this: ExampleWorld) {

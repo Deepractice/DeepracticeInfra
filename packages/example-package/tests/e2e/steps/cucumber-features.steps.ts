@@ -5,7 +5,7 @@ import {
   Before,
   After,
   DataTable,
-} from "@deepracticex/vitest-cucumber/cucumber";
+} from "@deepracticex/vitest-cucumber";
 import { expect } from "vitest";
 
 interface TestContext {
