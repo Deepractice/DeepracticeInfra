@@ -1,7 +1,7 @@
 /**
  * Common step definitions for infra E2E tests
  */
-import { Given, When, Then } from "@deepracticex/testing-utils";
+import { Given, When, Then } from "@deepracticex/vitest-cucumber";
 import { expect } from "chai";
 import { execa } from "execa";
 import fs from "fs-extra";
@@ -67,6 +67,43 @@ Given(
   },
 );
 
+Given(
+  "I am in a NodeSpec monorepo root directory",
+  async function (this: InfraWorld) {
+    if (!this.testDir) {
+      const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
+      this.testDir = tmpDir.toString();
+      this.originalCwd = process.cwd();
+    }
+
+    // Create monorepo structure with pnpm-workspace.yaml
+    await fs.writeFile(
+      path.join(this.testDir, "pnpm-workspace.yaml"),
+      `packages:
+  - "apps/*"
+  - "packages/*"
+`,
+    );
+
+    // Create basic package.json with NodeSpec dependency
+    await fs.writeJson(path.join(this.testDir, "package.json"), {
+      name: "test-nodespec-monorepo",
+      version: "1.0.0",
+      private: true,
+      devDependencies: {
+        "@deepracticex/nodespec-core": "latest",
+      },
+    });
+
+    // Create .nodespec/pm directory and initialize index
+    await fs.ensureDir(path.join(this.testDir, ".nodespec/pm"));
+    const indexPath = path.join(this.testDir, ".nodespec/pm/index.json");
+    if (!(await fs.pathExists(indexPath))) {
+      await fs.writeJson(indexPath, { version: "1.0.0", features: {} });
+    }
+  },
+);
+
 // When steps - command execution
 When("I run {string}", async function (this: InfraWorld, command: string) {
   this.lastCommand = command;
@@ -117,22 +154,9 @@ When("I run {string}", async function (this: InfraWorld, command: string) {
     if (this.lastResult.stderr) {
       this.stderr.push(String(this.lastResult.stderr));
     }
-
-    // Debug logging
-    if (this.exitCode !== 0) {
-      console.error("[DEBUG] Command failed:", command);
-      if (cliPath) {
-        console.error("[DEBUG] CLI path:", cliPath);
-      }
-      console.error("[DEBUG] CWD:", this.testDir || process.cwd());
-      console.error("[DEBUG] Exit code:", this.exitCode);
-      console.error("[DEBUG] STDOUT:", this.lastResult.stdout || "(empty)");
-      console.error("[DEBUG] STDERR:", this.lastResult.stderr || "(empty)");
-    }
   } catch (error) {
     this.lastError = error as Error;
     this.exitCode = 1;
-    console.error("[DEBUG] Exception caught:", error);
   }
 });
 

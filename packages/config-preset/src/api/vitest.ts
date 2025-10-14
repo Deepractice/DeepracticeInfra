@@ -26,7 +26,7 @@ export const vitest = {
   base: defineConfig({
     plugins: [
       vitestCucumber({
-        runtimeModule: "@deepracticex/testing-utils",
+        runtimeModule: "@deepracticex/vitest-cucumber",
       }),
     ],
     test: {
@@ -75,7 +75,7 @@ export const vitest = {
     return defineConfig({
       plugins: [
         vitestCucumber({
-          runtimeModule: "@deepracticex/testing-utils",
+          runtimeModule: "@deepracticex/vitest-cucumber",
           ...cucumberOptions,
         }),
       ],

@@ -1,4 +1,8 @@
 /**
  * Type definitions for @deepracticex/testing-utils
+ *
+ * Reserved for future type exports.
  */
-export type * from "@deepracticex/vitest-cucumber";
+
+// Placeholder - will be populated with actual type definitions
+export {};

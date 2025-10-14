@@ -1,4 +1,8 @@
 /**
  * Public API exports for @deepracticex/testing-utils
+ *
+ * Reserved for future testing utility functions.
  */
-export * from "./cucumber";
+
+// Placeholder - will be populated with actual testing utilities
+export {};

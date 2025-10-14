@@ -1,7 +1,7 @@
 /**
  * Infrastructure-specific step definitions for init and create scenarios
  */
-import { When, Then, DataTable } from "@deepracticex/testing-utils";
+import { When, Then, DataTable } from "@deepracticex/vitest-cucumber";
 import { expect } from "chai";
 import { execa } from "execa";
 import fs from "fs-extra";

@@ -19,3 +19,10 @@ export * from "./validator/index.js";
 
 // Export from utils module
 export * from "./utils/index.js";
+
+// Export from pm module
+export * from "./feature/FeatureIndexManager.js";
+export * from "./feature/FeatureParser.js";
+export * from "./feature/FeatureManager.js";
+export * from "./feature/FeatureValidator.js";
+export * from "./feature/types.js";

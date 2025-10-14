@@ -1,7 +1,7 @@
 /**
  * Cucumber World - shared context across steps
  */
-import { setWorldConstructor } from "@deepracticex/testing-utils/cucumber";
+import { setWorldConstructor } from "@deepracticex/vitest-cucumber/cucumber";
 import type { Example } from "@/index";
 
 export interface ExampleWorld {

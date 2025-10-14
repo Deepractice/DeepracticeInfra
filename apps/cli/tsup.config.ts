@@ -7,5 +7,5 @@ export default tsup.createConfig({
   clean: true,
   shims: true,
   noExternal: ["@deepracticex/nodespec-core"],
-  external: ["fs-extra", "execa", "chalk", "ora", "prompts", "yaml"],
+  external: ["fs-extra", "execa", "chalk", "ora", "prompts", "yaml", "globby"],
 });

@@ -2,6 +2,7 @@
 
 import { Command } from "commander";
 import { infraCommand } from "./commands/infra/index.js";
+import { pmCommand } from "./commands/pm/index.js";
 
 const program = new Command();
 
@@ -12,5 +13,6 @@ program
 
 // Register commands
 program.addCommand(infraCommand);
+program.addCommand(pmCommand);
 
 program.parse();

@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@deepracticex/testing-utils";
+import { Given, When, Then } from "@deepracticex/vitest-cucumber";
 import { expect } from "vitest";
 import type { ConfigWorld } from "../support/world.js";
 import { eslint } from "../../../src/api/eslint";

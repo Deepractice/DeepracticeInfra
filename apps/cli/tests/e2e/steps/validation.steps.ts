@@ -1,7 +1,7 @@
 /**
  * Step definitions for validation scenarios (package, app, and monorepo)
  */
-import { Given, Then, DataTable } from "@deepracticex/testing-utils";
+import { Given, Then, DataTable } from "@deepracticex/vitest-cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";

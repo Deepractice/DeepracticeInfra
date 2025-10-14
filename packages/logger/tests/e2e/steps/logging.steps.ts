@@ -2,7 +2,7 @@
  * Step definitions for basic logging functionality
  */
 
-import { Given, When, Then, DataTable } from "@deepracticex/testing-utils";
+import { Given, When, Then, DataTable } from "@deepracticex/vitest-cucumber";
 import { expect } from "vitest";
 import { createLogger } from "~/index.js";
 import type { LoggerWorld } from "../support/world.js";

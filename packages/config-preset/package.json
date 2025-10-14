@@ -126,7 +126,7 @@
     "@commitlint/config-conventional": "^19.0.0"
   },
   "devDependencies": {
-    "@deepracticex/testing-utils": "workspace:*",
+    "@deepracticex/vitest-cucumber": "^1.1.0",
     "@deepracticex/vitest-cucumber-plugin": "^1.1.0",
     "@eslint/js": "^9.37.0",
     "@typescript-eslint/eslint-plugin": "^8.46.0",

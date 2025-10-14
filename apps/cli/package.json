@@ -30,11 +30,14 @@
     "chalk": "^5.4.1",
     "ora": "^8.1.1",
     "prompts": "^2.4.2",
-    "execa": "^9.5.2"
+    "execa": "^9.5.2",
+    "js-yaml": "^4.1.0",
+    "globby": "^14.0.2"
   },
   "devDependencies": {
     "@deepracticex/config-preset": "workspace:*",
-    "@deepracticex/testing-utils": "workspace:*"
+    "@deepracticex/vitest-cucumber": "^1.1.0",
+    "@types/js-yaml": "^4.0.9"
   },
   "files": [
     "dist",

@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@deepracticex/testing-utils";
+import { Given, When, Then } from "@deepracticex/vitest-cucumber";
 import { expect } from "vitest";
 import { createLogger } from "~/api/index.js";
 import { detectEnvironment } from "~/core/adapter-factory.js";

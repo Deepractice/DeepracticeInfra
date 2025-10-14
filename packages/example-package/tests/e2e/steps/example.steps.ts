@@ -1,7 +1,7 @@
 /**
  * Step definitions for Example feature
  */
-import { Given, When, Then } from "@deepracticex/testing-utils/cucumber";
+import { Given, When, Then } from "@deepracticex/vitest-cucumber/cucumber";
 import { expect } from "vitest";
 import { createExample } from "@/index";
 import type { ExampleWorld } from "../support/world";

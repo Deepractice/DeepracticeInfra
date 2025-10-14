@@ -1,7 +1,7 @@
 /**
  * Workspace-specific step definitions for package and app management
  */
-import { Given, Then, DataTable } from "@deepracticex/testing-utils";
+import { Given, Then, DataTable } from "@deepracticex/vitest-cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
@@ -9,41 +9,6 @@ import os from "node:os";
 import type { InfraWorld } from "../support/world.js";
 
 // Given steps for workspace context
-
-Given(
-  "I am in a NodeSpec monorepo root directory",
-  async function (this: InfraWorld) {
-    // Initialize a minimal monorepo structure for testing
-    if (!this.testDir) {
-      const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "nodespec-test-"));
-      this.testDir = tmpDir.toString();
-      this.originalCwd = process.cwd();
-    }
-
-    // Create minimal monorepo structure
-    await fs.writeJson(path.join(this.testDir, "package.json"), {
-      name: "test-monorepo",
-      version: "1.0.0",
-      private: true,
-    });
-
-    await fs.writeFile(
-      path.join(this.testDir, "pnpm-workspace.yaml"),
-      `packages:
-  - "packages/*"
-  - "src/*"
-  - "apps/*"
-  - "services/*"
-`,
-    );
-
-    // Create workspace directories
-    await fs.ensureDir(path.join(this.testDir, "packages"));
-    await fs.ensureDir(path.join(this.testDir, "src"));
-    await fs.ensureDir(path.join(this.testDir, "apps"));
-    await fs.ensureDir(path.join(this.testDir, "services"));
-  },
-);
 
 Given("I am in the monorepo root", async function (this: InfraWorld) {
   // Alias for "I am in a NodeSpec monorepo root directory"
@@ -69,6 +34,9 @@ Given("I am in the monorepo root", async function (this: InfraWorld) {
     name: "test-monorepo",
     version: "1.0.0",
     private: true,
+    devDependencies: {
+      "@deepracticex/nodespec-core": "latest",
+    },
   });
 
   await fs.writeFile(

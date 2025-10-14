@@ -1,7 +1,7 @@
 /**
  * Service-specific step definitions for backend service management
  */
-import { Given, Then } from "@deepracticex/testing-utils";
+import { Given, Then } from "@deepracticex/vitest-cucumber";
 import { expect } from "chai";
 import fs from "fs-extra";
 import path from "node:path";
