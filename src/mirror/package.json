@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/nodespec-mirror",
-  "version": "2025.10.12",
+  "version": "2025.10.14",
   "description": "NodeSpec mirror - Complete snapshot of NodeSpec project for template generation (version format: YYYY.MM.DD)",
   "private": true,
   "type": "module",
