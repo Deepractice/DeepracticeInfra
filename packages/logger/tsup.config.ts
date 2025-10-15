@@ -6,6 +6,7 @@ export default tsup.createConfig({
     "src/nodejs.ts", // Explicit Node.js entry
     "src/cloudflare-workers.ts", // Cloudflare Workers entry
     "src/browser.ts", // Browser entry
+    "src/test.ts", // Test environment entry
   ],
   external: ["pino", "pino-pretty"], // Don't bundle pino dependencies
 });

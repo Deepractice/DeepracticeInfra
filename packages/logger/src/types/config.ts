@@ -1,7 +1,11 @@
 /**
  * Runtime environment type
  */
-export type RuntimeEnvironment = "nodejs" | "cloudflare-workers" | "browser";
+export type RuntimeEnvironment =
+  | "nodejs"
+  | "cloudflare-workers"
+  | "browser"
+  | "test";
 
 /**
  * Logger configuration interface

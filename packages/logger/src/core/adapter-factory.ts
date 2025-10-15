@@ -7,6 +7,17 @@ import type { LoggerConfig, RuntimeEnvironment } from "~/types/config.js";
  * Detect the current runtime environment
  */
 export function detectEnvironment(): RuntimeEnvironment {
+  // Priority 0: Check for test environment (vitest, jest, etc.)
+  // Test environments should use in-memory test adapter
+  if (
+    typeof process !== "undefined" &&
+    (process.env.VITEST === "true" ||
+      process.env.JEST_WORKER_ID !== undefined ||
+      process.env.NODE_ENV === "test")
+  ) {
+    return "test";
+  }
+
   // Priority 1: Check for Cloudflare Workers specific globals
   // Workers have caches API - this is the most reliable indicator
   // If these globals exist, it's definitely Cloudflare Workers runtime
@@ -45,7 +56,11 @@ export async function createLoggerAdapter(
 ): Promise<any> {
   const env = config.environment || detectEnvironment();
 
-  if (env === "nodejs") {
+  if (env === "test") {
+    // Test adapter for vitest/jest - in-memory, silent by default
+    const { createTestLogger } = await import("./test-adapter.js");
+    return createTestLogger(config);
+  } else if (env === "nodejs") {
     // Use string concatenation to hide import from bundler static analysis
     // This prevents edge runtime bundlers from including Node.js-only dependencies
     const adapterPath = "./pino-adapter" + ".js";

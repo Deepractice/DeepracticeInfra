@@ -72,6 +72,34 @@ const logger = createLogger({
 logger.info("App initialized");
 ```
 
+### Test Environment (Vitest/Jest)
+
+```typescript
+// Uses in-memory test adapter with log capture
+import {
+  createLogger,
+  getTestLogs,
+  clearTestLogs,
+} from "@deepracticex/logger/test";
+
+const logger = createLogger({
+  level: "debug",
+  name: "my-service",
+  console: false, // Silent by default in tests
+});
+
+// Your test code
+logger.info("test message");
+
+// Assert logs were captured
+const logs = getTestLogs();
+expect(logs).toHaveLength(1);
+expect(logs[0].message).toBe("test message");
+
+// Clean up between tests
+clearTestLogs();
+```
+
 ## Quick Start
 
 ### Default Logger (Node.js)
@@ -182,6 +210,64 @@ Uses browser-optimized console adapter:
 - Source map integration
 - DevTools friendly
 
+### Test Environment
+
+Uses in-memory test adapter:
+
+- Auto-detected in vitest/jest (via `VITEST=true` or `NODE_ENV=test`)
+- Silent by default (no console output)
+- Captures all logs in memory for assertions
+- Zero I/O overhead for fast tests
+- Utilities: `getTestLogs()`, `clearTestLogs()`, `getTestLogsByLevel()`
+
+**Usage in tests:**
+
+```typescript
+import {
+  createLogger,
+  getTestLogs,
+  clearTestLogs,
+} from "@deepracticex/logger/test";
+
+describe("my feature", () => {
+  const logger = createLogger();
+
+  afterEach(() => {
+    clearTestLogs(); // Clean up between tests
+  });
+
+  it("should log messages", () => {
+    logger.info("test started");
+    logger.warn("warning message");
+
+    const logs = getTestLogs();
+    expect(logs).toHaveLength(2);
+    expect(logs[0].level).toBe("info");
+  });
+});
+```
+
+**Auto-detection:**
+
+When running in vitest, the default `@deepracticex/logger` import automatically uses the test adapter:
+
+```typescript
+// Automatically uses test adapter in vitest
+import { createLogger } from "@deepracticex/logger";
+
+const logger = createLogger(); // No console output in tests
+```
+
+**Enable console output for debugging:**
+
+```typescript
+// Show logs in test output
+const logger = createLogger({ console: true });
+
+// Or run with verbose reporter
+// pnpm test -- --reporter=verbose
+```
+
 ## Examples
 
 ### Node.js Service
@@ -247,25 +333,35 @@ document.addEventListener("click", (e) => {
 
 ## Architecture
 
-The logger uses a two-adapter architecture:
+The logger uses a multi-adapter architecture with automatic runtime detection:
 
 1. **Pino Adapter** - For Node.js (high performance, file support)
 2. **Console Adapter** - For edge/browser (lightweight, universal)
+3. **Test Adapter** - For test environments (in-memory, inspectable)
 
 Platform-specific entry points ensure only the necessary adapter is bundled:
 
 ```
-@deepracticex/logger          → nodejs.ts → pino-adapter
+@deepracticex/logger          → Auto-detect → appropriate adapter
 @deepracticex/logger/nodejs   → nodejs.ts → pino-adapter
 @deepracticex/logger/cloudflare-workers → cloudflare-workers.ts → console-adapter
 @deepracticex/logger/browser  → browser.ts → console-adapter
+@deepracticex/logger/test     → test.ts → test-adapter
 ```
+
+**Auto-detection priority:**
+
+1. Test environment (VITEST=true or NODE_ENV=test) → test adapter
+2. Cloudflare Workers (caches API present) → console adapter
+3. Node.js (process.versions.node) → pino adapter
+4. Fallback → console adapter (browser)
 
 ## Bundle Size
 
 - Node.js: Full pino functionality (~200KB with dependencies)
 - Cloudflare Workers: ~1.5KB (console adapter only)
 - Browser: ~1.5KB (console adapter only)
+- Test: ~2KB (test adapter with inspection utilities)
 
 ## FAQ
 
@@ -308,6 +404,50 @@ import { createLogger } from "@deepracticex/logger/cloudflare-workers";
 
 // apps/web (Browser)
 import { createLogger } from "@deepracticex/logger/browser";
+```
+
+### How do I use it in tests?
+
+The logger automatically detects test environments (vitest/jest) and uses the test adapter:
+
+```typescript
+// Automatically silent in tests
+import { createLogger } from "@deepracticex/logger";
+const logger = createLogger();
+
+logger.info("message"); // Captured, but no console output
+```
+
+To inspect logs in tests:
+
+```typescript
+import {
+  createLogger,
+  getTestLogs,
+  clearTestLogs,
+} from "@deepracticex/logger/test";
+
+const logger = createLogger();
+logger.info("test message");
+
+const logs = getTestLogs();
+expect(logs[0].message).toBe("test message");
+
+clearTestLogs(); // Clean up
+```
+
+### How do I see logs when debugging tests?
+
+Use vitest's verbose reporter:
+
+```bash
+pnpm test -- --reporter=verbose
+```
+
+Or enable console output explicitly:
+
+```typescript
+const logger = createLogger({ console: true });
 ```
 
 ## License

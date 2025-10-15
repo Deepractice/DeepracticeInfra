@@ -1,6 +1,6 @@
 {
   "name": "@deepracticex/logger",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Unified logging system for Deepractice projects using Pino",
   "type": "module",
   "main": "./dist/index.js",
@@ -26,6 +26,11 @@
       "types": "./dist/browser.d.ts",
       "import": "./dist/browser.js",
       "require": "./dist/browser.cjs"
+    },
+    "./test": {
+      "types": "./dist/test.d.ts",
+      "import": "./dist/test.js",
+      "require": "./dist/test.cjs"
     }
   },
   "scripts": {
